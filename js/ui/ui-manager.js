@@ -5,6 +5,8 @@
 class UIManager {
   constructor() {
     this.selectedQuestions = [];
+    this.showAnswers = false;
+    this.customTitle = "Assessment";
     this.bindEvents();
   }
 
@@ -37,6 +39,17 @@ class UIManager {
 
     document.getElementById("editButton").addEventListener("click", () => {
       this.editAssignment();
+    });
+
+    // Answer key toggle
+    document.getElementById("toggleAnswers").addEventListener("click", () => {
+      this.toggleAnswerKey();
+    });
+
+    // Custom title input
+    document.getElementById("customTitle").addEventListener("input", (e) => {
+      this.customTitle = e.target.value || "Assessment";
+      this.updateDisplayedTitle();
     });
   }
 
@@ -381,6 +394,30 @@ class UIManager {
   }
 
   /**
+   * Toggle answer key visibility
+   */
+  toggleAnswerKey() {
+    this.showAnswers = !this.showAnswers;
+    const answersSection = document.querySelector(".answers");
+    const toggleButton = document.getElementById("toggleAnswers");
+    
+    if (answersSection) {
+      answersSection.style.display = this.showAnswers ? "block" : "none";
+      toggleButton.textContent = this.showAnswers ? "Hide Answer Key" : "Show Answer Key";
+    }
+  }
+
+  /**
+   * Update the displayed title
+   */
+  updateDisplayedTitle() {
+    const titleElement = document.getElementById("displayTitle");
+    if (titleElement) {
+      titleElement.textContent = this.customTitle;
+    }
+  }
+
+  /**
    * Display final assignment with questions and answers
    */
   displayFinalAssignment() {
@@ -388,6 +425,30 @@ class UIManager {
     output.innerHTML = "";
 
     const answers = [];
+
+    // Add custom title
+    const titleDiv = document.createElement("div");
+    titleDiv.className = "assignment-title";
+    titleDiv.innerHTML = `<h2 id="displayTitle">${this.customTitle}</h2>`;
+    output.appendChild(titleDiv);
+
+    // Add toggle button
+    const controlsDiv = document.createElement("div");
+    controlsDiv.className = "assignment-controls";
+    controlsDiv.innerHTML = `
+      <button id="toggleAnswers" class="toggle-answers-btn">Show Answer Key</button>
+    `;
+    output.appendChild(controlsDiv);
+
+    // Re-bind the toggle event after creating the button
+    setTimeout(() => {
+      const toggleBtn = document.getElementById("toggleAnswers");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          this.toggleAnswerKey();
+        });
+      }
+    }, 0);
 
     this.selectedQuestions.forEach((template, index) => {
       const question = window.QuestionGenerator.generateQuestion(template);
@@ -403,6 +464,7 @@ class UIManager {
           <strong>${index + 1})</strong>
           <span class="objective-header">${question.objective || 'No objective'}</span>
           <span class="difficulty-badge ${difficultyClass}" style="margin-left: 8px;">${question.difficulty || 'basic'}</span>
+          <span class="question-id" style="margin-left: 8px;">[${question.id || 'No ID'}]</span>
         </div>
         <div>${question.questionText || 'No question text'}</div>
       `;
@@ -426,12 +488,16 @@ class UIManager {
     // Add answer key
     const answerDiv = document.createElement("div");
     answerDiv.className = "answers";
+    answerDiv.style.display = "none"; // Hidden by default
     answerDiv.innerHTML = `
       <h3>Answer Key</h3>
       ${answers.map(answer => `<div class="answer">${answer}</div>`).join("")}
     `;
     
     output.appendChild(answerDiv);
+
+    // Reset answer key visibility
+    this.showAnswers = false;
 
     // Render math
     if (window.MathJax) {
@@ -450,6 +516,9 @@ class UIManager {
     
     // Clear output
     document.getElementById("output").innerHTML = "";
+    
+    // Reset states
+    this.showAnswers = false;
   }
 
   /**

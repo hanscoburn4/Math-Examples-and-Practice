@@ -5,10 +5,42 @@ body {
   color: #333;
 }
 
+.header-section {
+  margin-bottom: 30px;
+}
+
 h1 {
   color: #2c3e50;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   font-weight: 300;
+}
+
+.title-input-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.title-input-section label {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+#customTitle {
+  flex: 1;
+  max-width: 400px;
+  padding: 8px 12px;
+  border: 2px solid #3498db;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#customTitle:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 .row { 
@@ -108,6 +140,52 @@ button.small {
   border-left: 4px solid #3498db;
 }
 
+.assignment-title {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #2c3e50;
+}
+
+.assignment-title h2 {
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.assignment-controls {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.toggle-answers-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-answers-btn:hover {
+  background: #c0392b;
+}
+
+.question-id {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #ecf0f1;
+  color: #2c3e50;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+}
+
 .answers { 
   margin-top: 40px; 
   border-top: 2px solid #2c3e50; 
@@ -172,6 +250,15 @@ canvas {
 }
 
 @media (max-width: 768px) {
+  .title-input-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #customTitle {
+    max-width: none;
+  }
+  
   .row {
     flex-direction: column;
     align-items: stretch;
@@ -184,5 +271,33 @@ canvas {
   .question-item, .preview-item {
     flex-direction: column;
     align-items: stretch;
+  }
+}
+
+/* Print styles */
+@media print {
+  .header-section,
+  .section:not(#output),
+  .assignment-controls {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .assignment-title {
+    page-break-after: avoid;
+  }
+  
+  .question {
+    page-break-inside: avoid;
+    margin-bottom: 40px;
+  }
+  
+  .answers {
+    page-break-before: always;
   }
 }

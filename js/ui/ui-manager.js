@@ -41,11 +41,6 @@ class UIManager {
       this.editAssignment();
     });
 
-    // Answer key toggle
-    document.getElementById("toggleAnswers").addEventListener("click", () => {
-      this.toggleAnswerKey();
-    });
-
     // Custom title input
     document.getElementById("customTitle").addEventListener("input", (e) => {
       this.customTitle = e.target.value || "Assessment";

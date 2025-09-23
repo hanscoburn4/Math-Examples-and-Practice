@@ -427,14 +427,6 @@ class UIManager {
     titleDiv.innerHTML = `<h2 id="displayTitle">${this.customTitle}</h2>`;
     output.appendChild(titleDiv);
 
-    // Add toggle button
-    const controlsDiv = document.createElement("div");
-    controlsDiv.className = "assignment-controls";
-    controlsDiv.innerHTML = `
-      <button id="toggleAnswers" class="toggle-answers-btn">Show Answer Key</button>
-    `;
-    output.appendChild(controlsDiv);
-
     // Re-bind the toggle event after creating the button
     setTimeout(() => {
       const toggleBtn = document.getElementById("toggleAnswers");
@@ -488,7 +480,14 @@ class UIManager {
       <h3>Answer Key</h3>
       ${answers.map(answer => `<div class="answer">${answer}</div>`).join("")}
     `;
-    
+
+    // Add toggle button
+    const controlsDiv = document.createElement("div");
+    controlsDiv.className = "assignment-controls";
+    controlsDiv.innerHTML = `
+      <button id="toggleAnswers" class="toggle-answers-btn">Show Answer Key</button>
+    `;
+    output.appendChild(controlsDiv);
     output.appendChild(answerDiv);
 
     // Reset answer key visibility

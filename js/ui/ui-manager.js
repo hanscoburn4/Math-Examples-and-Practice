@@ -384,6 +384,9 @@ class UIManager {
     document.getElementById("questionList").classList.add("hidden");
     document.getElementById("assignmentPreview").classList.add("hidden");
     
+    // Hide title input section
+    document.querySelector(".title-input-section").classList.add("hidden");
+    
     // Show edit button
     document.getElementById("editSection").classList.remove("hidden");
   }
@@ -507,6 +510,9 @@ class UIManager {
     document.getElementById("questionList").classList.remove("hidden");
     document.getElementById("assignmentPreview").classList.remove("hidden");
     document.getElementById("editSection").classList.add("hidden");
+    
+    // Show title input section
+    document.querySelector(".title-input-section").classList.remove("hidden");
     
     // Clear output
     document.getElementById("output").innerHTML = "";

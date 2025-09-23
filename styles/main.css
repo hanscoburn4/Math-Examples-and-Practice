@@ -300,4 +300,8 @@ canvas {
   .answers {
     page-break-before: always;
   }
+  
+  .answers {
+    page-break-before: always;
+  }
 }

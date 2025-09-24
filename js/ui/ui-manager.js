@@ -7,6 +7,8 @@ class UIManager {
     this.selectedQuestions = [];
     this.showAnswers = false;
     this.customTitle = "Assessment";
+    this.questionColumns = 1;
+    this.questionSpacing = 20;
     this.bindEvents();
   }
 
@@ -45,6 +47,17 @@ class UIManager {
     document.getElementById("customTitle").addEventListener("input", (e) => {
       this.customTitle = e.target.value || "Assessment";
       this.updateDisplayedTitle();
+    });
+
+    // Layout controls
+    document.querySelectorAll('input[name="questionColumns"]').forEach(radio => {
+      radio.addEventListener("change", (e) => {
+        this.questionColumns = parseInt(e.target.value);
+      });
+    });
+
+    document.getElementById("questionSpacing").addEventListener("input", (e) => {
+      this.questionSpacing = parseInt(e.target.value);
     });
   }
 
@@ -422,6 +435,10 @@ class UIManager {
     const output = document.getElementById("output");
     output.innerHTML = "";
 
+    // Apply layout settings
+    output.className = `columns-${this.questionColumns}`;
+    output.style.setProperty('--question-spacing', `${this.questionSpacing}px`);
+
     const answers = [];
 
     // Add custom title
@@ -516,6 +533,11 @@ class UIManager {
     
     // Clear output
     document.getElementById("output").innerHTML = "";
+    
+    // Reset layout classes and styles
+    const output = document.getElementById("output");
+    output.className = "";
+    output.style.removeProperty('--question-spacing');
     
     // Reset states
     this.showAnswers = false;

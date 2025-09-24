@@ -397,6 +397,9 @@ class UIManager {
     document.getElementById("questionList").classList.add("hidden");
     document.getElementById("assignmentPreview").classList.add("hidden");
     
+    // Hide layout controls
+    document.querySelector(".layout-controls").classList.add("hidden");
+    
     // Hide title input section
     document.querySelector(".title-input-section").classList.add("hidden");
     
@@ -527,6 +530,9 @@ class UIManager {
     document.getElementById("questionList").classList.remove("hidden");
     document.getElementById("assignmentPreview").classList.remove("hidden");
     document.getElementById("editSection").classList.add("hidden");
+    
+    // Show layout controls
+    document.querySelector(".layout-controls").classList.remove("hidden");
     
     // Show title input section
     document.querySelector(".title-input-section").classList.remove("hidden");

@@ -1,561 +1,1265 @@
 {
   "Algebra 1": {
-    "Chapter 1": [
+    "Module 0": [
+      {
+        "id": "ALG1-0.1-B1",
+        "type": "template",
+        "objective": "Adding Fractions",
+        "difficulty": "basic",
+        "variables": { 
+          "a": { "min": -10, "max": 10, "exclude": [0] } , 
+          "b": { "min": 2, "max": 12, "exclude": ["a"]}, 
+          "c": { "min": -10, "max": 10, "exclude": [0] }, 
+          "d": { "min": 2, "max": 12, "exclude": ["c"] } },
+        "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} + \\frac{{{c}}}{{{d}}} \\).",
+        "answerFormula": "simplifyFraction(a*d + b*c, b*d)"
+      },
+      {
+        "id": "ALG1-0.1-B2",
+        "type": "template",
+        "objective": "Subtracting Fractions",
+        "difficulty": "basic",
+        "variables": { 
+          "a": { "min": -10, "max": 10, "exclude": [0] } , 
+          "b": { "min": 2, "max": 12, "exclude": ["a"]}, 
+          "c": { "min": -10, "max": 10, "exclude": [0] }, 
+          "d": { "min": 2, "max": 12, "exclude": ["c"] } },
+        "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - \\frac{{{c}}}{{{d}}} \\).",
+        "answerFormula": "simplifyFraction(a*d - b*c, b*d)"
+      },
+      {
+        "id": "ALG1-0.1-B3",
+        "type": "template",
+        "objective": "Multiplying Fractions",
+        "difficulty": "basic",
+        "variables": { 
+          "a": { "min": -10, "max": 10, "exclude": [0] } , 
+          "b": { "min": 2, "max": 12, "exclude": ["a"]}, 
+          "c": { "min": -10, "max": 10, "exclude": [0] }, 
+          "d": { "min": 2, "max": 12, "exclude": ["c"] } },
+        "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} \\times \\frac{{{c}}}{{{d}}} \\).",
+        "answerFormula": "simplifyFraction(a*c, b*d)"
+      },
+      
+      {
+        "id": "ALG1-0.1-B4",
+        "type": "template",
+        "objective": "Dividing Fractions",
+        "difficulty": "basic",
+        "variables": { 
+          "a": { "min": -10, "max": 10, "exclude": [0] } , 
+          "b": { "min": 2, "max": 12, "exclude": ["a"]}, 
+          "c": { "min": -10, "max": 10, "exclude": [0] }, 
+          "d": { "min": 2, "max": 12, "exclude": ["c"] } },
+        "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} \\div \\frac{{{c}}}{{{d}}} \\).",
+        "answerFormula": "simplifyFraction(a*d, b*c)"
+      },
+      {
+        "id": "ALG1-0.1-B5",
+        "type": "template",
+        "objective": "Adding Fractions and Integers",
+        "difficulty": "basic",
+        "variables": { "a": { "min": -10, "max": 10, "exclude":[0] }, "b": { "min": 2, "max": 20, "exclude":["a"] }, "c": { "min": -10, "max": 10 } },
+        "question": "Add: \\( \\frac{{{a}}}{{{b}}} + ({c}) \\).",
+        "answerFormula": "simplifyFraction(a + b*c, b)"
+      },
+      {
+        "id": "ALG1-0.1-B6",
+        "type": "template",
+        "objective": "Subtracting Fractions and Integers",
+        "difficulty": "basic",
+        "variables": { "a": { "min": -10, "max": 10, "exclude":[0] }, "b": { "min": 2, "max": 20, "exclude":["a"] }, "c": { "min": -10, "max": 10 } },
+        "question": "Subtract: \\( {c} - \\frac{{{a}}}{{{b}}} \\).",
+        "answerFormula": "simplifyFraction(c*b - a, b)"
+      },
+      {
+        "id": "ALG1-0.1-B7",
+        "type": "template",
+        "objective": "Multiplying Fractions and Integers",
+        "difficulty": "basic",
+        "variables": { "a": { "min": -10, "max": 10, "exclude":[0] }, "b": { "min": 2, "max": 20, "exclude":["a"] }, "c": { "min": -10, "max": 10 } },
+        "question": "Multiply: \\( {c} \\times \\frac{{{a}}}{{{b}}} \\).",
+        "answerFormula": "simplifyFraction(a*c, b)"
+      },
+      {
+        "id": "ALG1-0.1-B8",
+        "type": "template",
+        "objective": "Dividing Fractions and Integers",
+        "difficulty": "basic",
+        "variables": { "a": { "min": -10, "max": 10, "exclude":[0] }, "b": { "min": 2, "max": 20, "exclude":["a"] }, "c": { "min": -10, "max": 10 } },
+        "question": "Divide: \\( {c} \\div \\frac{{{a}}}{{{b}}} \\).",
+        "answerFormula": "simplifyFraction(c*b, a)"
+      },
+      {
+        "id": "ALG1-0.2-I1",
+        "type": "template",
+        "objective": "Subtracting Fractions",
+        "difficulty": "intermediate",
+        "variables": { "a": { "min": 5, "max": 12 }, "b": { "min": 6, "max": 15,"exclude":["a"] }, "c": { "min": 1, "max": 5 }, "d": { "min": 2, "max": 10, "exclude":["c"] } },
+        "question": "A tank is \\({a}/{b}\\) full of water. After using \\({c}/{d}\\) of the water, how much water is left in the tank?",
+        "answerFormula": "simplifyFraction(a*d - b*c, b*d)"
+      },
+      {
+        "id": "ALG1-0.2-I2",
+        "type": "template",
+        "objective": "Multiplying Fractions",
+        "difficulty": "intermediate",
+        "variables": { "a": { "min": 5, "max": 12 }, "b": { "min": 6, "max": 15,"exclude":["a"] }, "c": { "min": 1, "max": 5 }, "d": { "min": 2, "max": 10, "exclude":["c"] } },
+        "question": "A recipe calls for \\({a}/{b}\\) cups of sugar per batch. If you make \\({c}/{d}\\) of a batch, how much sugar do you need?",
+        "answerFormula": "simplifyFraction(a*c, b*d)"
+      },
+      {
+        "id": "ALG1-0.2-I3",
+        "type": "template",
+        "objective": "Dividing Fractions",
+        "difficulty": "intermediate",
+        "variables": { "a": { "min": 1, "max": 7 }, "b": { "min": 2, "max": 12, "exclude":["a"] }, "c": { "min": 1, "max": 5 } },
+        "question": "You have \\({a}/{b}\\) of a chocolate bar and want to share it equally among \\({c}\\) friends. How much chocolate does each friend get?",
+        "answerFormula": "simplifyFraction(a, b*c)"
+      },
+      {
+        "id": "ALG1-0.3-A1",
+        "type": "template",
+        "objective": "Multi-step Fraction Operations",
+        "difficulty": "advanced",
+        "variables": { "a": { "min": 1, "max": 5 }, "b": { "min": 2, "max": 12, "exclude":["a"] }, "c": { "min": 1, "max": 7 }, "d": { "min": 2, "max": 10, "exclude":["c"] }, "e": { "min": 1, "max": 4 }, "f": { "min": 2, "max": 8, "exclude":["e"] } },
+        "question": "Liam baked \\({a}/{b}\\) of a cake on Monday and \\({c}/{d}\\) on Tuesday. He ate \\({e}/{f}\\) of what he baked on Tuesday. How much cake is left in total?",
+        "answerFormula": "simplifyFraction(a*d + c*(1 - e/f)*b, b*d)"
+      },
+      {
+        "id": "ALG1-0.3-A2",
+        "type": "template",
+        "objective": "Multi-step Fraction Operations",
+        "difficulty": "advanced",
+        "variables": { "a": { "min": 1, "max": 5 }, "b": { "min": 2, "max": 12, "exclude":["a"] }, "c": { "min": 1, "max": 7 }, "d": { "min": 2, "max": 10, "exclude":["c"] }, "e": { "min": 1, "max": 4 }, "f": { "min": 2, "max": 8, "exclude":["e"] } },
+        "question": "A garden uses \\({a}/{b}\\) of a bag of fertilizer in the morning and \\({c}/{d}\\) in the afternoon. If \\({e}/{f}\\) of the total used fertilizer is for vegetables, how much fertilizer was used for vegetables?",
+        "answerFormula": "simplifyFraction((a/b + c/d) * e/f, 1)"
+      },
+      {
+        "id": "ALG1-0.3-A3",
+        "type": "template",
+        "objective": "Multi-step Fraction Operations",
+        "difficulty": "advanced",
+        "variables": { "a": { "min": 1, "max": 5 }, "b": { "min": 2, "max": 12, "exclude":["a"] }, "c": { "min": 1, "max": 7 }, "d": { "min": 2, "max": 10, "exclude":["c"] }, "e": { "min": 1, "max": 4 }, "f": { "min": 2, "max": 8, "exclude":["e"] } },
+        "question": "A ribbon is \\({a}/{b}\\) meters long. Sarah cuts \\({c}/{d}\\) of it and then cuts that piece into \\({e}/{f}\\) equal parts. How long, in meters, is each part?",
+        "answerFormula": "simplifyFraction(a*c, b*d*e/f)"
+      },
+      {
+        "id": "AlG1-0.4-B1",
+        "type": "template",
+        "objective": "Plotting points on the coordinate plane",
+        "difficulty": "basic",
+        "variables": {
+          "a": {"min":-10, "max":10},
+          "b": {"min":-10, "max":10}
+        },
+        "question": "Plot the point \\(({a}, {b})\\) on the coordinate plane.",
+        "answer": "the x-value is \\({a}\\) while the y-value is \\({b}\\)."
+      },
+      {
+        "id": "AlG1-0.4-B2",
+        "type": "template",
+        "objective": "Plotting points on the coordinate plane",
+        "difficulty": "basic",
+        "variables": {
+          "a": {"min":-10, "max":10},
+          "b": {"min":-10, "max":10},
+          "c": {"min":-10, "max":10},
+          "d": {"min":-10, "max":10}
+        },
+        "question": "Plot the points \\(({a}, {b})\\) and \\(({c}, {d})\\) on the coordinate plane.",
+        "answer": "First point: x is \\({a}\\) y is \\({b}\\); Second point: x is \\({c}\\) y is \\({d}\\)."
+      }
+
+    ],
+    "Module 1": [
+      {
+        "id": "ALG1-1.1-B1",
+        "type": "template",
+        "objective": "Evaluating Numerical Expressions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": -20, "max": 20 },
+          "b": { "min": -20, "max": 20, "exclude":["a",0] },
+          "c": { "min": -20, "max": 20, "exclude":["a","b",0] },
+          "d": { "min": -20, "max": 20, "exclude":["a","b","c",0] }
+        },
+        "question": "Evaluate: \\( [{a} + ({b})] \\cdot ({c}) - ({d}) \\).",
+        "answer": "\\( {(a + b)*c-d} \\)"
+      },
+      {
+        "id": "ALG1-1.1-B2",
+        "type": "template",
+        "objective": "Evaluating Numerical Expressions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": -20, "max": 20 },
+          "b": { "min": 1, "max": 5 },
+          "c": { "min": 1, "max": 5 },
+          "d": { "min": -10, "max": 10, "exclude":[0] },
+          "e": { "min": 1, "max": 10 },
+          "f": { "min": -20, "max": 20, "exclude":[0] }
+        },
+        "question": "Evaluate: \\( {a} +({b}-{c})^2 - {d}\\cdot{e} + ({f}) \\).",
+        "answer": "\\( {a+(b-c)^2-d*e+f} \\)"
+      },
+      {
+        "id": "ALG1-1.1-I1",
+        "type": "template",
+        "objective": "Evaluating Numerical Expressions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -12, "max": 12 },
+          "b": { "min": 1, "max": 5 },
+          "c": { "min": 2, "max": 6 },
+          "d": { "min": -8, "max": 8, "exclude":[0] },
+          "e": { "min": 1, "max": 5 },
+          "f": { "min": -10, "max": 10, "exclude":[0] }
+        },
+        "question": "Evaluate: \\( \\frac{{{a}}}{{{c}}} + \\left(\\frac{{{b}}}{{{e}}}\\right)^2 - {d} + {f} \\).",
+        "answerFormula": "simplifyFraction(a, c) + (b/e)**2 - d + f"
+      },
+      {
+        "id": "ALG1-1.1-I2",
+        "type": "template",
+        "objective": "Evaluating Numerical Expressions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -15, "max": 15 },
+          "b": { "min": 2, "max": 6 },
+          "c": { "min": 1, "max": 5 },
+          "d": { "min": -8, "max": 8, "exclude":[0] },
+          "e": { "min": 1, "max": 6 },
+          "f": { "min": -12, "max": 12, "exclude":[0] }
+        },
+        "question": "Evaluate: \\( \\left(\\frac{{{a}}}{{{b}}} - \\frac{{{c}}}{{{e}}}\\right) + {d}\\cdot\\frac{1}{2} - ({f}) \\).",
+        "answerFormula": "(a/b - c/e) + d*0.5 - f"
+      },
+      {
+        "id": "ALG1-1.1-I3",
+        "type": "template",
+        "objective": "Evaluating Numerical Expressions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -12, "max": 12 },
+          "b": { "min": 1, "max": 5 },
+          "c": { "min": 1, "max": 5 },
+          "d": { "min": 2, "max": 6 },
+          "e": { "min": -8, "max": 8, "exclude":[0] },
+          "f": { "min": 1, "max": 4 }
+        },
+        "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - \\left({c} + \\frac{1}{{{d}}}\\right) + \\frac{{{e}}}{{{f}}} \\).",
+        "answerFormula": "(a/b) - (c + 1/d) + (e/f)"
+      },
+      {
+        "id": "ALG1-1.1-A1",
+        "type": "template",
+        "objective": "Evaluating Numerical Expressions",
+        "difficulty": "advanced",
+        "variables": {
+          "a": { "min": -20, "max": 20, "exclude":[0] },
+          "b": { "min": 2, "max": 5 },
+          "c": { "min": -10, "max": 10, "exclude":[0] },
+          "d": { "min": -10, "max": 10, "exclude":[0] },
+          "e": { "min": 2, "max": 7, "exclude":["b"] },
+          "f": { "min": 1, "max": 5 },
+          "g": { "min": -15, "max": 15, "exclude":[0] }
+        },
+        "question": "Evaluate: \\( \\left(\\frac{{{a}}}{{{b}}} + \\frac{{{c}}}{{{e}}}\\right) \\cdot {d} - \\left({f} - \\frac{1}{{{g}}}\\right) \\).",
+        "answerFormula": "((a/b) + (c/e)) * d - (f - 1/g)"
+      },
+      {
+        "id": "ALG1-1.2-B1",
+        "type": "template",
+        "objective": "Evaluate Algebraic Expressions",
+        "difficulty": "basic",
+        "variables": {
+          "x": { "min": 1, "max": 5 },
+          "a": { "min": 1, "max": 10 },
+          "b": { "min": 1, "max": 10 }
+        },
+        "question": "Evaluate: \\( {a}x + {b} \\) when \\( x = {x} \\).",
+        "answerFormula": "(a * x + b)"
+      },
+      {
+        "id": "ALG1-1.2-I1",
+        "type": "template",
+        "objective": "Evaluate Algebraic Expressions",
+        "difficulty": "intermediate",
+        "variables": {
+          "x": { "min": 1, "max": 5 },
+          "y": { "min": -3, "max": 3, "exclude": [0] },
+          "a": { "min": 1, "max": 10 },
+          "b": { "min": 1, "max": 10 }
+        },
+        "question": "Evaluate: \\( {a}x - {b}y \\) when \\( x = {x}, y = {y} \\).",
+        "answerFormula": "(a * x - b * y)"
+      },
+      {
+        "id": "ALG1-1.2-A1",
+        "type": "template",
+        "objective": "Evaluate Algebraic Expressions",
+        "difficulty": "advanced",
+        "variables": {
+          "x": { "min": 1, "max": 5 },
+          "y": { "min": -5, "max": 5, "exclude": [0] },
+          "a": { "min": 1, "max": 10 },
+          "b": { "min": 1, "max": 10 },
+          "c": { "min": 1, "max": 5 }
+        },
+        "question": "Evaluate: \\( {a}x^2 + {b}xy + {c}y^2 \\) when \\( x = {x}, y = {y} \\).",
+        "answerFormula": "(a * x ** 2 + b * x * y + c * y ** 2)"
+      },
       {
         "id": "ALG1-1.3-B1",
-        "objective": "Evaluate algebraic expressions",
+        "type": "template",
+        "objective": "Evaluate Numerical Expressions by Applying Properties",
         "difficulty": "basic",
-        "question": "Evaluate the expression {a}x + {b} when x = {x_value}",
-        "variables": {
-          "a": {
-            "min": 2,
-            "max": 8,
-            "exclude": [0, 1]
-          },
-          "b": {
-            "min": -10,
-            "max": 10,
-            "exclude": [0]
-          },
-          "x_value": {
-            "min": 1,
-            "max": 5
-          }
-        },
-        "answerFormula": "a * x_value + b",
-        "answer": "{a * x_value + b}"
-      },
-      {
-        "id": "ALG1-1.3-B2",
-        "objective": "Evaluate algebraic expressions",
-        "difficulty": "basic",
-        "question": "Find the value of {coefficient}y - {constant} when y = {y_value}",
-        "variables": {
-          "coefficient": {
-            "min": 3,
-            "max": 9
-          },
-          "constant": {
-            "min": 1,
-            "max": 15
-          },
-          "y_value": {
-            "min": 2,
-            "max": 6
-          }
-        },
-        "answerFormula": "coefficient * y_value - constant",
-        "answer": "{coefficient * y_value - constant}"
-      },
-      {
-        "id": "ALG1-1.3-B3",
-        "objective": "Evaluate algebraic expressions",
-        "difficulty": "basic",
-        "question": "What is the value of {a}m + {b}n when m = {m_value} and n = {n_value}?",
-        "variables": {
-          "a": {
-            "min": 2,
-            "max": 6
-          },
-          "b": {
-            "min": 1,
-            "max": 5
-          },
-          "m_value": {
-            "min": 1,
-            "max": 4
-          },
-          "n_value": {
-            "min": 1,
-            "max": 4
-          }
-        },
-        "answerFormula": "a * m_value + b * n_value",
-        "answer": "{a * m_value + b * n_value}"
-      },
-      {
-        "id": "ALG1-1.3-B4",
-        "objective": "Evaluate algebraic expressions",
-        "difficulty": "basic",
-        "question": "Evaluate {numerator}x ÷ {denominator} when x = {x_value}",
-        "variables": {
-          "numerator": {
-            "values": [6, 8, 10, 12, 15, 18, 20, 24]
-          },
-          "denominator": {
-            "values": [2, 3, 4, 5, 6]
-          },
-          "x_value": {
-            "min": 1,
-            "max": 5
-          }
-        },
-        "answerFormula": "(numerator * x_value) / denominator",
-        "answer": "{(numerator * x_value) / denominator}"
-      },
-      {
-        "id": "ALG1-1.3-B5",
-        "objective": "Evaluate algebraic expressions",
-        "difficulty": "basic",
-        "question": "If p = {p_value} and q = {q_value}, find the value of {a}p + {b}q - {c}",
-        "variables": {
-          "a": {
-            "min": 2,
-            "max": 5
-          },
-          "b": {
-            "min": 1,
-            "max": 4
-          },
-          "c": {
-            "min": 3,
-            "max": 12
-          },
-          "p_value": {
-            "min": 2,
-            "max": 6
-          },
-          "q_value": {
-            "min": 1,
-            "max": 5
-          }
-        },
-        "answerFormula": "a * p_value + b * q_value - c",
-        "answer": "{a * p_value + b * q_value - c}"
+        "variables": {},
+        "question": "Fill in the property name used for each equation:<br><br>\\<table border='1' style='border-collapse:collapse; text-align:center;'><tr><th>Equation</th><th>Property</th></tr><tr><td>2 + (-2) = 0</td><td>__________</td></tr><tr><td>7 + 2 = 2 + 7</td><td>__________</td></tr><tr><td>7 = 0 + 7</td><td>__________</td></tr></table>",
+        "answer": "<ul> <li><strong>2 + (-2) = 0</strong>: Additive Inverse Property</li>\\ <li><strong>7 + 2 = 2 + 7</strong>: Commutative Property of Addition</li>\\ <li><strong>7 = 0 + 7</strong>: Additive Identity Property</li>\\ </ul>"
       },
       {
         "id": "ALG1-1.3-I1",
-        "objective": "Evaluate algebraic expressions with multiple operations",
+        "type": "template",
+        "objective": "Evaluate Numerical Expressions by Applying Properties",
         "difficulty": "intermediate",
-        "question": "Evaluate the expression {a}x² + {b}x + {c} when x = {x_value}",
         "variables": {
-          "a": {
-            "min": 1,
-            "max": 4,
-            "exclude": [0]
-          },
-          "b": {
-            "min": -8,
-            "max": 8,
-            "exclude": [0]
-          },
-          "c": {
-            "min": -10,
-            "max": 10
-          },
-          "x_value": {
-            "min": 1,
-            "max": 4
-          }
+        "a": { "min": 2, "max": 6 },
+        "b": { "min": 2, "max": 9 },
+        "c": { "min": 2, "max": 9 },
+        "a*b": { "value": "a*b" },
+        "a*c": { "value": "a*c" },
+        "a*b + a*c": { "value": "a*b + a*c" }
         },
-        "answerFormula": "a * x_value * x_value + b * x_value + c",
-        "answer": "{a * x_value * x_value + b * x_value + c}"
+        "question": "The expression below is simplified step by step. For each step, identify the property that was used:<br><br><table border='1' style='border-collapse:collapse; text-align:left;'><tr><th>Step</th><th>Work</th><th>Property</th></tr><tr><td>1</td><td>\\( {a}({b} + {c}) \\)</td><td></td></tr><tr><td>2</td><td>\\( ({a}\\cdot{b}) + ({a}\\cdot{c}) \\)</td><td></td></tr><tr><td>3</td><td>\\( {a*b} + {a*c} \\)</td><td></td></tr><tr><td>4</td><td>\\( {a*b + a*c} \\)</td><td></td></tr></table>",
+        "answer": "<ul><li><strong>Step 1 → Step 2</strong>: Distributive Property</li><li><strong>Step 2 → Step 3</strong>: Multiplication / Simplification</li><li><strong>Step 3 → Step 4</strong>: Addition / Simplification</li></ul>"
       },
       {
-        "id": "ALG1-1.3-I2",
-        "objective": "Evaluate algebraic expressions with multiple operations",
+        "id": "ALG1-1.4-B1",
+        "type": "template",
+        "objective": "Use the Distributive Property to Simplify and Evaluate Expressions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+          "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+          "c": { "min": 2, "max": 10 }
+        },
+        "question": "Use the distributive property to simplify: \\( {a}({b}x+{c}) \\).",
+        "answer": "\\({a * b}x + {a * c}\\)"
+      },
+      {
+        "id": "ALG1-1.4-I1",
+        "type": "template",
+        "objective": "Use the Distributive Property to Simplify and Evaluate Expressions",
         "difficulty": "intermediate",
-        "question": "Find the value of {a}(x + {h}) + {k} when x = {x_value}",
         "variables": {
-          "a": {
-            "min": 2,
-            "max": 6
-          },
-          "h": {
-            "min": 1,
-            "max": 5
-          },
-          "k": {
-            "min": -8,
-            "max": 8
-          },
-          "x_value": {
-            "min": 1,
-            "max": 6
-          }
+          "a": { "min": -10, "max": 10, "exclude": [0] },
+          "b": { "min": 2, "max": 10 },
+          "c": { "min": -10, "max": 10, "exclude": [0] },
+          "d": { "min": 3, "max": 15 },
+          "e": { "min": 2, "max": 15 },
+          "f": { "min": 2, "max": 15 }
         },
-        "answerFormula": "a * (x_value + h) + k",
-        "answer": "{a * (x_value + h) + k}"
+        "question": "Simplify by distributing and combining like terms: \\( {a}x + {b}({c}x+{d}y-{e}) - {f} \\).",
+        "answer": "\\({a + b*c}x + {b*d}y + {-b*e - f}\\)"
       },
       {
-        "id": "ALG1-1.3-I3",
-        "objective": "Evaluate algebraic expressions with multiple operations",
+        "id": "ALG1-1.5-B1",
+        "type": "template",
+        "objective": "Evaluate Absolute Value Expressions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": -10, "max": 10, "exclude": [0] },
+          "b": { "min": -10, "max": 10, "exclude": [0] },
+          "c": { "min": -10, "max": 10, "exclude": [0] },
+          "d": { "min": -10, "max": 10, "exclude": [0] }
+        },
+        "question": "Evaluate: \\( {a}\\bigl||{b}|+({c})|{d}|\\bigr| \\).",
+        "answerFormula": "a*Math.abs(Math.abs(b) + c * Math.abs(d))"
+      },
+      {
+        "id": "ALG1-1.5-I1",
+        "type": "template",
+        "objective": "Evaluate Absolute Value Expressions",
         "difficulty": "intermediate",
-        "question": "What is the value of {a}xy + {b}x - {c}y when x = {x_value} and y = {y_value}?",
         "variables": {
-          "a": {
-            "min": 2,
-            "max": 5
-          },
-          "b": {
-            "min": 3,
-            "max": 8
-          },
-          "c": {
-            "min": 1,
-            "max": 6
-          },
-          "x_value": {
-            "min": 2,
-            "max": 5
-          },
-          "y_value": {
-            "min": 1,
-            "max": 4
-          }
+          "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+          "x": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+          "c": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+          "y": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+          "z": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+          "f": { "min": -10, "max": 10, "exclude": [0,1,-1] }
         },
-        "answerFormula": "a * x_value * y_value + b * x_value - c * y_value",
-        "answer": "{a * x_value * y_value + b * x_value - c * y_value}"
-      },
-      {
-        "id": "ALG1-1.3-I4",
-        "objective": "Evaluate algebraic expressions with multiple operations",
-        "difficulty": "intermediate",
-        "question": "Evaluate {a}(x - {h})² + {k} when x = {x_value}",
-        "variables": {
-          "a": {
-            "min": 1,
-            "max": 3
-          },
-          "h": {
-            "min": 1,
-            "max": 4
-          },
-          "k": {
-            "min": -5,
-            "max": 10
-          },
-          "x_value": {
-            "min": 2,
-            "max": 7
-          }
-        },
-        "answerFormula": "a * Math.pow(x_value - h, 2) + k",
-        "answer": "{a * Math.pow(x_value - h, 2) + k}"
-      },
-      {
-        "id": "ALG1-1.3-I5",
-        "objective": "Evaluate algebraic expressions with multiple operations",
-        "difficulty": "intermediate",
-        "question": "If a = {a_value}, b = {b_value}, and c = {c_value}, find the value of a² + 2ab - c",
-        "variables": {
-          "a_value": {
-            "min": 2,
-            "max": 6
-          },
-          "b_value": {
-            "min": 1,
-            "max": 5
-          },
-          "c_value": {
-            "min": 5,
-            "max": 20
-          }
-        },
-        "answerFormula": "a_value * a_value + 2 * a_value * b_value - c_value",
-        "answer": "{a_value * a_value + 2 * a_value * b_value - c_value}"
-      },
-      {
-        "id": "ALG1-1.3-A1",
-        "objective": "Evaluate complex algebraic expressions",
-        "difficulty": "advanced",
-        "question": "Evaluate the expression {a}x³ + {b}x² + {c}x + {d} when x = {x_value}",
-        "variables": {
-          "a": {
-            "min": 1,
-            "max": 3
-          },
-          "b": {
-            "min": -5,
-            "max": 5,
-            "exclude": [0]
-          },
-          "c": {
-            "min": -8,
-            "max": 8
-          },
-          "d": {
-            "min": -10,
-            "max": 10
-          },
-          "x_value": {
-            "min": 1,
-            "max": 3
-          }
-        },
-        "answerFormula": "a * Math.pow(x_value, 3) + b * Math.pow(x_value, 2) + c * x_value + d",
-        "answer": "{a * Math.pow(x_value, 3) + b * Math.pow(x_value, 2) + c * x_value + d}"
-      },
-      {
-        "id": "ALG1-1.3-A2",
-        "objective": "Evaluate complex algebraic expressions",
-        "difficulty": "advanced",
-        "question": "Find the value of {a}√(x + {h}) + {k} when x = {x_value}",
-        "variables": {
-          "a": {
-            "min": 2,
-            "max": 6
-          },
-          "h": {
-            "values": [0, 1, 4, 9, 16]
-          },
-          "k": {
-            "min": -5,
-            "max": 10
-          },
-          "x_value": {
-            "values": [0, 3, 5, 7, 9, 11, 15, 20]
-          }
-        },
-        "answerFormula": "a * Math.sqrt(x_value + h) + k",
-        "answer": "{a * Math.sqrt(x_value + h) + k}"
-      },
-      {
-        "id": "ALG1-1.3-A3",
-        "objective": "Evaluate complex algebraic expressions",
-        "difficulty": "advanced",
-        "question": "What is the value of (x + {a})(x - {b}) + {c} when x = {x_value}?",
-        "variables": {
-          "a": {
-            "min": 1,
-            "max": 6
-          },
-          "b": {
-            "min": 1,
-            "max": 6,
-            "exclude": ["a"]
-          },
-          "c": {
-            "min": -10,
-            "max": 10
-          },
-          "x_value": {
-            "min": 2,
-            "max": 8
-          }
-        },
-        "answerFormula": "(x_value + a) * (x_value - b) + c",
-        "answer": "{(x_value + a) * (x_value - b) + c}"
-      },
-      {
-        "id": "ALG1-1.3-A4",
-        "objective": "Evaluate complex algebraic expressions",
-        "difficulty": "advanced",
-        "question": "Evaluate {a}|x - {h}| + {k} when x = {x_value}",
-        "variables": {
-          "a": {
-            "min": 2,
-            "max": 5
-          },
-          "h": {
-            "min": 1,
-            "max": 8
-          },
-          "k": {
-            "min": -6,
-            "max": 12
-          },
-          "x_value": {
-            "min": 1,
-            "max": 10
-          }
-        },
-        "answerFormula": "a * Math.abs(x_value - h) + k",
-        "answer": "{a * Math.abs(x_value - h) + k}"
-      },
-      {
-        "id": "ALG1-1.3-A5",
-        "objective": "Evaluate complex algebraic expressions",
-        "difficulty": "advanced",
-        "question": "If f(x) = {a}x² + {b}x + {c}, find f({x_value})",
-        "variables": {
-          "a": {
-            "min": 1,
-            "max": 4
-          },
-          "b": {
-            "min": -6,
-            "max": 6,
-            "exclude": [0]
-          },
-          "c": {
-            "min": -8,
-            "max": 8
-          },
-          "x_value": {
-            "min": -3,
-            "max": 5
-          }
-        },
-        "answerFormula": "a * Math.pow(x_value, 2) + b * x_value + c",
-        "answer": "{a * Math.pow(x_value, 2) + b * x_value + c}"
+        "question": "Evaluate: \\( \\bigl| x - | \\frac{{a}}{{c}} - y | \\bigr| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
+        "answerFormula": "Math.abs(x - Math.abs(a/c - y)) + (z/f)"
       }
     ],
-    "Chapter 2": [
+    "Module 2": [
       {
-        "id": "ALG1-2.1-B1",
-        "objective": "Solve one-step linear equations",
-        "difficulty": "basic",
-        "question": "Solve for x: x + {a} = {b}",
+        "id": "ALG1-2.1-I1",
+        "type": "template",
+        "objective": "Solving One-Step Equations",
+        "difficulty": "intermediate",
         "variables": {
-          "a": {
-            "min": 1,
-            "max": 15
-          },
-          "b": {
-            "min": 10,
-            "max": 25
-          }
+          "a": { "min": 1, "max": 10 },
+          "b": { "min": 1, "max": 10 }
         },
-        "answerFormula": "b - a",
-        "answer": "x = {b - a}"
+        "question": "Solve for x: \\( x + {a} = {b} \\).",
+        "answer": "\\( x = {b} - {a} = {b - a} \\)"
       },
       {
-        "id": "ALG1-2.1-B2",
-        "objective": "Solve one-step linear equations",
-        "difficulty": "basic",
-        "question": "Find the value of y: {a}y = {b}",
+        "id": "ALG1-2.1-I2",
+        "type": "template",
+        "objective": "Solving One-Step Equations",
+        "difficulty": "intermediate",
         "variables": {
-          "a": {
-            "min": 2,
-            "max": 8,
-            "exclude": [0, 1]
-          },
-          "b": {
-            "values": [6, 8, 10, 12, 14, 15, 16, 18, 20, 21, 24, 25, 28, 30, 32, 35, 36, 40, 42, 45, 48, 49, 56, 63, 64, 72]
-          }
+          "a": { "min": 1, "max": 10 },
+          "b": { "min": 10, "max": 20 }
         },
-        "answerFormula": "b / a",
-        "answer": "y = {b / a}"
+        "question": "Solve for x: \\( x - {a} = {b} \\).",
+        "answer": "\\( x = {b} + {a} = {b + a} \\)"
+      },
+      {
+        "id": "ALG1-2.1-I3",
+        "type": "template",
+        "objective": "Solving One-Step Equations",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 10, "max": 50 }
+        },
+        "question": "Solve for x: \\( {a}x = {b} \\).",
+        "answer": "\\( x = \\frac{{{b}}}{{{a}}} = {(b / a).toFixed(2)} \\)"
+      },
+      {
+        "id": "ALG1-2.1-I4",
+        "type": "template",
+        "objective": "Solving One-Step Equations",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 10, "max": 50 }
+        },
+        "question": "Solve for x: \\( \\frac{x}{ {a} } = {b} \\).",
+        "answer": "\\( x = {a} \\times {b} = {a * b} \\)"
+      } 
+    ],
+    "Template": [
+      {
+        "id": "A1-1.1-B1",
+        "type": "template",
+        "objective": "Find intercepts of linear equations",
+        "difficulty": "basic",
+        "variables": {
+          "m": { "min": -5, "max": 5, "exclude": [0] },
+          "b": { "min": -10, "max": 10 }
+        },
+        "question": "Find the x- and y-intercepts of \\( y = {m}x + {b} \\).",
+        "answer": "x-intercept: \\(\\left(-\\frac{{b}}{{m}}, 0\\right)\\), y-intercept: (0, {b})"
+      },
+      {
+        "id": "A1-1.1-B1",
+        "type": "template",
+        "objective": "Find intercepts of linear equations",
+        "difficulty": "basic",
+        "variables": {
+          "m": { "min": -5, "max": 5, "exclude": [0] },
+          "b": { "min": -10, "max": 10 }
+        },
+        "question": "Find the x- and y-intercepts of \\( y = {m}x + {b} \\).",
+        "draw": "linearGraph",
+        "answer": "x-intercept: \\(\\left(-\\frac{{b}}{{m}}, 0\\right)\\), y-intercept: (0, {b})"
       }
     ]
   },
+
   "Geometry": {
     "Chapter 1": [
       {
-        "id": "GEO1-1.1-B1",
-        "objective": "Calculate distance between points",
+        "id": "Geo-1.2-B1",
+        "type": "template",
+        "objective": "Identify points, lines, line segments, rays, and planes",
         "difficulty": "basic",
-        "question": "Find the distance between points A({x1}, {y1}) and B({x2}, {y2})",
-        "variables": {
-          "x1": {
-            "min": -5,
-            "max": 5
-          },
-          "y1": {
-            "min": -5,
-            "max": 5
-          },
-          "x2": {
-            "min": -5,
-            "max": 5,
-            "exclude": ["x1"]
-          },
-          "y2": {
-            "min": -5,
-            "max": 5,
-            "exclude": ["y1"]
-          }
-        },
-        "answerFormula": "calculateDistance(x1, y1, x2, y2)",
-        "answer": "{calculateDistance(x1, y1, x2, y2)}",
-        "draw": "linearGraph"
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
       },
       {
-        "id": "GEO1-1.1-B2",
-        "objective": "Find midpoint between points",
+        "id": "Geo-1.3a-B1",
+        "type": "template",
+        "objective": "Calculate measures of line segments",
         "difficulty": "basic",
-        "question": "Find the midpoint of the line segment connecting ({x1}, {y1}) and ({x2}, {y2})",
-        "variables": {
-          "x1": {
-            "min": -6,
-            "max": 6
-          },
-          "y1": {
-            "min": -6,
-            "max": 6
-          },
-          "x2": {
-            "min": -6,
-            "max": 6,
-            "exclude": ["x1"]
-          },
-          "y2": {
-            "min": -6,
-            "max": 6,
-            "exclude": ["y1"]
-          }
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-1.3b-B1",
+        "type": "template",
+        "objective": "Apply the definition of congruent lines segments",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-1.4-B1",
+        "type": "template",
+        "objective": "Find the distance between two points",
+        "difficulty": "basic",
+        "variables": { 
+          "x1": { "min": -20, "max": 20 },
+          "x2": { "min": -20, "max": 20, "exclude": ["x1"] }
         },
-        "answerFormula": "formatCoordinate(calculateMidpoint(x1, y1, x2, y2).x, calculateMidpoint(x1, y1, x2, y2).y)",
-        "answer": "{formatCoordinate(calculateMidpoint(x1, y1, x2, y2).x, calculateMidpoint(x1, y1, x2, y2).y)}"
+        "question": "Find the distance between \\( {x1} \\) and \\( {x2} \\) on a number line.",
+        "answer": "Distance = \\( |{x2 - x1}| \\)"
+      },
+      {
+        "id": "Geo-1.4-I1",
+        "type": "template",
+        "objective": "Find the distance between two points",
+        "difficulty": "intermediate",
+        "variables": {
+          "x1": { "min": -6, "max": 6 },
+          "y1": { "min": -6, "max": 6 },
+          "x2": { "min": -6, "max": 6, "exclude": ["x1"] },
+          "y2": { "min": -6, "max": 6, "exclude": ["y1"] }
+        },
+        "question": "Find the distance between points \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\). Round your answer to the nearest hundredth.",
+        "answerFormula": "calculateDistance(x1, y1, x2, y2)"
+      },
+      {
+        "id": "Geo-1.4-A1",
+        "type": "template",
+        "objective": "Find the distance between two points",
+        "difficulty": "Advanced",
+        "variables": {
+          "x1": { "min": -10, "max": 10 },
+          "y1": { "min": -10, "max": 10 },
+          "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
+          "y2": { "min": -10, "max": 10, "exclude": ["y1"] }
+        },
+        "question": "Find the distance between points \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\). Express your answer in simplified radical form.",
+        "answerFormula": "calculateDistance(x1, y1, x2, y2)"
+      },
+      {
+        "id": "Geo-1.5a-B1",
+        "type": "template",
+        "objective": "Find a point on a line that is a fractional distance from an endpoint",
+        "difficulty": "basic",
+        "variables": { 
+          "x1": { "min": -20, "max": 20 },
+          "x2": { "min": -20, "max": 20, "exclude": ["x1"] },
+          "a": { "min":2, "max":5 },
+          "b": { "min":3, "max":10, "exclude":["a"] }
+        },
+        "question": "Find the point that is \\( \\frac{{{a}}}{{{b}}} \\) of the way from \\( {x1} \\) to \\( {x2} \\).",
+        "answer": "Point = \\( {x1 + (a/b)*(x2 - x1)} \\)"
+      },
+      {
+        "id": "Geo-1.5b-B2",
+        "type": "template",
+        "objective": "Find a point that partitions a line by a given ratio",
+        "difficulty": "basic",
+        "variables": { 
+          "x1": { "min": -20, "max": 20 },
+          "x2": { "min": -20, "max": 20, "exclude": ["x1"] },
+          "a": { "min":2, "max":5 },
+          "b": { "min":3, "max":10, "exclude":["a"] }
+        },
+        "question": "Find the point that partitions the line segment from \\( {x1} \\) to \\( {x2} \\) in the ratio \\( {a}:{b} \\).",
+        "answer": "Point = \\( {(a*x2 + b*x1)/(a + b)} \\)"
+      },
+      {
+        "id": "Geo-1.6a-B1",
+        "type": "template",
+        "objective": "Find a point on a line in two dimentions that is a fractitonal distance from an endpoint",
+        "difficulty": "basic",
+        "variables": { 
+          "x1": { "min": -10, "max": 10 },
+          "y1": { "min": -10, "max": 10 },
+          "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
+          "y2": { "min": -10, "max": 10, "exclude": ["y1"] },
+          "a": { "min":2, "max":5 },
+          "b": { "min":3, "max":10, "exclude":["a"] }
+        },
+        "question": "Find the point that is \\( \\frac{{{a}}}{{{b}}} \\) of the way from \\( ({x1}, {y1}) \\) to \\( ({x2}, {y2}) \\).",
+        "answer": "Point = \\( ({x1 + (a/b)*(x2 - x1)}, {y1 + (a/b)*(y2 - y1)}) \\)"
+      },
+      {
+        "id": "Geo-1.6b-B2",
+        "type": "template",
+        "objective": "Find a point that partitions a line in two dimensions by a given ratio",
+        "difficulty": "basic",
+        "variables": { 
+          "x1": { "min": -10, "max": 10 },
+          "y1": { "min": -10, "max": 10 },
+          "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
+          "y2": { "min": -10, "max": 10, "exclude": ["y1"] },
+          "a": { "min":2, "max":5 },
+          "b": { "min":3, "max":10, "exclude":["a"] }
+        },
+        "question": "Find the point that partitions the line segment from \\( ({x1}, {y1}) \\) to \\( ({x2}, {y2}) \\) in the ratio \\( {a}:{b} \\).",
+        "answer": "Point = \\( ({(a*x2 + b*x1)/(a + b)}, {(a*y2 + b*y1)/(a + b)}) \\)"
+      },
+      {
+        "id": "Geo-1.6-B1",
+        "type": "template",
+        "objective": "Find the coordinate of a midpoint",
+        "difficulty": "basic",
+        "variables": { 
+          "x1": { "min": -10, "max": 10 },
+          "x2": { "min": -10, "max": 10, "exclude": ["x1"] }
+        },
+        "question": "Find the midpoint of the line segment from \\( {x1} \\) to \\( {x2} \\).",
+        "answer": "Midpoint = \\( {(x1 + x2)/2} \\)"      
+      },
+      {
+        "id": "Geo-1.6-I1",
+        "type": "template",
+        "objective": "Find the coordinate of a midpoint",
+        "difficulty": "intermediate",
+        "variables": { 
+          "x1": { "min": -10, "max": 10 },
+          "y1": { "min": -10, "max": 10 },
+          "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
+          "y2": { "min": -10, "max": 10, "exclude": ["y1"] }
+        },
+        "question": "Find the midpoint of the line segment from \\( ({x1}, {y1}) \\) to \\( ({x2}, {y2}) \\).",
+        "answer": "Midpoint = \\( ({(x1 + x2)/2}, {(y1 + y2)/2}) \\)"
+      },
+      {
+        "id": "Geo-1.6-A1",
+        "type": "template",
+        "objective": "Find the coordinate of a midpoint",
+        "difficulty": "advanced",
+        "variables": { 
+          "x1": { "min": -10, "max": 10 },
+          "y1": { "min": -10, "max": 10 },
+          "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
+          "y2": { "min": -10, "max": 10, "exclude": ["y1"] }
+        },
+        "question": "Find the coordinates of points B given that M is the midpoint of line segment AB and M = \\( ({x1}, {y1}) \\) and A = \\( ({x2}, {y2}) \\).",
+        "answer": "B = \\( ({2*x1 - x2}, {2*y1 - y2}) \\)"
+      }
+    ],
+    "Chapter 2": [
+      {"id": "G-2.1-B1",
+        "type": "template",
+        "objective": "Find the hypotenuse of a right triangle",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 3, "max": 8 },
+          "b": { "min": 3, "max": 8 }
+        },
+        "question": "Find the hypotenuse of a right triangle with legs {a} and {b}.",
+        "draw": "rightTriangle",
+        "answer": "Hypotenuse = \\( \\sqrt{{a}^2 + {b}^2} = {(Math.sqrt(a*a + b*b)).toFixed(2)} \\)"
+      },
+      {
+        "id": "G-2.1-B1",
+        "type": "template",
+        "objective": "Find the area of a triangle",
+        "difficulty": "basic",
+        "variables": {
+          "base": { "min": 3, "max": 10 },
+          "height": { "min": 3, "max": 10 }
+        },
+        "question": "Find the area of a triangle with base {base} cm and height {height} cm.",
+        "answer": "Area = \\( \\frac{1}{2}({base})({height}) = {0.5*base*height} \\text{ cm}^2 \\)"
+      }
+    ],
+    "Chapter 3": [
+      {
+        "id": "G-3.1-I1",
+        "type": "template",
+        "objective": "Calculate distance between two points",
+        "difficulty": "intermediate",
+        "variables": {
+          "x1": { "min": -10, "max": 10 },
+          "y1": { "min": -10, "max": 10 },
+          "x2": { "min": -10, "max": 10 },
+          "y2": { "min": -10, "max": 10 }
+        },
+        "question": "Find the distance between the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
+        "answer": "Distance = \\( \\sqrt{{(x2 - x1)}^2 + {(y2 - y1)}^2} = {(Math.sqrt((x2 - x1)**2 + (y2 - y1)**2)).toFixed(2)} \\)"
+      },
+      {
+        "id": "G-2.3-I1",
+        "type": "template",
+        "objective": "Find chord length given radius and distance from center",
+        "difficulty": "intermediate",
+        "question": "A circle has radius {r} and a chord {d} units from the center. Find the length of the chord.",
+        "answer": "Chord length = 2 * sqrt({r}^2 - {d}^2)",
+        "variables": {
+          "r": { "min": 5, "max": 10 },
+          "d": { "min": 1, "max": 4 }
+        },
+        "draw": "circleChord"
       }
     ]
   },
-  "Precalculus": {
+
+  "Algebra 2": {
     "Chapter 1": [
       {
-        "id": "PC1-1.1-I1",
-        "objective": "Graph linear functions",
+        "id": "A2-1.1-I1",
+        "type": "template",
+        "objective": "Classify functions",
         "difficulty": "intermediate",
-        "question": "Graph the linear function f(x) = {m}x + {b}",
         "variables": {
-          "m": {
-            "min": -3,
-            "max": 3,
-            "exclude": [0]
-          },
-          "b": {
-            "min": -5,
-            "max": 5
-          }
+          "a": { "values": [1, 2, 3, -1, -2] },
+          "b": { "min": -5, "max": 5, "exclude": [0] }
         },
-        "answer": "Linear function with slope {m} and y-intercept {b}",
+        "question": "Determine whether \\( y = {a}x^2 + {b}x \\) is linear or nonlinear.",
+        "answer": "Nonlinear (it's quadratic)."
+      },
+      {
+        "id": "ALG2-1.2a-B1",
+        "type": "linearGraph",
+        "objective": "Identify Intercepts of Graphs of Functions",
+        "difficulty": "basic",
+        "variables": {
+          "m": { "min": -3, "max": 3, "exclude": [0] },
+          "b": { "min": -6, "max": 6, "exclude":[0] }
+        },
+        "question": "Find the \\(x\\)-intercept and the \\(y\\)-intercept of the line \\(y = {m}x + {b}\\).",
+        "answerFormula": "`{ xIntercept: -b/m, yIntercept: b }`",
         "draw": "linearGraph"
       },
       {
-        "id": "PC1-1.2-I1",
-        "objective": "Graph quadratic functions",
-        "difficulty": "intermediate",
-        "question": "Graph the quadratic function f(x) = {a}x² + {b}x + {c}",
+        "id": "ALG2-1.2a-B2",
+        "type": "quadraticGraph",
+        "objective": "Identify Intercepts of Graphs of Functions",
+        "difficulty": "basic",
         "variables": {
-          "a": {
-            "min": -2,
-            "max": 2,
-            "exclude": [0]
-          },
-          "b": {
-            "min": -4,
-            "max": 4
-          },
-          "c": {
-            "min": -3,
-            "max": 3
-          }
+          "r1": { "min": -4, "max": 4, "exclude": [0] },
+          "r2": { "min": -4, "max": 4, "exclude": ["r1", 0] },
+          "a":  { "values": [1, -1] }
         },
-        "answer": "Parabola opening {a > 0 ? 'upward' : 'downward'} with vertex calculation required",
-        "draw": "parabola"
+        "question": "Use the graph to find the \\(x\\)- and \\(y\\)-intercepts of the function.",
+        "answerFormula": "({ xIntercepts: [r1, r2], yIntercept: a*r1*r2 })",
+        "draw": "parabola",
+        "coefficients": {
+          "a": "{a}",
+          "b": "{-a*(r1 + r2)}",
+          "c": "{a*r1*r2}"
+        }
+      },
+
+      {
+        "id": "ALG2-1.2a-I1",
+        "type": "linearGraph",
+        "objective": "Identify Intercepts of Graphs of Functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -3, "max": 6, "exclude": [0] },
+          "b": { "min": 2, "max": 10, "exclude": [0, "a"] },
+          "c": { "min": -10, "max": 10, "exclude": [0] }
+        },
+        "question": "Find the \\(x\\)-intercept and the \\(y\\)-intercept of the line \\(y = \\frac{{a}}{{b}}x + {c}\\).",
+        "answerFormula": "({ xIntercept: -(c * b) / a, yIntercept: c })",
+        "draw": "linearGraph"
+      },
+
+      {
+        "id": "ALG2-1.2a-I2",
+        "type": "linearGraph",
+        "objective": "Identify Intercepts of Graphs of Functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min":-10, "max":10, "exclude":[0]},
+          "b": { "min": -5, "max": 5, "exclude":[0] },
+          "c": { "min": 2, "max": 8, "exclude":["b",0] },
+          "d": { "min": -10, "max": 10, "exclude":[0]}
+        },
+        "question": "Find the \\(x\\)-intercept and the \\(y\\)-intercept of the line \\(y-{a} = \frac{b}{c}(x - {d})\\).",
+        "answer": "`{ xIntercept: d - c*a/b, yIntercept: a + b*d/c }`"
+    
       },
       {
-        "id": "PC1-1.3-A1",
-        "objective": "Graph exponential functions",
-        "difficulty": "advanced",
-        "question": "Graph the exponential function f(x) = {a} · {b}^x + {k}",
+        "id": "ALG2-1.2b-B1",
+        "type": "template",
+        "objective": "Identify Linear and Nonlinear Functions",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "For each equation below, determine whether it is linear: <br> \\(y = -5x + 7\\), \\(y = -6\\), \\(y = x\\), \\(y = 2x^2 + 5\\).",
+        "answer": "Only \\(y = 2x^2 + 5\\) is not linear."
+      },
+      {
+        "id": "ALG2-1.2b-B2",
+        "type": "template",
+        "objective": "Identify Linear and Nonlinear Functions",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "For each equation below, determine whether it is linear: <br> \\(x + 6y = 5\\), \\(y = 7x + 6xy\\), \\(-\\frac{6}{x} = 5y - 4\\), \\(3x - y = 2\\).",
+        "answer": "Equations 2 and 3 are not linear; equations 1 and 4 are linear."
+      },
+      {
+        "id": "ALG2-1.2b-I1",
+        "type": "template",
+        "objective": "Identify Linear and Nonlinear Functions",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "For each equation below, determine whether it is linear: <br> \\(y = 4x - 7\\), \\(y = 3x^2 + 5\\), \\(y = -2x + 4\\), \\(y = \\frac{1}{x} + 6\\).",
+        "answer": "Only \\(y = 3x^2 + 5\\) and \\(y = \\frac{1}{x} + 6\\) are not linear."
+      },
+      {
+        "id": "ALG2-1.2b-I2",
+        "type": "template",
+        "objective": "Identify Linear and Nonlinear Functions",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "For each equation below, determine whether it is linear: <br> \\(2x + 3y = 6\\), \\(xy + 4y = 5\\), \\(\\frac{3}{x} + y = 7\\), \\(5x - y = 10\\).",
+        "answer": "Equations 2 and 3 are not linear; equations 1 and 4 are linear."
+      },
+      {
+        "id": "ALG2-1.2c-B1",
+        "type": "template",
+        "objective": "Identify symmetry from equations",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br> \\(y = x^2 - 4\\), \\(y = x^3 - x\\), \\(y = x^2 + x - 6\\), \\(y = x^3 + x^2 - x - 1\\).",
+        "answer": "\\(y = x^2 - 4\\) is symmetric about the y-axis; \\(y = x^3 - x\\) is symmetric about the origin; the other two have."
+      },
+      {
+        "id": "ALG2-1.2c-I1",
+        "type": "template",
+        "objective": "Identify symmetry from equations",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "For each equation below, select all symmetries that apply (\\(x\\)-axis, \\(y\\)-axis, origin, none): <br> \\(y = x^2 - 3\\), \\(y = x^3 + x\\), \\(y = x^2 + 2x + 1\\), \\(y = x^3 - x^2 + x - 1\\).",
+        "answer": "\\(y = x^2 - 3\\) is symmetric about the y-axis; \\(y = x^3 + x\\) is symmetric about the origin; the other two have no symmetry."
+      },
+      {
+        "id": "ALG2-1.3a-B1",
+        "type": "template",
+        "objective": "Identify End Behavior of Graphs of Functions",
+        "difficulty": "basic",
         "variables": {
-          "a": {
-            "min": 1,
-            "max": 3
-          },
-          "b": {
-            "values": [2, 3, 0.5, 0.25]
-          },
-          "k": {
-            "min": -2,
-            "max": 2
-          }
+          "a": { "values": [1, -1, 2, -2] },
+          "b": { "min": -3, "max": 3, "exclude":[0] }
         },
-        "answer": "Exponential function with base {b}, vertical stretch {a}, and vertical shift {k}",
-        "draw": "exponential"
+        "question": "Describe the end behavior of the function \\( y = {a}x^2 + {b}x \\) as \\( x \\) approaches \\( \\infty \\) and \\( -\\infty \\).",
+        "answer": "As \\( x \\to \\infty, y \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, y \\to {a > 0 ? '\\infty' : '-\\infty'} \\)."
+      },
+      {
+        "id": "ALG2-1.3a-I1",
+        "type": "template",
+        "objective": "Identify End Behavior of Graphs of Functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "values": [1, -1, 2, -2] },
+          "b": { "min": -3, "max": 3, "exclude":[0] },
+          "c": { "min": -2, "max": 2, "exclude":[0] }
+        },
+        "question": "Describe the end behavior of the function \\( y = {a}x^3 + {b}x^2 + {c}x \\) as \\( x \\) approaches \\( \\infty \\) and \\( -\\infty \\).",
+        "answer": "As \\( x \\to \\infty, y \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, y \\to {a > 0 ? '-\\infty' : '\\infty'} \\)."
+      },
+      {
+        "id": "ALG2-1.3b-B1",
+        "type": "template",
+        "objective": "Identify Extrema of Graphs and Functions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "values": [1, -1, 2, -2] },
+          "b": { "min": -3, "max": 3, "exclude":[0] },
+          "c": { "min": -2, "max": 2, "exclude":[0] }
+        },
+        "question": "Find the coordinates of any extrema for the function \\( y = {a}x^2 + {b}x + {c} \\).",
+        "answer": "Vertex at \\( \\left( {-b/(2*a)}, {a*(-b/(2*a))**2 + b*(-b/(2*a)) + c} \\right) \\)."
+      },
+      {
+        "id": "ALG2-1.3b-I1",
+        "type": "template",
+        "objective": "Identify Extrema of Graphs and Functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "values": [1, -1, 2, -2] },
+          "b": { "min": -3, "max": 3, "exclude":[0] },
+          "c": { "min": -2, "max": 2, "exclude":[0] },
+          "d": { "min": -1, "max": 1, "exclude":[0] }
+        },
+        "question": "Find the coordinates of any extrema for the function \\( y = {a}x^3 + {b}x^2 + {c}x + {d} \\).",
+        "answer": "Use graphing calculator to evaluate the extrema."
       }
+    ],
+    "Chapter 4": [
+      {
+        "id": "A2-Q1-B1",
+        "type": "template",
+        "objective": "Graph quadratic function",
+        "difficulty": "basic",
+        "question": "Graph the quadratic function y = {a}x² + {b}x + {c}",
+        "answer": "parabola",
+        "variables": {
+          "a": { "values": [1, -1, 2] },
+          "b": { "min": -3, "max": 3, "exclude": [0] },
+          "c": { "min": -2, "max": 2, "exclude": [0] }
+        },
+        "draw": "parabola"}
     ]
-  }
+  },
+
+  "Precalculus": {
+      "Chapter 1": [
+        {
+          "id": "PC-1.2a-B1",
+          "type": "linearGraph",
+          "objective": "Graph linear equations",
+          "difficulty": "basic",
+          "variables": {
+            "m": { "min": -3, "max": 3, "exclude": [0] },
+            "b": { "min": -5, "max": 5, "exclude": [0] }
+          },
+          "question": "Graph the line \\(y = {m}x + {b}\\) on the coordinate plane.",
+          "answerFormula": "`{ slope: m, intercept: b }`"
+        },
+        {
+          "id": "PC-1.2b-B1",
+          "type": "linearGraph",
+          "objective": "Find intercepts",
+          "difficulty": "basic",
+          "variables": {
+            "m": { "min": -4, "max": 4, "exclude": [0] },
+            "b": { "min": -6, "max": 6 }
+          },
+          "question": "Find the \\(x\\)- and \\(y\\)-intercepts of the line \\(y = {m}x + {b}\\).",
+          "answerFormula": "`{ xIntercept: -b/m, yIntercept: b }`"        
+        },
+        {
+          "id": "PC-1.2c-B1",
+          "type": "template",
+          "objective": "Write an equation of a given line",
+          "difficulty": "basic",
+          "variables": {
+            "x1": { "min": -6, "max": 6 },
+            "y1": { "min": -6, "max": 6 },
+            "m": { "min": -4, "max": 4, "exclude": [0] }
+          },
+          "question": "Write the equation of the line with slope \\(m = {m}\\) passing through \\(({x1}, {y1})\\) in two forms: point-slope and slope-intercept.",
+          "answerFormula": "`let b = y1 - m*x1; 'y = ' + m + 'x + ' + b;`"
+        },
+        {
+          "id": "PC-1.2c-I1",
+          "type": "template",
+          "objective": "Write an equation of a given line",
+          "difficulty": "intermediate",
+          "variables": {
+            "x1": { "min": -10, "max": 10 },
+            "y1": { "min": -10, "max": 10 },
+            "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] },
+            "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] }
+          },
+          "question": "Write the equation of the line passing through \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\).",
+          "answerFormula": "`let m = (y2 - y1)/(x2 - x1); let b = y1 - m*x1; 'y = ' + m + 'x + ' + b;`"
+        },
+        {
+          "id": "PC-1.2c-A1",
+          "type": "template",
+          "objective": "Write an equation of a given line",
+          "difficulty": "advanced",
+          "variables": {
+            "x1": { "min": -10, "max": 10 },
+            "y1": { "min": -10, "max": 10 },
+            "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
+            "y2": { "min": -10, "max": 10, "exclude": ["y1"] },
+            "a": { "min": -5, "max": 5, "exclude": [0, "x1", "x2"] },
+            "b": { "min": -5, "max": 5, "exclude": [0, "y1", "y2"] }
+          },
+          "question": "Find the equation of the line perpendicular to the line passing through \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\) that also passes through the point \\(({a}, {b})\\).",
+          "answerFormula": "`let m = (y2 - y1)/(x2 - x1); let mPerp = -1/m; 'y = ' + mPerp + 'x';`"
+        },
+        {
+        "id": "PC-1.2d-A1",
+        "type": "template",
+        "objective": "Apply the distance and midpoint formula",
+        "difficulty": "advanced",
+        "variables": {
+          "x1": { "min": -6, "max": 6 },
+          "y1": { "min": -6, "max": 6 },
+          "x2": { "min": -6, "max": 6, "exclude": ["x1"] },
+          "y2": { "min": -6, "max": 6, "exclude": ["y1"] }
+        },
+        "question": "Find the distance between points \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\). Express your answer in simplified radical form.",
+        "answerFormula": "calculateDistance(x1, y1, x2, y2)"
+      },
+      {
+        "id": "PC-1.2d-A2",
+        "type": "template",
+        "objective": "Apply the distance and midpoint formula",
+        "difficulty": "advanced",
+        "variables": {
+          "x1": { "min": -8, "max": 8 },
+          "y1": { "min": -8, "max": 8 },
+          "distance": { "values": [5, 10, 13, 17] }
+        },
+        "question": "A point P is located at \\(({x1}, {y1})\\). Find all possible coordinates for point Q such that the distance from P to Q is exactly {distance} units.",
+        "answerFormula": "'Points on circle centered at (' + formatCoordinate(x1, y1) + ') with radius ' + distance"
+      },
+      {
+        "id": "PC-1.2d-B1",
+        "type": "template",
+        "objective": "Apply the distance and midpoint formula",
+        "difficulty": "basic",
+        "variables": {
+          "x1": { "min": 1, "max": 5 },
+          "y1": { "min": 1, "max": 5 },
+          "x2": { "min": 6, "max": 10 },
+          "y2": { "min": 6, "max": 10 }
+        },
+        "question": "Find the distance and midpoint between the points \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\).",
+        "answerFormula": "'Distance: ' + calculateDistance(x1, y1, x2, y2) + ', Midpoint: ' + formatCoordinate((x1 + x2)/2, (y1 + y2)/2)"
+      },
+      {
+        "id": "PC-1.4a-B1",
+        "type": "template",
+        "objective": "Use limits to describe the end behavior of functions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": -10, "max": 10, "exclude": [0] },
+          "b": { "min": 2, "max": 3 }
+        },
+        "question": "Use limit notation to describe the end behavior of the power function without graphing \\( f(x) = {a}x^{b} \\).",
+        "answer": "As \\( x \\to \\infty, f(x) \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, f(x) \\to {b % 2 === 0 ? (a > 0 ? '\\infty' : '-\\infty') : (a > 0 ? '-\\infty' : '\\infty')} \\)."
+      },
+      {
+        "id": "PC-1.4a-I1",
+        "type": "template",
+        "objective": "Use limits to describe the end behavior of functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -10, "max": 10, "exclude": [0] },
+          "b": { "min": 2, "max": 4 },
+          "c": { "min": -5, "max": 5 }
+        },
+        "question": "Use limit notation to describe the end behavior of the polynomial function without graphing \\( f(x) = {a}x^{b} + {c} \\).",
+        "answer": "As \\( x \\to \\infty, f(x) \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, f(x) \\to {b % 2 === 0 ? (a > 0 ? '\\infty' : '-\\infty') : (a > 0 ? '-\\infty' : '\\infty')} \\)."
+      },
+      {
+        "id": "PC-1.4b-B1",
+        "type": "template",
+        "objective": "Describe intervals in which a function is increasing, decreasing, or constant",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "values": [1, -1] },
+          "b": { "min": 2, "max": 3 }
+        },
+        "question": "Describe the intervals in which the function \\( f(x) = {a}x^{b} \\) is increasing, decreasing, or constant.",
+        "answer": "If {a > 0}, the function is increasing on \\\\((-\\\\infty, \\\\infty)\\\\). If {a < 0}, the function is decreasing on \\\\((-\\\\infty, \\\\infty)\\\\)."
+      },
+      {
+        "id": "PC-1.4b-I1",
+        "type": "template",
+        "objective": "Describe intervals in which a function is increasing, decreasing, or constant",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -10, "max": 10, "exclude": [0] },
+          "b": { "min": -10, "max": 10, "exclude": [0, "a"] },
+          "c": { "min": -10, "max": 10, "exclude": [0, "a", "b"] },
+          "d": { "min": -10, "max": 10, "exclude": [0, "a", "b", "c"]}
+        },
+        "question": "Given the four power functions, state the end behavior: <br> \\( f(x) = {a}x^{2} \\), \\( g(x) = {b}x^{3} \\), \\( h(x) = {c}x^{4} \\), \\( k(x) = {d}x^{5} \\).",
+        "answer": "\\( f(x) \\) is even; as \\( x \\to \\infty, f(x) \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, f(x) \\to {a > 0 ? '\\infty' : '-\\infty'} \\). <br> \\( g(x) \\) is odd; as \\( x \\to \\infty, g(x) \\to {b > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, g(x) \\to {b > 0 ? '-\\infty' : '\\infty'} \\). <br> \\( h(x) \\) is even; as \\( x \\to \\infty, h(x) \\to {c > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, h(x) \\to {c > 0 ? '\\infty' : '-\\infty'} \\). <br> \\( k(x) \\) is odd; as \\( x \\to \\infty, k(x) \\to {d > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, k(x) \\to {d > 0 ? '-\\infty' : '\\infty'} \\)."
+      },
+      {
+        "id": "PC-1.4c- B1",
+        "type": "template",
+        "objective": "Classify functions as even, odd, or neither",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "values": [1, -1, 2, -2] },
+          "b": { "min": -3, "max": 3, "exclude":[0] }
+        },
+        "question": "Classify the function \\( f(x) = {a}x^2 + {b} \\) as even, odd, or neither.",
+        "answer": "Even (symmetric about the y-axis)."
+      }
+
+      ],
+      
+      "Chapter 3": [
+        {
+          "id": "PC-3.1-I1",
+          "type": "template",
+          "objective": "Evaluate trigonometric functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "angle": { "values": [0, 30, 45, 60, 90] }
+          },
+          "question": "Evaluate \\( \\sin({angle}^{\\circ}) \\).",
+          "answer": "Answer: \\( \\sin({angle}^{\\circ}) = {Math.sin(angle * Math.PI/180).toFixed(3)} \\)"
+        },
+
+        {
+          "id": "PC-3.2-I1",
+          "type": "template",
+          "objective": "Graphing transformations of exponential functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "a": { "min": 1, "max": 3 },
+            "b": { "values": [2, 3, 0.5] },
+            "h": { "min": -3, "max": 3 },
+            "k": { "min": -4, "max": 4 }
+          },
+          "question": "Graph the function \\( y = {a} \\cdot {b}^{x - {h}} + {k} \\). Identify the horizontal asymptote.",
+          "answer": "The horizontal asymptote is \\( y = {k} \\)."
+        },
+        {
+          "id": "PC-3.2-I2",
+          "type": "template",
+          "objective": "Graphing transformations of exponential functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "a": { "values": [1, -1, 2] },
+            "b": { "values": [2, 0.5] },
+            "h": { "min": -2, "max": 2 },
+            "k": { "min": -3, "max": 3 }
+          },
+          "question": "Describe the transformations applied to \\( y = {b}^{x} \\) to obtain \\( y = {a}\\,{b}^{x - {h}} + {k} \\).",
+          "answer": "Vertical stretch by factor \\(|{a}|\\), reflection over x-axis if {a}<0, horizontal shift right {h} (if positive), left if negative, and vertical shift up {k} (if positive), down if negative."
+        },
+        {
+          "id": "PC-3.2-I3",
+          "type": "template",
+          "objective": "Graphing transformations of exponential functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "b": { "values": [2, 3] },
+            "h": { "min": -4, "max": 4 },
+            "k": { "min": -4, "max": 4 }
+          },
+          "question": "Find the y-intercept of \\( y = {b}^{x - {h}} + {k} \\).",
+          "answer": "Substitute \\( x = 0 \\): \\( y = {b}^{- {h}} + {k} \\)."
+        },
+        {
+          "id": "PC-3.2-I4",
+          "type": "template",
+          "objective": "Graphing transformations of exponential functions",
+          "difficulty": "basic",
+          "variables": {
+            "a": { "min": 1, "max": 3 },
+            "b": { "values": [2, 3, 0.5] },
+            "h": { "min": -3, "max": 3 }
+          },
+          "question": "State the domain and range of \\( y = {a}{b}^{x - {h}} \\).",
+          "answer": "Domain: \\( (-\\infty, \\infty) \\), Range: \\( (0, \\infty) \\) if {a}>0, \\( (-\\infty, 0) \\) if {a}<0."
+        },
+        {
+          "id": "PC-3.2-I5",
+          "type": "template",
+          "objective": "Graphing transformations of exponential functions",
+          "difficulty": "basic",
+          "variables": {
+            "b": { "values": [2, 3] },
+            "k": { "min": -3, "max": 3 }
+          },
+          "question": "Multiple Choice: Which of the following is the horizontal asymptote of \\( y = {b}^{x} + {k} \\)?",
+          "choices": [
+            "\\( y = 0 \\)",
+            "\\( y = {k} \\)",
+            "\\( x = 0 \\)",
+            "\\( x = {k} \\)"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "PC-3.2-I6",
+          "type": "exponential",
+          "objective": "Identifying transformations of exponential functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "a": { "values": [1] },
+            "b": { "values": [2, 3] },
+            "h": { "min": -3, "max": 3 },
+            "k": { "min": -3, "max": 3 }
+          },
+          "question": "The graph of a transformed exponential function is shown below. Starting from the parent function \\( y = {b}^{x} \\), write the equation of the transformed function in the form \\( y = a({b})^{x - h} + k \\).",
+          "answer": "\\( y = {a}({b})^{x - {h}} + {k} \\)",
+          "draw": "exponential"
+        }
+
+      ],
+    
+      "Chapter 2": [
+        {
+        "id": "PC-1.1-I1",
+        "type": "linearGraph",
+        "objective": "Graph linear functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "m": { "values": [1, -1, 2, 0.5] },
+          "b": { "values": [0, 1, -2] }
+        },
+        "question": "Graph the linear function \\( y = {m}x + {b} \\).",
+        "answer": "A straight line with slope {m} and y-intercept {b}."
+        },
+        {
+          "id": "PC-1.1-I2",
+          "type": "parabola",
+          "objective": "Graph quadratic functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "a": { "values": [1, -1, 2] },
+            "b": { "values": [0, 1, -1] },
+            "c": { "values": [0, -2, 3] }
+          },
+          "question": "Graph the quadratic function \\( y = {a}x^2 + {b}x + {c} \\).",
+          "answer": "A parabola opening {a>0?'upward':'downward'} with vertex at \\(x = -{b}/(2{a})\\)."
+        },
+        {
+          "id": "PC-1.1-I3",
+          "type": "exponential",
+          "objective": "Graph exponential functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "a": { "values": [1, 2] },
+            "b": { "values": [2, 0.5] }
+          },
+          "question": "Graph the exponential function \\( y = {a} \\cdot {b}^{x} \\).",
+          "answer": "An exponential curve passing through \\((0,{a})\\) with growth factor {b}."
+        },
+        {
+          "id": "PC-1.1-I4",
+          "type": "rational",
+          "objective": "Graph rational functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "a": { "values": [1, -1] },
+            "h": { "values": [0, 1] },
+            "k": { "values": [0, -2] }
+          },
+          "question": "Graph the rational function \\( y = \\frac{{a}}{{x - {h}}} + {k} \\).",
+          "answer": "A hyperbola with vertical asymptote \\(x = {h}\\) and horizontal asymptote \\(y = {k}\\)."
+        },
+        {
+          "id": "PC-1.1-I5",
+          "type": "trigSine",
+          "objective": "Graph sine functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "a": { "values": [1, 2] },
+            "b": { "values": [1, 2] },
+            "c": { "values": [0, "Math.PI/2"] }
+          },
+          "question": "Graph the sine function \\( y = {a}\\sin({b}x + {c}) \\).",
+          "answer": "A sine wave with amplitude {a} and period \\( \\frac{2\\pi}{{b}} \\)."
+        },
+        {
+          "id": "PC-1.1-I6",
+          "type": "trigCosine",
+          "objective": "Graph cosine functions",
+          "difficulty": "intermediate",
+          "variables": {
+            "a": { "values": [1, 2] },
+            "b": { "values": [1, 2] },
+            "c": { "values": [0, "Math.PI/2"] }
+          },
+          "question": "Graph the cosine function \\( y = {a}\\cos({b}x + {c}) \\).",
+          "answer": "A cosine wave with amplitude {a} and period \\( \\frac{2\\pi}{{b}} \\)."
+        }
+      
+      ]
+    }
+  
 }

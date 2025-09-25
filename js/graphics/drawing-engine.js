@@ -55,27 +55,51 @@ class DrawingEngine {
   /**
    * Draw linear function
    */
-  drawLinear(canvas, vars) {
+  drawLinear(canvas, vars, xMin = null, xMax = null) {
     const ctx = canvas.getContext("2d");
     const { width, height } = canvas;
     const xMid = width / 2;
     const yMid = height / 2;
     const scale = this.defaultScale;
 
-    this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    // Only draw grid if this is not part of a piecewise function
+    if (xMin === null && xMax === null) {
+      this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    }
 
     const m = vars.m || 1;
     const b = vars.b || 0;
     const h = vars.h || 0;
     const k = vars.k || 0;
 
+    // Use domain constraints from vars if provided
+    const domainXMin = xMin !== null ? xMin : (vars.xMin !== undefined ? vars.xMin : null);
+    const domainXMax = xMax !== null ? xMax : (vars.xMax !== undefined ? vars.xMax : null);
+
     ctx.strokeStyle = "#3498db";
     ctx.lineWidth = 2;
     ctx.beginPath();
 
     let first = true;
-    for (let xPixel = 0; xPixel < width; xPixel += 2) {
+    
+    // Determine pixel range based on domain constraints
+    let startPixel = 0;
+    let endPixel = width;
+    
+    if (domainXMin !== null) {
+      startPixel = Math.max(0, xMid + domainXMin * scale);
+    }
+    if (domainXMax !== null) {
+      endPixel = Math.min(width, xMid + domainXMax * scale);
+    }
+    
+    for (let xPixel = startPixel; xPixel < endPixel; xPixel += 2) {
       const x = (xPixel - xMid) / scale;
+      
+      // Skip if outside domain
+      if (domainXMin !== null && x < domainXMin) continue;
+      if (domainXMax !== null && x > domainXMax) continue;
+      
       const y = m * (x - h) + b + k;
       const yPixel = yMid - y * scale;
 
@@ -94,14 +118,17 @@ class DrawingEngine {
   /**
    * Draw parabola
    */
-  drawParabola(canvas, vars) {
+  drawParabola(canvas, vars, xMin = null, xMax = null) {
     const ctx = canvas.getContext("2d");
     const { width, height } = canvas;
     const xMid = width / 2;
     const yMid = height / 2;
     const scale = this.defaultScale;
 
-    this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    // Only draw grid if this is not part of a piecewise function
+    if (xMin === null && xMax === null) {
+      this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    }
 
     const a = vars.a || 1;
     const b = vars.b || 0;
@@ -109,13 +136,34 @@ class DrawingEngine {
     const h = vars.h || 0;
     const k = vars.k || 0;
 
+    // Use domain constraints from vars if provided
+    const domainXMin = xMin !== null ? xMin : (vars.xMin !== undefined ? vars.xMin : null);
+    const domainXMax = xMax !== null ? xMax : (vars.xMax !== undefined ? vars.xMax : null);
+
     ctx.strokeStyle = "#e74c3c";
     ctx.lineWidth = 2;
     ctx.beginPath();
 
     let first = true;
-    for (let xPixel = 0; xPixel < width; xPixel++) {
+    
+    // Determine pixel range based on domain constraints
+    let startPixel = 0;
+    let endPixel = width;
+    
+    if (domainXMin !== null) {
+      startPixel = Math.max(0, xMid + domainXMin * scale);
+    }
+    if (domainXMax !== null) {
+      endPixel = Math.min(width, xMid + domainXMax * scale);
+    }
+    
+    for (let xPixel = startPixel; xPixel < endPixel; xPixel++) {
       const x = (xPixel - xMid) / scale;
+      
+      // Skip if outside domain
+      if (domainXMin !== null && x < domainXMin) continue;
+      if (domainXMax !== null && x > domainXMax) continue;
+      
       const y = a * Math.pow(x - h, 2) + b * (x - h) + c + k;
       const yPixel = yMid - y * scale;
 
@@ -132,27 +180,51 @@ class DrawingEngine {
   /**
    * Draw exponential function
    */
-  drawExponential(canvas, vars) {
+  drawExponential(canvas, vars, xMin = null, xMax = null) {
     const ctx = canvas.getContext("2d");
     const { width, height } = canvas;
     const xMid = width / 2;
     const yMid = height / 2;
     const scale = this.defaultScale;
 
-    this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    // Only draw grid if this is not part of a piecewise function
+    if (xMin === null && xMax === null) {
+      this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    }
 
     const a = vars.a || 1;
     const base = vars.b || 2;
     const h = vars.h || 0;
     const k = vars.k || 0;
 
+    // Use domain constraints from vars if provided
+    const domainXMin = xMin !== null ? xMin : (vars.xMin !== undefined ? vars.xMin : null);
+    const domainXMax = xMax !== null ? xMax : (vars.xMax !== undefined ? vars.xMax : null);
+
     ctx.strokeStyle = "#9b59b6";
     ctx.lineWidth = 2;
     ctx.beginPath();
 
     let first = true;
-    for (let xPixel = 0; xPixel < width; xPixel++) {
+    
+    // Determine pixel range based on domain constraints
+    let startPixel = 0;
+    let endPixel = width;
+    
+    if (domainXMin !== null) {
+      startPixel = Math.max(0, xMid + domainXMin * scale);
+    }
+    if (domainXMax !== null) {
+      endPixel = Math.min(width, xMid + domainXMax * scale);
+    }
+    
+    for (let xPixel = startPixel; xPixel < endPixel; xPixel++) {
       const x = (xPixel - xMid) / scale;
+      
+      // Skip if outside domain
+      if (domainXMin !== null && x < domainXMin) continue;
+      if (domainXMax !== null && x > domainXMax) continue;
+      
       const y = a * Math.pow(base, x - h) + k;
       const yPixel = yMid - y * scale;
 
@@ -171,27 +243,50 @@ class DrawingEngine {
   /**
    * Draw rational function (hyperbola)
    */
-  drawRational(canvas, vars) {
+  drawRational(canvas, vars, xMin = null, xMax = null) {
     const ctx = canvas.getContext("2d");
     const { width, height } = canvas;
     const xMid = width / 2;
     const yMid = height / 2;
     const scale = this.defaultScale;
 
-    this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    // Only draw grid if this is not part of a piecewise function
+    if (xMin === null && xMax === null) {
+      this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    }
 
     const a = vars.a || 1;
     const h = vars.h || 0;
     const k = vars.k || 0;
 
+    // Use domain constraints from vars if provided
+    const domainXMin = xMin !== null ? xMin : (vars.xMin !== undefined ? vars.xMin : null);
+    const domainXMax = xMax !== null ? xMax : (vars.xMax !== undefined ? vars.xMax : null);
+
     ctx.strokeStyle = "#f39c12";
     ctx.lineWidth = 2;
+
+    // Determine pixel range based on domain constraints
+    let startPixel = 0;
+    let endPixel = width;
+    
+    if (domainXMin !== null) {
+      startPixel = Math.max(0, xMid + domainXMin * scale);
+    }
+    if (domainXMax !== null) {
+      endPixel = Math.min(width, xMid + domainXMax * scale);
+    }
 
     // Draw left branch
     ctx.beginPath();
     let first = true;
-    for (let xPixel = 0; xPixel < width; xPixel++) {
+    for (let xPixel = startPixel; xPixel < endPixel; xPixel++) {
       const x = (xPixel - xMid) / scale;
+      
+      // Skip if outside domain
+      if (domainXMin !== null && x < domainXMin) continue;
+      if (domainXMax !== null && x > domainXMax) continue;
+      
       if (Math.abs(x - h) > 0.05) { // Avoid asymptote
         const y = a / (x - h) + k;
         const yPixel = yMid - y * scale;
@@ -213,8 +308,13 @@ class DrawingEngine {
     // Draw right branch
     ctx.beginPath();
     first = true;
-    for (let xPixel = width; xPixel >= 0; xPixel--) {
+    for (let xPixel = endPixel; xPixel >= startPixel; xPixel--) {
       const x = (xPixel - xMid) / scale;
+      
+      // Skip if outside domain
+      if (domainXMin !== null && x < domainXMin) continue;
+      if (domainXMax !== null && x > domainXMax) continue;
+      
       if (Math.abs(x - h) > 0.05) { // Avoid asymptote
         const y = a / (x - h) + k;
         const yPixel = yMid - y * scale;
@@ -237,14 +337,17 @@ class DrawingEngine {
   /**
    * Draw trigonometric function
    */
-  drawTrigonometric(canvas, vars, type = "sine") {
+  drawTrigonometric(canvas, vars, type = "sine", xMin = null, xMax = null) {
     const ctx = canvas.getContext("2d");
     const { width, height } = canvas;
     const xMid = width / 2;
     const yMid = height / 2;
     const scale = this.defaultScale;
 
-    this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    // Only draw grid if this is not part of a piecewise function
+    if (xMin === null && xMax === null) {
+      this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    }
 
     const a = vars.a || 1;
     const b = vars.b || 1;
@@ -252,12 +355,32 @@ class DrawingEngine {
     const h = vars.h || 0;
     const k = vars.k || 0;
 
+    // Use domain constraints from vars if provided
+    const domainXMin = xMin !== null ? xMin : (vars.xMin !== undefined ? vars.xMin : null);
+    const domainXMax = xMax !== null ? xMax : (vars.xMax !== undefined ? vars.xMax : null);
+
     ctx.strokeStyle = "#2ecc71";
     ctx.lineWidth = 2;
     ctx.beginPath();
 
-    for (let xPixel = 0; xPixel < width; xPixel++) {
+    // Determine pixel range based on domain constraints
+    let startPixel = 0;
+    let endPixel = width;
+    
+    if (domainXMin !== null) {
+      startPixel = Math.max(0, xMid + domainXMin * scale);
+    }
+    if (domainXMax !== null) {
+      endPixel = Math.min(width, xMid + domainXMax * scale);
+    }
+
+    for (let xPixel = startPixel; xPixel < endPixel; xPixel++) {
       const x = (xPixel - xMid) / scale;
+      
+      // Skip if outside domain
+      if (domainXMin !== null && x < domainXMin) continue;
+      if (domainXMax !== null && x > domainXMax) continue;
+      
       const angle = b * (x - h) + c;
       let y;
       
@@ -269,7 +392,7 @@ class DrawingEngine {
       
       const yPixel = yMid - y * scale;
 
-      if (xPixel === 0) {
+      if (xPixel === startPixel) {
         ctx.moveTo(xPixel, yPixel);
       } else {
         ctx.lineTo(xPixel, yPixel);
@@ -326,6 +449,317 @@ class DrawingEngine {
   }
 
   /**
+   * Draw absolute value function
+   */
+  drawAbsoluteValue(canvas, vars, xMin = null, xMax = null) {
+    const ctx = canvas.getContext("2d");
+    const { width, height } = canvas;
+    const xMid = width / 2;
+    const yMid = height / 2;
+    const scale = this.defaultScale;
+
+    // Only draw grid if this is not part of a piecewise function
+    if (xMin === null && xMax === null) {
+      this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    }
+
+    const a = vars.a || 1;
+    const h = vars.h || 0;
+    const k = vars.k || 0;
+
+    // Use domain constraints from vars if provided
+    const domainXMin = xMin !== null ? xMin : (vars.xMin !== undefined ? vars.xMin : null);
+    const domainXMax = xMax !== null ? xMax : (vars.xMax !== undefined ? vars.xMax : null);
+
+    ctx.strokeStyle = "#e67e22";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+
+    // Determine pixel range based on domain constraints
+    let startPixel = 0;
+    let endPixel = width;
+    
+    if (domainXMin !== null) {
+      startPixel = Math.max(0, xMid + domainXMin * scale);
+    }
+    if (domainXMax !== null) {
+      endPixel = Math.min(width, xMid + domainXMax * scale);
+    }
+
+    for (let xPixel = startPixel; xPixel < endPixel; xPixel++) {
+      const x = (xPixel - xMid) / scale;
+      
+      // Skip if outside domain
+      if (domainXMin !== null && x < domainXMin) continue;
+      if (domainXMax !== null && x > domainXMax) continue;
+      
+      const y = a * Math.abs(x - h) + k;
+      const yPixel = yMid - y * scale;
+
+      if (xPixel === startPixel) {
+        ctx.moveTo(xPixel, yPixel);
+      } else {
+        ctx.lineTo(xPixel, yPixel);
+      }
+    }
+    ctx.stroke();
+  }
+
+  /**
+   * Draw square root function
+   */
+  drawSquareRoot(canvas, vars, xMin = null, xMax = null) {
+    const ctx = canvas.getContext("2d");
+    const { width, height } = canvas;
+    const xMid = width / 2;
+    const yMid = height / 2;
+    const scale = this.defaultScale;
+
+    // Only draw grid if this is not part of a piecewise function
+    if (xMin === null && xMax === null) {
+      this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    }
+
+    const a = vars.a || 1;
+    const h = vars.h || 0;
+    const k = vars.k || 0;
+
+    // Use domain constraints from vars if provided
+    const domainXMin = xMin !== null ? xMin : (vars.xMin !== undefined ? vars.xMin : null);
+    const domainXMax = xMax !== null ? xMax : (vars.xMax !== undefined ? vars.xMax : null);
+
+    ctx.strokeStyle = "#27ae60";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+
+    // Determine pixel range based on domain constraints
+    let startPixel = 0;
+    let endPixel = width;
+    
+    if (domainXMin !== null) {
+      startPixel = Math.max(0, xMid + domainXMin * scale);
+    }
+    if (domainXMax !== null) {
+      endPixel = Math.min(width, xMid + domainXMax * scale);
+    }
+
+    let first = true;
+    for (let xPixel = startPixel; xPixel < endPixel; xPixel++) {
+      const x = (xPixel - xMid) / scale;
+      
+      // Skip if outside domain
+      if (domainXMin !== null && x < domainXMin) continue;
+      if (domainXMax !== null && x > domainXMax) continue;
+      
+      // Check if x-h is non-negative (domain of square root)
+      if (x - h >= 0) {
+        const y = a * Math.sqrt(x - h) + k;
+        const yPixel = yMid - y * scale;
+
+        if (first) {
+          ctx.moveTo(xPixel, yPixel);
+          first = false;
+        } else {
+          ctx.lineTo(xPixel, yPixel);
+        }
+      }
+    }
+    ctx.stroke();
+  }
+
+  /**
+   * Draw cube root function
+   */
+  drawCubeRoot(canvas, vars, xMin = null, xMax = null) {
+    const ctx = canvas.getContext("2d");
+    const { width, height } = canvas;
+    const xMid = width / 2;
+    const yMid = height / 2;
+    const scale = this.defaultScale;
+
+    // Only draw grid if this is not part of a piecewise function
+    if (xMin === null && xMax === null) {
+      this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+    }
+
+    const a = vars.a || 1;
+    const h = vars.h || 0;
+    const k = vars.k || 0;
+
+    // Use domain constraints from vars if provided
+    const domainXMin = xMin !== null ? xMin : (vars.xMin !== undefined ? vars.xMin : null);
+    const domainXMax = xMax !== null ? xMax : (vars.xMax !== undefined ? vars.xMax : null);
+
+    ctx.strokeStyle = "#8e44ad";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+
+    // Determine pixel range based on domain constraints
+    let startPixel = 0;
+    let endPixel = width;
+    
+    if (domainXMin !== null) {
+      startPixel = Math.max(0, xMid + domainXMin * scale);
+    }
+    if (domainXMax !== null) {
+      endPixel = Math.min(width, xMid + domainXMax * scale);
+    }
+
+    for (let xPixel = startPixel; xPixel < endPixel; xPixel++) {
+      const x = (xPixel - xMid) / scale;
+      
+      // Skip if outside domain
+      if (domainXMin !== null && x < domainXMin) continue;
+      if (domainXMax !== null && x > domainXMax) continue;
+      
+      const y = a * Math.cbrt(x - h) + k;
+      const yPixel = yMid - y * scale;
+
+      if (xPixel === startPixel) {
+        ctx.moveTo(xPixel, yPixel);
+      } else {
+        ctx.lineTo(xPixel, yPixel);
+      }
+    }
+    ctx.stroke();
+  }
+
+  /**
+   * Draw piecewise function
+   */
+  drawPiecewise(canvas, segments) {
+    const ctx = canvas.getContext("2d");
+    const { width, height } = canvas;
+    const xMid = width / 2;
+    const yMid = height / 2;
+    const scale = this.defaultScale;
+
+    // Draw coordinate grid once
+    this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+
+    // Draw each segment
+    segments.forEach(segment => {
+      const { type, vars, xMin, xMax } = segment;
+      
+      switch (type) {
+        case "linear":
+        case "linearGraph":
+          this.drawLinear(canvas, vars, xMin, xMax);
+          break;
+        case "parabola":
+        case "quadratic":
+          this.drawParabola(canvas, vars, xMin, xMax);
+          break;
+        case "exponential":
+          this.drawExponential(canvas, vars, xMin, xMax);
+          break;
+        case "rational":
+          this.drawRational(canvas, vars, xMin, xMax);
+          break;
+        case "sine":
+        case "trigSine":
+          this.drawTrigonometric(canvas, vars, "sine", xMin, xMax);
+          break;
+        case "cosine":
+        case "trigCosine":
+          this.drawTrigonometric(canvas, vars, "cosine", xMin, xMax);
+          break;
+        case "absoluteValue":
+          this.drawAbsoluteValue(canvas, vars, xMin, xMax);
+          break;
+        case "squareRoot":
+          this.drawSquareRoot(canvas, vars, xMin, xMax);
+          break;
+        case "cubeRoot":
+          this.drawCubeRoot(canvas, vars, xMin, xMax);
+          break;
+        default:
+          console.warn(`Unknown segment type: ${type}`);
+      }
+    });
+
+    // Draw open/closed circles for endpoints if specified
+    segments.forEach(segment => {
+      const { vars, xMin, xMax, leftClosed = true, rightClosed = true } = segment;
+      
+      if (xMin !== undefined && xMin !== null) {
+        this.drawEndpoint(canvas, xMin, this.evaluateFunction(segment, xMin), leftClosed);
+      }
+      if (xMax !== undefined && xMax !== null) {
+        this.drawEndpoint(canvas, xMax, this.evaluateFunction(segment, xMax), rightClosed);
+      }
+    });
+  }
+
+  /**
+   * Draw endpoint circle (open or closed)
+   */
+  drawEndpoint(canvas, x, y, closed = true) {
+    const ctx = canvas.getContext("2d");
+    const { width, height } = canvas;
+    const xMid = width / 2;
+    const yMid = height / 2;
+    const scale = this.defaultScale;
+
+    const xPixel = xMid + x * scale;
+    const yPixel = yMid - y * scale;
+
+    ctx.beginPath();
+    ctx.arc(xPixel, yPixel, 4, 0, Math.PI * 2);
+    
+    if (closed) {
+      ctx.fillStyle = "#2c3e50";
+      ctx.fill();
+    } else {
+      ctx.strokeStyle = "#2c3e50";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+  }
+
+  /**
+   * Evaluate function at a specific x value
+   */
+  evaluateFunction(segment, x) {
+    const { type, vars } = segment;
+    const a = vars.a || 1;
+    const b = vars.b || 0;
+    const c = vars.c || 0;
+    const h = vars.h || 0;
+    const k = vars.k || 0;
+
+    switch (type) {
+      case "linear":
+      case "linearGraph":
+        return a * (x - h) + b + k;
+      case "parabola":
+      case "quadratic":
+        return a * Math.pow(x - h, 2) + b * (x - h) + c + k;
+      case "exponential":
+        const base = vars.b || 2;
+        return a * Math.pow(base, x - h) + k;
+      case "rational":
+        return a / (x - h) + k;
+      case "sine":
+      case "trigSine":
+        const angle = b * (x - h) + c;
+        return a * Math.sin(angle) + k;
+      case "cosine":
+      case "trigCosine":
+        const angleC = b * (x - h) + c;
+        return a * Math.cos(angleC) + k;
+      case "absoluteValue":
+        return a * Math.abs(x - h) + k;
+      case "squareRoot":
+        return x - h >= 0 ? a * Math.sqrt(x - h) + k : undefined;
+      case "cubeRoot":
+        return a * Math.cbrt(x - h) + k;
+      default:
+        return 0;
+    }
+  }
+
+  /**
    * Main drawing dispatcher
    */
   draw(canvas, drawType, vars) {
@@ -355,6 +789,18 @@ class DrawingEngine {
       case "cosine":
       case "trigCosine":
         this.drawTrigonometric(canvas, vars, "cosine");
+        break;
+      case "absoluteValue":
+        this.drawAbsoluteValue(canvas, vars);
+        break;
+      case "squareRoot":
+        this.drawSquareRoot(canvas, vars);
+        break;
+      case "cubeRoot":
+        this.drawCubeRoot(canvas, vars);
+        break;
+      case "piecewise":
+        this.drawPiecewise(canvas, vars.segments || []);
         break;
       case "triangle":
       case "rightTriangle":

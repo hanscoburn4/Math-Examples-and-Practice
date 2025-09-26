@@ -402,11 +402,9 @@ canvas {
   
   .question {
     page-break-inside: avoid;
-    margin-bottom: 40px;
-  }
-  
-  .answers {
-    page-break-before: always;
+    /* Use the user-specified spacing for printing too */
+    margin-bottom: var(--question-spacing, 20px);
+    padding-bottom: var(--question-spacing, 60px);
   }
   
   .answers {

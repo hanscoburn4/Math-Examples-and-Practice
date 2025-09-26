@@ -126,6 +126,21 @@ button.small {
 
 .preview-item {
   background: #f8f9fa;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.preview-item.draggable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.drag-handle:hover {
+  color: #3498db !important;
+  cursor: grab;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
 }
 
 .hidden { 
@@ -133,7 +148,8 @@ button.small {
 }
 
 .question { 
-  margin-bottom: var(--question-spacing, 80px);
+  margin-bottom: var(--question-spacing, 20px);
+  padding-bottom: var(--question-spacing, 60px);
   padding: 20px;
   background: white;
   border-radius: 8px;

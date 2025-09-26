@@ -133,7 +133,7 @@ class UIManager {
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.value = chapter;
-      checkbox.checked = true;
+      checkbox.checked = false;
       checkbox.addEventListener("change", () => {
         this.populateObjectives();
         this.populateDifficultyOptions();
@@ -262,6 +262,23 @@ class UIManager {
       const questionItem = this.createQuestionItem(question);
       questionList.appendChild(questionItem);
     });
+
+    // Add "Add All" button if there are questions
+    if (questions.length > 0) {
+      const addAllContainer = document.createElement("div");
+      addAllContainer.style.cssText = "text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e1e8ed;";
+      
+      const addAllButton = document.createElement("button");
+      addAllButton.textContent = `Add All ${questions.length} Questions`;
+      addAllButton.className = "small";
+      addAllButton.style.cssText = "background: #27ae60; padding: 8px 16px;";
+      addAllButton.addEventListener("click", () => {
+        this.addAllQuestions(questions);
+      });
+      
+      addAllContainer.appendChild(addAllButton);
+      questionList.appendChild(addAllContainer);
+    }
   }
 
   /**
@@ -310,6 +327,17 @@ class UIManager {
   }
 
   /**
+   * Add all questions to preview
+   */
+  addAllQuestions(questions) {
+    questions.forEach(question => {
+      const copy = JSON.parse(JSON.stringify(question));
+      this.selectedQuestions.push(copy);
+    });
+    this.renderPreview();
+  }
+
+  /**
    * Clear preview
    */
   clearPreview() {
@@ -329,10 +357,16 @@ class UIManager {
       return;
     }
 
+    // Make preview container sortable
+    preview.style.position = "relative";
+
     this.selectedQuestions.forEach((question, index) => {
       const previewItem = this.createPreviewItem(question, index);
       preview.appendChild(previewItem);
     });
+
+    // Initialize drag and drop functionality
+    this.initializeDragAndDrop();
   }
 
   /**
@@ -340,10 +374,26 @@ class UIManager {
    */
   createPreviewItem(question, index) {
     const item = document.createElement("div");
-    item.className = "preview-item";
+    item.className = "preview-item draggable";
+    item.draggable = true;
+    item.dataset.index = index;
 
     const info = document.createElement("div");
     const difficultyClass = `difficulty-${question.difficulty || 'basic'}`;
+    
+    // Add drag handle
+    const dragHandle = document.createElement("div");
+    dragHandle.className = "drag-handle";
+    dragHandle.innerHTML = "⋮⋮";
+    dragHandle.style.cssText = `
+      cursor: grab;
+      color: #95a5a6;
+      font-size: 16px;
+      font-weight: bold;
+      margin-right: 10px;
+      user-select: none;
+      line-height: 1;
+    `;
     
     info.innerHTML = `
       <div><strong>${index + 1}. ${question.id || 'Unknown ID'}</strong></div>
@@ -352,6 +402,12 @@ class UIManager {
         <span class="difficulty-badge ${difficultyClass}">${question.difficulty || 'basic'}</span>
       </div>
     `;
+
+    const leftSection = document.createElement("div");
+    leftSection.style.display = "flex";
+    leftSection.style.alignItems = "center";
+    leftSection.appendChild(dragHandle);
+    leftSection.appendChild(info);
 
     const controls = document.createElement("div");
     
@@ -375,10 +431,66 @@ class UIManager {
 
     controls.appendChild(duplicateBtn);
     controls.appendChild(removeBtn);
-    item.appendChild(info);
+    item.appendChild(leftSection);
     item.appendChild(controls);
 
     return item;
+  }
+
+  /**
+   * Initialize drag and drop functionality for preview items
+   */
+  initializeDragAndDrop() {
+    const preview = document.getElementById("assignmentPreview");
+    let draggedElement = null;
+    let draggedIndex = null;
+
+    // Add event listeners to all draggable items
+    const draggableItems = preview.querySelectorAll('.draggable');
+    
+    draggableItems.forEach(item => {
+      item.addEventListener('dragstart', (e) => {
+        draggedElement = item;
+        draggedIndex = parseInt(item.dataset.index);
+        item.style.opacity = '0.5';
+        e.dataTransfer.effectAllowed = 'move';
+      });
+
+      item.addEventListener('dragend', (e) => {
+        item.style.opacity = '1';
+        draggedElement = null;
+        draggedIndex = null;
+      });
+
+      item.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+      });
+
+      item.addEventListener('drop', (e) => {
+        e.preventDefault();
+        if (draggedElement && draggedElement !== item) {
+          const targetIndex = parseInt(item.dataset.index);
+          this.reorderQuestions(draggedIndex, targetIndex);
+        }
+      });
+    });
+  }
+
+  /**
+   * Reorder questions in the selected questions array
+   */
+  reorderQuestions(fromIndex, toIndex) {
+    if (fromIndex === toIndex) return;
+    
+    // Remove the item from its current position
+    const movedQuestion = this.selectedQuestions.splice(fromIndex, 1)[0];
+    
+    // Insert it at the new position
+    this.selectedQuestions.splice(toIndex, 0, movedQuestion);
+    
+    // Re-render the preview to update indices
+    this.renderPreview();
   }
 
   /**

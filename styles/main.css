@@ -157,11 +157,20 @@ button.small {
 
 .question { 
   margin-bottom: var(--question-spacing, 20px);
-  padding-bottom: var(--question-spacing, 60px);
   padding: 20px;
   background: white;
   border-radius: 8px;
   border-left: 4px solid #3498db;
+}
+
+/* Remove top margin for first question (single-column) */
+.question:first-child {
+  margin-top: 0;
+}
+
+/* Remove top margin for first row (two-column layout) */
+.columns-2 .question:nth-child(-n+2) {
+  margin-top: 0;
 }
 
 /* Layout Controls */
@@ -234,6 +243,7 @@ button.small {
 .columns-2 .answers {
   grid-column: 1 / -1;
 }
+
 .assignment-title {
   text-align: center;
   margin-bottom: 30px;
@@ -402,9 +412,18 @@ canvas {
   
   .question {
     page-break-inside: avoid;
-    /* Use the user-specified spacing for printing too */
     margin-bottom: var(--question-spacing, 20px);
-    padding-bottom: var(--question-spacing, 60px);
+    padding: 20px;
+  }
+
+  /* Remove top margin for first question (single-column print) */
+  .question:first-child {
+    margin-top: 0;
+  }
+
+  /* Remove top margin for first row (two-column print) */
+  .columns-2 .question:nth-child(-n+2) {
+    margin-top: 0;
   }
   
   .answers {

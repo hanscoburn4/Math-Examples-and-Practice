@@ -74,6 +74,14 @@ button.small {
   font-size: 12px;
 }
 
+#addAllQuestionsTop {
+  background: #27ae60;
+}
+
+#addAllQuestionsTop:hover {
+  background: #229954;
+}
+
 .section { 
   margin-bottom: 24px; 
   background: white;

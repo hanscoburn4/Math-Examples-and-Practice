@@ -9,6 +9,8 @@ class UIManager {
     this.customTitle = "Assessment";
     this.questionColumns = 1;
     this.questionSpacing = 20;
+    this.currentLoadedQuestions = [];
+    this.addAllButtonTop = null;
     this.bindEvents();
   }
 
@@ -29,6 +31,12 @@ class UIManager {
     // Button events
     document.getElementById("loadQuestions").addEventListener("click", () => {
       this.loadQuestions();
+    });
+
+    // Add All button (top menu)
+    this.addAllButtonTop = document.getElementById("addAllQuestionsTop");
+    this.addAllButtonTop.addEventListener("click", () => {
+      this.addAllQuestions(this.currentLoadedQuestions);
     });
 
     document.getElementById("clearSelection").addEventListener("click", () => {
@@ -252,33 +260,24 @@ class UIManager {
     // Apply filters
     questions = window.QuestionGenerator.filterQuestions(questions, { objective, difficulty });
 
+    // Store current loaded questions for the Add All button
+    this.currentLoadedQuestions = questions;
+
     if (questions.length === 0) {
       questionList.innerHTML = "<div class='muted'>No questions match the current filters.</div>";
+      this.addAllButtonTop.classList.add("hidden");
       return;
     }
+
+    // Update and show the Add All button in top menu
+    this.addAllButtonTop.textContent = `Add All ${questions.length} Questions`;
+    this.addAllButtonTop.classList.remove("hidden");
 
     // Display questions
     questions.forEach(question => {
       const questionItem = this.createQuestionItem(question);
       questionList.appendChild(questionItem);
     });
-
-    // Add "Add All" button if there are questions
-    if (questions.length > 0) {
-      const addAllContainer = document.createElement("div");
-      addAllContainer.style.cssText = "text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e1e8ed;";
-      
-      const addAllButton = document.createElement("button");
-      addAllButton.textContent = `Add All ${questions.length} Questions`;
-      addAllButton.className = "small";
-      addAllButton.style.cssText = "background: #27ae60; padding: 8px 16px;";
-      addAllButton.addEventListener("click", () => {
-        this.addAllQuestions(questions);
-      });
-      
-      addAllContainer.appendChild(addAllButton);
-      questionList.appendChild(addAllContainer);
-    }
   }
 
   /**
@@ -666,6 +665,8 @@ class UIManager {
    */
   clearQuestionList() {
     document.getElementById("questionList").innerHTML = "";
+    this.addAllButtonTop.classList.add("hidden");
+    this.currentLoadedQuestions = [];
   }
 }
 

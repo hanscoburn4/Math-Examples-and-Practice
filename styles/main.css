@@ -169,7 +169,10 @@ button.small {
 }
 
 /* Remove top margin for first row (two-column layout) */
-.columns-2 .question:nth-child(-n+2) {
+.columns-2 .question:first-child {
+  margin-top: 0;
+}
+.columns-2 .question:nth-child(2) {
   margin-top: 0;
 }
 
@@ -422,7 +425,10 @@ canvas {
   }
 
   /* Remove top margin for first row (two-column print) */
-  .columns-2 .question:nth-child(-n+2) {
+  .columns-2 .question:first-child {
+    margin-top: 0;
+  }
+  .columns-2 .question:nth-child(2) {
     margin-top: 0;
   }
   

@@ -211,13 +211,13 @@
         "variables": {
           "a": { "min": -12, "max": 12, "exclude":[0] },
           "b": { "min": 1, "max": 5 },
-          "c": { "min": 2, "max": 6, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a"] },
           "d": { "min": 2, "max": 8, "exclude":[0] },
           "e": { "min":2, "max": 5, "exclude":["b","c"] },
           "f": { "min": 2, "max": 10, "exclude":["d"] }
         },
         "question": "Evaluate: \\( \\frac{{{a}}}{{{c}}} + (\\frac{{{b}}}{{{e}}})^2 - {d} + {f} \\).",
-        "answerFormula": "simplifyFraction(a, c) + (b/e) ** 2 - d + f"
+        "answerFormula": "(a/ c) + (b/e) ** 2 - d + f"
       },
       {
         "id": "ALG1-1.1-I2",
@@ -226,14 +226,14 @@
         "difficulty": "intermediate",
         "variables": {
           "a": { "min": -7, "max": 7, "exclude":[0] },
-          "b": { "min": 2, "max": 6, "exclude":["a"] },
-          "c": { "min": -5, "max": 5, "exclude":[0] },
-          "d": { "min": 2, "max": 6 },
-          "e": { "min": 2, "max": 8 },
-          "f": { "min": 2, "max": 8, "exclude":["d","e"]}
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": -3, "max": 3, "exclude":[0] },
+          "d": { "min": 2, "max": 5 },
+          "e": { "min": 2, "max": 6 },
+          "f": { "min": 2, "max": 5, "exclude":["e"]}
         },
         "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - ({c} + \\frac{1}{{{d}}}) + \\frac{{{e}}}{{{f}}} \\).",
-        "answerFormula": "simplifyFraction(a, b) - (c + 1/d) + simplifyFraction(e, f)"
+        "answerFormula": "(a/ b) - (c + 1/d) + (e/ f)"
       },
       {
         "id": "ALG1-1.1-A1",
@@ -250,7 +250,7 @@
           "g": { "min": 2, "max": 15 }
         },
         "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} + (\\frac{{{c}}}{{{d}}})^2 - \\frac{{{e}}}{{{f}}} \\cdot {g} \\).",
-        "answerFormula": "simplifyFraction(a, b) + (c/d) ** 2 - simplifyFraction(e * g, f)"
+        "answerFormula": "(a / b) + (c / d) ** 2 - (e / f) * g"
       },
       {
         "id": "ALG1-1.1-A2",
@@ -267,7 +267,7 @@
           "g": { "min": 2, "max": 10, "exclude":["f"] }
         },
         "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - (\\frac{{{c}}}{{{d}}} + \\frac{1}{{{e}}}) + (\\frac{{{f}}}{{{g}}})^2 \\).",
-        "answerFormula": "simplifyFraction(a, b) - (simplifyFraction(c, d) + 1/e) + (f/g) ** 2"
+        "answerFormula": "(a / b) - (c / d + 1 / e) + (f / g) ** 2"
       },
       {
         "id": "ALG1-1.2-B1",
@@ -353,7 +353,7 @@
           "b": { "min": 2, "max": 5, "exclude":["a"] },
           "c": { "min": 2, "max": 5, "exclude":["a","b"] }
         },
-        "question": "Evaluate: \\( \\frac{{{a}}}{x} + \\frac{{{b}}}{y} + \\frac{{{c}}}{xy} \\) when \\( x = {x}, y = {y} \\).",
+        "question": "Evaluate: \\( \\frac{{a}}{ x } + \\frac{{b}}{ y } + \\frac{{{c}}}{xy} \\) when \\( x = {x}, y = {y} \\).",
         "answerFormula": "simplifyFraction(a * y + b * x + c, x * y)"
       },
       {
@@ -497,12 +497,12 @@
         "difficulty": "basic",
         "variables": {
           "a": { "min": -10, "max": 10, "exclude": [0,1] },
-          "b": { "min": -10, "max": 10, "exclude": [0,1] },
-          "c": { "min": 2, "max": 10, "exclude": [0] },
-          "d": { "min": 2, "max": 10, "exclude": [0] }
+          "b": { "min": 2, "max": 10, "exclude": [0,1] },
+          "c": { "min": 2, "max": 10 },
+          "d": { "min": 2, "max": 5, "exclude": ["c"] }
         },
-        "question": "Evaluate: \\( \\bigl| {a} - |{b}| + | {c} - {d} | \\bigr| \\).",
-        "answerFormula": "Math.abs(a - Math.abs(b) + Math.abs(c - d))"
+        "question": "Evaluate: \\( | {a} - {b} | + \\frac{{{c}}}{{{d}}} \\).",
+        "answerFormula": "Math.abs(a - b) + (c / d)"
       },
       {
         "id": "ALG1-1.5-I1",
@@ -510,14 +510,14 @@
         "objective": "Evaluate Absolute Value Expressions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "x": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "c": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "y": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "z": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "f": { "min": -10, "max": 10, "exclude": [0,1,-1] }
+          "a": { "min": -5, "max": 7, "exclude": [0,1,-1] },
+          "x": { "min": -7, "max": 7, "exclude": [0,1,-1] },
+          "c": { "min": -5, "max": 7, "exclude": [0,1,-1,"a"] },
+          "y": { "min": -5, "max": 7, "exclude": [0,1,-1] },
+          "z": { "min": -7, "max": 7, "exclude": [0,1,-1] },
+          "f": { "min": -5, "max": 7, "exclude": [0,1,-1,"z"] }
         },
-        "question": "Evaluate: \\( \\bigl| x - | \\frac{{a}}{{c}} - y | \\bigr| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
+        "question": "Evaluate: \\( \\left| x - | \\frac{{a}}{{c}} - y | \\right| + \\frac{{z}}{{f}} \\), when \\(x = {x}, y = {y}\\).",
         "answerFormula": "Math.abs(x - Math.abs(a/c - y)) + (z/f)"
       },
       {
@@ -526,14 +526,14 @@
         "objective": "Evaluate Absolute Value Expressions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "x": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "c": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "y": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "z": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "f": { "min": -10, "max": 10, "exclude": [0,1,-1] }
+          "a": { "min": -5, "max": 5, "exclude": [0,1,-1] },
+          "x": { "min": -5, "max": 5, "exclude": [0,1,-1] },
+          "c": { "min": -5, "max": 5, "exclude": [0,1,-1] },
+          "y": { "min": -5, "max": 5, "exclude": [0,1,-1,"c"] },
+          "z": { "min": -5, "max": 5, "exclude": [0,1,-1] },
+          "f": { "min": -5, "max": 5, "exclude": [0,1,-1,"z"] }
         },
-        "question": "Evaluate: \\( |{a} - x| + |\\frac{{c}}{{y}} + \\frac{{z}}{{f}}| \\), when \\(x = {x}, y = {y}\\).",
+        "question": "Evaluate: \\( \\left|{a} - x\\right| + \\left|\\frac{{c}}{ y } + \\frac{{z}}{{f}}\\right| \\), when \\(x = {x}, y = {y}\\).",
         "answerFormula": "Math.abs(a - x) + Math.abs(c/y + z/f)"
       }
     ],
@@ -865,12 +865,15 @@
         "objective": "Identify Domain and Range of Functions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -3, "max": 3, "exclude": [0,1] },
-          "b": { "min": -5, "max": 5 },
-          "c": { "min": 1, "max": 5, "exclude": ["a"] }
+          "a": { "min":  -0.5, "max": 0.5, "exclude": [0] },
+          "h": { "min": 1, "max": 3 },
+          "k": { "min": 1, "max": 3 },
+          "xMin": { "min": -3, "max": -1 },
+          "xMax": { "min": 1, "max": 3 }
         },
-        "question": "Find the domain and rang of the piecewise function: <br> \\( f(x) = \\begin{cases} {a}x + {b}, & x < 0 \\\\ {c}x^2, & x \\geq 0 \\end{cases} \\).",
-        "answer": "Domain: all real numbers; Range: \\( y \\geq 0 \\) if \\( {a} > 0 \\), \\( y \\geq {b} \\) if \\( {a} < 0 \\)."
+        "question": "Find the domain and range of the function \\( f(x) = {a}(x - {h})^2 + {k} \\).",
+        "draw": "parabola",
+        "answer": "Domain: all real numbers; Range: \\( y \\geq {k} \\) if \\( {a} > 0 \\), \\( y \\leq {k} \\) if \\( {a} < 0 \\)."
       },
       {
         "id": "ALG2-1.1a-A1",
@@ -1472,12 +1475,12 @@
         "objective": "To write the equation of a transformed function",
         "difficulty": "basic",
         "variables": {
-          "a": { "min": -5, "max": 5, "exclude": [0] },
+          "a": { "min": 2, "max": 5},
           "b": { "min": 2, "max": 7 },
           "c": { "min": 1, "max": 10}
         },
-        "question": "Write the equation of the function that is a vertical stretch by a factor of \\(|{a}|\\), reflected over the x-axis if {a}<0, shifted right {b} (if positive), left if negative, and up {c} (if positive), down if negative from the parent function \\( f(x) = x^2 \\).",
-        "answer": "\\( f(x) = {a}(x - {b})^2 + {c} \\)."
+        "question": "Write the equation of the function that is a vertical stretch by a factor of \\({a}\\), reflected over the x-axis, shifted right {b}, and up {c} from the parent function \\( f(x) = x^2 \\).",
+        "answer": "\\( f(x) = -{a}(x - {b})^2 + {c} \\)."
       },
       {
         "id": "PC-1.5b-I1",
@@ -1485,13 +1488,12 @@
         "objective": "To write the equation of a transformed function",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -5, "max": 5, "exclude": [0] },
+          "a": { "min": 2, "max": 5 },
           "b": { "min": 2, "max": 7, "exclude": [0] },
-          "c": { "min": 2, "max": 7, "exclude": [0] },
-          "d": { "min": 1, "max": 10}
+          "c": { "min": 2, "max": 7, "exclude": [0] }
         },
-        "question": "Write the equation of the function that is a vertical stretch by a factor of \\(|{a}|\\), reflected over the x-axis if {a}<0, shifted right {b} (if positive), left if negative, and up {c} (if positive), down if negative from the parent function \\( f(x) = \\sqrt{x} \\).",
-        "answer": "\\( f(x) = {a}\\sqrt{x - {b}} + {c} \\)."
+        "question": "Write the equation of the function that is a vertical stretch by a factor of \\({a}\\), reflected over the y-axis, shifted right {b}, and up {c}, from the parent function \\( f(x) = \\sqrt{x} \\).",
+        "answer": "\\( f(x) = -{a}\\sqrt{- (x - {b})} + {c} \\)."
       },
       {
         "id": "PC-1.6-B1",
@@ -1603,7 +1605,7 @@
         "objective": "To identify, find an equation for, and graph inverses of a function",
         "difficulty": "basic",
         "variables": {
-          "a": { "min": 1, "max": 5 },
+          "a": { "min": 2, "max": 5 },
           "b": { "min": 1, "max": 5 }
         },
         "question": "Find the inverse of the function \\( f(x) = {a}x + {b} \\) and state its domain and range.",
@@ -1615,12 +1617,12 @@
         "objective": "To identify, find an equation for, and graph inverses of a function",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -5, "max": 5 },
+          "a": { "min": -5, "max": 5, "exclude": [0, 1] },
           "b": { "min": 1, "max": 5 },
           "c": { "min": 1, "max": 5 }
         },
-        "question": "Find the inverse of the function \\( f(x) = {a}(x - {b})^2 + {c} \\) and state its domain and range.",
-        "answer": "Inverse: \\( f^{-1}(x) = \\pm\\sqrt{(x - {c})/{a}} + {b} \\) (choose + or - based on the original function's domain). <br> Domain: \\( [ {c}, \\infty ) \\) if {a}>0, \\( (-\\infty, {c}] \\) if {a}<0. <br> Range: \\( [ {b}, \\infty ) \\) if + chosen, \\( (-\\infty, {b}] \\) if - chosen."
+        "question": "Find the inverse of the function \\( f(x) = {a}(x - {b})^2 + {c} \\) and state whether the result is a function or not.",
+        "answer": "Inverse: \\( f^{-1}(x) = \\pm\\sqrt{(x - {c})/{a}} + {b} \\) (not a function unless domain is restricted)."
       },
       {
         "id": "PC-1.8b-A1",
@@ -1632,8 +1634,8 @@
           "b": { "min": 1, "max": 5 },
           "c": { "min": 1, "max": 5 }
         },
-        "question": "Find the inverse of the function \\( f(x) = {a}x^2 + {b}x + {c} \\) (for \\( x \\geq -{b}/(2*{a}) \\)) and state its domain and range.",
-        "answer": "Inverse: \\( f^{-1}(x) = (-{b} + \\sqrt{{b}^2 - 4*{a}*({c}-x)})/(2*{a}) \\). <br> Domain: \\( [ {c} - ({b}^2)/(4*{a}), \\infty ) \\), Range: \\( [ -{b}/(2*{a}), \\infty ) \\)."
+        "question": "Find the inverse of the function \\( f(x) = {a}x^2 + {b}x + {c} \\) and state its domain restrictions that would make the inverse a function.",
+        "answer": "Inverse: \\( f^{-1}(x) = \\frac{-{b} \\pm \\sqrt{{b}^2 - 4{a}({c} - x)}}{2{a}} \\). Domain restriction: \\( x \\geq -{b}/(2{a}) \\) if {a}>0, \\( x \\leq -{b}/(2{a}) \\) if {a}<0."
       },
       {
         "id": "PC-1.8b-A2",
@@ -1642,10 +1644,10 @@
         "difficulty": "advanced",
         "variables": {
           "a": { "min": 1, "max": 5 },
-          "b": { "min": 1, "max": 5 }
+          "b": { "min": 1, "max": 5, "exclude": ["a"] }
         },
-        "question": "Find the inverse of the function \\( f(x) = \\frac{{a}}{\\sqrt{x - {b}}}.",
-        "answer": "Inverse: \\( f^{-1}(x) = {b} + ({a}/x)^2 \\). <br> Domain: \\( (0, \\infty) \\), Range: \\( ({b}, \\infty) \\)."
+        "question": "Find the inverse of the function \\( f(x) = \\frac{{a}}{\\sqrt{ x - {b}}}.\\) and state its domain and range.",
+        "answer": "Inverse: \\( f^{-1}(x) = {a}^2/x^2 + {b} \\). <br> Domain: \\( (0, \\infty) \\), Range: \\( ({b}, \\infty) \\)."
       }
       ],
       

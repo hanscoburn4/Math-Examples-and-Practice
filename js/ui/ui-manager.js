@@ -6,7 +6,7 @@ class UIManager {
   constructor() {
     this.selectedQuestions = [];
     this.showAnswers = false;
-    this.customTitle = "Assessment";
+    this.customTitle = "SMWYK - Name: ____________";
     this.questionColumns = 1;
     this.questionSpacing = 20;
     this.currentLoadedQuestions = [];
@@ -53,7 +53,7 @@ class UIManager {
 
     // Custom title input
     document.getElementById("customTitle").addEventListener("input", (e) => {
-      this.customTitle = e.target.value || "Assessment";
+      this.customTitle = e.target.value || "SMWYK - Name: ____________";
       this.updateDisplayedTitle();
     });
 

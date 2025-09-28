@@ -537,6 +537,220 @@
         "answerFormula": "Math.abs(a - x) + Math.abs(c/y + z/f)"
       }
     ],
+    "Module 8": [
+      {
+        "id": "ALG1-8.1-B1",
+        "type": "template",
+        "objective": "Multiplication Properties of Exponents",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5 },
+          "m": { "min": -5, "max": 5, "exclude":[0,1] },
+          "n": { "min": 2, "max": 5, "exclude":["m"] }
+        },
+        "question": "Simplify: \\( {m}x^{ {a} } \\cdot {n}x^{b} \\cdot x^{c} \\).",
+        "answer": "\\({m * n}x^{ a + b + c }\\)"
+      },
+      {
+        "id": "ALG1-8.1-I1",
+        "type": "template",
+        "objective": "Multiplication Properties of Exponents",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "m": { "min": -5, "max": 5, "exclude":[0,1] },
+          "n": { "min": -5, "max": 5, "exclude":[0,1,"m"] }
+        },
+        "question": "Calculate. Leave your answer in scientific notation: \\( ({m}\\times10^{a}) \\cdot ({n}\\times10^{b}) \\).",
+        "answer": "\\({m * n}\\times10^{ a + b }\\)"
+      },
+      {
+        "id": "ALG1-8.1-A1",
+        "type": "template",
+        "objective": "Multiplication Properties of Exponents",
+        "difficulty": "advanced",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5 },
+          "c": { "min": 2, "max": 5 },
+          "d": { "min": 2, "max": 5 },
+          "e": { "min": 2, "max": 5 },
+          "f": { "min": 2, "max": 3 },
+          "g": { "min": 2, "max": 5 },
+          "m": { "min": -3, "max": 4, "exclude":[0,1] },
+          "n": { "min": -3, "max": 4, "exclude":[0,1,"m"] }
+        },
+        "question": "Simplify: \\( ({m}x^{ {a} }y^{b})^{c}({n}xy^{d}z^{e})^{f} \\).",
+        "answer": "\\({m ** c * n ** f}x^{ a * c + f }y^{ b * c + d * f }z^{ e * f }\\)"
+      },
+      {
+        "id": "ALG1-8.2-B1",
+        "type": "template",
+        "objective": "Division Properties of Exponents",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 2, "max": 9 },
+          "b": { "min": 2, "max": 5 },
+          "c": { "min": 2, "max": 5 },
+          "m": { "values": [-6,-4,-2,2,4,6] },
+          "n": { "values": [-6,-4,-2,2,4,6], "exclude":["m"] } 
+        },
+        "question": "Simplify: \\( \\frac{{m}x^{a} \\cdot x^{b}}{{n}x^{c}} \\).",
+        "answer": "\\( {m} x^{a + b - c} / {n}\\)"
+      },
+      {
+        "id": "ALG1-8.2-I1",
+        "type": "template",
+        "objective": "Division Properties of Exponents",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 9 },
+          "b": { "min": 2, "max": 5 },
+          "c": { "min": 2, "max": 3 },
+          "d": { "min": 2, "max": 5, "exclude":["a"] },
+          "e": { "min": 2, "max": 5, "exclude":["b"] },
+          "f": { "min": 2, "max": 5, "exclude":["c"] },
+          "g": { "min": 2, "max": 5 },
+          "m": { "values": [-6,-4,-2,2,4,6] },
+          "n": { "values": [-6,-3,3,6], "exclude":["m"] }
+        },
+        "question": "Simplify: \\( \\big(\\frac{{m}x^{a}y^{b}z^{c}}{{n}x^{d}y^{e}z^{f}}\\big)^{g} \\).",
+        "answer": "\\( {(m/n) ** g} x^{(a - d) * g} y^{ (b - e) * g } z^{ (c - f) * g } \\)"
+      },
+      {
+        "id": "ALG1-8.3-B1",
+        "type": "template",
+        "objective": "Negative Exponents",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      },
+      {
+        "id": "ALG1-8.3-I1",
+        "type": "template",
+        "objective": "Negative Exponents",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      },
+      {
+        "id": "ALG1-8.4-B1",
+        "type": "template",
+        "objective": "Rational Exponents",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      },
+      {
+        "id": "ALG1-8.4-I1",
+        "type": "template",
+        "objective": "Rational Exponents",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      },
+      {
+        "id": "ALG1-8.5-B1",
+        "type": "template",
+        "objective": "Simplifying Radical Expressions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      },
+      {
+        "id": "ALG1-8.5-I1",
+        "type": "template",
+        "objective": "Simplifying Radical Expressions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      },
+      {
+        "id": "ALG1-8.5-A1",
+        "type": "template",
+        "objective": "Simplifying Radical Expressions",
+        "difficulty": "advanced",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      },
+      {
+        "id": "ALG1-8.6-B1",
+        "type": "template",
+        "objective": "Operations with Radical Expressions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      },
+      {
+        "id": "ALG1-8.6-I1",
+        "type": "template",
+        "objective": "Operations with Radical Expressions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      },
+      {
+        "id": "ALG1-8.6-A1",
+        "type": "template",
+        "objective": "Operations with Radical Expressions",
+        "difficulty": "advanced",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 5, "exclude":["a"] },
+          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+        },
+        "question": "",
+        "answer": ""
+      }
+    ],
     "Module 2": [
       {
         "id": "ALG1-2.1-I1",
@@ -1501,9 +1715,9 @@
         "objective": "To identify key features and graph quadratic functions",
         "difficulty": "basic",
         "variables": {
-          "a": { "min": -5, "max": 5, "exclude": [0] },
-          "b": { "min": -10, "max": 10, "exclude": [0] },
-          "c": { "min": -10, "max": 10 }
+          "a": { "min": -5, "max": 5, "exclude": [0,1,-1] },
+          "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+          "c": { "min": -10, "max": 10, "exclude": [0] }
         },
         "question": "Identify the vertex, axis of symmetry, and then graph the function with at least two points on each side of the vertex \\( f(x) = {a}x^2 + {b}x + {c} \\).",
         "answerFormula": "`let vertexX = -b/(2*a); let vertexY = a*vertexX**2 + b*vertexX + c; let axis = vertexX; { vertex: formatCoordinate(vertexX, vertexY), axisOfSymmetry: 'x = ' + axis }`"
@@ -1514,12 +1728,12 @@
         "objective": "To identify key features and graph quadratic functions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -5, "max": 5, "exclude": [0] },
-          "b": { "min": -10, "max": 10, "exclude": [0] },
-          "c": { "min": -10, "max": 10 }
+          "p": { "min": -8, "max": 8, "exclude": [0,1,-1] },
+          "q": { "min": -4, "max": 4, "exclude": [0,1,-1] },
+          "a": { "min": -4, "max": 4, "exclude": [0,1] }
         },
-        "question": "Identify the vertex, axis of symmetry, x- and y-intercepts, and then graph the function with at least two points on each side of the vertex \\( f(x) = {a}x^2 + {b}x + {c} \\).",
-        "answerFormula": "`let vertexX = -b/(2*a); let vertexY = a*vertexX**2 + b*vertexX + c; let axis = vertexX; let discriminant = b**2 - 4*a*c; let xIntercepts = discriminant >= 0 ? [((-b + Math.sqrt(discriminant))/(2*a)).toFixed(2), ((-b - Math.sqrt(discriminant))/(2*a)).toFixed(2)] : 'No Real Roots'; let yIntercept = c; { vertex: formatCoordinate(vertexX, vertexY), axisOfSymmetry: 'x = ' + axis, xIntercepts: xIntercepts, yIntercept: formatCoordinate(0, yIntercept) }`"
+        "question": "Identify the x- and y-intercepts, and the coordinates of the vertex \\( f(x) = {a}x^2 + ({a*q + p})x + ({p*q}) \\).",
+        "answerFormula": "(() => { const b = a * q + p; const c = p * q; const vertexX = -b / (2 * a); const vertexY = a * vertexX * vertexX + b * vertexX + c; const disc = b * b - 4 * a * c; if (Math.abs(disc) < 1e-9) { const r = -b / (2 * a); return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); x-intercept: (${r.toFixed(3)}, 0) (double root); y-intercept: (0, ${c})`; } else if (disc < 0) { return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); x-intercepts: none (complex roots); y-intercept: (0, ${c})`; } else { const r1 = (-b + Math.sqrt(disc)) / (2 * a); const r2 = (-b - Math.sqrt(disc)) / (2 * a); return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); x-intercepts: (${r1.toFixed(3)}, 0) and (${r2.toFixed(3)}, 0); y-intercept: (0, ${c})`; } })()"
       },
       {
         "id": "PC-1.6-A1",
@@ -1527,12 +1741,12 @@
         "objective": "To identify key features and graph quadratic functions",
         "difficulty": "advanced",
         "variables": {
-          "a": { "min": -5, "max": 5, "exclude": [0] },
+          "a": { "min": -5, "max": 5, "exclude": [0,1] },
           "b": { "min": -10, "max": 10, "exclude": [0] },
-          "c": { "min": -10, "max": 10 }
+          "c": { "min": -10, "max": 10, "exclude": [0] }
         },
-        "question": "Identify the vertex, axis of symmetry, x- and y-intercepts, maximum or minimum value, and then graph the function with at least two points on each side of the vertex \\( f(x) = {a}x^2 + {b}x + {c} \\).",
-        "answerFormula": "`let vertexX = -b/(2*a); let vertexY = a*vertexX**2 + b*vertexX + c; let axis = vertexX; let discriminant = b**2 - 4*a*c; let xIntercepts = discriminant >= 0 ? [((-b + Math.sqrt(discriminant))/(2*a)).toFixed(2), ((-b - Math.sqrt(discriminant))/(2*a)).toFixed(2)] : 'No Real Roots'; let yIntercept = c; let maxMin = a > 0 ? 'Minimum' : 'Maximum'; { vertex: formatCoordinate(vertexX, vertexY), axisOfSymmetry: 'x = ' + axis, xIntercepts: xIntercepts, yIntercept: formatCoordinate(0, yIntercept), maxOrMin: maxMin + ' value: ' + vertexY }`"
+        "question": "Identify the vertex and all zeros (real or complex) \\( f(x) = {a}x^2 + ({b})x + ({c}) \\).",
+        "answerFormula": "`let vertexX = -b/(2*a); let vertexY = a*vertexX**2 + b*vertexX + c; let discriminant = b**2 - 4*a*c; let xIntercepts = discriminant > 0 ? [((-b + Math.sqrt(discriminant))/(2*a)).toFixed(2), ((-b - Math.sqrt(discriminant))/(2*a)).toFixed(2)] : discriminant === 0 ? [(-b/(2*a)).toFixed(2)] : ['No Real Roots, Complex Roots: ' + (-b/(2*a)).toFixed(2) + ' ± ' + (Math.sqrt(-discriminant)/(2*a)).toFixed(2) + 'i']; { vertex: formatCoordinate(vertexX, vertexY), xIntercepts: xIntercepts }`"
       },
       {
         "id": "PC-1.7-B1",

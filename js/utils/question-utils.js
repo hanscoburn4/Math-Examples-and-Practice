@@ -55,19 +55,37 @@ function generateVariableValue(key, constraints, allVars, maxAttempts = 50) {
 }
 
 /**
- * Generate all variables for a question template
+ * Generate all variables for a question template, including dependent formulas
  */
 function generateQuestionVariables(questionTemplate) {
   const vars = {};
   const variableDefinitions = questionTemplate.variables || {};
-  
-  // Generate variables in order, allowing references
+
+  // Pass 1: generate base variables (random values / chosen values)
   for (const [key, constraints] of Object.entries(variableDefinitions)) {
+    if (!constraints) continue;
+
+    // Skip formula variables for now
+    if (constraints.formula) continue;
+
     vars[key] = generateVariableValue(key, constraints, vars);
   }
-  
+
+  // Pass 2: resolve formula variables that depend on previously generated ones
+  for (const [key, constraints] of Object.entries(variableDefinitions)) {
+    if (!constraints || !constraints.formula) continue;
+
+    try {
+      vars[key] = Function("vars", `with(vars){ return ${constraints.formula}; }`)(vars);
+    } catch (error) {
+      console.error(`Error evaluating formula for variable "${key}" (${constraints.formula})`, error);
+      vars[key] = NaN;
+    }
+  }
+
   return vars;
 }
+
 
 /**
  * Replace template variables in text

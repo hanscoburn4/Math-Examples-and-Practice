@@ -1730,9 +1730,11 @@
         "variables": {
           "p": { "min": -8, "max": 8, "exclude": [0,1,-1] },
           "q": { "min": -4, "max": 4, "exclude": [0,1,-1] },
-          "a": { "min": -4, "max": 4, "exclude": [0,1] }
+          "a": { "min": -4, "max": 4, "exclude": [0,1] },
+          "b": { "formula": "a * q + p" },
+          "c": { "formula": "p * q" }
         },
-        "question": "Identify the x- and y-intercepts, and the coordinates of the vertex \\( f(x) = {a}x^2 + ({a*q + p})x + ({p*q}) \\).",
+        "question": "Identify the x- and y-intercepts, and the coordinates of the vertex \\( f(x) = {a}x^2 + ({b})x + ({c}) \\).",
         "answerFormula": "(() => { const b = a * q + p; const c = p * q; const vertexX = -b / (2 * a); const vertexY = a * vertexX * vertexX + b * vertexX + c; const disc = b * b - 4 * a * c; if (Math.abs(disc) < 1e-9) { const r = -b / (2 * a); return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); x-intercept: (${r.toFixed(3)}, 0) (double root); y-intercept: (0, ${c})`; } else if (disc < 0) { return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); x-intercepts: none (complex roots); y-intercept: (0, ${c})`; } else { const r1 = (-b + Math.sqrt(disc)) / (2 * a); const r2 = (-b - Math.sqrt(disc)) / (2 * a); return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); x-intercepts: (${r1.toFixed(3)}, 0) and (${r2.toFixed(3)}, 0); y-intercept: (0, ${c})`; } })()"
       },
       {

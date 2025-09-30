@@ -121,9 +121,11 @@ class QuestionGenerator {
       // Evaluate any remaining expressions in the answer
       answer = answer.replace(/\{([^}]+)\}/g, (match, expr) => {
         try {
-          return window.QuestionUtils.evaluateMathExpression(expr, variables);
+          // Trim whitespace and ensure we only pass the inner content
+          const cleanExpr = expr.trim();
+          return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
         } catch (e) {
-          console.error(`Failed to evaluate expression in answer: "${expr}" in answer with variables:`, variables, e);
+          console.error(`Failed to evaluate expression in answer: "${cleanExpr}" in answer with variables:`, variables, e);
           return match;
         }
       });

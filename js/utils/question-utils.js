@@ -104,38 +104,10 @@ function replaceTemplateVariables(text, variables) {
 
 /**
  * Evaluate mathematical expressions safely using math.js
- * Replaces the old evaluateAnswerFormula function
+ * Expects math.js compatible syntax (not LaTeX)
  */
 function evaluateMathExpression(expression, variables) {
   try {
-    // Pre-process LaTeX syntax to math.js compatible format
-    let processedExpression = expression;
-    
-    // Convert LaTeX fractions: \frac{a}{b} -> (a)/(b)
-    processedExpression = processedExpression.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)');
-    
-    // Convert LaTeX exponents with braces: x^{...} -> x^(...)
-    processedExpression = processedExpression.replace(/\^\{([^}]+)\}/g, '^($1)');
-    
-    // Convert LaTeX square roots: \sqrt{...} -> sqrt(...)
-    processedExpression = processedExpression.replace(/\\sqrt\{([^}]+)\}/g, 'sqrt($1)');
-    
-    // Convert LaTeX multiplication symbols
-    processedExpression = processedExpression.replace(/\\cdot/g, '*');
-    processedExpression = processedExpression.replace(/\\times/g, '*');
-    
-    // Convert LaTeX division symbol
-    processedExpression = processedExpression.replace(/\\div/g, '/');
-    
-    // Convert LaTeX parentheses
-    processedExpression = processedExpression.replace(/\\left\(/g, '(');
-    processedExpression = processedExpression.replace(/\\right\)/g, ')');
-    processedExpression = processedExpression.replace(/\\left\[/g, '[');
-    processedExpression = processedExpression.replace(/\\right\]/g, ']');
-    
-    // Remove any remaining backslashes that might cause issues
-    processedExpression = processedExpression.replace(/\\/g, '');
-    
     // Use math.js for safe evaluation
     const mathInstance = window.MathUtils.mathInstance;
     
@@ -143,7 +115,7 @@ function evaluateMathExpression(expression, variables) {
     const scope = { ...variables };
     
     // Evaluate the expression using math.js
-    const result = mathInstance.evaluate(processedExpression, scope);
+    const result = mathInstance.evaluate(expression, scope);
     
     // Format the result appropriately
     if (typeof result === 'number') {

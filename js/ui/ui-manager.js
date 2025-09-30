@@ -516,6 +516,22 @@ class UIManager {
     
     // Show edit button
     document.getElementById("editSection").classList.remove("hidden");
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Draw all graphs in the final assignment
+    const canvases = document.querySelectorAll("#output canvas");
+    canvases.forEach(canvas => {
+      const questionIndex = Array.from(canvases).indexOf(canvas);
+      const question = this.selectedQuestions[questionIndex];
+      if (question && question.draw) {
+        window.DrawingEngine.drawCoordinateGrid(
+          canvas.getContext("2d"), canvas.width, canvas.height
+        );
+        window.DrawingEngine.draw(canvas, question.draw, question.variables);
+      }
+    });
   }
 
   /**
@@ -599,11 +615,29 @@ class UIManager {
         canvas.height = 240;
         output.appendChild(canvas);
         
-        window.DrawingEngine.draw(canvas, question.draw, question.variables);
+        // Always draw a blank grid for students
+        window.DrawingEngine.drawCoordinateGrid(
+          canvas.getContext("2d"), canvas.width, canvas.height
+        );
+
+        // Draw the actual function only if allowed
+        if (question.showGraphInQuestion !== false) {
+          window.DrawingEngine.draw(canvas, question.draw, question.variables);}
       }
 
       // Collect answer
       answers.push(`<strong>${index + 1})</strong> ${question.answer || 'No answer provided'}`);
+      if (question.draw && question.showGraphInAnswer) {
+        const answerCanvas = document.createElement("canvas");
+        answerCanvas.width = 420;
+        answerCanvas.height = 240;
+        answers.push(answerCanvas.outerHTML);
+        // Draw the graph for the answer key
+        window.DrawingEngine.drawCoordinateGrid(
+          answerCanvas.getContext("2d"), answerCanvas.width, answerCanvas.height
+        );
+        window.DrawingEngine.draw(answerCanvas, question.draw, question.variables);
+      } 
     });
 
     // Add answer key

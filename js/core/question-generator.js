@@ -93,11 +93,17 @@ class QuestionGenerator {
     let answer = "";
     if (question.answerExpression) {
       try {
-        answer = window.QuestionUtils.evaluateMathExpression(question.answerExpression, variables);
-        // Wrap all exponents (any base) so MathJax renders correctly
-        answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
-          return `${base}^{${exp}}`;
-        });
+        // Check if answerExpression contains LaTeX syntax
+        if (question.answerExpression.includes('\\') || question.answerExpression.includes('^{')) {
+          // Treat as literal LaTeX string for display
+          answer = window.QuestionUtils.replaceTemplateVariables(question.answerExpression, variables);
+        } else {
+          answer = window.QuestionUtils.evaluateMathExpression(question.answerExpression, variables);
+          // Wrap all exponents (any base) so MathJax renders correctly
+          answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+            return `${base}^{${exp}}`;
+          });
+        }
       } catch (e) {
         console.error(`Failed to evaluate answerExpression "${question.answerExpression}" with variables:`, variables, e);
         answer = "Error evaluating answer expression";
@@ -106,11 +112,17 @@ class QuestionGenerator {
       // Legacy support for old answerFormula - convert to answerExpression
       console.warn(`Question ${question.id} uses deprecated 'answerFormula'. Please update to 'answerExpression'.`);
       try {
-        answer = window.QuestionUtils.evaluateMathExpression(question.answerFormula, variables);
-        // Wrap all exponents (any base) so MathJax renders correctly
-        answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
-          return `${base}^{${exp}}`;
-        });
+        // Check if answerFormula contains LaTeX syntax
+        if (question.answerFormula.includes('\\') || question.answerFormula.includes('^{')) {
+          // Treat as literal LaTeX string for display
+          answer = window.QuestionUtils.replaceTemplateVariables(question.answerFormula, variables);
+        } else {
+          answer = window.QuestionUtils.evaluateMathExpression(question.answerFormula, variables);
+          // Wrap all exponents (any base) so MathJax renders correctly
+          answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+            return `${base}^{${exp}}`;
+          });
+        }
       } catch (e) {
         console.error(`Failed to evaluate legacy answerFormula "${question.answerFormula}" with variables:`, variables, e);
         answer = "Error evaluating answer formula";
@@ -123,16 +135,25 @@ class QuestionGenerator {
         try {
           // Trim whitespace and ensure we only pass the inner content
           const cleanExpr = expr.trim();
-          return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
+          // Check if expression contains LaTeX syntax
+          if (cleanExpr.includes('\\') || cleanExpr.includes('^{')) {
+            // Return as-is for LaTeX expressions
+            return cleanExpr;
+          } else {
+            return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
+          }
         } catch (e) {
           console.error(`Failed to evaluate expression in answer: "${cleanExpr}" in answer with variables:`, variables, e);
           return match;
         }
       });
-      // Wrap all exponents (any base) so MathJax renders correctly
-      answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
-        return `${base}^{${exp}}`;
-      });
+      // Only wrap exponents if not already formatted as MathJax block
+      if (!answer.includes('\\(') && !answer.includes('\\)')) {
+        // Wrap all exponents (any base) so MathJax renders correctly
+        answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+          return `${base}^{${exp}}`;
+        });
+      }
     }
 
     return {

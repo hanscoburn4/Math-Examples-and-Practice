@@ -65,7 +65,8 @@ class UIManager {
     });
 
     document.getElementById("questionSpacing").addEventListener("input", (e) => {
-      this.questionSpacing = parseInt(e.target.value);
+      // Convert px input to pt for print consistency (1px ≈ 0.75pt)
+      this.questionSpacing = Math.round(parseInt(e.target.value) * 0.75);
     });
   }
 
@@ -567,7 +568,7 @@ class UIManager {
 
     // Apply layout settings
     output.className = `columns-${this.questionColumns}`;
-    output.style.setProperty('--question-spacing', `${this.questionSpacing}px`);
+    output.style.setProperty('--question-spacing', `${this.questionSpacing}pt`);
 
     const answers = [];
 

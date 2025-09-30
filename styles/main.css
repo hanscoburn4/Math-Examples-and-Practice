@@ -158,6 +158,7 @@ button.small {
 .question { 
   margin-bottom: var(--question-spacing, 20px);
   padding: 20px;
+  padding-bottom: var(--question-spacing, 20px);
   background: white;
   border-radius: 8px;
   border-left: 4px solid #3498db;
@@ -168,13 +169,6 @@ button.small {
   margin-top: 0;
 }
 
-/* Remove top margin for first row (two-column layout) */
-.columns-2 .question:first-child {
-  margin-top: 0;
-}
-.columns-2 .question:nth-child(2) {
-  margin-top: 0;
-}
 
 /* Layout Controls */
 .layout-controls {
@@ -223,6 +217,8 @@ button.small {
 
 #questionSpacing {
   width: 80px;
+  /* Convert px to pt: 1px ≈ 0.75pt */
+  /* Range: 10-100px becomes 7.5-75pt */
 }
 
 /* Question Layout Styles */
@@ -237,9 +233,6 @@ button.small {
   align-items: start;
 }
 
-.columns-2 .question {
-  margin-bottom: 0;
-}
 
 .columns-2 .assignment-title,
 .columns-2 .assignment-controls,
@@ -397,6 +390,11 @@ canvas {
 
 /* Print styles */
 @media print {
+  /* Convert default spacing to print units */
+  :root {
+    --question-spacing: 15pt; /* Default print spacing */
+  }
+  
   .header-section,
   .section:not(#output),
   .assignment-controls {
@@ -406,40 +404,66 @@ canvas {
   body {
     background: white;
     margin: 0;
-    padding: 20px;
+    padding: 15pt;
+    font-size: 12pt;
+    line-height: 1.4;
   }
   
   .assignment-title {
     page-break-after: avoid;
+    margin-bottom: 18pt;
+    padding-bottom: 9pt;
   }
   
   .question {
     page-break-inside: avoid;
-    margin-bottom: var(--question-spacing, 20px);
-    padding: 20px;
+    margin-bottom: 0;
+    padding: 12pt;
+    padding-bottom: var(--question-spacing, 15pt);
+    border-left-width: 3pt;
   }
 
-  /* Remove top margin for first question (single-column print) */
+  /* Ensure no extra spacing for first question */
   .question:first-child {
     margin-top: 0;
+    padding-top: 12pt;
   }
 
-  /* Remove top margin for first row (two-column print) */
+  /* Fix 2-column layout spacing issues */
   .columns-2 .question:first-child {
     margin-top: 0;
+    padding-top: 12pt;
   }
   .columns-2 .question:nth-child(2) {
     margin-top: 0;
+    padding-top: 12pt;
   }
   
   .answers {
     page-break-before: always;
+    margin-top: 18pt;
+    padding: 12pt;
   }
   
   /* Ensure proper column layout for printing */
   .columns-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--question-spacing, 20px);
+    gap: var(--question-spacing, 15pt);
+    column-gap: 18pt;
+  }
+  
+  /* Print-specific typography */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  .question-id {
+    font-size: 9pt;
+  }
+  
+  .difficulty-badge {
+    font-size: 8pt;
+    padding: 1pt 4pt;
   }
 }

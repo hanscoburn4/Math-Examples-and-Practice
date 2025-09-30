@@ -1343,7 +1343,7 @@
             "c": { "min": 1, "max": 10}
           },
           "question": "Represent the function as a set of ordered pairs, a mapping diagram, and a graph: \\( f(x) = {a}x^2 - {b}x + {c} \\) for \\( x = -2, -1, 0, 1, 2 \\).",
-          "answerExpression": "Answer currently unavailable."
+          "answer": "Answer currently unavailable."
         },
         {
           "id": "PC-1.1a-I1",
@@ -1357,7 +1357,7 @@
             "d": { "min": 1, "max": 10, "exclude": [0] }
           },
           "question": "Represent the function as a set of ordered pairs, a mapping diagram, and a graph: \\( f(x) = {a}x^3 - {b}x^2 - {c}x + {d}\\) for \\( x = -3, -2, -1, 0, 1, 2, 3 \\).",
-          "answerExpression": "Answer currently unavailable."
+          "answer": "Answer currently unavailable."
         },
         {
           "id": "PC-1.1b-B1",

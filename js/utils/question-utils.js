@@ -1,5 +1,6 @@
 /**
  * Utility functions for question handling and validation
+ * Updated to use math.js for secure mathematical expression evaluation
  */
 
 /**
@@ -102,35 +103,57 @@ function replaceTemplateVariables(text, variables) {
 }
 
 /**
- * Evaluate answer formulas safely
+ * Evaluate mathematical expressions safely using math.js
+ * Replaces the old evaluateAnswerFormula function
+ */
+function evaluateMathExpression(expression, variables) {
+  try {
+    // Use math.js for safe evaluation
+    const mathInstance = window.MathUtils.mathInstance;
+    
+    // Create a scope with variables for evaluation
+    const scope = { ...variables };
+    
+    // Evaluate the expression using math.js
+    const result = mathInstance.evaluate(expression, scope);
+    
+    // Format the result appropriately
+    if (typeof result === 'number') {
+      // Check if it's a simple integer
+      if (Number.isInteger(result)) {
+        return result.toString();
+      }
+      // Check if it can be represented as a simple fraction
+      try {
+        const fraction = mathInstance.fraction(result);
+        const formatted = mathInstance.format(fraction);
+        if (formatted.includes('/')) {
+          const parts = formatted.split('/');
+          return `\\( \\frac{${parts[0]}}{${parts[1]}} \\)`;
+        }
+        return formatted;
+      } catch (e) {
+        // If fraction conversion fails, return as decimal
+        return result.toString();
+      }
+    }
+    
+    // For other types (expressions, etc.), format using math.js
+    return mathInstance.format(result);
+    
+  } catch (error) {
+    console.error(`Error evaluating math expression "${expression}" with variables:`, variables, error);
+    return "Error in calculation";
+  }
+}
+
+/**
+ * Legacy function for backward compatibility
+ * @deprecated Use evaluateMathExpression instead
  */
 function evaluateAnswerFormula(formula, variables) {
-  try {
-// Create a safe evaluation context
-    const context = {
-      ...variables,
-      Math: {
-        abs: Math.abs,
-        sqrt: Math.sqrt,
-        pow: Math.pow,
-        floor: Math.floor,
-        ceil: Math.ceil,
-        round: Math.round
-      },
-      simplifyFraction: window.MathUtils.simplifyFraction,
-      simplifyRadical: window.MathUtils.simplifyRadical,
-      calculateDistance: window.MathUtils.calculateDistance,
-      calculateMidpoint: window.MathUtils.calculateMidpoint,
-      formatCoordinate: window.MathUtils.formatCoordinate
-    };
-
-    // Use Function constructor for safer evaluation
-    const func = new Function(...Object.keys(context), `return ${formula}`);
-    return func(...Object.values(context));
-  } catch (error) {
-      console.error(`Error evaluating answer formula "${formula}" with variables:`, variables, error);
-      return "Error in calculation";
-    }
+  console.warn('evaluateAnswerFormula is deprecated. Use evaluateMathExpression instead.');
+  return evaluateMathExpression(formula, variables);
 }
 
 window.QuestionUtils = {
@@ -138,5 +161,6 @@ window.QuestionUtils = {
   generateVariableValue,
   generateQuestionVariables,
   replaceTemplateVariables,
-  evaluateAnswerFormula
+  evaluateMathExpression,
+  evaluateAnswerFormula // Keep for backward compatibility
 };

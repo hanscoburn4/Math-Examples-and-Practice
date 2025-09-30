@@ -68,6 +68,7 @@ class QuestionGenerator {
 
   /**
    * Generate a question instance from a template
+   * Updated to use math.js instead of answerFormula
    */
   generateQuestion(template) {
     // Deep clone the template
@@ -88,17 +89,30 @@ class QuestionGenerator {
       return `${base}^{${exp}}`;
     });
 
-    // Generate answer
+    // Generate answer using math.js expressions
     let answer = "";
-    if (question.answerFormula) {
+    if (question.answerExpression) {
       try {
-        answer = window.QuestionUtils.evaluateAnswerFormula(question.answerFormula, variables);
+        answer = window.QuestionUtils.evaluateMathExpression(question.answerExpression, variables);
         // Wrap all exponents (any base) so MathJax renders correctly
         answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
           return `${base}^{${exp}}`;
         });
       } catch (e) {
-        console.error(`Failed to evaluate answerFormula "${question.answerFormula}" with variables:`, variables, e);
+        console.error(`Failed to evaluate answerExpression "${question.answerExpression}" with variables:`, variables, e);
+        answer = "Error evaluating answer expression";
+      }
+    } else if (question.answerFormula) {
+      // Legacy support for old answerFormula - convert to answerExpression
+      console.warn(`Question ${question.id} uses deprecated 'answerFormula'. Please update to 'answerExpression'.`);
+      try {
+        answer = window.QuestionUtils.evaluateMathExpression(question.answerFormula, variables);
+        // Wrap all exponents (any base) so MathJax renders correctly
+        answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+          return `${base}^{${exp}}`;
+        });
+      } catch (e) {
+        console.error(`Failed to evaluate legacy answerFormula "${question.answerFormula}" with variables:`, variables, e);
         answer = "Error evaluating answer formula";
       }
     } else if (question.answer) {
@@ -107,7 +121,7 @@ class QuestionGenerator {
       // Evaluate any remaining expressions in the answer
       answer = answer.replace(/\{([^}]+)\}/g, (match, expr) => {
         try {
-          return window.QuestionUtils.evaluateAnswerFormula(expr, variables);
+          return window.QuestionUtils.evaluateMathExpression(expr, variables);
         } catch (e) {
           console.error(`Failed to evaluate expression in answer: "${expr}" in answer with variables:`, variables, e);
           return match;

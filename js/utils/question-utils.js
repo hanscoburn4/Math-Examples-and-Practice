@@ -94,7 +94,10 @@ function generateQuestionVariables(questionTemplate) {
 function replaceTemplateVariables(text, variables) {
   let result = text;
   
-  for (const [key, value] of Object.entries(variables)) {
+  // Sort variables by length (longest first) to handle multi-character variables correctly
+  const sortedVariables = Object.entries(variables).sort((a, b) => b[0].length - a[0].length);
+  
+  for (const [key, value] of sortedVariables) {
     const regex = new RegExp(`\\{${key}\\}`, "g");
     result = result.replace(regex, value);
   }

@@ -82,10 +82,25 @@ class QuestionGenerator {
       variables
     );
 
+    // Wrap exponents in questionText for proper MathJax rendering
+    // Matches things like x^12, y^3, (ab)^10, 5^4 etc.
+    questionText = questionText.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+      return `${base}^{${exp}}`;
+    });
+
     // Generate answer
     let answer = "";
     if (question.answerFormula) {
-      answer = window.QuestionUtils.evaluateAnswerFormula(question.answerFormula, variables);
+      try {
+        answer = window.QuestionUtils.evaluateAnswerFormula(question.answerFormula, variables);
+        // Wrap all exponents (any base) so MathJax renders correctly
+        answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+          return `${base}^{${exp}}`;
+        });
+      } catch (e) {
+        console.error(`Failed to evaluate answerFormula "${question.answerFormula}" with variables:`, variables, e);
+        answer = "Error evaluating answer formula";
+      }
     } else if (question.answer) {
       answer = window.QuestionUtils.replaceTemplateVariables(question.answer, variables);
       
@@ -94,8 +109,13 @@ class QuestionGenerator {
         try {
           return window.QuestionUtils.evaluateAnswerFormula(expr, variables);
         } catch (e) {
+          console.error(`Failed to evaluate expression in answer: "${expr}" in answer with variables:`, variables, e);
           return match;
         }
+      });
+      // Wrap all exponents (any base) so MathJax renders correctly
+      answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+        return `${base}^{${exp}}`;
       });
     }
 

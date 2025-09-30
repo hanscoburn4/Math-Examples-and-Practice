@@ -170,7 +170,14 @@ function evaluateMathExpression(expression, variables) {
     return mathInstance.format(result);
     
   } catch (error) {
-    console.error(`Error evaluating math expression "${expression}" (processed: "${processedExpression}") with variables:`, variables, error);
+    // Check if the error is due to undefined symbols (like 'x' in symbolic expressions)
+    if (error.message && error.message.includes('Undefined symbol')) {
+      // Return the original expression if it contains symbolic variables
+      console.warn(`Expression contains undefined symbols, returning as-is: "${expression}"`);
+      return expression;
+    }
+    
+    console.error(`Error evaluating math expression "${expression}" with variables:`, variables, error);
     return "Error in calculation";
   }
 }

@@ -147,6 +147,18 @@ class QuestionGenerator {
           return match;
         }
       });
+      
+      // Evaluate expressions marked with double curly braces {{...}}
+      answer = answer.replace(/\{\{([^}]+)\}\}/g, (match, expr) => {
+        try {
+          const cleanExpr = expr.trim();
+          return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
+        } catch (e) {
+          console.error(`Failed to evaluate double-brace expression: "${cleanExpr}" with variables:`, variables, e);
+          return match;
+        }
+      });
+      
       // Only wrap exponents if not already formatted as MathJax block
       if (!answer.includes('\\(') && !answer.includes('\\)')) {
         // Wrap all exponents (any base) so MathJax renders correctly

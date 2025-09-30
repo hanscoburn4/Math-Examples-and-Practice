@@ -106,50 +106,31 @@ function replaceTemplateVariables(text, variables) {
  */
 function evaluateAnswerFormula(formula, variables) {
   try {
-    // Try using the expression evaluator for more complex expressions
-    if (window.expressionEvaluator && formula.includes('=')) {
-      // Handle multi-step calculations with intermediate variables
-      const steps = formula.split(';').map(s => s.trim()).filter(s => s);
-      const tempEvaluator = new window.ExpressionEvaluator();
-      
-      // Set initial variables
-      for (const [key, value] of Object.entries(variables)) {
-        tempEvaluator.defineVariable(key, value);
-      }
-      
-      let result;
-      for (const step of steps) {
-        if (step.includes('=')) {
-          const [varName, expression] = step.split('=').map(s => s.trim());
-          tempEvaluator.defineExpression(varName, expression);
-          result = tempEvaluator.evaluate(varName);
-        } else {
-          // Direct expression evaluation
-          result = tempEvaluator.evaluateExpression(step);
-        }
-      }
-      
-      return result;
-    }
-    
-    // Create a safe evaluation context
+// Create a safe evaluation context
     const context = {
       ...variables,
-      Math,
+      Math: {
+        abs: Math.abs,
+        sqrt: Math.sqrt,
+        pow: Math.pow,
+        floor: Math.floor,
+        ceil: Math.ceil,
+        round: Math.round
+      },
       simplifyFraction: window.MathUtils.simplifyFraction,
       simplifyRadical: window.MathUtils.simplifyRadical,
       calculateDistance: window.MathUtils.calculateDistance,
       calculateMidpoint: window.MathUtils.calculateMidpoint,
       formatCoordinate: window.MathUtils.formatCoordinate
     };
-    
-    // Use Function constructor for safer evaluation than eval
+
+    // Use Function constructor for safer evaluation
     const func = new Function(...Object.keys(context), `return ${formula}`);
     return func(...Object.values(context));
   } catch (error) {
-    console.error("Error evaluating answer formula:", error);
-    return "Error in calculation";
-  }
+      console.error(`Error evaluating answer formula "${formula}" with variables:`, variables, error);
+      return "Error in calculation";
+    }
 }
 
 window.QuestionUtils = {

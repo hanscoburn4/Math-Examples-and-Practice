@@ -108,6 +108,34 @@ function replaceTemplateVariables(text, variables) {
  */
 function evaluateMathExpression(expression, variables) {
   try {
+    // Pre-process LaTeX syntax to math.js compatible format
+    let processedExpression = expression;
+    
+    // Convert LaTeX fractions: \frac{a}{b} -> (a)/(b)
+    processedExpression = processedExpression.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)');
+    
+    // Convert LaTeX exponents with braces: x^{...} -> x^(...)
+    processedExpression = processedExpression.replace(/\^\{([^}]+)\}/g, '^($1)');
+    
+    // Convert LaTeX square roots: \sqrt{...} -> sqrt(...)
+    processedExpression = processedExpression.replace(/\\sqrt\{([^}]+)\}/g, 'sqrt($1)');
+    
+    // Convert LaTeX multiplication symbols
+    processedExpression = processedExpression.replace(/\\cdot/g, '*');
+    processedExpression = processedExpression.replace(/\\times/g, '*');
+    
+    // Convert LaTeX division symbol
+    processedExpression = processedExpression.replace(/\\div/g, '/');
+    
+    // Convert LaTeX parentheses
+    processedExpression = processedExpression.replace(/\\left\(/g, '(');
+    processedExpression = processedExpression.replace(/\\right\)/g, ')');
+    processedExpression = processedExpression.replace(/\\left\[/g, '[');
+    processedExpression = processedExpression.replace(/\\right\]/g, ']');
+    
+    // Remove any remaining backslashes that might cause issues
+    processedExpression = processedExpression.replace(/\\/g, '');
+    
     // Use math.js for safe evaluation
     const mathInstance = window.MathUtils.mathInstance;
     
@@ -115,7 +143,7 @@ function evaluateMathExpression(expression, variables) {
     const scope = { ...variables };
     
     // Evaluate the expression using math.js
-    const result = mathInstance.evaluate(expression, scope);
+    const result = mathInstance.evaluate(processedExpression, scope);
     
     // Format the result appropriately
     if (typeof result === 'number') {
@@ -142,7 +170,7 @@ function evaluateMathExpression(expression, variables) {
     return mathInstance.format(result);
     
   } catch (error) {
-    console.error(`Error evaluating math expression "${expression}" with variables:`, variables, error);
+    console.error(`Error evaluating math expression "${expression}" (processed: "${processedExpression}") with variables:`, variables, error);
     return "Error in calculation";
   }
 }

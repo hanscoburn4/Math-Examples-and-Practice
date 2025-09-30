@@ -201,7 +201,7 @@
           "f": { "min": 2, "max": 20, "exclude":["d","e"] }
         },
         "question": "Evaluate: \\( {a} +({b}-{c})^2 - {d}\\cdot{e} + ({f}) \\).",
-        "answerExpression": "a + (b - c) ** 2 - d * e + f"
+        "answerExpression": "a + (b - c)^2 - d * e + f"
       },
       {
         "id": "ALG1-1.1-I1",
@@ -217,7 +217,7 @@
           "f": { "min": 2, "max": 10, "exclude":["d"] }
         },
         "question": "Evaluate: \\( \\frac{{{a}}}{{{c}}} + (\\frac{{{b}}}{{{e}}})^2 - {d} + {f} \\).",
-        "answerExpression": "(a/ c) + (b/e) ** 2 - d + f"
+        "answerExpression": "(a/ c) + (b/e)^2 - d + f"
       },
       {
         "id": "ALG1-1.1-I2",
@@ -250,7 +250,7 @@
           "g": { "min": 2, "max": 15 }
         },
         "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} + (\\frac{{{c}}}{{{d}}})^2 - \\frac{{{e}}}{{{f}}} \\cdot {g} \\).",
-        "answerExpression": "(a / b) + (c / d) ** 2 - (e / f) * g"
+        "answerExpression": "(a / b) + (c / d)^2 - (e / f) * g"
       },
       {
         "id": "ALG1-1.1-A2",
@@ -267,7 +267,7 @@
           "g": { "min": 2, "max": 10, "exclude":["f"] }
         },
         "question": "Evaluate: \\( \\frac{{{a}}}{{{b}}} - (\\frac{{{c}}}{{{d}}} + \\frac{1}{{{e}}}) + (\\frac{{{f}}}{{{g}}})^2 \\).",
-        "answerExpression": "(a / b) - (c / d + 1 / e) + (f / g) ** 2"
+        "answerExpression": "(a / b) - (c / d + 1 / e) + (f / g)^2"
       },
       {
         "id": "ALG1-1.2-B1",
@@ -294,7 +294,7 @@
           "c": { "min": 2, "max": 10, "exclude":["a","b"] }
         },
         "question": "Evaluate: \\( {a}x^2 + {b}x + {c} \\) when \\( x = {x} \\).",
-        "answerExpression": "(a * x ** 2 + b * x + c)"
+        "answerExpression": "(a * x^2 + b * x + c)"
       },
       {
         "id": "ALG1-1.2-I1",
@@ -309,7 +309,7 @@
           "c": { "min": 2, "max": 10, "exclude":["a","b"] }
         },
         "question": "Evaluate: \\( {a}(x - {b})^2 + {c}y \\) when \\( x = {x}, y = {y} \\).",
-        "answerExpression": "(a * (x - b) ** 2 + c * y)"
+        "answerExpression": "(a * (x - b)^2 + c * y)"
       },
       {
         "id": "ALG1-1.2-I2",
@@ -339,7 +339,7 @@
           "c": { "min": 2, "max": 5, "exclude":["a","b"] }
         },
         "question": "Evaluate: \\( {a}x^2 + {b}xy + {c}y^2 \\) when \\( x = {x}, y = {y} \\).",
-        "answerExpression": "(a * x ** 2 + b * x * y + c * y ** 2)"
+        "answerExpression": "(a * x^2 + b * x * y + c * y^2)"
       },
       {
         "id": "ALG1-1.2-A2",

@@ -547,7 +547,7 @@
           "a": { "min": 2, "max": 10 },
           "b": { "min": 2, "max": 5, "exclude":["a"] },
           "c": { "min": 2, "max": 5 },
-          "m": { "min": -5, "max": 5, "exclude":[0,1] },
+          "m": { "min": -5, "max": 5, "exclude":[0,1,-1] },
           "n": { "min": 2, "max": 5, "exclude":["m"] }
         },
         "question": "Simplify: \\( {m}x^{ {a} } \\cdot {n}x^{b} \\cdot x^{c} \\).",
@@ -626,12 +626,13 @@
         "objective": "Negative Exponents",
         "difficulty": "basic",
         "variables": {
-          "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "a": { "min": -10, "max": 7 },
+          "b": { "min": -10, "max": 7 },
+          "c": { "min": -10, "max": 7, "exclude":["a"] },
+          "d": { "min": -10, "max": 7, "exclude":["b"] }
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify so that there are no negative exponents: \\( \\frac{x^{a}y^{b}}{x^{c}y^{d}} \\).",
+        "answer": "\\( x^{a - c} y^{b - d} \\)"
       },
       {
         "id": "ALG1-8.3-I1",
@@ -639,12 +640,19 @@
         "objective": "Negative Exponents",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "a": { "min": -4, "max": 4, "exclude":[0,1] },
+          "b": { "min": -5, "max": 5, "exclude":[0,1,"a"] },
+          "c": { "min": -7, "max": 7  },
+          "d": { "min": -7, "max": 7 },
+          "e": { "min": -7, "max": 7 },
+          "f": { "min": -7, "max": 7 },
+          "g": { "min": -7, "max": 7 },
+          "h": { "min": -7, "max": 7 },
+          "i": { "min": -3, "max": -1 }
+
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify so that there are no negative exponents: \\( \\big(\\frac{{a}x^{c}y^{d}z^{e} }{ {b}x^{f}y^{g}z^{h} }\\big)^{i} \\).",
+        "answer": "\\( ({a/b})^{i} x^{(c - f) * i} y^{(d - g) * i} z^{(e - h) * i} \\)"
       },
       {
         "id": "ALG1-8.4-B1",
@@ -652,12 +660,15 @@
         "objective": "Rational Exponents",
         "difficulty": "basic",
         "variables": {
-          "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "a": { "min": 1, "max": 6 },
+          "b": { "min": 2, "max": 4, "exclude":[0,1,-1] },
+          "c": { "min": 1, "max": 6, "exclude":["a"] },
+          "d": { "min": 2, "max": 4, "exclude":["b"] },
+          "base1": { "formula": "a**b"},
+          "base2": { "formula": "c**b"}
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify: \\( \\big(\\frac{{base1}}{{base2}}\\big)^{\\frac{d}{b}} \\).",
+        "answer": "\\( \\frac{a**d}{c**d} \\) or \\( \\sqrt[b] { \\frac{a^{d}}{c^{d}} } \\)"
       },
       {
         "id": "ALG1-8.4-I1",
@@ -665,12 +676,14 @@
         "objective": "Rational Exponents",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "a": { "min": 2, "max": 9 },
+          "b": { "min": 2, "max": 9, "exclude":["a"] },
+          "c": { "min": 2, "max": 9, "exclude":["a"] },
+          "d": { "min": 2, "max": 9, "exclude":["c"] },
+          "e": { "min": 2, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify by writting your answer in radical form: \\( \\big(x^{\\frac{{a}}{b}} \\cdot x^{\\frac{{c}}{d}}\\big)^{e} \\).",
+        "answer": "\\( x^{ (a/b + c/d) * e } \\) or \\( \\sqrt[{b*d}] { x^{ (a*d + b*c) * e } } \\)"
       },
       {
         "id": "ALG1-8.5-B1",
@@ -678,12 +691,14 @@
         "objective": "Simplifying Radical Expressions",
         "difficulty": "basic",
         "variables": {
-          "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "a": { "min": 2, "max": 6 },
+          "b": { "min": 2, "max": 6, "exclude":["a"] },
+          "c": { "values":[2, 3, 5, 7, 11, 13], "exclude": ["a","b"] },
+          "num1": { "formula": "a * c" },
+          "num2": { "formula": "a * b * b" }
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify: \\( \\sqrt{num1} \\cdot \\sqrt{num2} \\).",
+        "answer": "\\( {a * b} \\sqrt{c} \\)"
       },
       {
         "id": "ALG1-8.5-I1",
@@ -691,12 +706,17 @@
         "objective": "Simplifying Radical Expressions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "a": { "values": [2,3,5,7,11] },
+          "b": { "values": [2,3,5,7], "exclude":["a"] },
+          "c": { "min": 2, "max": 7 },
+          "d": { "min": 2, "max": 7, "exclude":["c"] },
+          "e": { "min": 2, "max": 7, "exclude":["c","d"] },
+          "f": { "min": 2, "max": 7, "exclude":["c","d","e"] },
+          "num1": { "formula": "a * b" },
+          "num2": { "formula": "a * b * b" }
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify: \\(\\sqrt[3]{{num1}x^{c}y^{d}} \\cdot \\sqrt[3]{{num2}x^{e}y^{f}} \\).",
+        "answer": "\\( {a * b} x^{(c + e) / 3} y^{(d + f) / 3} \\)"
       },
       {
         "id": "ALG1-8.5-A1",
@@ -704,12 +724,18 @@
         "objective": "Simplifying Radical Expressions",
         "difficulty": "advanced",
         "variables": {
-          "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "a": { "min": 2, "max": 6 },
+          "b": { "values": [2,3,5,7,11], "exclude":["a"] },
+          "c": { "min": 3, "max": 4 },
+          "d": { "min": -9, "max": 9, "exclude":[0,1,-1] },
+          "e": {  "min": -9, "max": 9, "exclude":[0,1,-1]},
+          "f": {  "min": -9, "max": 9, "exclude":[0,1,-1] },
+          "g": {  "min": -9, "max": 9, "exclude":[0,1,-1]},
+          "num": { "formula": "a * b" },
+          "den": { "formula": "a **(c+1)" }
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify: \\(\\sqrt[{c}]{\\frac{{num}x^{d}y^{e}z^{f}}{ {den}x^{g}}} \\).",
+        "answer": "\\( \\frac{b}{a} x^{(d - a * g) / c} y^{e / c} z^{f / c} \\)"
       },
       {
         "id": "ALG1-8.6-B1",
@@ -718,11 +744,14 @@
         "difficulty": "basic",
         "variables": {
           "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "b": { "values": [2,3,5,7,11,13] },
+          "c": { "min": 2, "max": 10 },
+          "d": { "values": [2,3,5,7,11,13], "exclude": ["b"] },
+          "e": { "min": 2, "max": 10, "exclude": ["a"] },
+          "f": { "min": 2, "max": 10, "exclude": ["c"] }
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify: \\( {a}\\sqrt{{b}}-{c}\\sqrt{{d}}+{e}\\sqrt{{b}}+{f}\\sqrt{{d}}\\)",
+        "answer": "\\( {a+e}\\sqrt{{b}}+({f-c}\\sqrt{{d}})\\)"
       },
       {
         "id": "ALG1-8.6-I1",
@@ -731,11 +760,16 @@
         "difficulty": "intermediate",
         "variables": {
           "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "b": { "values": [2,3,5] },
+          "c": { "min": 2, "max": 10 },
+          "d": { "values": [3,5,7,11], "exclude": ["b"] },
+          "e": { "min": 2, "max": 10 },
+          "f": { "values": [3,5,7,11], "exclude": ["b","d"] },
+          "num1": { "formula": "b*d" },
+          "num2": { "formula": "b*f" }
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify: \\( {a}\\sqrt{{b}}\\big({c}\\sqrt{{num1}} - {e}\\sqrt{{num2}}\\big) \\)",
+        "answer": "\\( {a*c*b}\\sqrt{{d}} - {a*e*b}\\sqrt{{f}} \\)"
       },
       {
         "id": "ALG1-8.6-A1",
@@ -743,12 +777,19 @@
         "objective": "Operations with Radical Expressions",
         "difficulty": "advanced",
         "variables": {
-          "a": { "min": 2, "max": 10 },
-          "b": { "min": 2, "max": 5, "exclude":["a"] },
-          "c": { "min": 2, "max": 5, "exclude":["a","b"] }
+          "a": { "min": -10, "max": 10, "exclude":[0,1,-1] },
+          "b": { "min": 2, "max": 10 },
+          "c": { "min": 2, "max": 10 },
+          "d": { "values": [2,3,5,7] },
+          "x": { "min": 2, "max": 7 },
+          "y": { "min": 2, "max": 7, "exclude": ["x"] },
+          "z": { "min": 2, "max": 7, "exclude": ["x","y"] },
+          "num1": { "formula": "x*x*d" },
+          "num2": { "formula": "y*y*d" },
+          "num3": { "formula": "z*z*d" }
         },
-        "question": "",
-        "answer": ""
+        "question": "Simplify: \\( {a}\\sqrt{{num1}} - {b}\\sqrt{{num2}} + {c}\\sqrt{{num3}}\\)",
+        "answer": "\\({a*x-b*y+c*z}\\sqrt{{d}}\\)"
       }
     ],
     "Module 2": [
@@ -1715,12 +1756,17 @@
         "objective": "To identify key features and graph quadratic functions",
         "difficulty": "basic",
         "variables": {
-          "a": { "min": -5, "max": 5, "exclude": [0,1,-1] },
-          "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-          "c": { "min": -10, "max": 10, "exclude": [0] }
+          "a": { "min": -3, "max": 3, "exclude": [0] },
+          "h": { "min": -6, "max": 6, "exclude": [0] },
+          "k": { "min": -4, "max": 4, "exclude": [0] },
+          "b": { "formula": "-2*a*h" },
+          "c": { "formula": "a*h*h + k" }
         },
-        "question": "Identify the vertex, axis of symmetry, and then graph the function with at least two points on each side of the vertex \\( f(x) = {a}x^2 + {b}x + {c} \\).",
-        "answerFormula": "`let vertexX = -b/(2*a); let vertexY = a*vertexX**2 + b*vertexX + c; let axis = vertexX; { vertex: formatCoordinate(vertexX, vertexY), axisOfSymmetry: 'x = ' + axis }`"
+        "question": "Identify the vertex, axis of symmetry, and then graph the function with at least two points on each side of the vertex \\( f(x) = {a}x^2 + ({b})x + ({c}) \\).",        
+        "showGraphInQuestion": false,
+        "showGraphInAnswer": true,
+        "draw": "parabola",
+        "answerFormula": "(() => { const vertexX = -b / (2 * a); const vertexY = a * vertexX * vertexX + b * vertexX + c; const axis = vertexX; return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); Axis of Symmetry: x = ${axis.toFixed(3)}`; })()"
       },
       {
         "id": "PC-1.6-I1",
@@ -1748,7 +1794,7 @@
           "c": { "min": -10, "max": 10, "exclude": [0] }
         },
         "question": "Identify the vertex and all zeros (real or complex) \\( f(x) = {a}x^2 + ({b})x + ({c}) \\).",
-        "answerFormula": "`let vertexX = -b/(2*a); let vertexY = a*vertexX**2 + b*vertexX + c; let discriminant = b**2 - 4*a*c; let xIntercepts = discriminant > 0 ? [((-b + Math.sqrt(discriminant))/(2*a)).toFixed(2), ((-b - Math.sqrt(discriminant))/(2*a)).toFixed(2)] : discriminant === 0 ? [(-b/(2*a)).toFixed(2)] : ['No Real Roots, Complex Roots: ' + (-b/(2*a)).toFixed(2) + ' ± ' + (Math.sqrt(-discriminant)/(2*a)).toFixed(2) + 'i']; { vertex: formatCoordinate(vertexX, vertexY), xIntercepts: xIntercepts }`"
+        "answerFormula": "(() => { const vertexX = -b / (2 * a); const vertexY = a * vertexX * vertexX + b * vertexX + c; const disc = b * b - 4 * a * c; if (Math.abs(disc) < 1e-9) { const r = -b / (2 * a); return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); x-intercept: (${r.toFixed(3)}, 0) (double root)`; } else if (disc < 0) { const realPart = (-b / (2 * a)).toFixed(3); const imagPart = (Math.sqrt(-disc) / (2 * a)).toFixed(3); return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); x-intercepts: (${realPart} + ${imagPart}i, 0) and (${realPart} - ${imagPart}i, 0) (complex roots)`; } else { const r1 = (-b + Math.sqrt(disc)) / (2 * a); const r2 = (-b - Math.sqrt(disc)) / (2 * a); return `Vertex: (${vertexX.toFixed(3)}, ${vertexY.toFixed(3)}); x-intercepts: (${r1.toFixed(3)}, 0) and (${r2.toFixed(3)}, 0)`; } })()"
       },
       {
         "id": "PC-1.7-B1",

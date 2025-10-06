@@ -1102,99 +1102,141 @@
         "type": "template",
         "objective": "Calculate angle measures using the definitions of congruent angles, bisectors, and vertical angles",
         "difficulty": "basic",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "angle1": { "min": 30, "max": 150 }
+        },
+        "question": "Two angles are congruent. If one angle measures \\( {angle1}^\\circ \\), what is the measure of the other angle?",
+        "answer": "\\( {angle1}^\\circ \\)",
+        "draw": "angles"
       },
       {
         "id": "Geo-2.1-I1",
         "type": "template",
         "objective": "Calculate angle measures using the definitions of congruent angles, bisectors, and vertical angles",
         "difficulty": "intermediate",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "angle1": { "min": 40, "max": 140 }
+        },
+        "question": "Two lines intersect to form vertical angles. If one angle measures \\( {angle1}^\\circ \\), what is the measure of the vertical angle opposite to it?",
+        "answer": "\\( {angle1}^\\circ \\)",
+        "draw": "verticalAngles"
       },
       {
         "id": "Geo-2.2-B1",
         "type": "template",
         "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
         "difficulty": "basic",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "angle1": { "min": 20, "max": 70 }
+        },
+        "question": "Two angles are complementary. If one angle measures \\( {angle1}^\\circ \\), what is the measure of its complement?",
+        "answer": "\\( {90 - angle1}^\\circ \\)"
       },
       {
         "id": "Geo-2.2-I1",
         "type": "template",
         "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
         "difficulty": "intermediate",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "angle1": { "min": 45, "max": 135 }
+        },
+        "question": "Two angles are supplementary. If one angle measures \\( {angle1}^\\circ \\), what is the measure of its supplement?",
+        "answer": "\\( {180 - angle1}^\\circ \\)"
       },
       {
         "id": "Geo-2.3-B1",
         "type": "template",
         "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
         "difficulty": "basic",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "width": { "min": 4, "max": 10 },
+          "height": { "min": 3, "max": 8 }
+        },
+        "question": "Find the perimeter of a rectangle with length \\( {width} \\) units and width \\( {height} \\) units.",
+        "answer": "\\( {2 * (width + height)} \\) units",
+        "draw": "rectangle"
       },
       {
         "id": "Geo-2.3-I1",
         "type": "template",
         "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
         "difficulty": "intermediate",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "radius": { "min": 3, "max": 10 }
+        },
+        "question": "Find the circumference of a circle with radius \\( {radius} \\) units. Use \\( \\pi \\approx 3.14 \\).",
+        "answer": "\\( {(2 * 3.14 * radius).toFixed(2)} \\) units",
+        "draw": "circle"
       },
       {
         "id": "Geo-2.3-A1",
         "type": "template",
         "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
         "difficulty": "advanced",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "radius": { "min": 4, "max": 12 }
+        },
+        "question": "Find the exact circumference of a circle with radius \\( {radius} \\) units. Express your answer in terms of \\( \\pi \\).",
+        "answer": "\\( {2 * radius}\\pi \\) units",
+        "draw": "circle"
       },
       {
         "id": "Geo-2.4-B1",
         "type": "template",
         "objective": "Calculate the coordinates of vertices of images given a preimage",
         "difficulty": "basic",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "x1": { "min": 1, "max": 5 },
+          "y1": { "min": 1, "max": 5 },
+          "tx": { "min": 2, "max": 4 },
+          "ty": { "min": 2, "max": 4 }
+        },
+        "question": "Point A is located at \\( ({x1}, {y1}) \\). If point A is translated \\( {tx} \\) units right and \\( {ty} \\) units up, what are the coordinates of the image A'?",
+        "answer": "\\( ({x1 + tx}, {y1 + ty}) \\)"
       },
       {
         "id": "Geo-2.4-I1",
         "type": "template",
         "objective": "Calculate the coordinates of vertices of images given a preimage",
         "difficulty": "intermediate",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "x1": { "min": 1, "max": 4 },
+          "y1": { "min": 1, "max": 4 },
+          "x2": { "min": 4, "max": 6 },
+          "y2": { "min": 1, "max": 3 },
+          "x3": { "min": 2, "max": 4 },
+          "y3": { "min": 3, "max": 5 }
+        },
+        "question": "Triangle ABC has vertices A\\( ({x1}, {y1}) \\), B\\( ({x2}, {y2}) \\), and C\\( ({x3}, {y3}) \\). If the triangle is reflected over the x-axis, what are the coordinates of A', B', and C'?",
+        "answer": "A'\\( ({x1}, {-y1}) \\), B'\\( ({x2}, {-y2}) \\), C'\\( ({x3}, {-y3}) \\)",
+        "draw": "transformation"
       },
       {
         "id": "Geo-2.5-B1",
         "type": "template",
         "objective": "Calculate surface areas and volumes",
         "difficulty": "basic",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "width": { "min": 3, "max": 8 },
+          "height": { "min": 3, "max": 8 },
+          "depth": { "min": 3, "max": 8 }
+        },
+        "question": "Find the volume of a rectangular prism with length \\( {width} \\) units, width \\( {depth} \\) units, and height \\( {height} \\) units.",
+        "answer": "\\( {width * height * depth} \\) cubic units",
+        "draw": "rectangularPrism"
       },
       {
         "id": "Geo-2.5-I1",
         "type": "template",
         "objective": "Calculate surface areas and volumes",
         "difficulty": "intermediate",
-        "variables": {},
-        "question": "Currently unavailable.",
-        "answer": "Answer currently unavailable."
+        "variables": {
+          "radius": { "min": 3, "max": 8 },
+          "height": { "min": 5, "max": 12 }
+        },
+        "question": "Find the volume of a cylinder with radius \\( {radius} \\) units and height \\( {height} \\) units. Use \\( \\pi \\approx 3.14 \\). Round to the nearest hundredth.",
+        "answer": "\\( {(3.14 * radius * radius * height).toFixed(2)} \\) cubic units",
+        "draw": "cylinder"
       }
     ]
   },

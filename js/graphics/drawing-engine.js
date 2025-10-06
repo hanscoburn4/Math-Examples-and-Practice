@@ -449,6 +449,236 @@ class DrawingEngine {
   }
 
   /**
+   * Draw angles (for angle measure problems)
+   */
+  drawAngles(canvas, vars) {
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 80;
+
+    // Draw angle rays
+    ctx.strokeStyle = "#34495e";
+    ctx.lineWidth = 2;
+
+    // First angle
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(centerX + radius * 1.5, centerY);
+    ctx.stroke();
+
+    const angle1 = (vars.angle1 || 45) * Math.PI / 180;
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(centerX + radius * 1.5 * Math.cos(angle1), centerY - radius * 1.5 * Math.sin(angle1));
+    ctx.stroke();
+
+    // Draw angle arc
+    ctx.strokeStyle = "#3498db";
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 40, 0, -angle1, true);
+    ctx.stroke();
+
+    // Label
+    ctx.fillStyle = "#2c3e50";
+    ctx.font = "16px Arial";
+    ctx.fillText(`${vars.angle1 || 45}°`, centerX + 50, centerY - 20);
+  }
+
+  /**
+   * Draw vertical angles
+   */
+  drawVerticalAngles(canvas, vars) {
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+
+    // Draw two intersecting lines
+    ctx.strokeStyle = "#34495e";
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.moveTo(centerX - 120, centerY - 80);
+    ctx.lineTo(centerX + 120, centerY + 80);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(centerX - 100, centerY + 60);
+    ctx.lineTo(centerX + 100, centerY - 60);
+    ctx.stroke();
+
+    // Label angles
+    ctx.fillStyle = "#2c3e50";
+    ctx.font = "16px Arial";
+    if (vars.angle1) {
+      ctx.fillText(`${vars.angle1}°`, centerX + 30, centerY - 30);
+      ctx.fillText(`${vars.angle1}°`, centerX - 50, centerY + 40);
+    }
+  }
+
+  /**
+   * Draw rectangle (for perimeter problems)
+   */
+  drawRectangle(canvas, vars) {
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const width = (vars.width || 6) * 25;
+    const height = (vars.height || 4) * 25;
+    const startX = (canvas.width - width) / 2;
+    const startY = (canvas.height - height) / 2;
+
+    ctx.strokeStyle = "#34495e";
+    ctx.lineWidth = 2;
+
+    ctx.strokeRect(startX, startY, width, height);
+
+    // Labels
+    ctx.fillStyle = "#2c3e50";
+    ctx.font = "14px Arial";
+    ctx.fillText(`${vars.width || 6}`, startX + width/2 - 10, startY - 10);
+    ctx.fillText(`${vars.height || 4}`, startX - 20, startY + height/2);
+  }
+
+  /**
+   * Draw rectangular prism (for volume problems)
+   */
+  drawRectangularPrism(canvas, vars) {
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const w = (vars.width || 4) * 15;
+    const h = (vars.height || 3) * 15;
+    const d = (vars.depth || 5) * 15;
+    const startX = 100;
+    const startY = 150;
+
+    ctx.strokeStyle = "#34495e";
+    ctx.lineWidth = 2;
+
+    // Draw front face
+    ctx.strokeRect(startX, startY, w, h);
+
+    // Draw back face (offset for 3D effect)
+    ctx.strokeRect(startX + d, startY - d, w, h);
+
+    // Connect corners
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(startX + d, startY - d);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(startX + w, startY);
+    ctx.lineTo(startX + w + d, startY - d);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(startX, startY + h);
+    ctx.lineTo(startX + d, startY + h - d);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(startX + w, startY + h);
+    ctx.lineTo(startX + w + d, startY + h - d);
+    ctx.stroke();
+
+    // Labels
+    ctx.fillStyle = "#2c3e50";
+    ctx.font = "14px Arial";
+    ctx.fillText(`l=${vars.width || 4}`, startX + w/2 - 15, startY + h + 20);
+    ctx.fillText(`w=${vars.depth || 5}`, startX + w + d/2, startY - d - 5);
+    ctx.fillText(`h=${vars.height || 3}`, startX - 25, startY + h/2);
+  }
+
+  /**
+   * Draw cylinder (for volume problems)
+   */
+  drawCylinder(canvas, vars) {
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const r = (vars.radius || 3) * 20;
+    const h = (vars.height || 5) * 20;
+    const centerX = canvas.width / 2;
+    const topY = 50;
+
+    ctx.strokeStyle = "#34495e";
+    ctx.lineWidth = 2;
+
+    // Draw top ellipse
+    ctx.beginPath();
+    ctx.ellipse(centerX, topY, r, r/3, 0, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Draw sides
+    ctx.beginPath();
+    ctx.moveTo(centerX - r, topY);
+    ctx.lineTo(centerX - r, topY + h);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(centerX + r, topY);
+    ctx.lineTo(centerX + r, topY + h);
+    ctx.stroke();
+
+    // Draw bottom ellipse
+    ctx.beginPath();
+    ctx.ellipse(centerX, topY + h, r, r/3, 0, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Labels
+    ctx.fillStyle = "#2c3e50";
+    ctx.font = "14px Arial";
+    ctx.fillText(`r=${vars.radius || 3}`, centerX + r + 10, topY + h/2);
+    ctx.fillText(`h=${vars.height || 5}`, centerX - 30, topY + h/2);
+  }
+
+  /**
+   * Draw coordinate transformation (for preimage/image problems)
+   */
+  drawTransformation(canvas, vars) {
+    const ctx = canvas.getContext("2d");
+    const { width, height } = canvas;
+    const xMid = width / 2;
+    const yMid = height / 2;
+    const scale = 25;
+
+    this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+
+    // Draw preimage triangle
+    const x1 = vars.x1 || 1;
+    const y1 = vars.y1 || 1;
+    const x2 = vars.x2 || 4;
+    const y2 = vars.y2 || 1;
+    const x3 = vars.x3 || 2;
+    const y3 = vars.y3 || 4;
+
+    ctx.strokeStyle = "#3498db";
+    ctx.fillStyle = "rgba(52, 152, 219, 0.2)";
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.moveTo(xMid + x1 * scale, yMid - y1 * scale);
+    ctx.lineTo(xMid + x2 * scale, yMid - y2 * scale);
+    ctx.lineTo(xMid + x3 * scale, yMid - y3 * scale);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // Labels for preimage
+    ctx.fillStyle = "#2c3e50";
+    ctx.font = "12px Arial";
+    ctx.fillText(`A(${x1},${y1})`, xMid + x1 * scale + 5, yMid - y1 * scale - 5);
+    ctx.fillText(`B(${x2},${y2})`, xMid + x2 * scale + 5, yMid - y2 * scale - 5);
+    ctx.fillText(`C(${x3},${y3})`, xMid + x3 * scale + 5, yMid - y3 * scale - 5);
+  }
+
+  /**
    * Draw absolute value function
    */
   drawAbsoluteValue(canvas, vars, xMin = null, xMax = null) {
@@ -808,6 +1038,24 @@ class DrawingEngine {
         break;
       case "circle":
         this.drawCircle(canvas, vars);
+        break;
+      case "angles":
+        this.drawAngles(canvas, vars);
+        break;
+      case "verticalAngles":
+        this.drawVerticalAngles(canvas, vars);
+        break;
+      case "rectangle":
+        this.drawRectangle(canvas, vars);
+        break;
+      case "rectangularPrism":
+        this.drawRectangularPrism(canvas, vars);
+        break;
+      case "cylinder":
+        this.drawCylinder(canvas, vars);
+        break;
+      case "transformation":
+        this.drawTransformation(canvas, vars);
         break;
       default:
         console.warn(`Unknown draw type: ${drawType}`);

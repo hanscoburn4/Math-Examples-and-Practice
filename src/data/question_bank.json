@@ -1095,6 +1095,107 @@
         },
         "draw": "circleChord"
       }
+    ],
+    "Module 2": [
+      {
+        "id": "Geo-2.1-B1",
+        "type": "template",
+        "objective": "Calculate angle measures using the definitions of congruent angles, bisectors, and vertical angles",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.1-I1",
+        "type": "template",
+        "objective": "Calculate angle measures using the definitions of congruent angles, bisectors, and vertical angles",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.2-B1",
+        "type": "template",
+        "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.2-I1",
+        "type": "template",
+        "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.3-B1",
+        "type": "template",
+        "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.3-I1",
+        "type": "template",
+        "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.3-A1",
+        "type": "template",
+        "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
+        "difficulty": "advanced",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.4-B1",
+        "type": "template",
+        "objective": "Calculate the coordinates of vertices of images given a preimage",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.4-I1",
+        "type": "template",
+        "objective": "Calculate the coordinates of vertices of images given a preimage",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.5-B1",
+        "type": "template",
+        "objective": "Calculate surface areas and volumes",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-2.5-I1",
+        "type": "template",
+        "objective": "Calculate surface areas and volumes",
+        "difficulty": "intermediate",
+        "variables": {},
+        "question": "Currently unavailable.",
+        "answer": "Answer currently unavailable."
+      }
     ]
   },
 

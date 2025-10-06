@@ -68,7 +68,7 @@ class QuestionGenerator {
 
   /**
    * Generate a question instance from a template
-   * Updated to use math.js instead of answerFormula
+   * Updated to handle LaTeX exponents and expression evaluation
    */
   generateQuestion(template) {
     // Deep clone the template
@@ -84,22 +84,18 @@ class QuestionGenerator {
     );
 
     // Wrap exponents in questionText for proper MathJax rendering
-    // Matches things like x^12, y^3, (ab)^10, 5^4 etc.
     questionText = questionText.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
       return `${base}^{${exp}}`;
     });
 
-    // Generate answer using math.js expressions
+    // Generate answer
     let answer = "";
     if (question.answerExpression) {
       try {
-        // Check if answerExpression contains LaTeX syntax
         if (question.answerExpression.includes('\\') || question.answerExpression.includes('^{')) {
-          // Treat as literal LaTeX string for display
           answer = window.QuestionUtils.replaceTemplateVariables(question.answerExpression, variables);
         } else {
           answer = window.QuestionUtils.evaluateMathExpression(question.answerExpression, variables);
-          // Wrap all exponents (any base) so MathJax renders correctly
           answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
             return `${base}^{${exp}}`;
           });
@@ -109,16 +105,12 @@ class QuestionGenerator {
         answer = "Error evaluating answer expression";
       }
     } else if (question.answerFormula) {
-      // Legacy support for old answerFormula - convert to answerExpression
       console.warn(`Question ${question.id} uses deprecated 'answerFormula'. Please update to 'answerExpression'.`);
       try {
-        // Check if answerFormula contains LaTeX syntax
         if (question.answerFormula.includes('\\') || question.answerFormula.includes('^{')) {
-          // Treat as literal LaTeX string for display
           answer = window.QuestionUtils.replaceTemplateVariables(question.answerFormula, variables);
         } else {
           answer = window.QuestionUtils.evaluateMathExpression(question.answerFormula, variables);
-          // Wrap all exponents (any base) so MathJax renders correctly
           answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
             return `${base}^{${exp}}`;
           });
@@ -130,42 +122,36 @@ class QuestionGenerator {
     } else if (question.answer) {
       answer = window.QuestionUtils.replaceTemplateVariables(question.answer, variables);
       
-      // Evaluate any remaining expressions in the answer
+      // Evaluate single-brace expressions { ... }
       answer = answer.replace(/\{([^}]+)\}/g, (match, expr) => {
         try {
-          // Trim whitespace and ensure we only pass the inner content
           const cleanExpr = expr.trim();
-          // Check if expression contains LaTeX syntax
           if (cleanExpr.includes('\\') || cleanExpr.includes('^{')) {
-            // Return as-is for LaTeX expressions
-            return cleanExpr;
+            return cleanExpr; // treat as literal LaTeX
           } else {
             return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
           }
         } catch (e) {
-          console.error(`Failed to evaluate expression in answer: "${cleanExpr}" in answer with variables:`, variables, e);
+          console.error(`Failed to evaluate expression in answer: "${expr}" with variables:`, variables, e);
           return match;
         }
       });
       
-      // Evaluate expressions marked with double curly braces {{...}}
+      // Evaluate double-brace expressions {{ ... }}
       answer = answer.replace(/\{\{([^}]+)\}\}/g, (match, expr) => {
         try {
           const cleanExpr = expr.trim();
           return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
         } catch (e) {
-          console.error(`Failed to evaluate double-brace expression: "${cleanExpr}" with variables:`, variables, e);
+          console.error(`Failed to evaluate double-brace expression: "${expr}" with variables:`, variables, e);
           return match;
         }
       });
-      
-      // Only wrap exponents if not already formatted as MathJax block
-      if (!answer.includes('\\(') && !answer.includes('\\)')) {
-        // Wrap all exponents (any base) so MathJax renders correctly
-        answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
-          return `${base}^{${exp}}`;
-        });
-      }
+
+      // Ensure exponents are wrapped properly for MathJax
+      answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+        return `${base}^{${exp}}`;
+      });
     }
 
     return {

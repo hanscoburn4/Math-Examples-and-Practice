@@ -565,7 +565,7 @@
           "n": { "min": -5, "max": 5, "exclude":[0,1,"m"] }
         },
         "question": "Calculate. Leave your answer in scientific notation: \\( ({m}\\times10^{a}) \\cdot ({n}\\times10^{b}) \\).",
-        "answer": "\\({m * n}\\times10^{ a + b }\\)"
+        "answer": "\\({m * n}\\times10^{ a + b }\\) (You may need to manually convert to proper S.N.)"
       },
       {
         "id": "ALG1-8.1-A1",
@@ -575,7 +575,7 @@
         "variables": {
           "a": { "min": 2, "max": 10 },
           "b": { "min": 2, "max": 5 },
-          "c": { "min": 2, "max": 5 },
+          "c": { "min": 2, "max": 4 },
           "d": { "min": 2, "max": 5 },
           "e": { "min": 2, "max": 5 },
           "f": { "min": 2, "max": 3 },
@@ -584,7 +584,7 @@
           "n": { "min": -3, "max": 4, "exclude":[0,1,"m"] }
         },
         "question": "Simplify: \\( ({m}x^{ {a} }y^{b})^{c}({n}xy^{d}z^{e})^{f} \\).",
-        "answer": "\\({m ** c * n ** f}x^{ a * c + f }y^{ b * c + d * f }z^{ e * f }\\)"
+        "answer": "\\({m^c * n^f}x^{ a * c + f }y^{ b * c + d * f }z^{ e * f }\\)"
       },
       {
         "id": "ALG1-8.2-B1",
@@ -610,15 +610,15 @@
           "a": { "min": 2, "max": 9 },
           "b": { "min": 2, "max": 5 },
           "c": { "min": 2, "max": 3 },
-          "d": { "min": 2, "max": 5, "exclude":["a"] },
-          "e": { "min": 2, "max": 5, "exclude":["b"] },
-          "f": { "min": 2, "max": 5, "exclude":["c"] },
+          "d": { "min": 2, "max": 5, "exclude": ["a"] },
+          "e": { "min": 2, "max": 5, "exclude": ["b"] },
+          "f": { "min": 2, "max": 5, "exclude": ["c"] },
           "g": { "min": 2, "max": 5 },
-          "m": { "values": [-6,-4,-2,2,4,6] },
-          "n": { "values": [-6,-3,3,6], "exclude":["m"] }
+          "m": { "values": [-6, -4, -2, 2, 4, 6] },
+          "n": { "values": [-6, -3, 3, 6], "exclude": ["m"] }
         },
-        "question": "Simplify: \\( \\big(\\frac{{m}x^{a}y^{b}z^{c}}{{n}x^{d}y^{e}z^{f}}\\big)^{g} \\).",
-        "answer": "\\( {(m/n) ** g} x^{(a - d) * g} y^{ (b - e) * g } z^{ (c - f) * g } \\)"
+        "question": "Simplify: \\( \\bigg( \\frac{{m}x^{a}y^{b}z^{c}}{{n}x^{d}y^{e}z^{f}} \\bigg)^{g} \\).",
+        "answer": "oh no!"
       },
       {
         "id": "ALG1-8.3-B1",
@@ -652,7 +652,7 @@
 
         },
         "question": "Simplify so that there are no negative exponents: \\( \\big(\\frac{{a}x^{c}y^{d}z^{e} }{ {b}x^{f}y^{g}z^{h} }\\big)^{i} \\).",
-        "answer": "\\( ({a/b})^{i} x^{(c - f) * i} y^{(d - g) * i} z^{(e - h) * i} \\)"
+        "answer": "\\( {a/b}^{i} x^{(c - f) * i} y^{(d - g) * i} z^{(e - h) * i} \\)"
       },
       {
         "id": "ALG1-8.4-B1",
@@ -661,14 +661,14 @@
         "difficulty": "basic",
         "variables": {
           "a": { "min": 1, "max": 6 },
-          "b": { "min": 2, "max": 4, "exclude":[0,1,-1] },
-          "c": { "min": 1, "max": 6, "exclude":["a"] },
-          "d": { "min": 2, "max": 4, "exclude":["b"] },
-          "base1": { "formula": "a**b"},
-          "base2": { "formula": "c**b"}
+          "b": { "min": 2, "max": 4, "exclude": [0, 1, -1] },
+          "c": { "min": 1, "max": 6, "exclude": ["a"] },
+          "d": { "min": 2, "max": 4, "exclude": ["b"] },
+          "base1": { "formula": "a**b" },
+          "base2": { "formula": "c**b" }
         },
-        "question": "Simplify: \\( \\big(\\frac{{base1}}{{base2}}\\big)^{\\frac{d}{b}} \\).",
-        "answer": "\\( \\frac{a**d}{c**d} \\) or \\( \\sqrt[b] { \\frac{a^{d}}{c^{d}} } \\)"
+        "question": "Simplify: \\( \\Big(\\frac{{base1}}{{base2}}\\Big)^{\\tfrac{ {d} }{ {b} }} \\).",
+        "answer": "\\( \\frac{ {a}^{ {d} } }{ {c}^{ {d} } } \\) or \\( \\sqrt[{b}] { \\tfrac{ {a}^{ {d} } }{ {c}^{ {d} } } } \\)"
       },
       {
         "id": "ALG1-8.4-I1",
@@ -677,13 +677,13 @@
         "difficulty": "intermediate",
         "variables": {
           "a": { "min": 2, "max": 9 },
-          "b": { "min": 2, "max": 9, "exclude":["a"] },
-          "c": { "min": 2, "max": 9, "exclude":["a"] },
-          "d": { "min": 2, "max": 9, "exclude":["c"] },
+          "b": { "min": 2, "max": 9, "exclude": ["a"] },
+          "c": { "min": 2, "max": 9, "exclude": ["a"] },
+          "d": { "min": 2, "max": 9, "exclude": ["c"] },
           "e": { "min": 2, "max": 4 }
         },
-        "question": "Simplify by writting your answer in radical form: \\( \\big(x^{\\frac{{a}}{b}} \\cdot x^{\\frac{{c}}{d}}\\big)^{e} \\).",
-        "answer": "\\( x^{ (a/b + c/d) * e } \\) or \\( \\sqrt[{b*d}] { x^{ (a*d + b*c) * e } } \\)"
+        "question": "Simplify by writing your answer in radical form: \\( \\big(x^{\\tfrac{{a}}{{b}}} \\cdot x^{\\tfrac{{c}}{{d}}}\\big)^{ {e} } \\).",
+        "answer": "\\( x^{ ({a}/{b} + {c}/{d})\\cdot{e} } \\) or \\( \\sqrt[{ {b}\\cdot{d} }] { x^{ ({a}\\cdot{d} + {b}\\cdot{c})\\cdot{e} } } \\)"
       },
       {
         "id": "ALG1-8.5-B1",
@@ -697,7 +697,7 @@
           "num1": { "formula": "a * c" },
           "num2": { "formula": "a * b * b" }
         },
-        "question": "Simplify: \\( \\sqrt{num1} \\cdot \\sqrt{num2} \\).",
+        "question": "Simplify: \\( \\sqrt{{num1}} \\cdot \\sqrt{{num2}} \\).",
         "answer": "\\( {a * b} \\sqrt{c} \\)"
       },
       {
@@ -706,17 +706,17 @@
         "objective": "Simplifying Radical Expressions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "values": [2,3,5,7,11] },
-          "b": { "values": [2,3,5,7], "exclude":["a"] },
+          "a": { "values": [2, 3, 5, 7, 11] },
+          "b": { "values": [2, 3, 5, 7], "exclude": ["a"] },
           "c": { "min": 2, "max": 7 },
-          "d": { "min": 2, "max": 7, "exclude":["c"] },
-          "e": { "min": 2, "max": 7, "exclude":["c","d"] },
-          "f": { "min": 2, "max": 7, "exclude":["c","d","e"] },
+          "d": { "min": 2, "max": 7, "exclude": ["c"] },
+          "e": { "min": 2, "max": 7, "exclude": ["c", "d"] },
+          "f": { "min": 2, "max": 7, "exclude": ["c", "d", "e"] },
           "num1": { "formula": "a * b" },
           "num2": { "formula": "a * b * b" }
         },
-        "question": "Simplify: \\(\\sqrt[3]{{num1}x^{c}y^{d}} \\cdot \\sqrt[3]{{num2}x^{e}y^{f}} \\).",
-        "answer": "\\( {a * b} x^{(c + e) / 3} y^{(d + f) / 3} \\)"
+        "question": "Simplify: \\( \\sqrt[3]{ {num1}x^{c}y^{d} } \\cdot \\sqrt[3]{ {num2}x^{e}y^{f} } \\).",
+        "answer": "\\( {a}\\,{b} \\; x^{ ({c}+{e})/3 } y^{ ({d}+{f})/3 } \\)"
       },
       {
         "id": "ALG1-8.5-A1",
@@ -725,17 +725,17 @@
         "difficulty": "advanced",
         "variables": {
           "a": { "min": 2, "max": 6 },
-          "b": { "values": [2,3,5,7,11], "exclude":["a"] },
+          "b": { "values": [2, 3, 5, 7, 11], "exclude": ["a"] },
           "c": { "min": 3, "max": 4 },
-          "d": { "min": -9, "max": 9, "exclude":[0,1,-1] },
-          "e": {  "min": -9, "max": 9, "exclude":[0,1,-1]},
-          "f": {  "min": -9, "max": 9, "exclude":[0,1,-1] },
-          "g": {  "min": -9, "max": 9, "exclude":[0,1,-1]},
+          "d": { "min": -9, "max": 9, "exclude": [0, 1, -1] },
+          "e": { "min": -9, "max": 9, "exclude": [0, 1, -1] },
+          "f": { "min": -9, "max": 9, "exclude": [0, 1, -1] },
+          "g": { "min": -9, "max": 9, "exclude": [0, 1, -1] },
           "num": { "formula": "a * b" },
-          "den": { "formula": "a **(c+1)" }
+          "den": { "formula": "a ** (c+1)" }
         },
-        "question": "Simplify: \\(\\sqrt[{c}]{\\frac{{num}x^{d}y^{e}z^{f}}{ {den}x^{g}}} \\).",
-        "answer": "\\( \\frac{b}{a} x^{(d - a * g) / c} y^{e / c} z^{f / c} \\)"
+        "question": "Simplify: \\( \\sqrt[{c}]{ \\tfrac{ {num}x^{d}y^{e}z^{f} }{ {den}x^{g} } } \\).",
+        "answer": "\\( \\tfrac{ {b} }{ {a} } x^{ ({d}-{a}\\cdot{g})/{c} } y^{ {e}/{c} } z^{ {f}/{c} } \\)"
       },
       {
         "id": "ALG1-8.6-B1",
@@ -949,7 +949,7 @@
           "x1": { "min": -20, "max": 20 },
           "x2": { "min": -20, "max": 20, "exclude": ["x1"] },
           "a": { "min":2, "max":5 },
-          "b": { "min":3, "max":10, "exclude":["a"] }
+          "b": { "min":5, "max":10, "exclude":["a"] }
         },
         "question": "Find the point that is \\( \\frac{{{a}}}{{{b}}} \\) of the way from \\( {x1} \\) to \\( {x2} \\).",
         "answer": "Point = \\( {x1 + (a/b)*(x2 - x1)} \\)"
@@ -962,8 +962,8 @@
         "variables": { 
           "x1": { "min": -20, "max": 20 },
           "x2": { "min": -20, "max": 20, "exclude": ["x1"] },
-          "a": { "min":2, "max":5 },
-          "b": { "min":3, "max":10, "exclude":["a"] }
+          "a": { "min":2, "max":7 },
+          "b": { "min":2, "max":7, "exclude":["a"] }
         },
         "question": "Find the point that partitions the line segment from \\( {x1} \\) to \\( {x2} \\) in the ratio \\( {a}:{b} \\).",
         "answer": "Point = \\( {(a*x2 + b*x1)/(a + b)} \\)"
@@ -979,7 +979,7 @@
           "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
           "y2": { "min": -10, "max": 10, "exclude": ["y1"] },
           "a": { "min":2, "max":5 },
-          "b": { "min":3, "max":10, "exclude":["a"] }
+          "b": { "min":5, "max":10, "exclude":["a"] }
         },
         "question": "Find the point that is \\( \\frac{{{a}}}{{{b}}} \\) of the way from \\( ({x1}, {y1}) \\) to \\( ({x2}, {y2}) \\).",
         "answer": "Point = \\( ({x1 + (a/b)*(x2 - x1)}, {y1 + (a/b)*(y2 - y1)}) \\)"
@@ -994,8 +994,8 @@
           "y1": { "min": -10, "max": 10 },
           "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
           "y2": { "min": -10, "max": 10, "exclude": ["y1"] },
-          "a": { "min":2, "max":5 },
-          "b": { "min":3, "max":10, "exclude":["a"] }
+          "a": { "min":2, "max":7 },
+          "b": { "min":2, "max":7, "exclude":["a"] }
         },
         "question": "Find the point that partitions the line segment from \\( ({x1}, {y1}) \\) to \\( ({x2}, {y2}) \\) in the ratio \\( {a}:{b} \\).",
         "answer": "Point = \\( ({(a*x2 + b*x1)/(a + b)}, {(a*y2 + b*y1)/(a + b)}) \\)"
@@ -1006,8 +1006,8 @@
         "objective": "Find the coordinate of a midpoint",
         "difficulty": "basic",
         "variables": { 
-          "x1": { "min": -10, "max": 10 },
-          "x2": { "min": -10, "max": 10, "exclude": ["x1"] }
+          "x1": { "min": -10, "max": 10, "exclude": [0] },
+          "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] }
         },
         "question": "Find the midpoint of the line segment from \\( {x1} \\) to \\( {x2} \\).",
         "answer": "Midpoint = \\( {(x1 + x2)/2} \\)"      
@@ -1018,10 +1018,10 @@
         "objective": "Find the coordinate of a midpoint",
         "difficulty": "intermediate",
         "variables": { 
-          "x1": { "min": -10, "max": 10 },
-          "y1": { "min": -10, "max": 10 },
-          "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
-          "y2": { "min": -10, "max": 10, "exclude": ["y1"] }
+          "x1": { "min": -10, "max": 10, "exclude": [0] },
+          "y1": { "min": -10, "max": 10, "exclude": [0] },
+          "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] },
+          "y2": { "min": -10, "max": 10, "exclude": [0,"y1"] }
         },
         "question": "Find the midpoint of the line segment from \\( ({x1}, {y1}) \\) to \\( ({x2}, {y2}) \\).",
         "answer": "Midpoint = \\( ({(x1 + x2)/2}, {(y1 + y2)/2}) \\)"
@@ -1032,10 +1032,10 @@
         "objective": "Find the coordinate of a midpoint",
         "difficulty": "advanced",
         "variables": { 
-          "x1": { "min": -10, "max": 10 },
-          "y1": { "min": -10, "max": 10 },
-          "x2": { "min": -10, "max": 10, "exclude": ["x1"] },
-          "y2": { "min": -10, "max": 10, "exclude": ["y1"] }
+          "x1": { "min": -10, "max": 10, "exclude": [0] },
+          "y1": { "min": -10, "max": 10, "exclude": [0] },
+          "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] },
+          "y2": { "min": -10, "max": 10, "exclude": [0,"y1"] }
         },
         "question": "Find the coordinates of points B given that M is the midpoint of line segment AB and M = \\( ({x1}, {y1}) \\) and A = \\( ({x2}, {y2}) \\).",
         "answer": "B = \\( ({2*x1 - x2}, {2*y1 - y2}) \\)"
@@ -1311,7 +1311,68 @@
         },
         "question": "Find the coordinates of any extrema for the function \\( y = {a}x^3 + {b}x^2 + {c}x + {d} \\).",
         "answer": "Use graphing calculator to evaluate the extrema."
+      },
+
+
+
+      {
+         "id": "ALG2-1.7-B1",
+        "type": "template",
+        "objective": "Transform Graphs of Functions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "values": [1] },
+          "b": { "values": [0] },
+          "c": { "values": [0]},
+          "h": { "min": -5, "max": 5, "exclude": [0]},
+          "k": { "min": -5, "max": 5, "exclude": [0]}
+        },
+        "question": "Given the parent function \\( f(x) = x^2\\), graph the function based on the transformations: \\( g(x) = (x - ({h}))^2 + ({k})\\)",
+        "draw": "parabola",
+        "showGraphInQuestion": true,
+        "showGraphInAnswer": true,
+        "answer": "Teacher will need to manually draw the transformation for \\( g(x) = (x - ({h}))^2 + ({k})\\)"
+      },
+      {
+         "id": "ALG2-1.7-I1",
+        "type": "template",
+        "objective": "Transform Graphs of Functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "values": [1] },
+          "b": { "values": [0] },
+          "c": { "values": [0]},
+          "d": { "min": -3, "max": 3, "exclude": [0,1]},
+          "h": { "min": -5, "max": 5, "exclude": [0]},
+          "k": { "min": -5, "max": 5, "exclude": [0]}
+        },
+        "question": "Given the parent function \\( f(x) = |x|\\), graph the function based on the transformations: \\( g(x) = {d}|x - ({h})| + ({k})\\)",
+        "draw": "absoluteValue",
+        "showGraphInQuestion": true,
+        "showGraphInAnswer": true,
+        "answer": "Teacher will need to manually draw the transformation for \\( g(x) = {d}|x - ({h})| + ({k})\\)"
+      },
+      {
+         "id": "ALG2-1.7-A1",
+        "type": "template",
+        "objective": "Transform Graphs of Functions",
+        "difficulty": "advanced",
+        "variables": {
+          "a": { "values": [1] },
+          "b": { "values": [0] },
+          "c": { "values": [0]},
+          "d": { "min": -3, "max": 3, "exclude": [0,1]},
+          "e": { "min": -3, "max": 3, "exclude": [0,1]},
+          "h": { "min": -5, "max": 5, "exclude": [0]},
+          "k": { "min": -5, "max": 5, "exclude": [0]}
+        },
+        "question": "Given the parent function \\( f(x) = \\sqrt{x}\\), graph the function based on the transformations: \\( g(x) = {d}\\sqrt{{e}(x - ({h})} + ({k})\\)",
+        "draw": "squareRoot",
+        "showGraphInQuestion": true,
+        "showGraphInAnswer": true,
+        "answer": "Teacher will need to manually draw the transformation for \\( g(x) = {d}\\sqrt{{e}(x - ({h})} + ({k})\\)"
       }
+
     ],
     "Chapter 4": [
       {
@@ -1326,7 +1387,8 @@
           "b": { "min": -3, "max": 3, "exclude": [0] },
           "c": { "min": -2, "max": 2, "exclude": [0] }
         },
-        "draw": "parabola"}
+        "draw": "parabola"
+      }
     ]
   },
 

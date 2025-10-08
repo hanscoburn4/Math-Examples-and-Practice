@@ -872,7 +872,7 @@
   },
 
   "Geometry": {
-    "Chapter 1": [
+    "Module 1": [
       {
         "id": "Geo-1.2-B1",
         "type": "template",
@@ -1041,61 +1041,6 @@
         "answer": "B = \\( ({2*x1 - x2}, {2*y1 - y2}) \\)"
       }
     ],
-    "Chapter 2": [
-      {"id": "G-2.1-B1",
-        "type": "template",
-        "objective": "Find the hypotenuse of a right triangle",
-        "difficulty": "basic",
-        "variables": {
-          "a": { "min": 3, "max": 8 },
-          "b": { "min": 3, "max": 8 }
-        },
-        "question": "Find the hypotenuse of a right triangle with legs {a} and {b}.",
-        "draw": "rightTriangle",
-        "answer": "Hypotenuse = \\( \\sqrt{{a}^2 + {b}^2} = {(sqrt(a*a + b*b)).toFixed(2)} \\)"
-      },
-      {
-        "id": "G-2.1-B1",
-        "type": "template",
-        "objective": "Find the area of a triangle",
-        "difficulty": "basic",
-        "variables": {
-          "base": { "min": 3, "max": 10 },
-          "height": { "min": 3, "max": 10 }
-        },
-        "question": "Find the area of a triangle with base {base} cm and height {height} cm.",
-        "answer": "Area = \\( \\frac{1}{2}({base})({height}) = {0.5*base*height} \\text{ cm}^2 \\)"
-      }
-    ],
-    "Chapter 3": [
-      {
-        "id": "G-3.1-I1",
-        "type": "template",
-        "objective": "Calculate distance between two points",
-        "difficulty": "intermediate",
-        "variables": {
-          "x1": { "min": -10, "max": 10 },
-          "y1": { "min": -10, "max": 10 },
-          "x2": { "min": -10, "max": 10 },
-          "y2": { "min": -10, "max": 10 }
-        },
-        "question": "Find the distance between the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
-        "answer": "Distance = \\( \\sqrt{{(x2 - x1)}^2 + {(y2 - y1)}^2} = {(sqrt((x2 - x1)**2 + (y2 - y1)**2)).toFixed(2)} \\)"
-      },
-      {
-        "id": "G-2.3-I1",
-        "type": "template",
-        "objective": "Find chord length given radius and distance from center",
-        "difficulty": "intermediate",
-        "question": "A circle has radius {r} and a chord {d} units from the center. Find the length of the chord.",
-        "answer": "Chord length = 2 * sqrt({r}^2 - {d}^2)",
-        "variables": {
-          "r": { "min": 5, "max": 10 },
-          "d": { "min": 1, "max": 4 }
-        },
-        "draw": "circleChord"
-      }
-    ],
     "Module 2": [
       {
         "id": "Geo-2.1-B1",
@@ -1133,15 +1078,43 @@
         "answer": "\\( {90 - angle1}^\\circ \\)"
       },
       {
+        "id": "Geo-2.2-B1",
+        "type": "template",
+        "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
+        "difficulty": "basic",
+        "variables": {
+          "angle1": { "min": 15, "max": 155 }
+        },
+        "question": "Two angles are supplementary. If one angle measures \\( {angle1}^\\circ \\), what is the measure of its supplementary?",
+        "answer": "\\( {180 - angle1}^\\circ \\)"
+      },
+      {
         "id": "Geo-2.2-I1",
         "type": "template",
         "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
         "difficulty": "intermediate",
         "variables": {
-          "angle1": { "min": 45, "max": 135 }
+          "a": { "values": [2, 4, 6, 8, 10, 12] },
+          "b": { "values": [2, 4, 6, 8, 10, 12] },
+          "c": { "values": [2, 4, 6, 8, 10, 12], "exclude": ["a"] },
+          "x": { "formula": "(180-b)/(a+c)" }
         },
-        "question": "Two angles are supplementary. If one angle measures \\( {angle1}^\\circ \\), what is the measure of its supplement?",
-        "answer": "\\( {180 - angle1}^\\circ \\)"
+        "question": "Two angles are supplementary. If one angle measures \\( ({a}x+{b})^\\circ \\) and the other angle measures \\( ({c}x)^\\circ \\), what is the measure of each angle?",
+        "answer": "\\( {a*x+b}^\\circ \\) and \\( {c*x}^\\circ \\)"
+      },
+      {
+        "id": "Geo-2.2-I2",
+        "type": "template",
+        "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "values": [2, 4, 6, 8, 10, 12] },
+          "b": { "values": [2, 4, 6, 8, 10, 12] },
+          "c": { "values": [2, 4, 6, 8, 10, 12], "exclude": ["a"] },
+          "x": { "formula": "(90-b)/(a+c)" }
+        },
+        "question": "Two angles are complementary. If one angle measures \\( ({a}x)^\\circ \\) and the other angle measures \\( ({b}+{c}x)^\\circ \\), what is the measure of each angle?",
+        "answer": "\\( {a*x+b}^\\circ \\) and \\( {c*x}^\\circ \\)"
       },
       {
         "id": "Geo-2.3-B1",
@@ -1237,6 +1210,59 @@
         "question": "Find the volume of a cylinder with radius \\( {radius} \\) units and height \\( {height} \\) units. Use \\( \\pi \\approx 3.14 \\). Round to the nearest hundredth.",
         "answer": "\\( {(3.14 * radius * radius * height).toFixed(2)} \\) cubic units",
         "draw": "cylinder"
+      }
+    ],
+    "Under Construction": [
+      {"id": "G-2.1-B1",
+        "type": "template",
+        "objective": "Find the hypotenuse of a right triangle",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 3, "max": 8 },
+          "b": { "min": 3, "max": 8 }
+        },
+        "question": "Find the hypotenuse of a right triangle with legs {a} and {b}.",
+        "draw": "rightTriangle",
+        "answer": "Hypotenuse = \\( \\sqrt{{a}^2 + {b}^2} = {(sqrt(a*a + b*b)).toFixed(2)} \\)"
+      },
+      {
+        "id": "G-2.1-B1",
+        "type": "template",
+        "objective": "Find the area of a triangle",
+        "difficulty": "basic",
+        "variables": {
+          "base": { "min": 3, "max": 10 },
+          "height": { "min": 3, "max": 10 }
+        },
+        "question": "Find the area of a triangle with base {base} cm and height {height} cm.",
+        "answer": "Area = \\( \\frac{1}{2}({base})({height}) = {0.5*base*height} \\text{ cm}^2 \\)"
+      },
+      {
+        "id": "G-3.1-I1",
+        "type": "template",
+        "objective": "Calculate distance between two points",
+        "difficulty": "intermediate",
+        "variables": {
+          "x1": { "min": -10, "max": 10 },
+          "y1": { "min": -10, "max": 10 },
+          "x2": { "min": -10, "max": 10 },
+          "y2": { "min": -10, "max": 10 }
+        },
+        "question": "Find the distance between the points \\( ({x1}, {y1}) \\) and \\( ({x2}, {y2}) \\).",
+        "answer": "Distance = \\( \\sqrt{{(x2 - x1)}^2 + {(y2 - y1)}^2} = {(sqrt((x2 - x1)**2 + (y2 - y1)**2)).toFixed(2)} \\)"
+      },
+      {
+        "id": "G-2.3-I1",
+        "type": "template",
+        "objective": "Find chord length given radius and distance from center",
+        "difficulty": "intermediate",
+        "question": "A circle has radius {r} and a chord {d} units from the center. Find the length of the chord.",
+        "answer": "Chord length = 2 * sqrt({r}^2 - {d}^2)",
+        "variables": {
+          "r": { "min": 5, "max": 10 },
+          "d": { "min": 1, "max": 4 }
+        },
+        "draw": "circleChord"
       }
     ]
   },
@@ -1547,7 +1573,7 @@
             "b": { "min": 2, "max": 7 },
             "c": { "min": 1, "max": 10}
           },
-          "question": "Represent the function as a set of ordered pairs, a mapping diagram, and a graph: \\( f(x) = {a}x^2 - {b}x + {c} \\) for \\( x = -2, -1, 0, 1, 2 \\).",
+          "question": "Represent the function as a set of ordered pairs, a table, and a graph: \\( f(x) = {a}x^2 - {b}x + {c} \\) for \\( x = -2, -1, 0, 1, 2 \\).",
           "answer": "Answer currently unavailable."
         },
         {
@@ -1561,7 +1587,7 @@
             "c": { "min": 2, "max": 7, "exclude": [0] },
             "d": { "min": 1, "max": 10, "exclude": [0] }
           },
-          "question": "Represent the function as a set of ordered pairs, a mapping diagram, and a graph: \\( f(x) = {a}x^3 - {b}x^2 - {c}x + {d}\\) for \\( x = -3, -2, -1, 0, 1, 2, 3 \\).",
+          "question": "Represent the function as a set of ordered pairs, a table, and a graph: \\( f(x) = {a}x^3 - {b}x^2 - {c}x + {d}\\) for \\( x = -3, -2, -1, 0, 1, 2, 3 \\).",
           "answer": "Answer currently unavailable."
         },
         {
@@ -1829,7 +1855,7 @@
         "objective": "Use limits to describe the end behavior of functions",
         "difficulty": "basic",
         "variables": {
-          "a": { "min": -10, "max": 10, "exclude": [0] },
+          "a": { "min": -10, "max": 10, "exclude": [0,-1,1] },
           "b": { "min": 2, "max": 3 }
         },
         "question": "Use limit notation to describe the end behavior of the power function without graphing \\( f(x) = {a}x^{b} \\).",
@@ -1841,7 +1867,7 @@
         "objective": "Use limits to describe the end behavior of functions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -10, "max": 10, "exclude": [0] },
+          "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
           "b": { "min": 2, "max": 4 },
           "c": { "min": -5, "max": 5 }
         },
@@ -1854,7 +1880,7 @@
         "objective": "Describe intervals in which a function is increasing, decreasing, or constant",
         "difficulty": "basic",
         "variables": {
-          "a": { "values": [1, -1] },
+          "a": { "values": [2, -2] },
           "b": { "min": 2, "max": 3 }
         },
         "question": "Describe the intervals in which the function \\( f(x) = {a}x^{b} \\) is increasing, decreasing, or constant.",
@@ -1866,13 +1892,11 @@
         "objective": "Describe intervals in which a function is increasing, decreasing, or constant",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -10, "max": 10, "exclude": [0] },
-          "b": { "min": -10, "max": 10, "exclude": [0, "a"] },
-          "c": { "min": -10, "max": 10, "exclude": [0, "a", "b"] },
-          "d": { "min": -10, "max": 10, "exclude": [0, "a", "b", "c"]}
+          "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+          "b": { "min": -10, "max": 10, "exclude": [0,1,-1, "a"] }
         },
-        "question": "Given the four power functions, state the end behavior: <br> \\( f(x) = {a}x^{2} \\), \\( g(x) = {b}x^{3} \\), \\( h(x) = {c}x^{4} \\), \\( k(x) = {d}x^{5} \\).",
-        "answer": "\\( f(x) \\) is even; as \\( x \\to \\infty, f(x) \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, f(x) \\to {a > 0 ? '\\infty' : '-\\infty'} \\). <br> \\( g(x) \\) is odd; as \\( x \\to \\infty, g(x) \\to {b > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, g(x) \\to {b > 0 ? '-\\infty' : '\\infty'} \\). <br> \\( h(x) \\) is even; as \\( x \\to \\infty, h(x) \\to {c > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, h(x) \\to {c > 0 ? '\\infty' : '-\\infty'} \\). <br> \\( k(x) \\) is odd; as \\( x \\to \\infty, k(x) \\to {d > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, k(x) \\to {d > 0 ? '-\\infty' : '\\infty'} \\)."
+        "question": "Given the two power functions, state the end behavior: <br> \\( f(x) = {a}x^{2} \\), \\( g(x) = {b}x^{3} \\).",
+        "answer": "\\( f(x) \\) is even; as \\( x \\to \\infty, f(x) \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, f(x) \\to {a > 0 ? '\\infty' : '-\\infty'} \\). <br> \\( g(x) \\) is odd; as \\( x \\to \\infty, g(x) \\to {b > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, g(x) \\to {b > 0 ? '-\\infty' : '\\infty'} \\)."
       },
       {
         "id": "PC-1.4c- B1",
@@ -2117,6 +2141,218 @@
         "answer": "Inverse: \\( f^{-1}(x) = {a}^2/x^2 + {b} \\). <br> Domain: \\( (0, \\infty) \\), Range: \\( ({b}, \\infty) \\)."
       }
       ],
+      "Chapter 2": [
+      { 
+        "id": "PC-2.1-B1",
+        "type": "template",
+        "objective": "Radical Functions and Equations",
+        "difficulty": "basic",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.1-I1",
+        "type": "template",
+        "objective": "Radical Functions and Equations",
+        "difficulty": "intermediate",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.1-A1",
+        "type": "template",
+        "objective": "Radical Functions and Equations",
+        "difficulty": "advanced",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.2-B1",
+        "type": "template",
+        "objective": "Polynomial Functions",
+        "difficulty": "basic",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.2-I1",
+        "type": "template",
+        "objective": "Polynomial Functions",
+        "difficulty": "intermediate",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.3-B1",
+        "type": "template",
+        "objective": "The remainder Theorem",
+        "difficulty": "basic",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.3-I1",
+        "type": "template",
+        "objective": "The remainder Theorem",
+        "difficulty": "intermediate",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.3-A1",
+        "type": "template",
+        "objective": "The remainder Theorem",
+        "difficulty": "advanced",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.4-B1",
+        "type": "template",
+        "objective": "Zeros of Polynomial Functions",
+        "difficulty": "basic",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.4-I1",
+        "type": "template",
+        "objective": "Zeros of Polynomial Functions",
+        "difficulty": "intermediate",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.4-A1",
+        "type": "template",
+        "objective": "Zeros of Polynomial Functions",
+        "difficulty": "advanced",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.5-B1",
+        "type": "template",
+        "objective": "Rational Functions",
+        "difficulty": "basic",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.5-I1",
+        "type": "template",
+        "objective": "Rational Functions",
+        "difficulty": "intermediate",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.5-A1",
+        "type": "template",
+        "objective": "Rational Functions",
+        "difficulty": "advanced",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.6-B1",
+        "type": "template",
+        "objective": "Solving Rational Equations",
+        "difficulty": "basic",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.6-I1",
+        "type": "template",
+        "objective": "Solving Rational Equations",
+        "difficulty": "intermediate",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.6-A1",
+        "type": "template",
+        "objective": "Solving Rational Equations",
+        "difficulty": "advanced",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.7-B1",
+        "type": "template",
+        "objective": "Nonlinear Inequalities",
+        "difficulty": "basic",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      },
+      { 
+        "id": "PC-2.7-I1",
+        "type": "template",
+        "objective": "Nonlinear Inequalities",
+        "difficulty": "intermediate",
+        "variables": {
+
+        },
+        "question": "",
+        "answer": ""
+      }
+
+      ],
       
       "Chapter 3": [
         {
@@ -2219,86 +2455,6 @@
           "draw": "exponential"
         }
 
-      ],
-    
-      "Chapter 2": [
-        {
-        "id": "PC-1.1-I1",
-        "type": "linearGraph",
-        "objective": "Graph linear functions",
-        "difficulty": "intermediate",
-        "variables": {
-          "m": { "values": [1, -1, 2, 0.5] },
-          "b": { "values": [0, 1, -2] }
-        },
-        "question": "Graph the linear function \\( y = {m}x + {b} \\).",
-        "answer": "A straight line with slope {m} and y-intercept {b}."
-        },
-        {
-          "id": "PC-1.1-I2",
-          "type": "parabola",
-          "objective": "Graph quadratic functions",
-          "difficulty": "intermediate",
-          "variables": {
-            "a": { "values": [1, -1, 2] },
-            "b": { "values": [0, 1, -1] },
-            "c": { "values": [0, -2, 3] }
-          },
-          "question": "Graph the quadratic function \\( y = {a}x^2 + {b}x + {c} \\).",
-          "answer": "A parabola opening {a>0?'upward':'downward'} with vertex at \\(x = -{b}/(2{a})\\)."
-        },
-        {
-          "id": "PC-1.1-I3",
-          "type": "exponential",
-          "objective": "Graph exponential functions",
-          "difficulty": "intermediate",
-          "variables": {
-            "a": { "values": [1, 2] },
-            "b": { "values": [2, 0.5] }
-          },
-          "question": "Graph the exponential function \\( y = {a} \\cdot {b}^{x} \\).",
-          "answer": "An exponential curve passing through \\((0,{a})\\) with growth factor {b}."
-        },
-        {
-          "id": "PC-1.1-I4",
-          "type": "rational",
-          "objective": "Graph rational functions",
-          "difficulty": "intermediate",
-          "variables": {
-            "a": { "values": [1, -1] },
-            "h": { "values": [0, 1] },
-            "k": { "values": [0, -2] }
-          },
-          "question": "Graph the rational function \\( y = \\frac{{a}}{{x - {h}}} + {k} \\).",
-          "answer": "A hyperbola with vertical asymptote \\(x = {h}\\) and horizontal asymptote \\(y = {k}\\)."
-        },
-        {
-          "id": "PC-1.1-I5",
-          "type": "trigSine",
-          "objective": "Graph sine functions",
-          "difficulty": "intermediate",
-          "variables": {
-            "a": { "values": [1, 2] },
-            "b": { "values": [1, 2] },
-            "c": { "values": [0, "Math.PI/2"] }
-          },
-          "question": "Graph the sine function \\( y = {a}\\sin({b}x + {c}) \\).",
-          "answer": "A sine wave with amplitude {a} and period \\( \\frac{2\\pi}{{b}} \\)."
-        },
-        {
-          "id": "PC-1.1-I6",
-          "type": "trigCosine",
-          "objective": "Graph cosine functions",
-          "difficulty": "intermediate",
-          "variables": {
-            "a": { "values": [1, 2] },
-            "b": { "values": [1, 2] },
-            "c": { "values": [0, "Math.PI/2"] }
-          },
-          "question": "Graph the cosine function \\( y = {a}\\cos({b}x + {c}) \\).",
-          "answer": "A cosine wave with amplitude {a} and period \\( \\frac{2\\pi}{{b}} \\)."
-        }
-      
       ]
     }
   

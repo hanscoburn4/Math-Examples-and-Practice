@@ -171,7 +171,7 @@ class QuestionGenerator {
     questions.forEach(q => {
       if (q.objective) objectives.add(q.objective);
     });
-    return Array.from(objectives).sort();
+    return Array.from(objectives);
   }
 
   /**

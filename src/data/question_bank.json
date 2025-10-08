@@ -2132,214 +2132,237 @@
       }
       ],
       "Chapter 2": [
-      { 
+      {
         "id": "PC-2.1-B1",
         "type": "template",
         "objective": "Radical Functions and Equations",
         "difficulty": "basic",
         "variables": {
-
+          "a": { "min": 2, "max": 8 },
+          "b": { "min": 1, "max": 5 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Solve for \\( x \\): \\( \\sqrt{x + {a}} = {b} \\)",
+        "answer": "\\( x = {b * b - a} \\)"
       },
-      { 
+      {
         "id": "PC-2.1-I1",
         "type": "template",
         "objective": "Radical Functions and Equations",
         "difficulty": "intermediate",
         "variables": {
-
+          "a": { "min": 2, "max": 5 },
+          "b": { "min": 1, "max": 4 },
+          "c": { "min": 1, "max": 3 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Solve for \\( x \\): \\( \\sqrt{{a}x - {b}} = {c} \\). Check for extraneous solutions.",
+        "answer": "\\( x = \\frac{{{c * c + b}}}{{{a}}} \\)"
       },
-      { 
+      {
         "id": "PC-2.1-A1",
         "type": "template",
         "objective": "Radical Functions and Equations",
         "difficulty": "advanced",
         "variables": {
-
+          "a": { "min": 2, "max": 4 },
+          "b": { "min": 3, "max": 6 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Solve for \\( x \\): \\( \\sqrt{x + {a}} + \\sqrt{x} = {b} \\). Verify your solution.",
+        "answer": "Square both sides and solve the resulting quadratic equation. Check all solutions in the original equation."
       },
-      { 
+      {
         "id": "PC-2.2-B1",
         "type": "template",
         "objective": "Polynomial Functions",
         "difficulty": "basic",
         "variables": {
-
+          "a": { "min": 2, "max": 5 },
+          "b": { "min": -4, "max": 4, "exclude": [0] },
+          "c": { "min": -6, "max": 6 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Find the degree and leading coefficient of the polynomial \\( f(x) = {a}x^3 + {b}x^2 + {c}x - 1 \\)",
+        "answer": "Degree: 3, Leading coefficient: \\( {a} \\)"
       },
-      { 
+      {
         "id": "PC-2.2-I1",
         "type": "template",
         "objective": "Polynomial Functions",
         "difficulty": "intermediate",
         "variables": {
-
+          "a": { "min": -3, "max": 3, "exclude": [0] },
+          "b": { "min": 1, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Determine the end behavior of \\( f(x) = {a}x^4 - {b}x^2 + {b + 1} \\). As \\( x \\to \\infty \\), what happens to \\( f(x) \\)?",
+        "answer": "As \\( x \\to \\pm\\infty \\), \\( f(x) \\to {a > 0 ? '+' : '-'}\\infty \\)"
       },
-      { 
+      {
         "id": "PC-2.3-B1",
         "type": "template",
         "objective": "The remainder Theorem",
         "difficulty": "basic",
         "variables": {
-
+          "a": { "min": 1, "max": 3 },
+          "b": { "min": -5, "max": 5, "exclude": [0] },
+          "c": { "min": 2, "max": 6 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Use the Remainder Theorem to find the remainder when \\( f(x) = x^3 + {a}x^2 + {b}x + {c} \\) is divided by \\( (x - 2) \\).",
+        "answer": "\\( f(2) = {8 + a * 4 + b * 2 + c} \\)"
       },
-      { 
+      {
         "id": "PC-2.3-I1",
         "type": "template",
         "objective": "The remainder Theorem",
         "difficulty": "intermediate",
         "variables": {
-
+          "a": { "min": 2, "max": 5 },
+          "k": { "min": 1, "max": 3 }
         },
-        "question": "",
-        "answer": ""
+        "question": "If \\( f(x) = {a}x^4 - 3x^3 + kx + 7 \\) has a remainder of \\( {2 * k + 1} \\) when divided by \\( (x - 1) \\), find the value of \\( k \\).",
+        "answer": "Solve \\( f(1) = {2 * k + 1} \\): \\( {a} - 3 + k + 7 = {2 * k + 1} \\), so \\( k = {a + 3} \\)"
       },
-      { 
+      {
         "id": "PC-2.3-A1",
         "type": "template",
         "objective": "The remainder Theorem",
         "difficulty": "advanced",
         "variables": {
-
+          "a": { "min": 2, "max": 4 },
+          "b": { "min": -3, "max": 3, "exclude": [0] }
         },
-        "question": "",
-        "answer": ""
+        "question": "A polynomial \\( P(x) \\) leaves a remainder of \\( {a} \\) when divided by \\( (x - 1) \\) and a remainder of \\( {b} \\) when divided by \\( (x + 2) \\). Find the remainder when \\( P(x) \\) is divided by \\( (x - 1)(x + 2) \\).",
+        "answer": "The remainder is linear: \\( R(x) = mx + n \\) where \\( m = \\frac{{{a - b}}}{3} \\) and \\( n = \\frac{{2{a} + {b}}}{3} \\)"
       },
-      { 
+      {
         "id": "PC-2.4-B1",
         "type": "template",
         "objective": "Zeros of Polynomial Functions",
         "difficulty": "basic",
         "variables": {
-
+          "a": { "min": 2, "max": 5 },
+          "b": { "min": 1, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Find all zeros of the polynomial \\( f(x) = (x - {a})(x + {b})(x - 1) \\).",
+        "answer": "\\( x = {a}, x = {-b}, x = 1 \\)"
       },
-      { 
+      {
         "id": "PC-2.4-I1",
         "type": "template",
         "objective": "Zeros of Polynomial Functions",
         "difficulty": "intermediate",
         "variables": {
-
+          "a": { "min": 2, "max": 5 },
+          "b": { "min": 1, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Find all real zeros of \\( f(x) = x^3 - {a + b}x^2 + {a * b}x \\) and state their multiplicities.",
+        "answer": "\\( x = 0 \\) (multiplicity 1), \\( x = {a} \\) (multiplicity 1), \\( x = {b} \\) (multiplicity 1)"
       },
-      { 
+      {
         "id": "PC-2.4-A1",
         "type": "template",
         "objective": "Zeros of Polynomial Functions",
         "difficulty": "advanced",
         "variables": {
-
+          "a": { "min": 1, "max": 3 },
+          "b": { "min": 2, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "A polynomial function has zeros at \\( x = {a} \\) (multiplicity 2), \\( x = -{b} \\) (multiplicity 1), and \\( x = 0 \\) (multiplicity 1). If \\( f(1) = {-6} \\), write the equation of the polynomial in factored form.",
+        "answer": "Use \\( f(x) = k \\cdot x(x - {a})^2(x + {b}) \\) and solve for \\( k \\) using \\( f(1) = {-6} \\)"
       },
-      { 
+      {
         "id": "PC-2.5-B1",
         "type": "template",
         "objective": "Rational Functions",
         "difficulty": "basic",
         "variables": {
-
+          "a": { "min": 2, "max": 6 },
+          "b": { "min": 1, "max": 5 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Find the vertical asymptote(s) of \\( f(x) = \\frac{{a}x + {b}}{x - {b}} \\).",
+        "answer": "\\( x = {b} \\)",
+        "draw": "rational"
       },
-      { 
+      {
         "id": "PC-2.5-I1",
         "type": "template",
         "objective": "Rational Functions",
         "difficulty": "intermediate",
         "variables": {
-
+          "a": { "min": 2, "max": 5 },
+          "b": { "min": 1, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Find the horizontal asymptote of \\( f(x) = \\frac{{a}x^2 + {b}x - 1}{{a}x^2 - {b}} \\).",
+        "answer": "\\( y = 1 \\) (degrees equal, ratio of leading coefficients)"
       },
-      { 
+      {
         "id": "PC-2.5-A1",
         "type": "template",
         "objective": "Rational Functions",
         "difficulty": "advanced",
         "variables": {
-
+          "a": { "min": 2, "max": 4 },
+          "b": { "min": 1, "max": 3 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Analyze \\( f(x) = \\frac{x^2 - {a * a}}{x^2 + {b}x - {a * b}} \\). Identify all asymptotes, holes, and intercepts.",
+        "answer": "Factor numerator and denominator. Check for common factors (holes), find vertical asymptotes from remaining denominator factors, horizontal asymptote from degree comparison, and intercepts by setting numerator = 0 and evaluating \\( f(0) \\)."
       },
-      { 
+      {
         "id": "PC-2.6-B1",
         "type": "template",
         "objective": "Solving Rational Equations",
         "difficulty": "basic",
         "variables": {
-
+          "a": { "min": 2, "max": 6 },
+          "b": { "min": 1, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Solve for \\( x \\): \\( \\frac{{a}}{x} = {b} \\)",
+        "answer": "\\( x = \\frac{{a}}{{b}} \\)"
       },
-      { 
+      {
         "id": "PC-2.6-I1",
         "type": "template",
         "objective": "Solving Rational Equations",
         "difficulty": "intermediate",
         "variables": {
-
+          "a": { "min": 2, "max": 5 },
+          "b": { "min": 1, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Solve for \\( x \\): \\( \\frac{x + {a}}{x - {b}} = \\frac{{a}}{{b}} \\). Check for extraneous solutions.",
+        "answer": "Multiply both sides by \\( (x - {b}) \\) and solve: \\( x = \\frac{{{a * b} + {a * b}}}{{{b} - {a}}} \\) if \\( x \\neq {b} \\)"
       },
-      { 
+      {
         "id": "PC-2.6-A1",
         "type": "template",
         "objective": "Solving Rational Equations",
         "difficulty": "advanced",
         "variables": {
-
+          "a": { "min": 1, "max": 3 },
+          "b": { "min": 2, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Solve for \\( x \\): \\( \\frac{{a}}{x - {b}} + \\frac{{b}}{x + {a}} = \\frac{{a + b}}{x^2 - {b - a}x - {a * b}} \\). Identify any extraneous solutions.",
+        "answer": "Factor the denominator on the right, find LCD, combine fractions, and solve. Verify solutions do not make any denominator zero."
       },
-      { 
+      {
         "id": "PC-2.7-B1",
         "type": "template",
         "objective": "Nonlinear Inequalities",
         "difficulty": "basic",
         "variables": {
-
+          "a": { "min": 2, "max": 5 },
+          "b": { "min": 1, "max": 4 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Solve the inequality: \\( (x - {a})(x + {b}) > 0 \\)",
+        "answer": "\\( x < {-b} \\) or \\( x > {a} \\) (in interval notation: \\( (-\\infty, {-b}) \\cup ({a}, \\infty) \\))"
       },
-      { 
+      {
         "id": "PC-2.7-I1",
         "type": "template",
         "objective": "Nonlinear Inequalities",
         "difficulty": "intermediate",
         "variables": {
-
+          "a": { "min": 2, "max": 4 },
+          "b": { "min": 1, "max": 3 }
         },
-        "question": "",
-        "answer": ""
+        "question": "Solve the rational inequality: \\( \\frac{x + {a}}{x - {b}} \\leq 0 \\)",
+        "answer": "Use sign analysis. Solution: \\( [{-a}, {b}) \\) (note: \\( x = {b} \\) is excluded as it makes denominator zero)"
       }
 
       ],

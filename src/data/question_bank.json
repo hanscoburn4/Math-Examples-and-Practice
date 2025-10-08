@@ -1072,21 +1072,11 @@
         "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
         "difficulty": "basic",
         "variables": {
-          "angle1": { "min": 20, "max": 70 }
+          "angle1": { "min": 20, "max": 70 },
+          "angle2": { "min": 15, "max": 155 }
         },
-        "question": "Two angles are complementary. If one angle measures \\( {angle1}^\\circ \\), what is the measure of its complement?",
-        "answer": "\\( {90 - angle1}^\\circ \\)"
-      },
-      {
-        "id": "Geo-2.2-B1",
-        "type": "template",
-        "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
-        "difficulty": "basic",
-        "variables": {
-          "angle1": { "min": 15, "max": 155 }
-        },
-        "question": "Two angles are supplementary. If one angle measures \\( {angle1}^\\circ \\), what is the measure of its supplementary?",
-        "answer": "\\( {180 - angle1}^\\circ \\)"
+        "question": "(a) If one angle measures \\( {angle1}^\\circ \\), what is the measure of its complement? <br> (b) If one angle measures \\( {angle2}^\\circ \\), what is the measure of its supplementary?",
+        "answer": "(a) \\(= {90 - angle1}^\\circ \\) (b) \\(= {180 - angle2}^\\circ \\)"
       },
       {
         "id": "Geo-2.2-I1",

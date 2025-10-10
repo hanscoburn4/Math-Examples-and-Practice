@@ -680,10 +680,11 @@
           "b": { "min": 2, "max": 9, "exclude": ["a"] },
           "c": { "min": 2, "max": 9, "exclude": ["a"] },
           "d": { "min": 2, "max": 9, "exclude": ["c"] },
-          "e": { "min": 2, "max": 4 }
+          "e": { "min": 2, "max": 4 },
+          "f": { "min": 2, "max": 4 }
         },
-        "question": "Simplify by writing your answer in radical form: \\( \\big(x^{\\tfrac{{a}}{{b}}} \\cdot x^{\\tfrac{{c}}{{d}}}\\big)^{ {e} } \\).",
-        "answer": "\\( x^{ ({a}/{b} + {c}/{d})\\cdot{e} } \\) or \\( \\sqrt[{ {b}\\cdot{d} }] { x^{ ({a}\\cdot{d} + {b}\\cdot{c})\\cdot{e} } } \\)"
+        "question": "Simplify by writing your answer in radical form: \\( \\big({f}x^{\\tfrac{{a}}{{b}}} \\cdot x^{\\tfrac{{c}}{{d}}}\\big)^{ {e} } \\).",
+        "answer": "\\( {f}^{e} x^{ ({a}/{b} + {c}/{d})\\cdot{e} } \\) or \\( \\sqrt[{ {b}\\cdot{d} }] { x^{ ({a}\\cdot{d} + {b}\\cdot{c})\\cdot{e} } } \\)"
       },
       {
         "id": "ALG1-8.5-B1",
@@ -1084,12 +1085,14 @@
         "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "values": [2, 4, 6, 8, 10, 12] },
-          "b": { "values": [2, 4, 6, 8, 10, 12] },
-          "c": { "values": [2, 4, 6, 8, 10, 12], "exclude": ["a"] },
+          "t": { "values": [9, 10, 12, 15, 18, 20]},
+          "p": { "min": -3, "max": 3, "exclude": [0]},
+          "a": { "min": 2, "max": 7 },
+          "b": { "formula": "p*t" },
+          "c": { "formula": "t-a" },
           "x": { "formula": "(180-b)/(a+c)" }
         },
-        "question": "Two angles are supplementary. If one angle measures \\( ({a}x+{b})^\\circ \\) and the other angle measures \\( ({c}x)^\\circ \\), what is the measure of each angle?",
+        "question": "Two angles are supplementary. If one angle measures \\( ({b}+{a}x)^\\circ \\) and the other angle measures \\( ({c}x)^\\circ \\), what is the measure of each angle?",
         "answer": "\\( {a*x+b}^\\circ \\) and \\( {c*x}^\\circ \\)"
       },
       {
@@ -1098,13 +1101,15 @@
         "objective": "Calculate angle measures using the characteristics of complementary, supplementary, and perpendicular angles",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "values": [2, 4, 6, 8, 10, 12] },
-          "b": { "values": [2, 4, 6, 8, 10, 12] },
-          "c": { "values": [2, 4, 6, 8, 10, 12], "exclude": ["a"] },
+          "t": { "values": [9, 10, 15]},
+          "p": { "min": -3, "max": 3, "exclude": [0]},
+          "a": { "min": 1, "max": 7 },
+          "b": { "formula": "p*t" },
+          "c": { "formula": "t-a" },
           "x": { "formula": "(90-b)/(a+c)" }
         },
         "question": "Two angles are complementary. If one angle measures \\( ({a}x)^\\circ \\) and the other angle measures \\( ({b}+{c}x)^\\circ \\), what is the measure of each angle?",
-        "answer": "\\( {a*x+b}^\\circ \\) and \\( {c*x}^\\circ \\)"
+        "answer": "\\( {a*x}^\\circ \\) and \\( {b+c*x}^\\circ \\)"
       },
       {
         "id": "Geo-2.3-B1",
@@ -1112,12 +1117,31 @@
         "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
         "difficulty": "basic",
         "variables": {
-          "width": { "min": 4, "max": 10 },
-          "height": { "min": 3, "max": 8 }
+          "base": { "min": 4, "max": 25 },
+          "height": { "min": 3, "max": 14 },
+          "area": { "formula": "(base*height)/2" }
         },
-        "question": "Find the perimeter of a rectangle with length \\( {width} \\) units and width \\( {height} \\) units.",
-        "answer": "\\( {2 * (width + height)} \\) units",
-        "draw": "rectangle"
+        "question": "If the area of a triangle is \\({area}\\) square units and the base is \\( {base} \\) units find the height.",
+        "answer": "\\( {height} \\) units"
+      },
+      {
+        "id": "Geo-2.3-B2",
+        "type": "template",
+        "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 2, "max": 10 },
+          "b": { "min": 2, "max": 7},
+          "c": { "min": 2, "max": 10, "exclude": ["a"] },
+          "d": { "min": 2, "max": 7 },
+          "x": { "min": 1, "max": 10 },
+          "length": { "formula": "a*x+b" },
+          "width": { "formula": "c*x-d" },
+          "perimeter": { "formula": "2*(length+width)" },
+          "area": { "formula": "length*width" }
+        },
+        "question": "If the length of a rectangle is \\( {a}x + {b} \\) units and the width is \\( {c}x - {d} \\) units, find the area if the perimeter is \\( {perimeter} \\) units.",
+        "answer": "Area: \\({area}\\) square units"
       },
       {
         "id": "Geo-2.3-I1",
@@ -1125,11 +1149,34 @@
         "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
         "difficulty": "intermediate",
         "variables": {
-          "radius": { "min": 3, "max": 10 }
+          "a": { "min": -7, "max": 7 },
+          "b": { "min": -7, "max": 7 },
+          "c": { "min": -7, "max": 7, "exclude": ["a"] },
+          "d": { "min": -7, "max": 7, "exclude": ["b"]  },
+          "x": { "min": 3, "max": 5 },
+          "e": { "formula": "a+x*(d-b)"},
+          "f": { "formula": "b+x*(a-c)"},
+          "g": { "formula": "c+x*(d-b)"},
+          "h": { "formula": "d+x*(a-c)"},
+          "length": { "formula": "x*sqrt(2)" },
+          "width": { "formula": "sqrt((a-c)^2+(b-d)^2)" }
         },
-        "question": "Find the circumference of a circle with radius \\( {radius} \\) units. Use \\( \\pi \\approx 3.14 \\).",
-        "answer": "\\( {(2 * 3.14 * radius).toFixed(2)} \\) units",
-        "draw": "circle"
+        "question": "Find the area and perimeter of the rectangle with verticies \\(({a}, {b})\\), \\(({c}, {d})\\), \\(({e}, {f})\\), \\(({g}, {h})\\)",
+        "answer": " Area: \\( {length}*{width} \\) square units <br> Perimeter: \\( 2*({length+width}) \\) units"
+      },
+      {
+        "id": "Geo-2.3-I2",
+        "type": "template",
+        "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
+        "difficulty": "intermediate",
+        "variables": {
+          "w": { "min": 2, "max": 10 },
+          "l": { "min": 10, "max": 20, "exclude": ["w"] },
+          "h": { "min": 2, "max": 7 },
+          "area": { "formula": "l*w+(w*h)/2" }   
+        },
+        "question": "The composite figure is formed by joining a rectangle and an isosceles triangle on one of the longer sides. The rectangular portion is \\({w} ft. \\) wide, the triangle has a height of \\({h} ft.\\) and the area is \\({area} ft^2\\). Find the length of the rectangular portion of the figure.",
+        "answer": "\\( {l} \\) units "
       },
       {
         "id": "Geo-2.3-A1",
@@ -1137,11 +1184,12 @@
         "objective": "Find perimeters, circumferences, and two dimensional geometric shapes",
         "difficulty": "advanced",
         "variables": {
-          "radius": { "min": 4, "max": 12 }
+          "length": {"min": 70, "max": 120 },
+          "width": { "min": 35, "max": 55 },
+          "radius": { "formula": "width/2" }
         },
-        "question": "Find the exact circumference of a circle with radius \\( {radius} \\) units. Express your answer in terms of \\( \\pi \\).",
-        "answer": "\\( {2 * radius}\\pi \\) units",
-        "draw": "circle"
+        "question": "A training field is formed by joining a rectangle and two semicicles on each end of the narrow sides. The rectangular portion is \\({length} ft.\\) long and \\({width} ft. \\) wide. Find the area and perimeter of the field.",
+        "answer": "Area: \\( {{2 * radius}\\pi + {length*width}}  \\) square units <br> Perimeter: \\( {2*(\\pi*radius + length)}\\) units"
       },
       {
         "id": "Geo-2.4-B1",
@@ -2145,23 +2193,23 @@
         "answer": "\\( x = {b * b - a} \\)"
       },
       {
+        "id": "PC-2.1-B2",
+        "type": "template",
+        "objective": "Radical Functions and Equations",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 2, "max": 8 },
+          "b": { "min": 1, "max": 5 },
+          "c": { "min": 1, "max": 5 }
+        },
+        "question": "Solve for \\( x \\): \\( \\sqrt{{a}x + {b}} = {c} \\)",
+        "answer": "\\( x = \\frac{c^2+b}{a} \\)"
+      },
+      {
         "id": "PC-2.1-I1",
         "type": "template",
         "objective": "Radical Functions and Equations",
         "difficulty": "intermediate",
-        "variables": {
-          "a": { "min": 2, "max": 5 },
-          "b": { "min": 1, "max": 4 },
-          "c": { "min": 1, "max": 3 }
-        },
-        "question": "Solve for \\( x \\): \\( \\sqrt{{a}x - {b}} = {c} \\). Check for extraneous solutions.",
-        "answer": "\\( x = \\frac{{{c * c + b}}}{{{a}}} \\)"
-      },
-      {
-        "id": "PC-2.1-A1",
-        "type": "template",
-        "objective": "Radical Functions and Equations",
-        "difficulty": "advanced",
         "variables": {
           "a": { "min": 2, "max": 4 },
           "b": { "min": 3, "max": 6 }
@@ -2170,14 +2218,53 @@
         "answer": "Square both sides and solve the resulting quadratic equation. Check all solutions in the original equation."
       },
       {
+        "id": "PC-2.1-I2",
+        "type": "template",
+        "objective": "Radical Functions and Equations",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 4 },
+          "b": { "min": 3, "max": 6 },
+          "c": { "min": 1, "max": 3 }
+        },
+        "question": "Solve for \\( x \\): \\( \\sqrt[3]{x^2 + {a}} + {b} = {c} \\). Verify your solution.",
+        "answer": "\\( x = \\pm \\sqrt{(c-b)^3-a}\\)."
+      },
+      {
+        "id": "PC-2.1-A1",
+        "type": "template",
+        "objective": "Radical Functions and Equations",
+        "difficulty": "advanced",
+        "variables": {
+          "a": { "min": 2, "max": 5 },
+          "b": { "min": 1, "max": 4 },
+          "c": { "min": 1, "max": 3 }
+        },
+        "question": "Solve for \\( x \\): \\( \\sqrt{{a}x - {b}} = {c}x \\). Check for extraneous solutions.",
+        "answer": "\\( x = \\frac{ {a} \\pm \\sqrt{a^2-4\\cdot b \\cdot c^2}}{ 2 \\cdot c^2 } \\)"
+      },
+      {
+        "id": "PC-2.1-A2",
+        "type": "template",
+        "objective": "Radical Functions and Equations",
+        "difficulty": "advanced",
+        "variables": {
+          "a": { "min": 2, "max": 5 },
+          "b": { "min": 1, "max": 4 },
+          "c": { "min": 1, "max": 3 }
+        },
+        "question": "Solve for \\( x \\): \\( \\sqrt{{a}x - {b}} = x - {c} \\). Check for extraneous solutions.",
+        "answer": "Solve the resulting quadratic: \\( x^2 + {2*c-a}x + {c^2+b} \\)"
+      },
+      {
         "id": "PC-2.2-B1",
         "type": "template",
         "objective": "Polynomial Functions",
         "difficulty": "basic",
         "variables": {
           "a": { "min": 2, "max": 5 },
-          "b": { "min": -4, "max": 4, "exclude": [0] },
-          "c": { "min": -6, "max": 6 }
+          "b": { "min": 2, "max": 4 },
+          "c": { "min": 2, "max": 6 }
         },
         "question": "Find the degree and leading coefficient of the polynomial \\( f(x) = {a}x^3 + {b}x^2 + {c}x - 1 \\)",
         "answer": "Degree: 3, Leading coefficient: \\( {a} \\)"
@@ -2188,11 +2275,13 @@
         "objective": "Polynomial Functions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -3, "max": 3, "exclude": [0] },
-          "b": { "min": 1, "max": 4 }
+          "a": { "min": -3, "max": 3, "exclude": [0,-1,1] },
+          "b": { "min": 1, "max": 4 },
+          "c": { "min": 2, "max": 6 },
+          "d": { "min": 1, "max": 5 }
         },
-        "question": "Determine the end behavior of \\( f(x) = {a}x^4 - {b}x^2 + {b + 1} \\). As \\( x \\to \\infty \\), what happens to \\( f(x) \\)?",
-        "answer": "As \\( x \\to \\pm\\infty \\), \\( f(x) \\to {a > 0 ? '+' : '-'}\\infty \\)"
+        "question": "Use a calculator to find all real zeros and extrema \\( f(x) = {a}x^4 - {b}x^2 + {c}x - {d} \\). Round your answers to three decimal places when nessessary.",
+        "answer": "Answer currently unavailable."
       },
       {
         "id": "PC-2.3-B1",

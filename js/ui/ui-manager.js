@@ -615,19 +615,16 @@ class UIManager {
         canvas.width = 420;
         canvas.height = 240;
         output.appendChild(canvas);
-
-        const ctx = canvas.getContext("2d");
+        questionDiv.appendChild(canvas);
         
         // Always draw a blank grid for students
-        window.DrawingEngine.drawCoordinateGrid(ctx, canvas.width, canvas.height);
+        window.DrawingEngine.drawCoordinateGrid(canvas.getContext("2d"), canvas.width, canvas.height);
 
         // Handle piecewise functions by drawing each segment
         if (question.draw.type === "piecewise" && Array.isArray(question.draw.segments)) {
-          question.draw.segments.forEach(segment => {
-            const segmentDraw = { ...question.draw, ...segment };
-            window.DrawingEngine.draw(canvas, segmentDraw, question.variables);
-          });
+          window.DrawingEngine.draw(canvas, question.draw, question.variables);
         }
+        
         // Draw the actual function only if allowed
         if (question.showGraphInQuestion !== false) {
           window.DrawingEngine.draw(canvas, question.draw, question.variables);}
@@ -697,6 +694,8 @@ class UIManager {
     const output = document.getElementById("output");
     output.className = "";
     output.style.removeProperty('--question-spacing');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     
     // Reset states
     this.showAnswers = false;

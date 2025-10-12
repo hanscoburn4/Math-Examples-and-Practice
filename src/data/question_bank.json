@@ -880,7 +880,16 @@
         "objective": "Identify points, lines, line segments, rays, and planes",
         "difficulty": "basic",
         "variables": {},
-        "question": "Currently unavailable.",
+        "question": "Construct a line that has points A and B which is in plane P. Construct a line PQ that intersects line AB but is not coplanar with line AB.",
+        "answer": "Answer currently unavailable."
+      },
+      {
+        "id": "Geo-1.2-I1",
+        "type": "template",
+        "objective": "Identify points, lines, line segments, rays, and planes",
+        "difficulty": "basic",
+        "variables": {},
+        "question": "Construct a line segment using a straightedge and then construct a congruent line segment using a compass and straightedge.",
         "answer": "Answer currently unavailable."
       },
       {
@@ -1306,7 +1315,7 @@
   },
 
   "Algebra 2": {
-    "Chapter 1": [
+    "Module 1": [
       {
         "id": "ALG2-1.1a-B1",
         "type": "template",
@@ -1335,6 +1344,7 @@
         },
         "question": "Find the domain and range of the function \\( f(x) = {a}(x - {h})^2 + {k} \\).",
         "draw": "parabola",
+        "shwGraphInQuestion": true,
         "answer": "Domain: all real numbers; Range: \\( y \\geq {k} \\) if \\( {a} > 0 \\), \\( y \\leq {k} \\) if \\( {a} < 0 \\)."
       },
       {
@@ -1343,12 +1353,31 @@
         "objective": "Identify Domain and Range of Functions",
         "difficulty": "advanced",
         "variables": {
-          "a": { "min": -3, "max": 3, "exclude": [0,1] },
-          "b": { "min": -5, "max": 5 },
-          "c": { "min": 1, "max": 5, "exclude": ["a"] }
+          "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
+          "b": { "min": 1, "max": 5 },
+          "c": { "min": -2, "max": 5, "exclude": [0,-1,1,"a"] }
         },
-        "question": "Find the domain and range of the piecewise function: <br> \\( f(x) = \\begin{cases} {a}x^2 + {b}, & x < 0 \\\\ \\sqrt{x + {c}}, & x \\geq 0 \\end{cases} \\).",
-        "answer": "Domain: \\( x \\geq -{c} \\); Range: \\( y \\geq {b} \\) if \\( {a} > 0 \\), \\( y \\leq {b} \\) if \\( {a} < 0 \\)."
+        "question": "Find the domain and range of the piecewise function: \\( f(x) = \\begin{cases} {a}x^2 + {b}, for -3 < x < 0 \\\\ {c}x^2 + {b}, for 2 \\leq x \\leq 4 \\end{cases} \\).",
+        "draw": "piecewise",
+        "segments": [
+          {
+            "type": "parabola",
+            "vars": { "a": "{a}", "b": 0, "c": "{b}" },
+            "xMin": -3,
+            "xMax": 0,
+            "leftClosed": false,
+            "rightClosed": false
+          },
+          {
+            "type": "parabola",
+            "vars": { "a": "{c}", "b": 0, "c": "{b}" },
+            "xMin": 2,
+            "xMax": 4,
+            "leftClosed": true,
+            "rightClosed": true
+          }
+        ],
+        "answer": ""
       },
       {
         "id": "ALG2-1.2a-B1",
@@ -1382,7 +1411,6 @@
           "c": "{a*r1*r2}"
         }
       },
-
       {
         "id": "ALG2-1.2a-I1",
         "type": "linearGraph",

@@ -1327,7 +1327,8 @@
           "c": { "min": 1, "max": 5, "exclude": ["a"] }
         },
         "question": "Find the domain and range of the function \\( f(x) = {a}x^2 - {b} \\).",
-        "draw": "parabola",
+        "draw": "linearGraph",
+        "shwGraphInQuestion": true,
         "answer": "Domain: all real numbers; Range: \\( y \\geq {-b} \\) if \\( {a} > 0 \\), \\( y \\leq {-b} \\) if \\( {a} < 0 \\)."
       },
       {
@@ -1353,30 +1354,33 @@
         "objective": "Identify Domain and Range of Functions",
         "difficulty": "advanced",
         "variables": {
-          "a": { "min": -3, "max": 3, "exclude": [0,1,-1] },
-          "b": { "min": 1, "max": 5 },
-          "c": { "min": -2, "max": 5, "exclude": [0,-1,1,"a"] }
+          "a": { "min": -1, "max": 1, "exclude": [0] },
+          "b": { "min": 1, "max": 3 },
+          "c": { "min": -1, "max": 1, "exclude": [0,"a"] }
         },
-        "question": "Find the domain and range of the piecewise function: \\( f(x) = \\begin{cases} {a}x^2 + {b}, for -3 < x < 0 \\\\ {c}x^2 + {b}, for 2 \\leq x \\leq 4 \\end{cases} \\).",
-        "draw": "piecewise",
-        "segments": [
-          {
-            "type": "parabola",
-            "vars": { "a": "{a}", "b": 0, "c": "{b}" },
-            "xMin": -3,
-            "xMax": 0,
-            "leftClosed": false,
-            "rightClosed": false
-          },
-          {
-            "type": "parabola",
-            "vars": { "a": "{c}", "b": 0, "c": "{b}" },
-            "xMin": 2,
-            "xMax": 4,
-            "leftClosed": true,
-            "rightClosed": true
-          }
-        ],
+        "question": "Find the domain and range of the piecewise function: \\( f(x) = \\begin{cases} {a}x^2 + {b}, for -3 < x < 0 \\\\ {c}x^2 + {b}, for 0 \\leq x \\leq 4 \\end{cases} \\).",
+        "draw": {
+          "type": "piecewise",
+          "segments": [
+            {
+              "type": "parabola",
+              "vars": { "a": 1, "b": 0, "c": 0 },
+              "xMin": -3,
+              "xMax": 0,
+              "leftClosed": false,
+              "rightClosed": false
+            },
+            {
+              "type": "parabola",
+              "vars": { "a": -1, "b": 0, "c": 0 },
+              "xMin": 0,
+              "xMax": 4,
+              "leftClosed": true,
+              "rightClosed": true
+            }
+          ]
+        },
+        "showGraphInQuestion": true,
         "answer": ""
       },
       {
@@ -1390,7 +1394,8 @@
         },
         "question": "Find the \\(x\\)-intercept and the \\(y\\)-intercept of the line \\(y = {m}x + {b}\\).",
         "answerExpression": "`{ xIntercept: -b/m, yIntercept: b }`",
-        "draw": "linearGraph"
+        "draw": "linearGraph",
+        "showGraphInQuestion": true
       },
       {
         "id": "ALG2-1.2a-B2",
@@ -1400,16 +1405,15 @@
         "variables": {
           "r1": { "min": -4, "max": 4, "exclude": [0] },
           "r2": { "min": -4, "max": 4, "exclude": ["r1", 0] },
-          "a":  { "values": [1, -1] }
+          "a":  { "values": [1, -1] },
+          "b": { "formula": "{-a*(r1 + r2)}" },
+          "c": { "formula": "a*r1*r2"}
+
         },
         "question": "Use the graph to find the \\(x\\)- and \\(y\\)-intercepts of the function.",
         "answerExpression": "({ xIntercepts: [r1, r2], yIntercept: a*r1*r2 })",
         "draw": "parabola",
-        "coefficients": {
-          "a": "{a}",
-          "b": "{-a*(r1 + r2)}",
-          "c": "{a*r1*r2}"
-        }
+        "showGraphInQuestion": true
       },
       {
         "id": "ALG2-1.2a-I1",
@@ -1417,12 +1421,13 @@
         "objective": "Identify Intercepts of Graphs of Functions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -3, "max": 6, "exclude": [0] },
-          "b": { "min": 2, "max": 10, "exclude": [0, "a"] },
-          "c": { "min": -10, "max": 10, "exclude": [0] }
+          "slopeNum": { "min": -3, "max": 6, "exclude": [0] },
+          "slopeDen": { "min": 2, "max": 10, "exclude": [0, "slopeNum"] },
+          "m": { "formula": "a/b" },
+          "b": { "min": -10, "max": 10, "exclude": [0] }
         },
-        "question": "Find the \\(x\\)-intercept and the \\(y\\)-intercept of the line \\(y = \\frac{{a}}{{b}}x + {c}\\).",
-        "answerExpression": "({ xIntercept: -(c * b) / a, yIntercept: c })",
+        "question": "Find the \\(x\\)-intercept and the \\(y\\)-intercept of the line \\(y = \\frac{{slopeNum}}{{slopeDen}}x + {b}\\).",
+        "answerExpression": "({ xIntercept: -(b * slopeDen) / slopeNum, yIntercept: b })",
         "draw": "linearGraph"
       },
 
@@ -1574,18 +1579,17 @@
         "objective": "Transform Graphs of Functions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "values": [1] },
+          "a": { "min": -3, "max": 3, "exclude": [0,1]},
           "b": { "values": [0] },
           "c": { "values": [0]},
-          "d": { "min": -3, "max": 3, "exclude": [0,1]},
-          "h": { "min": -5, "max": 5, "exclude": [0]},
-          "k": { "min": -5, "max": 5, "exclude": [0]}
+          "h": { "min": 1, "max": 5 },
+          "k": { "min": 1, "max": 5 }
         },
-        "question": "Given the parent function \\( f(x) = |x|\\), graph the function based on the transformations: \\( g(x) = {d}|x - ({h})| + ({k})\\)",
+        "question": "Given the parent function \\( f(x) = |x|\\), graph the function based on the transformations: \\( g(x) = {a}|x - {h}| + {k}\\)",
         "draw": "absoluteValue",
         "showGraphInQuestion": true,
         "showGraphInAnswer": true,
-        "answer": "Teacher will need to manually draw the transformation for \\( g(x) = {d}|x - ({h})| + ({k})\\)"
+        "answer": "Teacher will need to manually draw the transformation for \\( g(x) = {a}|x - {h}| + {k}\\)"
       },
       {
          "id": "ALG2-1.7-A1",
@@ -1593,19 +1597,17 @@
         "objective": "Transform Graphs of Functions",
         "difficulty": "advanced",
         "variables": {
-          "a": { "values": [1] },
+          "a": { "min": -3, "max": 3, "exclude": [0,1]},
           "b": { "values": [0] },
           "c": { "values": [0]},
-          "d": { "min": -3, "max": 3, "exclude": [0,1]},
-          "e": { "min": -3, "max": 3, "exclude": [0,1]},
-          "h": { "min": -5, "max": 5, "exclude": [0]},
-          "k": { "min": -5, "max": 5, "exclude": [0]}
+          "h": { "min": 1, "max": 5, "exclude": [0]},
+          "k": { "min": 1, "max": 5, "exclude": [0]}
         },
-        "question": "Given the parent function \\( f(x) = \\sqrt{x}\\), graph the function based on the transformations: \\( g(x) = {d}\\sqrt{{e}(x - ({h})} + ({k})\\)",
+        "question": "Given the parent function \\( f(x) = \\sqrt{x}\\), graph the function based on the transformations: \\( g(x) = {a}\\sqrt{(x - {h}} + {k}\\)",
         "draw": "squareRoot",
         "showGraphInQuestion": true,
         "showGraphInAnswer": true,
-        "answer": "Teacher will need to manually draw the transformation for \\( g(x) = {d}\\sqrt{{e}(x - ({h})} + ({k})\\)"
+        "answer": "Teacher will need to manually draw the transformation for \\( g(x) = {a}\\sqrt{(x - {h}} + {k}\\)"
       }
 
     ],

@@ -906,6 +906,7 @@ class DrawingEngine {
         default:
           console.warn(`Unknown segment type: ${type}`);
       }
+
     });
 
     // Draw open/closed circles for endpoints if specified
@@ -919,6 +920,75 @@ class DrawingEngine {
         this.drawEndpoint(canvas, xMax, this.evaluateFunction(segment, xMax), rightClosed);
       }
     });
+
+    // Draw open/closed circles for endpoints if specified
+    segments.forEach(segment => {
+      const { type, vars, xMin, xMax, leftClosed = true, rightClosed = true } = segment;
+      const ctx = canvas.getContext("2d");
+      const { width, height } = canvas;
+      const xMid = width / 2;
+      const yMid = height / 2;
+      const scale = this.defaultScale;
+
+      const a = vars.a || 1;
+      const b = vars.b || 0;
+      const c = vars.c || 0;
+      const h = vars.h || 0;
+      const k = vars.k || 0;
+
+      // Define function formula based on type
+      function f(x) {
+        switch (type) {
+          case "linear": return a * (x - h) + b + k;
+          case "parabola":
+          case "quadratic": return a * Math.pow(x - h, 2) + b * (x - h) + c + k;
+          case "exponential": return a * Math.pow(b, x - h) + k;
+          case "absoluteValue": return a * Math.abs(x - h) + k;
+          case "squareRoot": return a * Math.sqrt(x - h) + k;
+          case "cubeRoot": return a * Math.cbrt(x - h) + k;
+          default: return 0;
+        }
+      }
+
+      const radius = 4;
+
+      ctx.fillStyle = "#333";
+      ctx.strokeStyle = "#333";
+      ctx.lineWidth = 1.5;
+
+      // Draw left endpoint
+      if (xMin !== null && xMin !== undefined) {
+        const yMin = f(xMin);
+        const xPixel = xMid + xMin * scale;
+        const yPixel = yMid - yMin * scale;
+        if (leftClosed) {
+          ctx.beginPath();
+          ctx.arc(xPixel, yPixel, radius, 0, 2 * Math.PI);
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(xPixel, yPixel, radius, 0, 2 * Math.PI);
+          ctx.stroke();
+        }
+      }
+
+      // Draw right endpoint
+      if (xMax !== null && xMax !== undefined) {
+        const yMax = f(xMax);
+        const xPixel = xMid + xMax * scale;
+        const yPixel = yMid - yMax * scale;
+        if (rightClosed) {
+          ctx.beginPath();
+          ctx.arc(xPixel, yPixel, radius, 0, 2 * Math.PI);
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(xPixel, yPixel, radius, 0, 2 * Math.PI);
+          ctx.stroke();
+        }
+      }
+    });
+
   }
 
   /**
@@ -957,6 +1027,7 @@ class DrawingEngine {
     const c = vars.c || 0;
     const h = vars.h || 0;
     const k = vars.k || 0;
+    const base = vars.b || 2;
 
     switch (type) {
       case "linear":

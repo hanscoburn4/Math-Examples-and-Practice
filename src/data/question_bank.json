@@ -696,16 +696,41 @@
           "b": { "min": 2, "max": 6, "exclude":["a"] },
           "c": { "values":[2, 3, 5, 7, 11, 13], "exclude": ["a","b"] },
           "num1": { "formula": "a * c" },
-          "num2": { "formula": "a * b * b" }
+          "num2": { "formula": "a * b * b" },
+          "d": { "min": -6, "max": -2, "exclude":["a","b","c"] },
+          "e": { "min": 2, "max": 6, "exclude":["d"] },
+          "num3": { "formula": "-1 * d * d" },
+          "num4": { "formula": "e * e" },
+          "g": { "min": 2, "max": 6, "exclude":["a","b","c"] },
+          "i": { "values":[2, 3, 5, 7, 11, 13], "exclude": ["g"] },
+          "num5": { "formula": "g * g * i" }
         },
-        "question": "Simplify: \\( \\sqrt{{num1}} \\cdot \\sqrt{{num2}} \\).",
-        "answer": "\\( {a * b} \\sqrt{c} \\)"
+        "question": "Simplify each expression: <br> a) \\( \\sqrt{{num5}} \\) <br> b) \\( \\sqrt{{num3}} \\cdot \\sqrt{{num4}} \\) <br> c) \\( \\sqrt{{num1}} \\cdot \\sqrt{{num2}} \\).",
+        "answer": "a) \\( {g} \\sqrt{i} \\) <br> b) No real numbers <br> c) \\( {a * b} \\sqrt{c} \\)"
       },
       {
         "id": "ALG1-8.5-I1",
         "type": "template",
         "objective": "Simplifying Radical Expressions",
         "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 2, "max": 7 },
+          "b": { "values": [2, 3, 5, 7, 11], "exclude": ["a"] },
+          "c": { "min": 2, "max": 7, "exclude": ["a","b"] },
+          "d": { "min": 2, "max": 8 },
+          "e": { "min": 2, "max": 8 },
+          "f": { "min": 2, "max": 8 },
+          "num": { "formula": "a * a * c" },
+          "den": { "formula": "b * b" }
+        },
+        "question": "Simplify: \\( \\sqrt{ \\tfrac{ {num}x^{d}y^{e}z^{f} }{ {den} } } \\).",
+        "answer": "\\( \\tfrac{ {a} }{ {b} } x^{ d/2 } y^{ e/2 } z^{ f/2 } \\)"
+      },
+      {
+        "id": "ALG1-8.5-A1",
+        "type": "template",
+        "objective": "Simplifying Radical Expressions",
+        "difficulty": "advanced",
         "variables": {
           "a": { "values": [2, 3, 5, 7, 11] },
           "b": { "values": [2, 3, 5, 7], "exclude": ["a"] },
@@ -717,26 +742,7 @@
           "num2": { "formula": "a * b * b" }
         },
         "question": "Simplify: \\( \\sqrt[3]{ {num1}x^{c}y^{d} } \\cdot \\sqrt[3]{ {num2}x^{e}y^{f} } \\).",
-        "answer": "\\( {a}\\,{b} \\; x^{ ({c}+{e})/3 } y^{ ({d}+{f})/3 } \\)"
-      },
-      {
-        "id": "ALG1-8.5-A1",
-        "type": "template",
-        "objective": "Simplifying Radical Expressions",
-        "difficulty": "advanced",
-        "variables": {
-          "a": { "min": 2, "max": 6 },
-          "b": { "values": [2, 3, 5, 7, 11], "exclude": ["a"] },
-          "c": { "min": 3, "max": 4 },
-          "d": { "min": -9, "max": 9, "exclude": [0, 1, -1] },
-          "e": { "min": -9, "max": 9, "exclude": [0, 1, -1] },
-          "f": { "min": -9, "max": 9, "exclude": [0, 1, -1] },
-          "g": { "min": -9, "max": 9, "exclude": [0, 1, -1] },
-          "num": { "formula": "a * b" },
-          "den": { "formula": "a ** (c+1)" }
-        },
-        "question": "Simplify: \\( \\sqrt[{c}]{ \\tfrac{ {num}x^{d}y^{e}z^{f} }{ {den}x^{g} } } \\).",
-        "answer": "\\( \\tfrac{ {b} }{ {a} } x^{ ({d}-{a}\\cdot{g})/{c} } y^{ {e}/{c} } z^{ {f}/{c} } \\)"
+        "answer": "\\( {a * b} x^{ (c + e) / 3 } y^{ (d + f) / 3 } \\)"
       },
       {
         "id": "ALG1-8.6-B1",
@@ -760,12 +766,12 @@
         "objective": "Operations with Radical Expressions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": 2, "max": 10 },
-          "b": { "values": [2,3,5] },
-          "c": { "min": 2, "max": 10 },
-          "d": { "values": [3,5,7,11], "exclude": ["b"] },
-          "e": { "min": 2, "max": 10 },
-          "f": { "values": [3,5,7,11], "exclude": ["b","d"] },
+          "a": { "min": 2, "max": 5 },
+          "b": { "values": [2,3,5,7,11] },
+          "c": { "min": 2, "max": 5 },
+          "d": { "values": [2,3,5,7,11], "exclude": ["b"] },
+          "e": { "min": 2, "max": 5, "exclude": ["a"] },
+          "f": { "values": [2,3,5,7,11], "exclude": ["b","d"] },
           "num1": { "formula": "b*d" },
           "num2": { "formula": "b*f" }
         },
@@ -1215,21 +1221,22 @@
         "answer": "\\( ({x1 + tx}, {y1 + ty}) \\)"
       },
       {
-        "id": "Geo-2.4-I1",
+        "id": "Geo-2.4-B1",
         "type": "template",
         "objective": "Calculate the coordinates of vertices of images given a preimage",
-        "difficulty": "intermediate",
+        "difficulty": "basic",
         "variables": {
-          "x1": { "min": 1, "max": 4 },
-          "y1": { "min": 1, "max": 4 },
+          "x1": { "min": -4, "max": 4 },
+          "y1": { "min": -4, "max": 4 },
           "x2": { "min": 4, "max": 6 },
           "y2": { "min": 1, "max": 3 },
           "x3": { "min": 2, "max": 4 },
-          "y3": { "min": 3, "max": 5 }
+          "y3": { "min": 3, "max": 5 },
+          "a": { "min": -4, "max": 4, "exclude": [0] },
+          "b": { "min": -4, "max": 4, "exclude": [0] }
         },
-        "question": "Triangle ABC has vertices A\\( ({x1}, {y1}) \\), B\\( ({x2}, {y2}) \\), and C\\( ({x3}, {y3}) \\). If the triangle is reflected over the x-axis, what are the coordinates of A', B', and C'?",
-        "answer": "A'\\( ({x1}, {-y1}) \\), B'\\( ({x2}, {-y2}) \\), C'\\( ({x3}, {-y3}) \\)",
-        "draw": "transformation"
+        "question": "Triangle ABC has vertices A\\( ({x1}, {y1}) \\), B\\( ({x2}, {y2}) \\), and C\\( ({x3}, {y3}) \\). If the triangle is rotated about the orgin \\(90^\\circ\\) counter clockwise and then the result is translated by \\( \\langle {a}, {b}\\rangle \\), what are the coordinates of A', B', and C'?",
+        "answer": "A'\\( ({-y1 + a}, {x1 + b}) \\), B'\\( ({-y2 + a}, {x2 + b}) \\), C'\\( ({-y3 + a}, {x3 + b}) \\)"
       },
       {
         "id": "Geo-2.5-B1",
@@ -1611,20 +1618,163 @@
       }
 
     ],
-    "Chapter 4": [
+    "Module 2": [
       {
-        "id": "A2-Q1-B1",
+        "id": "ALG2-2.1-B1",
         "type": "template",
-        "objective": "Graph quadratic function",
+        "objective": "Solving Linear Equations and Inequalities",
         "difficulty": "basic",
-        "question": "Graph the quadratic function y = {a}x² + {b}x + {c}",
-        "answer": "parabola",
         "variables": {
-          "a": { "values": [1, -1, 2] },
-          "b": { "min": -3, "max": 3, "exclude": [0] },
-          "c": { "min": -2, "max": 2, "exclude": [0] }
+          "a": { "min": -10, "max": 10, "exclude": [0] },
+          "b": { "min": -10, "max": 10, "exclude": [0,"a"] },
+          "c": { "min": 1, "max": 10, "exclude": [0,"b"] },
+          "d": { "min": -10, "max": 10, "exclude": [0,"c"] },
+          "x": { "formula": "(a*d+c)/b" }
         },
-        "draw": "parabola"
+        "question": "Solve for \\( x \\), simplify your answer: \\( {a} = \\frac{{b}x - {c}}{{d}} \\).",
+        "answer": "\\( x = {x} \\)"
+      },
+      {
+        "id": "ALG2-2.1-I1",
+        "type": "template",
+        "objective": "Solving Linear Equations and Inequalities",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 1, "max": 10 },
+          "b": { "min": -10, "max": 10, "exclude": [0] },
+          "c": { "min": 1, "max": 10 },
+          "d": { "min": -10, "max": 10, "exclude": [0,"b"] },
+          "e": { "min": 1, "max": 10 },
+          "x": { "formula": "(b*c+e*b*d-d*a)/(d-b)" }
+        },
+        "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x + {a}}{{b}} > \\frac{x +{c}}{{d}} + {e} \\).",
+        "answer": "\\( x > {x} \\) You may need to reverse the inequality if you multiply or divide by a negative number."
+      },
+      {
+        "id": "ALG2-2.1-I2",
+        "type": "template",
+        "objective": "Solving Linear Equations and Inequalities",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 1, "max": 3 },
+          "b": { "min": 2, "max": 10 },
+          "c": { "min": 2, "max": 10, "exclude": ["b"] },
+          "x": { "formula": "(-a*(c+b)/(c-b-c*b)" }
+        },
+        "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x + {a}}{{b}} > \\frac{x - {a}}{{c}} + x \\).",
+        "answer": "\\( x > {x} \\) You may need to reverse the inequality if you multiply or divide by a negative number."
+      },
+      {
+        "id": "ALG2-2.1-A1",
+        "type": "template",
+        "objective": "Solving Linear Equations and Inequalities",
+        "difficulty": "advanced",
+        "variables": {        },
+        "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{-a}{x + b} = \\frac{c}{x - d} \\).",
+        "answer": "\\( x = \\frac{ ad - b }{ c + a } \\)"
+      },
+      {
+        "id": "ALG2-2.1-A2",
+        "type": "template",
+        "objective": "Solving Linear Equations and Inequalities",
+        "difficulty": "advanced",
+        "variables": {           },
+        "question": "Solve for \\( x_1 \\), simplify your answer: \\( x_1 + \\frac{a}{b}( x_2 - x_1 ) = f \\).",
+        "answer": "\\( x_1 = \\frac{ bf - ax_2 }{ b - a } \\)"
+      },
+      {
+        "id": "ALG2-2.1-A3",
+        "type": "template",
+        "objective": "Solving Linear Equations and Inequalities",
+        "difficulty": "advanced",
+        "variables": {           },
+        "question": "Solve for \\( y_2 \\), simplify your answer: \\( d = \\sqrt{ (x_2-x_1)^2 + (y_2-y_1)^2 } \\).",
+        "answer": "\\( y_2 = y_1 \\pm \\sqrt{ d^2 - (x_2 - x_1)^2 } \\)"
+      },
+      {
+        "id": "ALG2-2.2-B1",
+        "type": "template",
+        "objective": "Solving Absolute Value Equations and Inequalities",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": 1, "max": 10 },
+          "b": { "min": 1, "max": 10 },
+          "c": { "min": 1, "max": 10 }
+        },
+        "question": "Solve for \\( x \\), simplify your answer: \\( |{a}x + {b}| = {c} \\).",
+        "answer": "\\( x = \\frac{{c} - {b}}{{a}} \\) or \\( x = \\frac{{-c} - {b}}{{a}} \\)"
+      },
+      {
+        "id": "ALG2-2.2-I1",
+        "type": "template",
+        "objective": "Solving Absolute Value Equations and Inequalities",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": 1, "max": 10 },
+          "b": { "min": 1, "max": 10 },
+          "c": { "min": 1, "max": 10 },
+          "d": { "min": 1, "max": 10 },
+          "e": { "min": 10, "max": 20 }
+        },
+        "question": "Solve for \\( x \\) and check your answer: \\( {a}|{b}x - {c}| + {d} = {e} \\).",
+        "answer": "\\( x = \\frac{{\\pm \\frac{{e} - {d}}{{a}} + {c}}}{{b}} \\)"
+      },
+      {
+        "id": "ALG2-2.2-A1",
+        "type": "template",
+        "objective": "Solving Absolute Value Equations and Inequalities",
+        "difficulty": "advanced",
+        "variables": {
+          "a": { "min": 1, "max": 10 },
+          "b": { "min": 1, "max": 10 },
+          "c": { "min": 1, "max": 10 },
+          "d": { "min": 1, "max": 10 },
+          "e": { "min": 10, "max": 20 }
+        },
+        "question": "Solve for \\( x \\) and graph the solutions on a number line: \\( {a}|{b}x - {c}| + {d} \\ge {e} \\).",
+        "answer": "\\( x \\leq \\frac{{-\\frac{{e} - {d}}{{a}} + {c}}}{{b}} \\) or \\( x \\geq \\frac{{\\frac{{e} - {d}}{{a}} + {c}}}{{b}} \\)"
+      },
+      {
+        "id": "ALG2-2.3-B1",
+        "type": "linearGraph",
+        "objective": "Equtions of Linear Functions",
+        "difficulty": "basic",
+        "variables": {
+          "a": { "min": -10, "max": 10, "exclude": [0] },
+          "b": { "min": -10, "max": 10, "exclude": [0] },
+          "c": { "min": -10, "max": 10, "exclude": [0] },
+          "d": { "min": 2, "max": 10, "exclude": ["c"] }
+        },
+        "question": "Write the equation of the line that passes through the point \\(({a}, {b})\\) with slope \\(m = \\frac{{c}}{{d}}\\) in point-slope form.",
+        "answer": "`'y - ' + b + ' = ' + (c/d) + '(x - ' + a + ')'`"        
+      },
+      {
+        "id": "ALG2-2.3-I1",
+        "type": "template",
+        "objective": "Equtions of Linear Functions",
+        "difficulty": "intermediate",
+        "variables": {
+          "a": { "min": -4, "max": 4, "exclude": [0] },
+          "b": { "min": 2, "max": 7, "exclude": ["a"] },
+          "x1": { "min": 1, "max": 10 },
+          "y1": { "min": 1, "max": 10 }
+        },
+        "question": "Rewrite the given equation in both standard form and slope-intercept form: \\( y - {y1} = \\frac{{a}}{{b}}(x + {x1}) \\).",
+        "answerExpression": "`let m = a/b; let b = y1 - m*(-x1); { slopeIntercept: 'y = ' + m + 'x + ' + b, standardForm: m + 'x - y + ' + ( -m*(-x1) + y1 ) + ' = 0' }`"
+      },
+      {
+        "id": "ALG2-2.3-A1",
+        "type": "template",
+        "objective": "Equtions of Linear Functions",
+        "difficulty": "advanced",
+        "variables": {
+          "x1": { "min": -10, "max": 10, "exclude": [0] },
+          "y1": { "min": -10, "max": 10, "exclude": [0] },
+          "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] },
+          "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] }
+        },
+        "question": "Write the equation of the line passing through \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\) in Point-Slope, Slope-Intercept, and Standard Form.",
+        "answerExpression": "`let m = (y2 - y1)/(x2 - x1); let b = y1 - m*x1; { pointSlope: 'y - ' + y1 + ' = ' + m + '(x - ' + x1 + ')', slopeIntercept: 'y = ' + m + 'x + ' + b, standardForm: m + 'x - y + ' + ( -m*x1 + y1 ) + ' = 0' }`"
       }
     ]
   },
@@ -1868,12 +2018,12 @@
         "objective": "To write and graph absolute value and piecewise fuctions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -5, "max": 5, "exclude": [0] },
-          "b": { "min": 2, "max": 7, "exclude": [0] },
-          "c": { "min": 2, "max": 7, "exclude": [0] },
-          "d": { "min": 1, "max": 10}
+          "a": { "min": -5, "max": 5, "exclude": [0,1,-1] },
+          "b": { "min": 2, "max": 6, "exclude": [0] },
+          "d": { "min": 1, "max": 3 },
+          "boundary": { "min": -2, "max": 2 }
         },
-        "question": "Graph the piecewise function: <br> \\( f(x) = \\begin{cases} {a}x + {b}, & x < 0 \\\\ {c}x^2 + {d}, & x \\geq 0 \\end{cases} \\).",
+        "question": "Graph the piecewise function: <br> \\( f(x) = \\begin{cases} {a}x + {b}, & x < {boundary} \\\\ -x^2 + {d}, & x \\geq {boundary} \\end{cases} \\).",
         "answer": "Graph with two pieces: a line with slope \\({a}\\) and y-intercept \\({b}\\) for \\(x < 0\\), and a parabola with vertex at \\((0, {d})\\) for \\(x \\geq 0\\)."
       },
       {
@@ -1895,12 +2045,11 @@
         "objective": "To evaluate limits of functions at points of continuity and discontinuity",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -5, "max": 5, "exclude": [0] },
-          "b": { "min": 2, "max": 7, "exclude": [0] },
-          "c": { "min": 2, "max": 7, "exclude": [0] },
-          "d": { "min": 1, "max": 10}
+          "a": { "min": 1, "max": 5 },
+          "b": { "min": 2, "max": 7, "exclude": ["a"] },
+          "c": { "min": 2, "max": 7, "exclude": ["a","b"]}
         },
-        "question": "Evaluate the limit: \\( \\lim_{{x \\to {b}}} \\frac{{{a}x^3 - {c}x^2 + {d}}}{{x^2 - {b}^2}} \\).",
+        "question": "Evaluate the limit: \\( \\lim_{{x \\to {b}}} \\frac{{(x + {a})(x - {b})}}{{(x - {c})(c + {a})}} \\).",
         "answer": "{a}*{b}/2 - {c}/2"
       },
       {
@@ -2287,17 +2436,32 @@
         "answer": "Solve the resulting quadratic: \\( x^2 + {2*c-a}x + {c^2+b} \\)"
       },
       {
+        "id": "PC-2.1-A3",
+        "type": "template",
+        "objective": "Radical Functions and Equations",
+        "difficulty": "advanced",
+        "variables": {
+          "a": { "values": [3] },
+          "b": { "min": 5, "max": 10 },
+          "c": { "min": 1, "max": 1, "exclude": [0] },
+          "d": { "formula": "5-b" }
+        },
+        "question": "Solve for \\( x \\): \\( \\sqrt{{a}x + {b}} - {c} = \\sqrt{x  {d}} \\). Check for extraneous solutions.",
+        "answer": "Solve the resulting quadratic: \\( x^2 + {2*c-a}x + {c^2+b} \\)"
+      },
+      {
         "id": "PC-2.2-B1",
         "type": "template",
         "objective": "Polynomial Functions",
         "difficulty": "basic",
         "variables": {
           "a": { "min": 2, "max": 5 },
-          "b": { "min": 2, "max": 4 },
-          "c": { "min": 2, "max": 6 }
+          "b": { "min": 2, "max": 4, "exclude": ["a"] },
+          "c": { "min": 2, "max": 6, "exclude": ["a","b"] },
+          "d": { "min": 2, "max": 3 }
         },
-        "question": "Find the degree and leading coefficient of the polynomial \\( f(x) = {a}x^3 + {b}x^2 + {c}x - 1 \\)",
-        "answer": "Degree: 3, Leading coefficient: \\( {a} \\)"
+        "question": "Find the zeros and state their multiplicity: \\( f(x) = (x - {a})(x + {b})(x - {c})^{d} \\)",
+        "answer": "\\( x = {a} \\) (multiplicity 1), \\( x = {-b} \\) (multiplicity 1), \\( x = {c} \\) (multiplicity {d})"
       },
       {
         "id": "PC-2.2-I1",
@@ -2305,13 +2469,15 @@
         "objective": "Polynomial Functions",
         "difficulty": "intermediate",
         "variables": {
-          "a": { "min": -3, "max": 3, "exclude": [0,-1,1] },
-          "b": { "min": 1, "max": 4 },
-          "c": { "min": 2, "max": 6 },
-          "d": { "min": 1, "max": 5 }
+          "z1": { "min": 1, "max": 5 },
+          "z2": { "formula": "-z1" },
+          "z3": { "min": 1, "max": 5 },
+          "a": { "formula": "-z1-z2-z3" },
+          "b": { "formula": "z1*z2+z1*z3+z2*z3" },
+          "c": { "formula": "-z1*z2*z3" }
         },
-        "question": "Use a calculator to find all real zeros and extrema \\( f(x) = {a}x^4 - {b}x^2 + {c}x - {d} \\). Round your answers to three decimal places when nessessary.",
-        "answer": "Answer currently unavailable."
+        "question": "Find the real zeros by factoring \\( f(x) = x^3 + ({a})x^2 + ({b})x + ({c}) \\).",
+        "answer": "\\( x = {z1} \\) (multiplicity 1), \\( x = {z2} \\) (multiplicity 1), \\( x = {z3} \\) (multiplicity 1)"
       },
       {
         "id": "PC-2.3-B1",

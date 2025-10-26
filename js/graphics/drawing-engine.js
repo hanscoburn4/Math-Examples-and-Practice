@@ -116,6 +116,49 @@ class DrawingEngine {
   }
 
   /**
+   * Draw a system of two linear equations (a1x + b1y = c1 and a2x + b2y = c2)
+   */
+  drawSystemOfLines(canvas, vars) {
+    const ctx = canvas.getContext("2d");
+    const { width, height } = canvas;
+    const xMid = width / 2;
+    const yMid = height / 2;
+    const scale = this.defaultScale;
+
+    // Draw coordinate grid once
+    this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
+
+    // --- First line ---
+    if (vars.b1 !== 0) {
+      const m1 = -vars.a1 / vars.b1;
+      const b1 = vars.c1 / vars.b1;
+      ctx.strokeStyle = "#e74c3c"; // red
+      this.drawLinear(canvas, { m: m1, b: b1 });
+    }
+
+    // --- Second line ---
+    if (vars.b2 !== 0) {
+      const m2 = -vars.a2 / vars.b2;
+      const b2 = vars.c2 / vars.b2;
+      ctx.strokeStyle = "#3498db"; // blue
+      this.drawLinear(canvas, { m: m2, b: b2 });
+    }
+
+    // --- Optional: draw intersection point if exists ---
+    const det = vars.a1 * vars.b2 - vars.a2 * vars.b1;
+    if (det !== 0) {
+      const x = (vars.c1 * vars.b2 - vars.c2 * vars.b1) / det;
+      const y = (vars.a1 * vars.c2 - vars.a2 * vars.c1) / det;
+
+      // Draw point of intersection
+      ctx.fillStyle = "#000";
+      ctx.beginPath();
+      ctx.arc(xMid + x * scale, yMid - y * scale, 4, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+  }
+
+  /**
    * Draw parabola
    */
   drawParabola(canvas, vars, xMin = null, xMax = null) {
@@ -1073,6 +1116,9 @@ class DrawingEngine {
     switch (drawType) {
       case "linearGraph":
         this.drawLinear(canvas, vars);
+        break;
+      case "systemOfLines":
+        this.drawSystemOfLines(canvas, vars);
         break;
       case "parabola":
         this.drawParabola(canvas, vars);

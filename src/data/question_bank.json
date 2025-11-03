@@ -1847,7 +1847,7 @@
         "xden": { "formula": "d - b" }
       },
       "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x {a|sign}}{{b}} > \\frac{x {c|sign}}{{d}} {e|sign} \\).",
-      "answer": "\\( x > \\frac{{xnum}}{{xden}} \\) You may need to reverse the inequality if you multiply or divide by a negative number."
+      "answer": "\\( x > {xnum} / {xden} \\) (manually simplify) You may need to reverse the inequality if you multiply or divide by a negative number."
     },
     {
       "id": "ALG2-2.1-I2",
@@ -2117,7 +2117,7 @@
       "r3": { "formula": "y3*b + z3*c" }
     },
     "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {y2|coef}b {z2|signedCoef}c = {r2} \\)<br>\\( {y3|coef}b {z3|signedCoef}c = {r3} \\)",
-    "answer": "\\( ({a}, {b}, {c} \\)"
+    "answer": "\\( ({a}, {b}, {c} )\\)"
   },
   {
     "id": "ALG2-2.8-I1",
@@ -2142,7 +2142,7 @@
       "r3": { "formula": "x3*a + y3*b + z3*c" }
     },
     "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {x2|coef}a {y2|signedCoef}b {z2|signedCoef}c = {r2} \\)<br>\\( {x3|coef}a {y3|signedCoef}b {z3|signedCoef}c = {r3} \\)",
-    "answer": "\\( ({a}, {b}, {c} \\)"
+    "answer": "\\( ({a}, {b}, {c} )\\)"
   }
 ]
 },

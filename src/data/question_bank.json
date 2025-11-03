@@ -884,7 +884,7 @@
         "c": { "min": 1, "max": 10, "exclude": ["a","b"] }
       },
       "question": "Solve for x: \\( {a}x + {b} = {c} \\).",
-      "answer": "\\( x = \\frac{{{c} - {b}}}{{{a}}} = {((c - b) / a).toFixed(2)} \\)"
+      "answer": "\\( x = {((c - b) / a).toFixed(2)} \\)"
     },
     {
       "id": "ALG1-2.3-B2",
@@ -897,7 +897,7 @@
         "c": { "min": 1, "max": 10, "exclude": ["a","b"] }
       },
       "question": "Solve for x: \\( \\frac{{a} - x}{{b}} = {c} \\).",
-      "answer": "\\( x = {a} - {b} \\cdot {c} = {a - b * c} \\)"
+      "answer": "\\( x = {a - b * c} \\)"
     },
     {
       "id": "ALG1-2.3-I1",
@@ -905,12 +905,12 @@
       "objective": "Solving Multi-Step Equations",
       "difficulty": "intermediate",
       "variables": {
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
         "c": { "min": 2, "max": 10, "exclude": [-1,0,1] },
-        "d": { "min": -10, "max": 10, "exclude": [-1,0,1] }
+        "d": { "min": 2, "max": 10, "exclude": [-1,0,1] }
       },
-      "question": "Solve for x, assume \\( a \\ne 0 \\): \\( \\frac{{b}}{ax} - {c} = {d} \\).",
-      "answer": "\\( x = \\frac{{b}}{{a({c} + {d})}} = {(b / ( (c + d) * 1 )).toFixed(2)} \\)"
+      "question": "Solve for x: \\( \\frac{ax+{b}}{{c}} - {d} = {b} \\).",
+      "answer": "\\( x = \\frac{ {c*(b+d)-b} }{a} \\)"
     },
     {
       "id": "ALG1-2.3-I2",
@@ -922,7 +922,7 @@
         "c": { "min": 2, "max": 10, "exclude": [-1,0,1] },
         "d": { "formula": "b*c" }
       },
-      "question": "Solve for x, assume \\( a \\ne 0 \\): \\( {b}(a + {c}x) = {d} \\).",
+      "question": "Solve for x: \\( {b}(a + {c}x) = {d} \\).",
       "answer": "\\( x = \\frac{{{d} / {b} - a}}{{{c}}} = {((d / b - 1) / c).toFixed(2)} \\)"
     },
     {
@@ -949,7 +949,7 @@
         "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
         "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
         "d": { "min": 2, "max": 10 },
-        "e": { "min": -10, "max": 10, "exclude": [-1,0,1] }
+        "e": { "min": 2, "max": 10, "exclude": [-1,0,1] }
       },
       "question": "Solve for x: \\( {a}x - {b} = {c}x + {d} - {e}x \\).",
       "answer": "\\( x = \\frac{{{b} + {d}}}{{{a} + {e} - {c}}} = {((b + d) / (a + e - c)).toFixed(2)} \\)"
@@ -962,9 +962,9 @@
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
         "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
+        "c": { "min": 2, "max": 10, "exclude": [-1,0,1] },
         "d": { "min": 2, "max": 10 },
-        "e": { "min": -10, "max": 10, "exclude": [-1,0,1] },
+        "e": { "min": 2, "max": 10, "exclude": [-1,0,1] },
         "f": { "min": 2, "max": 10 }
       },
       "question": "Solve for x: \\( {a}(x + {b}) - {c}x = {d} + {e}(x - {f}) \\).",
@@ -1760,11 +1760,8 @@
       "question": "Find the coordinates of any extrema for the function \\( y = {a}x^3 + {b}x^2 + {c}x + {d} \\).",
       "answer": "Use graphing calculator to evaluate the extrema."
     },
-
-
-
     {
-        "id": "ALG2-1.7-B1",
+      "id": "ALG2-1.7-B1",
       "type": "template",
       "objective": "Transform Graphs of Functions",
       "difficulty": "basic",
@@ -1782,7 +1779,7 @@
       "answer": "Teacher will need to manually draw the transformation for \\( g(x) = (x - ({h}))^2 + ({k})\\)"
     },
     {
-        "id": "ALG2-1.7-I1",
+      "id": "ALG2-1.7-I1",
       "type": "template",
       "objective": "Transform Graphs of Functions",
       "difficulty": "intermediate",
@@ -1800,7 +1797,7 @@
       "answer": "Teacher will need to manually draw the transformation for \\( g(x) = {a}|x - {h}| + {k}\\)"
     },
     {
-        "id": "ALG2-1.7-A1",
+      "id": "ALG2-1.7-A1",
       "type": "template",
       "objective": "Transform Graphs of Functions",
       "difficulty": "advanced",
@@ -1828,11 +1825,11 @@
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0] },
         "b": { "min": -10, "max": 10, "exclude": [0,"a"] },
-        "c": { "min": 1, "max": 10, "exclude": [0,"b"] },
-        "d": { "min": -10, "max": 10, "exclude": [0,"c"] },
+        "c": { "min": -10, "max": 10, "exclude": [0,"b"] },
+        "d": { "min": -10, "max": 10, "exclude": [0,1,-1,"c"] },
         "x": { "formula": "(a*d+c)/b" }
       },
-      "question": "Solve for \\( x \\), simplify your answer: \\( {a} = \\frac{{b}x - {c}}{{d}} \\).",
+      "question": "Solve for \\( x \\), simplify your answer: \\( {a} = \\frac{{b|coef}x {c|sign}}{{d}} \\).",
       "answer": "\\( x = {x} \\)"
     },
     {
@@ -1841,15 +1838,16 @@
       "objective": "Solving Linear Equations and Inequalities",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 1, "max": 10 },
-        "b": { "min": -10, "max": 10, "exclude": [0] },
-        "c": { "min": 1, "max": 10 },
-        "d": { "min": -10, "max": 10, "exclude": [0,"b"] },
-        "e": { "min": 1, "max": 10 },
-        "x": { "formula": "(b*c+e*b*d-d*a)/(d-b)" }
+        "a": { "min": -10, "max": 10, "exclude": [0] },
+        "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "c": { "min": -10, "max": 10, "exclude": [0] },
+        "d": { "min": -10, "max": 10, "exclude": [0,1,-1,"b"] },
+        "e": { "min": -10, "max": 10, "exclude": [0] },
+        "xnum": { "formula": "b*c + b*e*d - d*a" },
+        "xden": { "formula": "d - b" }
       },
-      "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x + {a}}{{b}} > \\frac{x +{c}}{{d}} + {e} \\).",
-      "answer": "\\( x > {x} \\) You may need to reverse the inequality if you multiply or divide by a negative number."
+      "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x {a|sign}}{{b}} > \\frac{x {c|sign}}{{d}} {e|sign} \\).",
+      "answer": "\\( x > \\frac{{xnum}}{{xden}} \\) You may need to reverse the inequality if you multiply or divide by a negative number."
     },
     {
       "id": "ALG2-2.1-I2",
@@ -1983,31 +1981,170 @@
       "objective": "Solving Systems of Equations Graphically",
       "difficulty": "basic",
       "variables": {
-        "x": { "min": -5, "max": 5 },
-        "y": { "min": -5, "max": 5 },
-        "a1": { "min": -5, "max": 5 }, 
-        "b1": { "min": -5, "max": 5 },
+        "x": { "min": -5, "max": 5, "exclude": [0] },
+        "y": { "min": -5, "max": 5, "exclude": [0] },
+        "m1": { "min": -3, "max": 3, "exclude": [0] },
+        "b1": { "formula": "y - m1*x" },
+        "m2": { "min": -3, "max": 3, "exclude": [0,"m1"] },
+        "b2": { "formula": "y - m2*x" }
+        },
+      "question": "Use the graph to determine the solution to the system of equations below:<br>\\( y = {m1|coef}x {b1|sign} \\)<br>\\( y = {m2|coef}x {b2|sign} \\)",
+      "answer": "\\({x}, {y}\\)"
+  },
+  {
+      "id": "ALG2-2.4-I1",
+      "type": "template",
+      "objective": "Solving Systems of Equations Graphically",
+      "difficulty": "intermediate",
+      "variables": {
+        "x": { "min": -10, "max": 10, "exclude": [0] },
+        "y": { "min": -10, "max": 10, "exclude": [0] },
+        "a1": { "min": -5, "max": 5, "exclude": [0] }, 
+        "b1": { "min": -5, "max": 5, "exclude": [0,"a1"] },
         "c1": { "formula": "a1*x + b1*y" },
-        "a2": { "min": -5, "max": 5, "exclude": ["a1"] },
-        "b2": { "min": -5, "max": 5, "exclude": ["b1"] },
+        "a2": { "min": -5, "max": 5, "exclude": [0,"a1"] },
+        "b2": { "min": -5, "max": 5, "exclude": [0,"a2","b1"] },
         "c2": { "formula": "a2*x + b2*y" }
         },
-      "question": "Use the graph to determine the solution to the system of equations",
-      "draw": {
-        "type": "systemOfLines",
-        "lines": [
-          {
-            "vars": { "m": "-a1/b1", "b": "c1/b1" }
-          },
-          {
-            "vars": { "m": "-a2/b2", "b": "c2/b2" }
-          }
-        ]
-      },
-      "showGraphInQuestion": true,
+      "question": "Solve the system of equations by graphing:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
       "answer": "\\({x}, {y}\\)"
+  },
+  {
+      "id": "ALG2-2.5-B1",
+      "type": "template",
+      "objective": "Solving Systems of Equations Algabraically",
+      "difficulty": "basic",
+      "variables": {
+        "x": { "min": -7, "max": 7 },
+        "y": { "min": -7, "max": 7 },
+        "a1": 1, 
+        "b1": { "min": -5, "max": 5, "exclude": [0]},
+        "c1": { "formula": "a1*x + b1*y" },
+        "a2": { "min": -5, "max": 5, "exclude": [0] },
+        "b2": { "values": [-1,1] },
+        "c2": { "formula": "a2*x + b2*y" }
+        },
+      "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "\\({x}, {y}\\)"
+  },
+  {
+      "id": "ALG2-2.5-I1",
+      "type": "template",
+      "objective": "Solving Systems of Equations Algabraically",
+      "difficulty": "intermediate",
+      "variables": {
+        "x": { "min": -6, "max": 6, "exclude": [0] },
+        "y": { "min": -6, "max": 6, "exclude": [0] },
+        "a1": { "min": -3, "max": 3, "exclude": [0] }, 
+        "b1": { "min": -4, "max": 4, "exclude": [0,"a1"] },
+        "c1": { "formula": "a1*x + b1*y" },
+        "a2": { "min": -3, "max": 3, "exclude": [0,"a1"] },
+        "b2": { "min": -4, "max": 4, "exclude": [0,"a2","b1"] },
+        "c2": { "formula": "a2*x + b2*y" }
+        },
+      "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "\\({x}, {y}\\)"
+  },
+  {
+      "id": "ALG2-2.5-A1",
+      "type": "template",
+      "objective": "Solving Systems of Equations Algabraically",
+      "difficulty": "advanced",
+      "variables": {
+        "a1": { "min": -10, "max": 10, "exclude": [0] }, 
+        "b1": { "min": -7, "max": 7, "exclude": [0] },
+        "c1": { "min": -10, "max": 10, "exclude": [0] },
+        "a2": { "min": -10, "max": 10, "exclude": ["a1",0] },
+        "b2": { "min": -7, "max": 7, "exclude": ["b1",0] },
+        "c2": { "min": -10, "max": 10, "exclude": ["c1"] },
+        "xnum": { "formula": "b1*c2 - b2*c1" },
+        "xden": { "formula": "b1*a2 - b2*a1" },
+        "ynum": { "formula": "a1*c2 - a2*c1" },
+        "yden": { "formula": "a1*b2 - a2*b1" }
+        },
+      "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( {a1|coef}x  {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "\\(\\frac{{xnum}}{{xden}}, \\frac{{ynum}}{{yden}}\\) If the denominators are 0, the system has no solution or infinite solutions."
+  },
+  {
+    "id": "ALG2-2.6-B1",
+    "type": "template",
+    "objective": "Solving Systems of Inequalities",
+    "difficulty": "basic",
+    "variables": {
+      "a1": { "min": -5, "max": 5, "exclude": [0] },
+      "c1": { "min": -5, "max": 5, "exclude": [0] },
+      "a2": { "min": -5, "max": 5, "exclude": [0] },
+      "c2": { "min": -5, "max": 5, "exclude": [0] }
+    },
+    "question": "Solve the system of inequalities graphically: <br>\\( {a1|coef}x - y > {c1} \\)<br>\\( y < {a2|coef}x {c2|sign} \\)",
+    "answer": "Answer currently unavailable."
+  },
+  {
+    "id": "ALG2-2.6-I1",
+    "type": "template",
+    "objective": "Solving Systems of Inequalities",
+    "difficulty": "intermediate",
+    "variables": {
+      "a1": { "min": -5, "max": 5, "exclude": [0] },
+      "b1": { "min": -5, "max": 5, "exclude": [0] },
+      "c1": { "min": -5, "max": 5, "exclude": [0] },
+      "a2": { "min": -5, "max": 5, "exclude": [0] },
+      "c2": { "min": -5, "max": 5, "exclude": [0] },
+      "c3": { "min": -3, "max": 3 }
+
+    },
+    "question": "Solve the system of inequalities graphically: <br>\\( {a1|coef}x {b1|signedCoef}y > {c1} \\) <br> \\( y < {a2|coef}x {c2|signedCoef}\\) <br> \\( y > {c3} \\)",
+    "answer": "Answer currently unavailable."
+  },
+  {
+    "id": "ALG2-2.8-B1",
+    "type": "template",
+    "objective": "Solving Systems of Equations in Three Variables",
+    "difficulty": "basic",
+    "variables": {
+      "a" : { "min": -5, "max": 5, "exclude": [0] },
+      "b" : { "min": -5, "max": 5, "exclude": [0] },
+      "c" : { "min": -5, "max": 5, "exclude": [0] },
+      "x1": { "min": -5, "max": 5, "exclude": [0] },
+      "y1": { "min": -5, "max": 5, "exclude": [0] },
+      "z1": { "min": -5, "max": 5, "exclude": [0] },
+      "r1": { "formula": "x1*a + y1*b + z1*c" },
+      "y2": { "min": -5, "max": 5, "exclude": [0]  },
+      "z2": { "min": -5, "max": 5, "exclude": [0]  },
+      "r2": { "formula": "y2*b + z2*c" },
+      "y3": { "min": -5, "max": 5, "exclude": [0]  },
+      "z3": { "min": -5, "max": 5, "exclude": [0]  },
+      "r3": { "formula": "y3*b + z3*c" }
+    },
+    "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {y2|coef}b {z2|signedCoef}c = {r2} \\)<br>\\( {y3|coef}b {z3|signedCoef}c = {r3} \\)",
+    "answer": "\\( ({a}, {b}, {c} \\)"
+  },
+  {
+    "id": "ALG2-2.8-I1",
+    "type": "template",
+    "objective": "Solving Systems of Equations in Three Variables",
+    "difficulty": "intermediate",
+    "variables": {
+      "a" : { "min": -5, "max": 5, "exclude": [0] },
+      "b" : { "min": -5, "max": 5, "exclude": [0] },
+      "c" : { "min": -5, "max": 5, "exclude": [0] },
+      "x1": { "min": -5, "max": 5, "exclude": [0] },
+      "y1": { "min": -5, "max": 5, "exclude": [0] },
+      "z1": { "min": -5, "max": 5, "exclude": [0] },
+      "r1": { "formula": "x1*a + y1*b + z1*c" },
+      "x2": { "min": -5, "max": 5, "exclude": [0] },
+      "y2": { "min": -5, "max": 5, "exclude": [0] },
+      "z2": { "min": -5, "max": 5, "exclude": [0] },
+      "r2": { "formula": "x2*a + y2*b + z2*c" },
+      "x3": { "min": -5, "max": 5, "exclude": [0] },
+      "y3": { "min": -5, "max": 5, "exclude": [0] },
+      "z3": { "min": -5, "max": 5, "exclude": [0] },
+      "r3": { "formula": "x3*a + y3*b + z3*c" }
+    },
+    "question": "Solve the system of equations in three variables: <br>\\( {x1|coef}a {y1|signedCoef}b {z1|signedCoef}c = {r1} \\)<br>\\( {x2|coef}a {y2|signedCoef}b {z2|signedCoef}c = {r2} \\)<br>\\( {x3|coef}a {y3|signedCoef}b {z3|signedCoef}c = {r3} \\)",
+    "answer": "\\( ({a}, {b}, {c} \\)"
   }
-  ]
+]
 },
 
 "Precalculus": {
@@ -2596,10 +2733,10 @@
       "objective": "Radical Functions and Equations",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 2, "max": 8 },
-        "b": { "min": 1, "max": 5 }
+        "a": { "min": -8, "max": 8, "exclude": [0] },
+        "b": { "min": 2, "max": 5 }
       },
-      "question": "Solve for \\( x \\): \\( \\sqrt{x + {a}} = {b} \\)",
+      "question": "Solve for \\( x \\): \\( \\sqrt{x {a|sign}} = {b} \\)",
       "answer": "\\( x = {b * b - a} \\)"
     },
     {
@@ -2609,10 +2746,10 @@
       "difficulty": "basic",
       "variables": {
         "a": { "min": 2, "max": 8 },
-        "b": { "min": 1, "max": 5 },
+        "b": { "min": -5, "max": 5, "exclude": [0] },
         "c": { "min": 1, "max": 5 }
       },
-      "question": "Solve for \\( x \\): \\( \\sqrt{{a}x + {b}} = {c} \\)",
+      "question": "Solve for \\( x \\): \\( \\sqrt{{a}x {b|sign}} = {c} \\)",
       "answer": "\\( x = \\frac{c^2+b}{a} \\)"
     },
     {
@@ -2621,10 +2758,10 @@
       "objective": "Radical Functions and Equations",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 4 },
+        "a": { "min": -4, "max": 4, "exclude": [0] },
         "b": { "min": 3, "max": 6 }
       },
-      "question": "Solve for \\( x \\): \\( \\sqrt{x + {a}} + \\sqrt{x} = {b} \\). Verify your solution.",
+      "question": "Solve for \\( x \\): \\( \\sqrt{x {a|sign}} + \\sqrt{x} = {b} \\). Verify your solution.",
       "answer": "Square both sides and solve the resulting quadratic equation. Check all solutions in the original equation."
     },
     {
@@ -2633,11 +2770,11 @@
       "objective": "Radical Functions and Equations",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 4 },
-        "b": { "min": 3, "max": 6 },
-        "c": { "min": 1, "max": 3 }
+        "a": { "min": -4, "max": 4, "exclude": [0] },
+        "b": { "min": -6, "max": 6, "exclude": [0] },
+        "c": { "min": -3, "max": 3, "exclude": [0] }
       },
-      "question": "Solve for \\( x \\): \\( \\sqrt[3]{x^2 + {a}} + {b} = {c} \\). Verify your solution.",
+      "question": "Solve for \\( x \\): \\( \\sqrt[3]{x^2 {a|sign}} {b|sign} = {c} \\). Verify your solution.",
       "answer": "\\( x = \\pm \\sqrt{(c-b)^3-a}\\)."
     },
     {
@@ -2646,11 +2783,11 @@
       "objective": "Radical Functions and Equations",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 2, "max": 5 },
-        "b": { "min": 1, "max": 4 },
+        "a": { "min": 1, "max": 8 },
+        "b": { "min": -4, "max": 4, "exclude": [0] },
         "c": { "min": 1, "max": 3 }
       },
-      "question": "Solve for \\( x \\): \\( \\sqrt{{a}x - {b}} = {c}x \\). Check for extraneous solutions.",
+      "question": "Solve for \\( x \\): \\( \\sqrt{{a|coef}x {b|sign}} = {c|coef}x \\). Check for extraneous solutions.",
       "answer": "\\( x = \\frac{ {a} \\pm \\sqrt{a^2-4\\cdot b \\cdot c^2}}{ 2 \\cdot c^2 } \\)"
     },
     {
@@ -2659,11 +2796,11 @@
       "objective": "Radical Functions and Equations",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 2, "max": 5 },
+        "a": { "min": 1, "max": 5 },
         "b": { "min": 1, "max": 4 },
         "c": { "min": 1, "max": 3 }
       },
-      "question": "Solve for \\( x \\): \\( \\sqrt{{a}x - {b}} = x - {c} \\). Check for extraneous solutions.",
+      "question": "Solve for \\( x \\): \\( \\sqrt{{a|coef}x {b|sign}} = x {c|sign} \\). Check for extraneous solutions.",
       "answer": "Solve the resulting quadratic: \\( x^2 + {2*c-a}x + {c^2+b} \\)"
     },
     {
@@ -2675,9 +2812,9 @@
         "a": { "values": [3] },
         "b": { "min": 5, "max": 10 },
         "c": { "min": 1, "max": 1, "exclude": [0] },
-        "d": { "formula": "5-b" }
+        "d": { "formula": "6-b" }
       },
-      "question": "Solve for \\( x \\): \\( \\sqrt{{a}x + {b}} - {c} = \\sqrt{x  {d}} \\). Check for extraneous solutions.",
+      "question": "Solve for \\( x \\): \\( \\sqrt{{a|coef}x + {b}} - {c} = \\sqrt{x  {d|sign}} \\). Check for extraneous solutions.",
       "answer": "Solve the resulting quadratic: \\( x^2 + {2*c-a}x + {c^2+b} \\)"
     },
     {
@@ -2686,13 +2823,15 @@
       "objective": "Polynomial Functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 2, "max": 5 },
-        "b": { "min": 2, "max": 4, "exclude": ["a"] },
-        "c": { "min": 2, "max": 6, "exclude": ["a","b"] },
-        "d": { "min": 2, "max": 3 }
+        "a": { "min": -2, "max": 2, "exclude": [0] },
+        "b": { "min": -4, "max": 4, "exclude": [0] },
+        "c": { "min": -6, "max": 6, "exclude": [0] },
+        "n": { "min": 4, "max": 6 },
+        "n-1": { "formula": "n - 1" },
+        "n-2": { "formula": "n - 2" }
       },
-      "question": "Find the zeros and state their multiplicity: \\( f(x) = (x - {a})(x + {b})(x - {c})^{d} \\)",
-      "answer": "\\( x = {a} \\) (multiplicity 1), \\( x = {-b} \\) (multiplicity 1), \\( x = {c} \\) (multiplicity {d})"
+      "question": "State the total number of complex zeros, the maximum number of extrema, and the end-behavior for: \\( f(x) = {a|coef}x^{n} {b|signedCoef}x^{n-1} -x^{n-2} + x {c|sign}\\)",
+      "answer": "Total number of complex zeros: {n}. Maximum number of extrema: {n-1}. End-behavior: as \\( x \\to \\infty, f(x) \\to {a > 0 ? '\\infty' : '-\\infty'} \\); as \\( x \\to -\\infty, f(x) \\to { (n % 2 === 0) ? (a > 0 ? '\\infty' : '-\\infty') : (a > 0 ? '-\\infty' : '\\infty')} \\)."
     },
     {
       "id": "PC-2.2-I1",
@@ -2707,7 +2846,7 @@
         "b": { "formula": "z1*z2+z1*z3+z2*z3" },
         "c": { "formula": "-z1*z2*z3" }
       },
-      "question": "Find the real zeros by factoring \\( f(x) = x^3 + ({a})x^2 + ({b})x + ({c}) \\).",
+      "question": "Find the real zeros by factoring \\( f(x) = x^3 {a|signedCoef}x^2 {b|signedCoef}x {c|sign} \\).",
       "answer": "\\( x = {z1} \\) (multiplicity 1), \\( x = {z2} \\) (multiplicity 1), \\( x = {z3} \\) (multiplicity 1)"
     },
     {
@@ -2716,12 +2855,12 @@
       "objective": "The remainder Theorem",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 1, "max": 3 },
+        "a": { "min": -3, "max": 3, "exclude": [0] },
         "b": { "min": -5, "max": 5, "exclude": [0] },
-        "c": { "min": 2, "max": 6 },
-        "d": { "values": [1,2,3] }
+        "c": { "min": -6, "max": 6, "exclude": [0] },
+        "d": { "min": -3, "max": 3, "exclude": [0] }
       },
-      "question": "Divide: \\( f(x) = x^4 + {a}x^3 + {b}x^2 + {c} \\div (x^2 - {d}) \\).",
+      "question": "Divide: \\( f(x) = x^4 {a|signedCoef}x^3 {b|signedCoef}x^2 {c|sign} \\div (x^2 {d|sign}) \\).",
       "answer": "Quotient: \\( x^2 + {a}x + {b + d} \\), Remainder: \\( {c - d*(b + d)} \\)"
     },
     {
@@ -2730,16 +2869,16 @@
       "objective": "The remainder Theorem",
       "difficulty": "intermediate",
       "variables": {
-        "z1": { "min": 1, "max": 5 },
-        "z2": { "min": 1, "max": 5 },
-        "z3": { "min": 1, "max": 5 },
+        "z1": { "min": -5, "max": 5 },
+        "z2": { "min": -5, "max": 5 },
+        "z3": { "min": -5, "max": 5 },
         "a": { "formula": "-z1-z2-z3" },
-        "b": { "formula": "(z3+1)(z1+z2)" },
+        "b": { "formula": "(z3+1)*(z1+z2)" },
         "c": { "formula": "-(z1*z2*z3)" },
         "x1": { "min": -5, "max": 5, "exclude": ["z1","z2","z3"]},
         "x2": { "min": -5, "max": 5, "exclude": ["x1","z1","z2","z3"] } 
       },
-      "question": "Use the remainder theorem to find \\( P({x1}), P({z1}) \\) and \\( P({x2}) \\) given that \\( P(x) = x^3 + {a}x^2 + {b}x + {c} \\).",
+      "question": "Use the remainder theorem to find \\( P({x1}), P({z1}) \\) and \\( P({x2}) \\) given that \\( P(x) = x^3 {a|signedCoef}x^2 {b|signedCoef}x {c|sign} \\).",
       "answer": "\\( P({x1}) = {x1*x1*x1 + a*x1*x1 + b*x1 + c} \\), \\( P({z1}) = 0 \\), \\( P({x2}) = {x2*x2*x2 + a*x2*x2 + b*x2 + c} \\)"
     },
     {
@@ -2752,10 +2891,10 @@
         "z2": { "min": 1, "max": 5 },
         "z3": { "min": 1, "max": 5 },
         "a": { "formula": "-z1-z2-z3" },
-        "b": { "formula": "(z3+1)(z1+z2)" },
+        "b": { "formula": "(z3+1)*(z1+z2)" },
         "c": { "formula": "-(z1*z2*z3)" }
       },
-      "question": "A polynomial \\( P(x) = x^3 + {a}x^2 + {b}x + {c} \\) has \\( {z1} \\) as a zero. Fully factor \\( P(x) \\) and state the zeros.",
+      "question": "A polynomial \\( P(x) = x^3 {a|signedCoef}x^2 {b|signedCoef}x {c|sign} \\) has a zero at \\(x = {z1} \\). Fully factor \\( P(x) \\) and state the zeros.",
       "answer": "Using the Factor Theorem, divide \\( P(x) \\) by \\( (x - {z1}) \\) to get a quadratic. Factor the quadratic to find the other zeros: \\( x = {z2} \\) and \\( x = {z3} \\). Thus, \\( P(x) = (x - {z1})(x - {z2})(x - {z3}) \\)."
     },
     {
@@ -2764,11 +2903,15 @@
       "objective": "The remainder Theorem",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 2, "max": 5 },
-        "k": { "min": 1, "max": 3 }
+        "a": { "min": -3, "max": 3, "exclude": [0] },
+        "b": { "min": -3, "max": 3, "exclude": [0] },
+        "c": { "min": -3, "max": 3, "exclude": [0] },
+        "k": { "min": -5, "max": 5, "exclude": [0] },
+        "r": { "min": -3, "max": 3, "exclude": [0] },
+        "remainder": { "formula": "a*r*r*r*r+ b*r*r*r + k*r + c" }
       },
-      "question": "If \\( f(x) = {a}x^4 - 3x^3 + kx + 7 \\) has a remainder of \\( {2 * k + 1} \\) when divided by \\( (x - 1) \\), find the value of \\( k \\).",
-      "answer": "Solve \\( f(1) = {2 * k + 1} \\): \\( {a} - 3 + k + 7 = {2 * k + 1} \\), so \\( k = {a + 3} \\)"
+      "question": "If \\( f(x) = {a|coef}x^4 {b|signedCoef}x^3 + kx {c|sign} \\) has a remainder of \\( {remainder} \\) when divided by \\( (x {r|sign}) \\), find the value of \\( k \\).",
+      "answer": "Solve \\( k = {k} \\)"
     },
     {
       "id": "PC-2.4-B1",
@@ -2776,11 +2919,14 @@
       "objective": "Zeros of Polynomial Functions",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 2, "max": 5 },
-        "b": { "min": 1, "max": 4 }
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -5, "max": 4, "exclude": [0,"a"] },
+        "c": { "min": -6, "max": 6, "exclude": [0,"a","b"] },
+        "d": { "min": 2, "max": 3 },
+        "e": { "min": -3, "max": 3, "exclude": [0] }
       },
-      "question": "Find all zeros of the polynomial \\( f(x) = (x - {a})(x + {b})(x - 1) \\).",
-      "answer": "\\( x = {a}, x = {-b}, x = 1 \\)"
+      "question": "Find the zeros and state their multiplicity: \\( f(x) = ({e|ceof}x {a|sign})(x {b|sign})(x {c|sign})^{d} \\)",
+      "answer": "\\( x = {-a}/{e} \\) (multiplicity 1), \\( x = {-b} \\) (multiplicity 1), \\( x = {-c} \\) (multiplicity {d})"
     },
     {
       "id": "PC-2.4-I1",
@@ -2788,10 +2934,12 @@
       "objective": "Zeros of Polynomial Functions",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 5 },
-        "b": { "min": 1, "max": 4 }
+        "a": { "min": -5, "max": 5, "exclude": [0] },
+        "b": { "min": -4, "max": 4, "exclude": [0, "a"] },
+        "c": { "formula": "a + b" },
+        "d": { "formula": "a * b" }
       },
-      "question": "Find all real zeros of \\( f(x) = x^3 - {a + b}x^2 + {a * b}x \\) and state their multiplicities.",
+      "question": "Find all real zeros of \\( f(x) = x^3 {c|signedCoef}x^2 {d|signedCoef}x \\) and state their multiplicities.",
       "answer": "\\( x = 0 \\) (multiplicity 1), \\( x = {a} \\) (multiplicity 1), \\( x = {b} \\) (multiplicity 1)"
     },
     {
@@ -2800,11 +2948,17 @@
       "objective": "Zeros of Polynomial Functions",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 1, "max": 3 },
-        "b": { "min": 2, "max": 4 }
+        "z1": { "min": -5, "max": 5, "exclude": [0] },
+        "z2": { "min": -5, "max": 5, "exclude": [0] },
+        "a": { "min": -2, "max": 2, "exclude": [0] },
+        "b": { "min": -2, "max": 2, "exclude": [0] },
+        "c1": { "formula": "-2*a - z1 - z2" },
+        "c2": { "formula": "a*a + b*b + z1*z2 + 2*a*(z1 + z2)" },
+        "c3": { "formula": "-1*(z1 + z2)*(a*a + b*b) - 2*a*z1*z2" },
+        "c4": { "formula": "a*a*z1*z2 + b*b*z1*z2" }
       },
-      "question": "A polynomial function has zeros at \\( x = {a} \\) (multiplicity 2), \\( x = -{b} \\) (multiplicity 1), and \\( x = 0 \\) (multiplicity 1). If \\( f(1) = {-6} \\), write the equation of the polynomial in factored form.",
-      "answer": "Use \\( f(x) = k \\cdot x(x - {a})^2(x + {b}) \\) and solve for \\( k \\) using \\( f(1) = {-6} \\)"
+      "question": "Use theorems learned to list the possible positive and negative rational zeros. Then completely factor the polynomial: \\( P(x) = x^4 {c1|signedCoef}x^3 {c2|signedCoef}x^2 {c3|signedCoef}x {c4|sign} \\).",
+      "answer": "\\( P(x) = (x - a - bi)(x - a + bi)(x - z1)(x - z2) \\)."
     },
     {
       "id": "PC-2.5-B1",
@@ -2815,9 +2969,8 @@
         "a": { "min": 2, "max": 6 },
         "b": { "min": 1, "max": 5 }
       },
-      "question": "Find the vertical asymptote(s) of \\( f(x) = \\frac{{a}x + {b}}{x - {b}} \\).",
-      "answer": "\\( x = {b} \\)",
-      "draw": "rational"
+      "question": "Find the asymptote(s) of \\( f(x) = \\frac{{a}x + {b}}{x - {b}} \\).",
+      "answer": "\\( x = {b}, y = {a} \\)"
     },
     {
       "id": "PC-2.5-I1",
@@ -2826,10 +2979,12 @@
       "difficulty": "intermediate",
       "variables": {
         "a": { "min": 2, "max": 5 },
-        "b": { "min": 1, "max": 4 }
+        "b": { "min": 1, "max": 7, "exclude": ["a"] },
+        "c": { "formula": "a+b"},
+        "d": { "formula": "a*b"}
       },
-      "question": "Find the horizontal asymptote of \\( f(x) = \\frac{{a}x^2 + {b}x - 1}{{a}x^2 - {b}} \\).",
-      "answer": "\\( y = 1 \\) (degrees equal, ratio of leading coefficients)"
+      "question": "Find the asymptote(s) and hole(s) if any and make a rough sketch of \\( f(x) = \\frac{x - {b}}{x^2 - {c}x + {d}} \\).",
+      "answer": "Vertical asymptote at \\( x = {a} \\), hole at \\( x = {b} \\), horizontal asymptote at \\( y = 0 \\)."
     },
     {
       "id": "PC-2.5-A1",
@@ -2838,9 +2993,12 @@
       "difficulty": "advanced",
       "variables": {
         "a": { "min": 2, "max": 4 },
-        "b": { "min": 1, "max": 3 }
+        "b": { "min": 1, "max": 3 },
+        "c": { "formula": "a-b" },
+        "d": { "formula": "a*b" },
+        "e": { "formula": "a * a" }
       },
-      "question": "Analyze \\( f(x) = \\frac{x^2 - {a * a}}{x^2 + {b}x - {a * b}} \\). Identify all asymptotes, holes, and intercepts.",
+      "question": "Analyze \\( f(x) = \\frac{x^3 - {e}x}{x^2 + {c}x - {d}} \\). Identify all asymptotes, holes, and intercepts.",
       "answer": "Factor numerator and denominator. Check for common factors (holes), find vertical asymptotes from remaining denominator factors, horizontal asymptote from degree comparison, and intercepts by setting numerator = 0 and evaluating \\( f(0) \\)."
     },
     {
@@ -2849,11 +3007,14 @@
       "objective": "Solving Rational Equations",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 2, "max": 6 },
-        "b": { "min": 1, "max": 4 }
+        "a": { "min": 2, "max": 4 },
+        "b": { "min": 1, "max": 5 },
+        "c": { "min": 1, "max": 5, "exclude": ["a","b"] },
+        "d": { "formula": "a*b" },
+        "e": { "formula": "b-a-c" }
       },
-      "question": "Solve for \\( x \\): \\( \\frac{{a}}{x} = {b} \\)",
-      "answer": "\\( x = \\frac{{a}}{{b}} \\)"
+      "question": "Solve for \\( x \\): \\( \\frac{x}{{x - {a}}} = \\frac{{x + {b}}}{{x + {c}}} \\). Check for extraneous solutions.",
+      "answer": "\\( x = \\frac{{d}}{{e}} \\)"
     },
     {
       "id": "PC-2.6-I1",
@@ -2861,11 +3022,11 @@
       "objective": "Solving Rational Equations",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 5 },
-        "b": { "min": 1, "max": 4 }
+        "a": { "min": 3, "max": 6 },
+        "b": { "min": 1, "max": 2 }
       },
-      "question": "Solve for \\( x \\): \\( \\frac{x + {a}}{x - {b}} = \\frac{{a}}{{b}} \\). Check for extraneous solutions.",
-      "answer": "Multiply both sides by \\( (x - {b}) \\) and solve: \\( x = \\frac{{{a * b} + {a * b}}}{{{b} - {a}}} \\) if \\( x \\neq {b} \\)"
+      "question": "Solve for \\( x \\): \\( \\frac{1}{x^2} + \\frac{{a}}{x} = \\frac{{b}}{x - {a}} \\).",
+      "answer": "Multiply both sides by \\( x^2(x - {a}) \\) to get \\( (x - {a}) + {a}x(x - {a}) = {b}x^2 \\). Simplify to the quadratic \\( ({a} - {b})x^2 - {a}^2x - {a} = 0 \\). Thus \\( x = \\dfrac{{ {a}^2 \\pm \\sqrt{{ {a}^4 + 4{a}({a} - {b}) }}}}{{2({a} - {b})}} \\). Exclude any value that makes a denominator zero: \\( x = 0 \\) or \\( x = {a} \\)."
     },
     {
       "id": "PC-2.6-A1",
@@ -2874,39 +3035,201 @@
       "difficulty": "advanced",
       "variables": {
         "a": { "min": 1, "max": 3 },
-        "b": { "min": 2, "max": 4 }
+        "b": { "min": 2, "max": 4 },
+        "c": { "min": 1, "max": 3  },
+        "d": { "formula": "c + 1"  }
       },
-      "question": "Solve for \\( x \\): \\( \\frac{{a}}{x - {b}} + \\frac{{b}}{x + {a}} = \\frac{{a + b}}{x^2 - {b - a}x - {a * b}} \\). Identify any extraneous solutions.",
-      "answer": "Factor the denominator on the right, find LCD, combine fractions, and solve. Verify solutions do not make any denominator zero."
-    },
+      "question": "Solve for \\( x \\): \\( \\frac{x + {a}}{x^2 - {b}} + \\frac{{c}}{x} = \\frac{{d}}{x + {b}} \\). Identify any extraneous solutions.",
+      "answer": "Multiply through by \\( x(x - {b})(x + {b}) \\):\n\\( (x + {a})x(x + {b}) + {c}(x - {b})(x + {b}) = {a}x(x - {b}) \\).\nCollecting terms gives a cubic polynomial in \\(x\\). With \\( c = {a} \\) this cubic often factors over the integers; solve by factoring or the Rational Root Theorem. Exclude roots that make any denominator zero: \\( x = 0, {b}, -{b} \\)."
+    }
+    ],
+
+    "Chapter 3": [
     {
-      "id": "PC-2.7-B1",
+      "id": "PC-3.1a-B1",
       "type": "template",
-      "objective": "Nonlinear Inequalities",
+      "objective": "Exponential Functions (graphs and equations)",
       "difficulty": "basic",
       "variables": {
         "a": { "min": 2, "max": 5 },
-        "b": { "min": 1, "max": 4 }
+        "h": { "min": -5, "max": 5, "exclude": [0] },
+        "k": { "min": -5, "max": 5, "exclude": [0] }
       },
-      "question": "Solve the inequality: \\( (x - {a})(x + {b}) > 0 \\)",
-      "answer": "\\( x < {-b} \\) or \\( x > {a} \\) (in interval notation: \\( (-\\infty, {-b}) \\cup ({a}, \\infty) \\))"
+      "question": "Sketch and label the graph of \\( f(x) = {a}^x \\). Then describe how the graph of \\( g(x) = {a}^{x {h|sign}} {k|sign} \\) is transformed from \\( f(x) = {a}^{x} \\).",
+      "answer": "Shifted right {h} units and up {k} units; same base {a}, exponential growth."
     },
     {
-      "id": "PC-2.7-I1",
+      "id": "PC-3.1a-B2",
       "type": "template",
-      "objective": "Nonlinear Inequalities",
+      "objective": "Exponential Functions (graphs and equations)",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 5 },
+        "h": { "min": 1, "max": 5 },
+        "k": { "min": 1, "max": 5 }
+      },
+      "question": "Sketch and label the graph of \\( f(x) = {a}^x \\). Then describe how the graph of \\( g(x) = {a}^{x + {h}} - {k} \\) is transformed from \\( f(x) = {a}^{x} \\).",
+      "answer": "Shifted left {h} units and down {k} units; same base {a}, exponential growth."
+    },
+    {
+      "id": "PC-3.1a-I1",
+      "type": "template",
+      "objective": "Exponential Functions (graphs and equations)",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 2, "max": 4 },
-        "b": { "min": 1, "max": 3 }
+        "a": { "min": -6, "max": 6, "exclude": [0,1,-1] },
+        "b": { "min": 2, "max": 6 },
+        "h": { "min": -2, "max": 2, "exclude": [0] },
+        "k": { "min": -4, "max": 4, "exclude": [0] },
+        "axis": { "values": ["x", "y"] }
       },
-      "question": "Solve the rational inequality: \\( \\frac{x + {a}}{x - {b}} \\leq 0 \\)",
-      "answer": "Use sign analysis. Solution: \\( [{-a}, {b}) \\) (note: \\( x = {b} \\) is excluded as it makes denominator zero)"
+      "question": "Given \\( f(x) = {a}\\cdot {b}^x \\), write the equation of the function after it is reflected across the {axis}-axis, horizontally translated by {h}, and vertically translated by {k}.",
+      "answer": "\\( f(x) = -{a}^{(x - {b})} + {k} \\)"
+    },
+    {
+      "id": "PC-3.1b-B1",
+      "type": "template",
+      "objective": "Exponential Functions (interest and other applications)",
+      "difficulty": "basic",
+      "variables": {
+        "P": { "min": 1000, "max": 5000, "step": 100 },
+        "r": { "min": 3, "max": 8 },
+        "t": { "min": 1, "max": 10 }
+      },
+      "question": "Find the amount \\( A \\) after {t} years if \\( {P} \\) dollars is invested at an annual interest rate of {r}% compounded annually.<br>Use \\( A = P(1 + r/100)^{t} \\).",
+      "answer": "\\( A = {P}(1 + {r}/100)^{{t}} \\)"
+    },
+    {
+      "id": "PC-3.1b-I1",
+      "type": "template",
+      "objective": "Exponential Functions (interest and other applications)",
+      "difficulty": "intermediate",
+      "variables": {
+        "P": { "min": 2000, "max": 8000, "step": 500 },
+        "r": { "min": 2, "max": 10 },
+        "t": { "min": 2, "max": 15 },
+        "n": { "options": [1, 4, 12] }
+      },
+      "question": "Find the amount \\( A \\) after {t} years if \\( {P} \\) dollars is invested at {r}% annual interest compounded {n} times per year.<br>Use \\( A = P(1 + r/(100n))^{n t} \\).",
+      "answer": "\\( A = {P}(1 + {r}/(100\\times{n}))^{{n}\\times{t}} \\)"
+    },
+    {
+      "id": "PC-3.2-B1",
+      "type": "template",
+      "objective": "Logarithmic Functions",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 },
+        "x": { "min": 1, "max": 100 }
+      },
+      "question": "Evaluate or simplify: \\( \\log_{ {a} }({a}^{x}) \\).",
+      "answer": "{x}"
+    },
+    {
+      "id": "PC-3.2-I1",
+      "type": "template",
+      "objective": "Logarithmic Functions",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 },
+        "b": { "min": 2, "max": 6 },
+        "x": { "min": 1, "max": 10 }
+      },
+      "question": "Use the change-of-base formula to evaluate: \\( \\log_{ {a} }({b}^{x}) \\).",
+      "answer": "\\( x \\dfrac{\\ln {b}}{\\ln {a}} \\)"
+    },
+    {
+      "id": "PC-3.3-B1",
+      "type": "template",
+      "objective": "Properties of Logarithms",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 },
+        "m": { "min": 2, "max": 10 },
+        "n": { "min": 2, "max": 10 }
+      },
+      "question": "Expand \\( \\log_{ {a} }({m}{n}) \\) using logarithm properties.",
+      "answer": "\\( \\log_{ {a} }({m}) + \\log_{ {a} }({n}) \\)"
+    },
+    {
+      "id": "PC-3.3-I1",
+      "type": "template",
+      "objective": "Properties of Logarithms",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 },
+        "m": { "min": 2, "max": 10 },
+        "p": { "min": 2, "max": 5 }
+      },
+      "question": "Simplify \\( {p}\\log_{ {a} }({m}) - \\log_{ {a} }({m}^{p}) \\).",
+      "answer": "0"
+    },
+    {
+      "id": "PC-3.4a-B1",
+      "type": "template",
+      "objective": "Solving Exponential Equations",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 6 },
+        "x": { "min": 1, "max": 5 }
+      },
+      "question": "Solve for \\( x \\): \\( {a}^{x} = {a}^{ {x + 2} - 2 } \\)",
+      "answer": "x = 0"
+    },
+    {
+      "id": "PC-3.4a-I1",
+      "type": "template",
+      "objective": "Solving Exponential Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 5 },
+        "k": { "min": 1, "max": 4 },
+        "m": { "min": 1, "max": 4 }
+      },
+      "question": "Solve for \\( x \\): \\( {a}^{x + {k}} = {a}^{2x - {m}} \\)",
+      "answer": "\\( x = {k} + {m} \\)"
+    },
+    {
+      "id": "PC-3.4b-B1",
+      "type": "template",
+      "objective": "Solving Logarithmic Equations",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "min": 2, "max": 10 },
+        "x": { "min": 1, "max": 10 }
+      },
+      "question": "Solve for \\( x \\): \\( \\log_{ {a} }(x) = 2 \\).",
+      "answer": "\\( x = {a}^{2} \\)"
+    },
+    {
+      "id": "PC-3.4b-I1",
+      "type": "template",
+      "objective": "Solving Logarithmic Equations",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": 2, "max": 10 },
+        "k": { "min": 1, "max": 5 },
+        "c": { "min": 1, "max": 4 }
+      },
+      "question": "Solve for \\( x \\): \\( \\log_{ {a} }(x - {c}) = {k} \\).",
+      "answer": "\\( x = {a}^{ {k} } + {c} \\)"
+    },
+    {
+      "id": "PC-3.4b-A1",
+      "type": "template",
+      "objective": "Solving Logarithmic Equations",
+      "difficulty": "advanced",
+      "variables": {
+        "a": { "min": 2, "max": 10 },
+        "b": { "min": 2, "max": 5 },
+        "c": { "min": 1, "max": 3 }
+      },
+      "question": "Solve for \\( x \\): \\( \\log_{ {a} }(x) + \\log_{ {a} }(x - {c}) = {b} \\).",
+      "answer": "x satisfies \\( x(x - {c}) = {a}^{ {b} } \\); real solutions where \\( x > {c} \\)."
     }
-
     ],
     
-    "Chapter 3": [
+    "Chapter Testing": [
       {
         "id": "PC-3.1-I1",
         "type": "template",

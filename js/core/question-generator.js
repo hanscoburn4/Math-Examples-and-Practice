@@ -74,16 +74,77 @@ class QuestionGenerator {
     // Deep clone the template
     const question = JSON.parse(JSON.stringify(template));
     
-    // Generate variables
+   // Generate variables
     const variables = window.QuestionUtils.generateQuestionVariables(question);
-    
-    // Replace variables in question text
-    let questionText = window.QuestionUtils.replaceTemplateVariables(
-      question.question || "", 
+
+    let questionText = question.question || "";
+
+    // 🔹 Enhanced unified pattern handler for {var|option1|option2|...}
+    questionText = questionText.replace(/\{([a-zA-Z_][a-zA-Z0-9_]*)(\|[a-zA-Z]+)*\}/g, (match, varName, opts) => {
+      const value = variables[varName];
+      if (value === undefined || value === null) return match;
+
+      const options = opts ? opts.slice(1).split('|') : [];
+
+      // Direct combined version {a|signedCoef}
+      const useSignedCoef = options.includes('signedCoef');
+      if (useSignedCoef) {
+        if (value === 0) return '';
+        const sign = value >= 0 ? '+' : '-';
+        const coef = Math.abs(value) === 1 ? '' : Math.abs(value).toString();
+        return `${sign}${coef}`;
+      }
+
+      // Otherwise handle standard combinations (|sign, |coef)
+      const useSign = options.includes('sign');
+      const useCoef = options.includes('coef');
+
+      let sign = '';
+      let coef = '';
+
+      // Determine sign
+      if (useSign) {
+        sign = value >= 0 ? '+' : '-';
+      } else if (value < 0) {
+        sign = '-';
+      }
+
+      const absVal = Math.abs(value);
+
+      // Determine coefficient
+      if (useCoef) {
+        if (absVal === 1) {
+          coef = ''; // omit coefficient 1
+        } else {
+          coef = String(absVal);
+        }
+      } else {
+        coef = String(absVal);
+      }
+
+      return `${sign}${coef}`;
+    });
+
+
+    // Continue normal {variable} replacement
+    questionText = window.QuestionUtils.replaceTemplateVariables(
+      questionText,
       variables
     );
 
-    // Wrap exponents in questionText for proper MathJax rendering
+    // Wrap exponents for MathJax rendering
+    questionText = questionText.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+      return `${base}^{${exp}}`;
+    });
+
+
+    // Continue normal {variable} replacement
+    questionText = window.QuestionUtils.replaceTemplateVariables(
+      questionText,
+      variables
+    );
+
+    // Wrap exponents for MathJax
     questionText = questionText.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
       return `${base}^{${exp}}`;
     });

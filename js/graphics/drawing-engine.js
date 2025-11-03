@@ -55,15 +55,15 @@ class DrawingEngine {
   /**
    * Draw linear function
    */
-  drawLinear(canvas, vars, xMin = null, xMax = null) {
+  drawLinear(canvas, vars, xMin = null, xMax = null, skipGrid = false) {
     const ctx = canvas.getContext("2d");
     const { width, height } = canvas;
     const xMid = width / 2;
     const yMid = height / 2;
     const scale = this.defaultScale;
 
-    // Only draw grid if this is not part of a piecewise function
-    if (xMin === null && xMax === null) {
+    // Only draw grid if this is not part of a piecewise function and not skipping
+    if (xMin === null && xMax === null && !skipGrid) {
       this.drawCoordinateGrid(ctx, width, height, xMid, yMid, scale);
     }
 
@@ -76,12 +76,10 @@ class DrawingEngine {
     const domainXMin = xMin !== null ? xMin : (vars.xMin !== undefined ? vars.xMin : null);
     const domainXMax = xMax !== null ? xMax : (vars.xMax !== undefined ? vars.xMax : null);
 
-    ctx.strokeStyle = "#3498db";
+    ctx.strokeStyle = "#e67e22";
     ctx.lineWidth = 2;
     ctx.beginPath();
 
-    let first = true;
-    
     // Determine pixel range based on domain constraints
     let startPixel = 0;
     let endPixel = width;
@@ -93,7 +91,7 @@ class DrawingEngine {
       endPixel = Math.min(width, xMid + domainXMax * scale);
     }
     
-    for (let xPixel = startPixel; xPixel < endPixel; xPixel += 2) {
+    for (let xPixel = startPixel; xPixel < endPixel; xPixel ++) {
       const x = (xPixel - xMid) / scale;
       
       // Skip if outside domain
@@ -103,16 +101,13 @@ class DrawingEngine {
       const y = m * (x - h) + b + k;
       const yPixel = yMid - y * scale;
 
-      if (yPixel >= 0 && yPixel <= height) {
-        if (first) {
+      if (xPixel === startPixel) {
           ctx.moveTo(xPixel, yPixel);
-          first = false;
         } else {
           ctx.lineTo(xPixel, yPixel);
         }
       }
-    }
-    ctx.stroke();
+      ctx.stroke();
   }
 
   /**
@@ -133,7 +128,7 @@ class DrawingEngine {
       const m1 = -vars.a1 / vars.b1;
       const b1 = vars.c1 / vars.b1;
       ctx.strokeStyle = "#e74c3c"; // red
-      this.drawLinear(canvas, { m: m1, b: b1 });
+      this.drawLinear(canvas, { m: m1, b: b1 }, null, null, true);  // Skip grid
     }
 
     // --- Second line ---
@@ -141,20 +136,7 @@ class DrawingEngine {
       const m2 = -vars.a2 / vars.b2;
       const b2 = vars.c2 / vars.b2;
       ctx.strokeStyle = "#3498db"; // blue
-      this.drawLinear(canvas, { m: m2, b: b2 });
-    }
-
-    // --- Optional: draw intersection point if exists ---
-    const det = vars.a1 * vars.b2 - vars.a2 * vars.b1;
-    if (det !== 0) {
-      const x = (vars.c1 * vars.b2 - vars.c2 * vars.b1) / det;
-      const y = (vars.a1 * vars.c2 - vars.a2 * vars.c1) / det;
-
-      // Draw point of intersection
-      ctx.fillStyle = "#000";
-      ctx.beginPath();
-      ctx.arc(xMid + x * scale, yMid - y * scale, 4, 0, 2 * Math.PI);
-      ctx.fill();
+      this.drawLinear(canvas, { m: m2, b: b2 }, null, null, true);  // Skip grid
     }
   }
 

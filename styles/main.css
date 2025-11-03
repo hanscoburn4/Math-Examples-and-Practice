@@ -155,18 +155,14 @@ button.small {
   display: none !important; 
 }
 
-.question { 
-  margin-bottom: var(--question-spacing, 20px);
+.question {
   padding: 20px;
+  padding-top: 4px;
   padding-bottom: var(--question-spacing, 20px);
+  margin: 0;
   background: white;
   border-radius: 8px;
   border-left: 4px solid #3498db;
-}
-
-/* Remove top margin for first question (single-column) */
-.question:first-child {
-  margin-top: 0;
 }
 
 
@@ -217,8 +213,10 @@ button.small {
 
 #questionSpacing {
   width: 80px;
-  /* Convert px to pt: 1px ≈ 0.75pt */
+  /* Controls padding-bottom of questions via --question-spacing variable */
+  /* Converted from px to pt: 1px ≈ 0.75pt */
   /* Range: 10-100px becomes 7.5-75pt */
+  /* Minimal padding-top (4px) keeps questions tight to top */
 }
 
 /* Question Layout Styles */
@@ -229,7 +227,7 @@ button.small {
 .columns-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--question-spacing, 20px);
+  column-gap: 20px;
   align-items: start;
 }
 
@@ -417,26 +415,11 @@ canvas {
   
   .question {
     page-break-inside: avoid;
-    margin-bottom: 0;
+    margin: 0;
     padding: 12pt;
+    padding-top: 2pt;
     padding-bottom: var(--question-spacing, 15pt);
     border-left-width: 3pt;
-  }
-
-  /* Ensure no extra spacing for first question */
-  .question:first-child {
-    margin-top: 0;
-    padding-top: 12pt;
-  }
-
-  /* Fix 2-column layout spacing issues */
-  .columns-2 .question:first-child {
-    margin-top: 0;
-    padding-top: 12pt;
-  }
-  .columns-2 .question:nth-child(2) {
-    margin-top: 0;
-    padding-top: 12pt;
   }
   
   .answers {
@@ -449,7 +432,6 @@ canvas {
   .columns-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--question-spacing, 15pt);
     column-gap: 18pt;
   }
   

@@ -23,6 +23,164 @@ class QuestionGenerator {
   }
 
   /**
+   * Apply unified text processing: variable replacement, formatting, expression evaluation, and exponent wrapping
+   * This is the core function used for both questions and answers
+   */
+  processTemplateText(text, variables) {
+    if (!text) return "";
+
+    let result = text;
+
+    // Step 1: Handle formatted variable patterns {var|option1|option2|...}
+    result = this.processFormattedVariables(result, variables);
+
+    // Step 2: Replace remaining simple {variable} placeholders
+    result = window.QuestionUtils.replaceTemplateVariables(result, variables);
+
+    // Step 3: Evaluate single-brace expressions { ... }
+    result = result.replace(/\{([^}]+)\}/g, (match, expr) => {
+      return this.evaluateExpressionInTemplate(expr, variables, match);
+    });
+
+    // Step 4: Evaluate double-brace expressions {{ ... }}
+    result = result.replace(/\{\{([^}]+)\}\}/g, (match, expr) => {
+      try {
+        const cleanExpr = expr.trim();
+        return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
+      } catch (e) {
+        const availableVars = Object.keys(variables).join(', ');
+        console.error(
+          `Double-brace expression evaluation failed: "${expr}"\n` +
+          `Available variables: ${availableVars}\n` +
+          `Error: ${e.message}`
+        );
+        return match;
+      }
+    });
+
+    // Step 5: Wrap exponents for MathJax rendering
+    result = result.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
+      return `${base}^{${exp}}`;
+    });
+
+    return result;
+  }
+
+  /**
+   * Process formatted variable patterns like {var|sign}, {var|coef}, {var|signedCoef}, {var|decimal:2}, {var|fraction}
+   * Supports flexible formatting options for both questions and answers
+   */
+  processFormattedVariables(text, variables) {
+    return text.replace(/\{([a-zA-Z_][a-zA-Z0-9_]*)(\|[^}]*)*\}/g, (match, varName, opts) => {
+      const value = variables[varName];
+      if (value === undefined || value === null) return match;
+
+      const options = opts ? opts.slice(1).split('|').filter(o => o) : [];
+
+      return this.formatVariableValue(value, options);
+    });
+  }
+
+  /**
+   * Format a variable value based on specified formatting options
+   * Supported options: sign, coef, signedCoef, decimal:n, fraction, percent
+   */
+  formatVariableValue(value, options = []) {
+    // Handle {var|fraction}
+    if (options.includes('fraction')) {
+      try {
+        const mathInstance = window.MathUtils.mathInstance;
+        const fraction = mathInstance.fraction(value);
+        const formatted = mathInstance.format(fraction);
+        if (formatted.includes('/')) {
+          const parts = formatted.split('/');
+          return `\\frac{${parts[0]}}{${parts[1]}}`;
+        }
+        return formatted;
+      } catch (e) {
+        console.error(`Failed to format as fraction: ${value}`, e);
+        return String(value);
+      }
+    }
+
+    // Handle {var|decimal:n}
+    const decimalMatch = options.find(o => o.startsWith('decimal:'));
+    if (decimalMatch) {
+      const precision = parseInt(decimalMatch.split(':')[1], 10);
+      if (!isNaN(precision)) {
+        return Number.isInteger(value) ? String(value) : value.toFixed(precision);
+      }
+    }
+
+    // Handle {var|percent}
+    if (options.includes('percent')) {
+      const percent = value * 100;
+      return Number.isInteger(percent) ? `${percent}%` : `${percent.toFixed(2)}%`;
+    }
+
+    // Handle {var|signedCoef} - shows sign and coefficient, omitting 1
+    const useSignedCoef = options.includes('signedCoef');
+    if (useSignedCoef) {
+      if (value === 0) return '';
+      const sign = value >= 0 ? '+' : '-';
+      const coef = Math.abs(value) === 1 ? '' : Math.abs(value).toString();
+      return `${sign}${coef}`;
+    }
+
+    // Handle {var|sign} and {var|coef} combinations
+    const useSign = options.includes('sign');
+    const useCoef = options.includes('coef');
+
+    let sign = '';
+    let coef = '';
+
+    // Determine sign
+    if (useSign) {
+      sign = value >= 0 ? '+' : '-';
+    } else if (value < 0) {
+      sign = '-';
+    }
+
+    const absVal = Math.abs(value);
+
+    // Determine coefficient
+    if (useCoef) {
+      if (absVal === 1) {
+        coef = ''; // omit coefficient 1
+      } else {
+        coef = String(absVal);
+      }
+    } else {
+      coef = String(absVal);
+    }
+
+    return `${sign}${coef}`;
+  }
+
+  /**
+   * Evaluate a single expression within {braces} in template text
+   * Returns the result or the original match if it's literal LaTeX
+   */
+  evaluateExpressionInTemplate(expr, variables, originalMatch) {
+    try {
+      const cleanExpr = expr.trim();
+      // Treat expressions with LaTeX commands as literal
+      if (cleanExpr.includes('\\') || cleanExpr.includes('^{')) {
+        return cleanExpr;
+      }
+      return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
+    } catch (e) {
+      const availableVars = Object.keys(variables).join(', ');
+      console.error(
+        `Template expression evaluation failed: "${expr}"\n` +
+        `Available variables: ${availableVars}\n` +
+        `Error: ${e.message}`
+      );
+      return originalMatch;
+    }
+  }
+
+  /**
    * Get all courses
    */
   getCourses() {
@@ -68,160 +226,44 @@ class QuestionGenerator {
 
   /**
    * Generate a question instance from a template
-   * Updated to handle LaTeX exponents and expression evaluation
+   * Uses unified text processing for both question and answer text
    */
   generateQuestion(template) {
-    // Deep clone the template
-    const question = JSON.parse(JSON.stringify(template));
-    
-   // Generate variables
-    const variables = window.QuestionUtils.generateQuestionVariables(question);
+    try {
+      const question = JSON.parse(JSON.stringify(template));
 
-    let questionText = question.question || "";
+      const variables = window.QuestionUtils.generateQuestionVariables(question);
 
-    // 🔹 Enhanced unified pattern handler for {var|option1|option2|...}
-    questionText = questionText.replace(/\{([a-zA-Z_][a-zA-Z0-9_]*)(\|[a-zA-Z]+)*\}/g, (match, varName, opts) => {
-      const value = variables[varName];
-      if (value === undefined || value === null) return match;
+      const questionText = this.processTemplateText(question.question || "", variables);
 
-      const options = opts ? opts.slice(1).split('|') : [];
+      let answer = "";
 
-      // Direct combined version {a|signedCoef}
-      const useSignedCoef = options.includes('signedCoef');
-      if (useSignedCoef) {
-        if (value === 0) return '';
-        const sign = value >= 0 ? '+' : '-';
-        const coef = Math.abs(value) === 1 ? '' : Math.abs(value).toString();
-        return `${sign}${coef}`;
+      if (question.answer) {
+        answer = this.processTemplateText(question.answer, variables);
+      } else if (question.answerExpression) {
+        answer = this.processTemplateText(question.answerExpression, variables);
+      } else if (question.answerFormula) {
+        console.warn(
+          `Question ${question.id} uses deprecated 'answerFormula'. ` +
+          `Please migrate to 'answer' field for consistent template processing.`
+        );
+        answer = this.processTemplateText(question.answerFormula, variables);
       }
 
-      // Otherwise handle standard combinations (|sign, |coef)
-      const useSign = options.includes('sign');
-      const useCoef = options.includes('coef');
-
-      let sign = '';
-      let coef = '';
-
-      // Determine sign
-      if (useSign) {
-        sign = value >= 0 ? '+' : '-';
-      } else if (value < 0) {
-        sign = '-';
-      }
-
-      const absVal = Math.abs(value);
-
-      // Determine coefficient
-      if (useCoef) {
-        if (absVal === 1) {
-          coef = ''; // omit coefficient 1
-        } else {
-          coef = String(absVal);
-        }
-      } else {
-        coef = String(absVal);
-      }
-
-      return `${sign}${coef}`;
-    });
-
-
-    // Continue normal {variable} replacement
-    questionText = window.QuestionUtils.replaceTemplateVariables(
-      questionText,
-      variables
-    );
-
-    // Wrap exponents for MathJax rendering
-    questionText = questionText.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
-      return `${base}^{${exp}}`;
-    });
-
-
-    // Continue normal {variable} replacement
-    questionText = window.QuestionUtils.replaceTemplateVariables(
-      questionText,
-      variables
-    );
-
-    // Wrap exponents for MathJax
-    questionText = questionText.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
-      return `${base}^{${exp}}`;
-    });
-
-    // Generate answer
-    let answer = "";
-    if (question.answerExpression) {
-      try {
-        if (question.answerExpression.includes('\\') || question.answerExpression.includes('^{')) {
-          answer = window.QuestionUtils.replaceTemplateVariables(question.answerExpression, variables);
-        } else {
-          answer = window.QuestionUtils.evaluateMathExpression(question.answerExpression, variables);
-          answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
-            return `${base}^{${exp}}`;
-          });
-        }
-      } catch (e) {
-        console.error(`Failed to evaluate answerExpression "${question.answerExpression}" with variables:`, variables, e);
-        answer = "Error evaluating answer expression";
-      }
-    } else if (question.answerFormula) {
-      console.warn(`Question ${question.id} uses deprecated 'answerFormula'. Please update to 'answerExpression'.`);
-      try {
-        if (question.answerFormula.includes('\\') || question.answerFormula.includes('^{')) {
-          answer = window.QuestionUtils.replaceTemplateVariables(question.answerFormula, variables);
-        } else {
-          answer = window.QuestionUtils.evaluateMathExpression(question.answerFormula, variables);
-          answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
-            return `${base}^{${exp}}`;
-          });
-        }
-      } catch (e) {
-        console.error(`Failed to evaluate legacy answerFormula "${question.answerFormula}" with variables:`, variables, e);
-        answer = "Error evaluating answer formula";
-      }
-    } else if (question.answer) {
-      answer = window.QuestionUtils.replaceTemplateVariables(question.answer, variables);
-      
-      // Evaluate single-brace expressions { ... }
-      answer = answer.replace(/\{([^}]+)\}/g, (match, expr) => {
-        try {
-          const cleanExpr = expr.trim();
-          if (cleanExpr.includes('\\') || cleanExpr.includes('^{')) {
-            return cleanExpr; // treat as literal LaTeX
-          } else {
-            return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
-          }
-        } catch (e) {
-          console.error(`Failed to evaluate expression in answer: "${expr}" with variables:`, variables, e);
-          return match;
-        }
-      });
-      
-      // Evaluate double-brace expressions {{ ... }}
-      answer = answer.replace(/\{\{([^}]+)\}\}/g, (match, expr) => {
-        try {
-          const cleanExpr = expr.trim();
-          return window.QuestionUtils.evaluateMathExpression(cleanExpr, variables);
-        } catch (e) {
-          console.error(`Failed to evaluate double-brace expression: "${expr}" with variables:`, variables, e);
-          return match;
-        }
-      });
-
-      // Ensure exponents are wrapped properly for MathJax
-      answer = answer.replace(/([a-zA-Z0-9\)\]])\^(-?\d+)/g, (_, base, exp) => {
-        return `${base}^{${exp}}`;
-      });
+      return {
+        ...question,
+        questionText,
+        answer,
+        variables,
+        generatedAt: new Date().toISOString()
+      };
+    } catch (error) {
+      console.error(
+        `Failed to generate question: ${template?.id || 'Unknown ID'}\n` +
+        `Error: ${error.message}`
+      );
+      throw error;
     }
-
-    return {
-      ...question,
-      questionText,
-      answer,
-      variables,
-      generatedAt: new Date().toISOString()
-    };
   }
 
   /**

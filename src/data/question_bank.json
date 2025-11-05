@@ -842,10 +842,10 @@
       "objective": "Solving One-Step Equations",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 1, "max": 10 },
-        "b": { "min": 1, "max": 10 }
+        "a": { "min": -10, "max": 10 },
+        "b": { "min": -10, "max": 10 }
       },
-      "question": "Solve for x: \\( x + {a} = {b} \\).",
+      "question": "Solve for x: \\( x {a|sign} = {b} \\).",
       "answer": "\\( x = {b} - {a} = {b - a} \\)"
     },
     {
@@ -2869,9 +2869,9 @@
       "objective": "The remainder Theorem",
       "difficulty": "intermediate",
       "variables": {
-        "z1": { "min": -5, "max": 5 },
-        "z2": { "min": -5, "max": 5 },
-        "z3": { "min": -5, "max": 5 },
+        "z1": { "min": -5, "max": 5, "exclude": [0] },
+        "z2": { "min": -5, "max": 5, "exclude": [0,"z1"] },
+        "z3": { "min": -5, "max": 5, "exclude": [0,"z1","z2"] },
         "a": { "formula": "-z1-z2-z3" },
         "b": { "formula": "(z3+1)*(z1+z2)" },
         "c": { "formula": "-(z1*z2*z3)" },

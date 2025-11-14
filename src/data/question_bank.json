@@ -845,7 +845,7 @@
         "a": { "min": -10, "max": 10 },
         "b": { "min": -10, "max": 10 }
       },
-      "question": "Solve for x: \\( x {a|sign} = {b} \\).",
+      "question": "Solve for x: <br> \\( x {a|sign} = {b} \\).",
       "answer": "\\( x = {b} - {a} = {b - a} \\)"
     },
     {
@@ -858,7 +858,7 @@
         "b": { "min": 2, "max": 10, "exclude": ["a"] },
         "c": { "min": 2, "max": 10 }
       },
-      "question": "Solve for x: \\( \\frac{{a}}{{b}}x = {c} \\).",
+      "question": "Solve for x: <br> \\( \\frac{{a}}{{b}}x = {c} \\).",
       "answer": "\\( x = \\frac{{{c} \\cdot {b}}}{{{a}}} = {(c * b / a).toFixed(2)} \\)"
     },
     {
@@ -870,7 +870,7 @@
         "a": { "min": -10, "max": 10, "exclude": [0] },
         "b": { "min": -10, "max": 10, "exclude": [0] }
       },
-      "question": "Solve for x: \\( \\frac{x}{ {a} } = {b} \\).",
+      "question": "Solve for x: <br> \\( \\frac{x}{ {a} } = {b} \\).",
       "answer": "\\( x = {a} \\times {b} = {a * b} \\)"
     },
     {
@@ -883,7 +883,7 @@
         "b": { "min": 1, "max": 10, "exclude": ["a"] },
         "c": { "min": 1, "max": 10, "exclude": ["a","b"] }
       },
-      "question": "Solve for x: \\( {a}x + {b} = {c} \\).",
+      "question": "Solve for x: <br> \\( {a}x + {b} = {c} \\).",
       "answer": "\\( x = {((c - b) / a).toFixed(2)} \\)"
     },
     {
@@ -896,7 +896,7 @@
         "b": { "min": 2, "max": 10, "exclude": ["a"] },
         "c": { "min": 1, "max": 10, "exclude": ["a","b"] }
       },
-      "question": "Solve for x: \\( \\frac{{a} - x}{{b}} = {c} \\).",
+      "question": "Solve for x: <br> \\( \\frac{{a} - x}{{b}} = {c} \\).",
       "answer": "\\( x = {a - b * c} \\)"
     },
     {
@@ -909,7 +909,7 @@
         "c": { "min": 2, "max": 10, "exclude": [-1,0,1] },
         "d": { "min": 2, "max": 10, "exclude": [-1,0,1] }
       },
-      "question": "Solve for x: \\( \\frac{ax+{b}}{{c}} - {d} = {b} \\).",
+      "question": "Solve for x: <br> \\( \\frac{ax+{b}}{{c}} - {d} = {b} \\).",
       "answer": "\\( x = \\frac{ {c*(b+d)-b} }{a} \\)"
     },
     {
@@ -922,7 +922,7 @@
         "c": { "min": 2, "max": 10, "exclude": [-1,0,1] },
         "d": { "formula": "b*c" }
       },
-      "question": "Solve for x: \\( {b}(a + {c}x) = {d} \\).",
+      "question": "Solve for x: <br> \\( {b}(a + {c}x) = {d} \\).",
       "answer": "\\( x = \\frac{{{d} / {b} - a}}{{{c}}} = {((d / b - 1) / c).toFixed(2)} \\)"
     },
     {
@@ -936,7 +936,7 @@
         "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
         "d": { "min": 2, "max": 10 }
       },
-      "question": "Solve for x: \\( {a}x + {b} = {c}x - {d} \\).",
+      "question": "Solve for x: <br> \\( {a}x + {b} = {c}x - {d} \\).",
       "answer": "\\( x = \\frac{{{b} + {d}}}{{{c} - {a}}} = {((b + d) / (c - a)).toFixed(2)} \\)"
     },
     {
@@ -951,7 +951,7 @@
         "d": { "min": 2, "max": 10 },
         "e": { "min": 2, "max": 10, "exclude": [-1,0,1] }
       },
-      "question": "Solve for x: \\( {a}x - {b} = {c}x + {d} - {e}x \\).",
+      "question": "Solve for x: <br> \\( {a}x - {b} = {c}x + {d} - {e}x \\).",
       "answer": "\\( x = \\frac{{{b} + {d}}}{{{a} + {e} - {c}}} = {((b + d) / (a + e - c)).toFixed(2)} \\)"
     },
     {
@@ -967,7 +967,7 @@
         "e": { "min": 2, "max": 10, "exclude": [-1,0,1] },
         "f": { "min": 2, "max": 10 }
       },
-      "question": "Solve for x: \\( {a}(x + {b}) - {c}x = {d} + {e}(x - {f}) \\).",
+      "question": "Solve for x: <br> \\( {a}(x + {b}) - {c}x = {d} + {e}(x - {f}) \\).",
       "answer": "\\( x = \\frac{{{d} + {e} \\cdot {f} + {a} \\cdot {b}}}{{{a} - {c} - {e}}} = {((d + e * f + a * b) / (a - c - e)).toFixed(2)} \\)"
     },
     {
@@ -978,10 +978,12 @@
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
         "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": 2, "max": 15, "exclude": [-1,0,1] }
+        "c": { "min": 2, "max": 15, "exclude": [-1,0,1] },
+        "x1": { "formula": "((c - b) / a).toFixed(2)"  },
+        "x2": { "formula": "((-c - b) / a).toFixed(2)"  }
       },
-      "question": "Solve for x: \\( |{a}x + {b}| = {c} \\).",
-      "answer": "\\( x = \\frac{{{c} - {b}}}{{{a}}} = {((c - b) / a).toFixed(2)} \\) or \\( x = \\frac{{-{c} - {b}}}{{{a}}} = {((-c - b) / a).toFixed(2)} \\)"
+      "question": "Solve for x: <br> \\( |{a}x + {b}| = {c} \\).",
+      "answer": "\\( x = {x1}, {x2} \\)"
     },
     {
       "id": "ALG1-2.5-I1",
@@ -992,10 +994,12 @@
         "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
         "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
         "c": { "min": 2, "max": 15, "exclude": [-1,0,1] },
-        "d": { "min": -10, "max": 10, "exclude": [0,1,-1] }
+        "d": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "x1": { "formula": "((b - d) / (c - a)).toFixed(2)"  },
+        "x2": { "formula": "((-b - d) / (c + a)).toFixed(2)"  }
       },
-      "question": "Solve for x: \\( |{a}x + {b}| = {c}x + {d} \\).",
-      "answer": "\\( x = \\frac{{{b} - {d}}}{{{c} - {a}}} = {((b - d) / (c - a)).toFixed(2)} \\) or \\( x = \\frac{{-{b} - {d}}}{{{c} + {a}}} = {((-b - d) / (c + a)).toFixed(2)} \\)"
+      "question": "Solve for x: <br> \\( |{a}x + {b}| = {c}x {d|sign} \\).",
+      "answer": "\\( x = {x1}, {x2} \\)"
     },
     {
       "id": "ALG1-2.6-B1",
@@ -1005,10 +1009,11 @@
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
         "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] }
+        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
+        "x": { "formula": "(b * a / c).toFixed(2)"  }
       },
-      "question": "Solve for \\( x \\): \\(\\frac{ x }{{a}} = \\frac{{b}}{{c}} \\).",
-      "answer": "\\( x = \\frac{{b} \\cdot {a}}{{c}} = {(b * a / c).toFixed(2)} \\)"
+      "question": "Solve for \\( x \\): <br> \\(\\frac{ x }{{a}} = \\frac{{b}}{{c}} \\).",
+      "answer": "\\( x = {x} \\)"
     },
     {
       "id": "ALG1-2.6-I1",
@@ -1018,10 +1023,11 @@
       "variables": {
         "a": { "min": 2, "max": 10, "exclude": [0,1,-1] },
         "b": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] }
+        "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
+        "x": { "formula": "(a * c / (c - b)).toFixed(2)"  }
       },
-      "question": "Solve for \\( x \\): \\(\\frac{ x - {a} }{{b}} = \\frac{{x}}{{c}} \\).",
-      "answer": "\\( x = \\frac{{a} \\cdot {c}}{{c - {b}}} = {(a * c / (c - b)).toFixed(2)} \\)"
+      "question": "Solve for \\( x \\): <br> \\(\\frac{ x - {a} }{{b}} = \\frac{ x }{{c}} \\).",
+      "answer": "\\( x = {x} \\)"
     },
     {
       "id": "ALG1-2.6-A1",
@@ -1032,10 +1038,11 @@
         "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
         "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
         "c": { "min": -10, "max": 10, "exclude": [-1,0,1] },
-        "d": { "min": 2, "max": 10, "exclude": [-1,0,1] }
+        "d": { "min": 2, "max": 10, "exclude": [-1,0,1] },
+        "x": { "formula": "((a * d + b * c) / (2 * c - a)).toFixed(2)"  }
       },
-      "question": "Solve for \\( x \\): \\(\\frac{ {a} }{ 2x - {b} } = \\frac{{c}}{ x + {d} } \\).",
-      "answer": "\\( x = \\frac{{a} \\cdot {d} + {b} \\cdot {c}}{2{c} + {a}} = {((a * d + b * c) / (2 * c + a)).toFixed(2)} \\)"
+      "question": "Solve for \\( x \\): <br> \\(\\frac{ {a} }{ 2x - {b} } = \\frac{{c}}{ x + {d} } \\).",
+      "answer": "\\( x = {x} \\)"
     },
     {
       "id": "ALG1-2.7-B1",
@@ -1044,11 +1051,12 @@
       "difficulty": "basic",
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
+        "negA": { "formula": "-1 * a" },
+        "b": { "min": -10, "max": 10, "exclude": [0] },
         "c": { "min": -10, "max": 10, "exclude": [-1,0,1] }
       },
-      "question": "Solve for \\( x \\): \\( {a}x + {b}y = {c} \\).",
-      "answer": "\\( x = \\frac{{c} - {b}y}{{a}} \\)"
+      "question": "Solve for \\( y \\): <br> \\( {a}x {b|signedCoef}y = {c} \\).",
+      "answer": "\\( y = \\frac{{c} {negA|sign}x}{{b}} \\)"
     },
     {
       "id": "ALG1-2.7-I1",
@@ -1061,8 +1069,21 @@
         "c": { "min": 2, "max": 10, "exclude": [-1,0,1,"b"] },
         "d": { "min": 2, "max": 10 }
       },
-      "question": "Solve for \\( x \\): \\( y - {a} = \\frac{{b}}{{c}}(x - {d}) \\).",
+      "question": "Solve for \\( x \\): <br> \\( y - {a} = \\frac{{b}}{{c}}(x - {d}) \\).",
       "answer": "\\( x = \\frac{{c}}{{b}}(y - {a}) + {d} \\)"
+    },
+    {
+      "id": "ALG1-2.7-I1",
+      "type": "template",
+      "objective": "Using Formulas",
+      "difficulty": "intermediate",
+      "variables": {
+        "a": { "min": -1, "max": 1, "exclude": [0] },
+        "b": { "min": -1, "max": 1, "exclude": [0] },
+        "c": { "min": -1, "max": 1, "exclude": [0] }
+      },
+      "question": "Solve for \\( y \\): <br> \\( \\frac{ {a|coef}ry {b|signedCoef}z }{ m } {c|signedCoef}t = x \\).",
+      "answer": "\\( y = \\frac{ m(x {negC|sign}t) {negB|sign}z }{ {a}r } \\)"
     },
     {
       "id": "ALG1-2.7-A1",
@@ -1070,11 +1091,15 @@
       "objective": "Using Formulas",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 2, "max": 10, "exclude": [0,1,-1] },
-        "b": { "min": -10, "max": 10, "exclude": [0,1,-1,"a"] }
+        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "negA": { "formula": "-1 * a" },
+        "b": { "min": -10, "max": 10, "exclude": [0,1,-1,"a"] },
+        "c": { "min": -10, "max": 10, "exclude": [-1,0,1,"b"] },
+        "negC": { "formula": "-1 * c" },
+        "d": { "formula": "b*c" }
       },
-      "question": "Solve for \\( x \\): \\( \\frac{ x + {a}}{ x - {a}} = {b}y \\).",
-      "answer": "\\( x = {a} \\cdot \\frac{{b}y + 1}{{{b}y - 1}} \\)"
+      "question": "Solve for \\( x \\): <br> \\( \\frac{ x {a|sign}}{ x {b|sign}} = {c}y \\).",
+      "answer": "\\( x = \\frac{ {d} y {negA|sign} }{ 1 {negC|sign}y}\\)"
     }
   ]
 },
@@ -1467,6 +1492,51 @@
       "draw": "cylinder"
     }
   ],
+  "Module 3": [
+    {
+      "id": "G-3.1-B1",
+      "type": "template",
+      "objective": "Conjectures and Counterexamples",
+      "difficulty": "basic",
+      "variables": {
+        "a": { "formula": "b*c" },
+        "b": { "min": 5, "max": 25 },
+        "c": { "min": 10, "max": 30 }
+      },
+      "question": "Find a counter example for each situation given. <br> (a) Two complementary angles are always \\( 45^\\circ \\). <br> (b) If the area of a rectangle is \\( {a}in^\\circ \\) then the sides are \\( {b}in \\) and \\( {c}in \\). <br> (c) If the measures of \\( \\angle A, \\angle B and \\angle C \\) sum to \\( 180^\\circ \\) then one of them must be obtuse.",
+      "answer": "(a) counter example:\\( 30^\\circ \\) and \\( 60^\\circ \\) <br> (b) Sides of \\( 1in \\) and \\( {a}in \\) give area of \\( {a}in^2 \\). <br> (c) \\( 60^\\circ, 70^\\circ, 50^\\circ \\)"
+    },
+    {
+      "id": "G-3.1-B1",
+      "type": "template",
+      "objective": "Conjectures and Counterexamples",
+      "difficulty": "basic",
+      "variables": {
+        "k": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "i": { "min": -10, "max": 10, "exclude": [0,1,-1,"k"] },
+        "a1": { "formula": "k*i" },
+        "a2": { "formula": "k*(i+1)" },
+        "a3": { "formula": "k*(i+2)" }
+      },
+      "question": "Given the sequence \\( {a1}, {a2}, {a3}, ... \\) make a conjecture about the pattern and provide the next three values in the sequence.",
+      "answer": "Conjecture: The sequence increases by \\( {k} \\) each time. <br> Next three values: \\( {k*(i+3)}, {k*(i+4)}, {k*(i+5)} \\)"
+    },
+    {
+      "id": "G-3.1-B1",
+      "type": "template",
+      "objective": "Conjectures and Counterexamples",
+      "difficulty": "basic",
+      "variables": {
+        "k": { "min": -7, "max": 7, "exclude": [0,1,-1] },
+        "i": { "min": -5, "max": 5, "exclude": [0,1,-1,"k"] },
+        "a1": { "formula": "k*i" },
+        "a2": { "formula": "k*k*i" },
+        "a3": { "formula": "k*k*k*i" }
+      },
+      "question": "Given the sequence \\( {a1}, {a2}, {a3}, ... \\) make a conjecture about the pattern and provide the next three values in the sequence.",
+      "answer": "Conjecture: The sequence multiplies by \\( {k} \\) each time. <br> Next three values: \\( {k*k*k*k*i}, {k*k*k*k*k*i}, {k*k*k*k*k*k*i} \\)"
+    }
+  ],
   "Under Construction": [
     {"id": "G-2.1-B1",
       "type": "template",
@@ -1827,7 +1897,7 @@
         "b": { "min": -10, "max": 10, "exclude": [0,"a"] },
         "c": { "min": -10, "max": 10, "exclude": [0,"b"] },
         "d": { "min": -10, "max": 10, "exclude": [0,1,-1,"c"] },
-        "x": { "formula": "(a*d+c)/b" }
+        "x": { "formula": "(a*d-c)/b" }
       },
       "question": "Solve for \\( x \\), simplify your answer: \\( {a} = \\frac{{b|coef}x {c|sign}}{{d}} \\).",
       "answer": "\\( x = {x} \\)"
@@ -1844,10 +1914,11 @@
         "d": { "min": -10, "max": 10, "exclude": [0,1,-1,"b"] },
         "e": { "min": -10, "max": 10, "exclude": [0] },
         "xnum": { "formula": "b*c + b*e*d - d*a" },
-        "xden": { "formula": "d - b" }
+        "xden": { "formula": "d - b" },
+        "x": { "formula": "(xnum)/(xden)" }
       },
       "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x {a|sign}}{{b}} > \\frac{x {c|sign}}{{d}} {e|sign} \\).",
-      "answer": "\\( x > {xnum} / {xden} \\) (manually simplify) You may need to reverse the inequality if you multiply or divide by a negative number."
+      "answer": "\\( x > {xnum}/{xden} \\) or \\( x > {x} \\) (manually simplify) You may need to reverse the inequality if you multiply or divide by a negative number."
     },
     {
       "id": "ALG2-2.1-I2",
@@ -1857,11 +1928,13 @@
       "variables": {
         "a": { "min": 1, "max": 3 },
         "b": { "min": 2, "max": 10 },
-        "c": { "min": 2, "max": 10, "exclude": ["b"] },
-        "x": { "formula": "(-a*(c+b)/(c-b-c*b)" }
+        "c": { "min": 2, "max": 10, "exclude": ["b/(1-b)"] },
+        "xnum": { "formula": "-a*(c+b)" },
+        "xden": { "formula": "c-b-c*b" },
+        "x": { "formula": "(xnum)/(xden)" }
       },
       "question": "Solve for \\( x \\), simplify your answer: \\( \\frac{x + {a}}{{b}} > \\frac{x - {a}}{{c}} + x \\).",
-      "answer": "\\( x > {x} \\) You may need to reverse the inequality if you multiply or divide by a negative number."
+      "answer": "\\( x > {xnum}/{xden} \\) You may need to reverse the inequality if you multiply or divide by a negative number."
     },
     {
       "id": "ALG2-2.1-A1",
@@ -1896,12 +1969,14 @@
       "objective": "Solving Absolute Value Equations and Inequalities",
       "difficulty": "basic",
       "variables": {
-        "a": { "min": 1, "max": 10 },
-        "b": { "min": 1, "max": 10 },
-        "c": { "min": 1, "max": 10 }
+        "a": { "min": 2, "max": 10 },
+        "b": { "min": -10, "max": 10, "exclude": [0] },
+        "c": { "min": 1, "max": 10 },
+        "x1": { "formula": " (c - b)/a " },
+        "x2": { "formula": " (-c - b)/a " }
       },
-      "question": "Solve for \\( x \\), simplify your answer: \\( |{a}x + {b}| = {c} \\).",
-      "answer": "\\( x = \\frac{{c} - {b}}{{a}} \\) or \\( x = \\frac{{-c} - {b}}{{a}} \\)"
+      "question": "Solve for \\( x \\), simplify your answer: \\( |{a}x {b|sign}| = {c} \\).",
+      "answer": "\\( x = {x1} \\) or \\( x = {x2} \\)"
     },
     {
       "id": "ALG2-2.2-I1",
@@ -1909,14 +1984,15 @@
       "objective": "Solving Absolute Value Equations and Inequalities",
       "difficulty": "intermediate",
       "variables": {
-        "a": { "min": 1, "max": 10 },
-        "b": { "min": 1, "max": 10 },
-        "c": { "min": 1, "max": 10 },
-        "d": { "min": 1, "max": 10 },
-        "e": { "min": 10, "max": 20 }
+        "a": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "b": { "min": 2, "max": 10, "exclude": [0,1,-1] },
+        "c": { "min": 2, "max": 15, "exclude": [-1,0,1] },
+        "d": { "min": -10, "max": 10, "exclude": [0,1,-1] },
+        "x1": { "formula": "((b - d) / (c - a)).toFixed(2)"  },
+        "x2": { "formula": "((-b - d) / (c + a)).toFixed(2)"  }
       },
-      "question": "Solve for \\( x \\) and check your answer: \\( {a}|{b}x - {c}| + {d} = {e} \\).",
-      "answer": "\\( x = \\frac{{\\pm \\frac{{e} - {d}}{{a}} + {c}}}{{b}} \\)"
+      "question": "Solve for x: \\( |{a}x + {b}| = {c}x {d|sign} \\).",
+      "answer": "\\( x = {x1}, {x2} \\)"
     },
     {
       "id": "ALG2-2.2-A1",
@@ -1924,14 +2000,16 @@
       "objective": "Solving Absolute Value Equations and Inequalities",
       "difficulty": "advanced",
       "variables": {
-        "a": { "min": 1, "max": 10 },
-        "b": { "min": 1, "max": 10 },
+        "a": { "min": 2, "max": 10 },
+        "b": { "min": 2, "max": 10 },
         "c": { "min": 1, "max": 10 },
         "d": { "min": 1, "max": 10 },
-        "e": { "min": 10, "max": 20 }
+        "e": { "min": 10, "max": 20 },
+        "x1": { "formula": "(e-d+a*c)/(a*b)" },
+        "x2": { "formula": "(d+a*c-e)/(a*b)" }
       },
       "question": "Solve for \\( x \\) and graph the solutions on a number line: \\( {a}|{b}x - {c}| + {d} \\ge {e} \\).",
-      "answer": "\\( x \\leq \\frac{{-\\frac{{e} - {d}}{{a}} + {c}}}{{b}} \\) or \\( x \\geq \\frac{{\\frac{{e} - {d}}{{a}} + {c}}}{{b}} \\)"
+      "answer": "\\( x \\geq {x1} \\) or \\( x \\leq {x2} \\)"
     },
     {
       "id": "ALG2-2.3-B1",
@@ -1941,11 +2019,13 @@
       "variables": {
         "a": { "min": -10, "max": 10, "exclude": [0] },
         "b": { "min": -10, "max": 10, "exclude": [0] },
+        "negb": { "formula": "-1*b" },
+        "nega": { "formula": "-1*a" },
         "c": { "min": -10, "max": 10, "exclude": [0] },
         "d": { "min": 2, "max": 10, "exclude": ["c"] }
       },
       "question": "Write the equation of the line that passes through the point \\(({a}, {b})\\) with slope \\(m = \\frac{{c}}{{d}}\\) in point-slope form.",
-      "answer": "`'y - ' + b + ' = ' + (c/d) + '(x - ' + a + ')'`"        
+      "answer": "\\( y {negb|sign} = \\frac{{c}}{{d}}(x {nega|sign}) \\)"        
     },
     {
       "id": "ALG2-2.3-I1",
@@ -1955,11 +2035,14 @@
       "variables": {
         "a": { "min": -4, "max": 4, "exclude": [0] },
         "b": { "min": 2, "max": 7, "exclude": ["a"] },
-        "x1": { "min": 1, "max": 10 },
-        "y1": { "min": 1, "max": 10 }
+        "negb": { "formula": "-1*b" },
+        "x1": { "min": -10, "max": 10, "exclude": [0] },
+        "y1": { "min": -10, "max": 10, "exclude": [0] },
+        "yint": { "formula": "(a/b)*x1-y1" },
+        "c": { "formula": "b*y1 - a*x1" }
       },
-      "question": "Rewrite the given equation in both standard form and slope-intercept form: \\( y - {y1} = \\frac{{a}}{{b}}(x + {x1}) \\).",
-      "answerExpression": "`let m = a/b; let b = y1 - m*(-x1); { slopeIntercept: 'y = ' + m + 'x + ' + b, standardForm: m + 'x - y + ' + ( -m*(-x1) + y1 ) + ' = 0' }`"
+      "question": "Rewrite the given equation in both standard form and slope-intercept form: \\( y {y1|sign} = \\frac{{a}}{{b}}(x {x1|sign}) \\).",
+      "answer": "Slope-Intercept Form: \\( y = \\frac{{a}}{{b}}x {yint|sign} \\); Standard Form: \\( {a|coef}x {negb|signedCoef}y = {c} \\)."
     },
     {
       "id": "ALG2-2.3-A1",
@@ -1968,12 +2051,19 @@
       "difficulty": "advanced",
       "variables": {
         "x1": { "min": -10, "max": 10, "exclude": [0] },
+        "negx1": { "formula": "-1*x1" },
         "y1": { "min": -10, "max": 10, "exclude": [0] },
+        "negy1": { "formula": "-1*y1" },
         "x2": { "min": -10, "max": 10, "exclude": [0,"x1"] },
-        "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] }
+        "y2": { "min": -10, "max": 10, "exclude": [0, "y1"] },
+        "mnum": { "formula": "y2 - y1" },
+        "mden": { "formula": "x2 - x1"  },
+        "negmden": { "formula": "-1*mden"  },
+        "b": { "formula": "y1 - (mnum/mden)*x1"  },
+        "c": { "formula": "mden*y1 - mnum*x1"  }
       },
       "question": "Write the equation of the line passing through \\(({x1}, {y1})\\) and \\(({x2}, {y2})\\) in Point-Slope, Slope-Intercept, and Standard Form.",
-      "answerExpression": "`let m = (y2 - y1)/(x2 - x1); let b = y1 - m*x1; { pointSlope: 'y - ' + y1 + ' = ' + m + '(x - ' + x1 + ')', slopeIntercept: 'y = ' + m + 'x + ' + b, standardForm: m + 'x - y + ' + ( -m*x1 + y1 ) + ' = 0' }`"
+      "answer": "Point-Slope Form: \\( y {negy1|sign} = \\frac{{mnum}}{{mden}}(x {negx1|sign}) \\); Slope-Intercept Form: \\( y = \\frac{{mnum}}{{mden}}x {b|sign} \\); Standard Form: \\( {mnum|coef}x {negmden|signedCoef }y = {c} \\)."
     },
     {
       "id": "ALG2-2.4-B1",
@@ -1983,10 +2073,10 @@
       "variables": {
         "x": { "min": -5, "max": 5, "exclude": [0] },
         "y": { "min": -5, "max": 5, "exclude": [0] },
-        "m1": { "min": -3, "max": 3, "exclude": [0] },
-        "b1": { "formula": "y - m1*x" },
-        "m2": { "min": -3, "max": 3, "exclude": [0,"m1"] },
-        "b2": { "formula": "y - m2*x" }
+        "m1": { "min": -4, "max": 4, "exclude": [0] },
+        "b1": { "formula": "y - m1*x", "exclude": [0] },
+        "m2": { "min": -4, "max": 4, "exclude": [0,"m1"] },
+        "b2": { "formula": "y - m2*x", "exclude": [0] }
         },
       "question": "Use the graph to determine the solution to the system of equations below:<br>\\( y = {m1|coef}x {b1|sign} \\)<br>\\( y = {m2|coef}x {b2|sign} \\)",
       "answer": "\\({x}, {y}\\)"
@@ -2001,13 +2091,31 @@
         "y": { "min": -10, "max": 10, "exclude": [0] },
         "a1": { "min": -5, "max": 5, "exclude": [0] }, 
         "b1": { "min": -5, "max": 5, "exclude": [0,"a1"] },
-        "c1": { "formula": "a1*x + b1*y" },
+        "c1": { "formula": "a1*x + b1*y", "exclude": [0] },
         "a2": { "min": -5, "max": 5, "exclude": [0,"a1"] },
         "b2": { "min": -5, "max": 5, "exclude": [0,"a2","b1"] },
-        "c2": { "formula": "a2*x + b2*y" }
+        "c2": { "formula": "a2*x + b2*y", "exclude": [0] }
         },
       "question": "Solve the system of equations by graphing:<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
       "answer": "\\({x}, {y}\\)"
+  },
+  {
+      "id": "ALG2-2.4-A1",
+      "type": "template",
+      "objective": "Solving Systems of Equations Graphically",
+      "difficulty": "advanced",
+      "variables": {
+        "a1": { "min": -10, "max": 10, "exclude": [0] }, 
+        "b1": { "min": -7, "max": 7, "exclude": [0] },
+        "c1": { "min": -10, "max": 10, "exclude": [0] },
+        "a2": { "min": -10, "max": 10, "exclude": ["a1",0] },
+        "b2": { "min": -7, "max": 7, "exclude": ["b1",0] },
+        "c2": { "min": -10, "max": 10, "exclude": ["c1"] },
+        "x" : { "formula": "(b1*c2 - b2*c1)/(b1*a2 - b2*a1)", "exclude": [0] },
+        "y" : { "formula": "(a1*c2 - a2*c1  )/(a1*b2 - a2*b1)", "exclude": [0] }
+        },
+      "question": "Solve the system of equations using a calculator round your answers to the nearest hundredth if needed:<br>\\( {a1|coef}x  {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
+      "answer": "\\({x}, {y}\\) Manually round answers to three spaces. If the denominators were 0, the system has no solution or infinite solutions."
   },
   {
       "id": "ALG2-2.5-B1",
@@ -2015,14 +2123,14 @@
       "objective": "Solving Systems of Equations Algabraically",
       "difficulty": "basic",
       "variables": {
-        "x": { "min": -7, "max": 7 },
-        "y": { "min": -7, "max": 7 },
+        "x": { "min": -7, "max": 7, "exclude": [0] },
+        "y": { "min": -7, "max": 7, "exclude": [0] },
         "a1": 1, 
         "b1": { "min": -5, "max": 5, "exclude": [0]},
-        "c1": { "formula": "a1*x + b1*y" },
+        "c1": { "formula": "a1*x + b1*y", "exclude": [0] },
         "a2": { "min": -5, "max": 5, "exclude": [0] },
         "b2": { "values": [-1,1] },
-        "c2": { "formula": "a2*x + b2*y" }
+        "c2": { "formula": "a2*x + b2*y", "exclude": [0] }
         },
       "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
       "answer": "\\({x}, {y}\\)"
@@ -2037,10 +2145,10 @@
         "y": { "min": -6, "max": 6, "exclude": [0] },
         "a1": { "min": -3, "max": 3, "exclude": [0] }, 
         "b1": { "min": -4, "max": 4, "exclude": [0,"a1"] },
-        "c1": { "formula": "a1*x + b1*y" },
+        "c1": { "formula": "a1*x + b1*y", "exclude": [0] },
         "a2": { "min": -3, "max": 3, "exclude": [0,"a1"] },
         "b2": { "min": -4, "max": 4, "exclude": [0,"a2","b1"] },
-        "c2": { "formula": "a2*x + b2*y" }
+        "c2": { "formula": "a2*x + b2*y", "exclude": [0] }
         },
       "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( {a1|coef}x {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
       "answer": "\\({x}, {y}\\)"
@@ -2057,10 +2165,10 @@
         "a2": { "min": -10, "max": 10, "exclude": ["a1",0] },
         "b2": { "min": -7, "max": 7, "exclude": ["b1",0] },
         "c2": { "min": -10, "max": 10, "exclude": ["c1"] },
-        "xnum": { "formula": "b1*c2 - b2*c1" },
-        "xden": { "formula": "b1*a2 - b2*a1" },
-        "ynum": { "formula": "a1*c2 - a2*c1" },
-        "yden": { "formula": "a1*b2 - a2*b1" }
+        "xnum": { "formula": "b1*c2 - b2*c1", "exclude": [0] },
+        "xden": { "formula": "b1*a2 - b2*a1", "exclude": [0] },
+        "ynum": { "formula": "a1*c2 - a2*c1", "exclude": [0] },
+        "yden": { "formula": "a1*b2 - a2*b1", "exclude": [0] }
         },
       "question": "Solve the system of equations using either substitution or elimination method (show your work):<br>\\( {a1|coef}x  {b1|signedCoef}y = {c1} \\)<br>\\( {a2|coef}x {b2|signedCoef}y = {c2} \\)",
       "answer": "\\(\\frac{{xnum}}{{xden}}, \\frac{{ynum}}{{yden}}\\) If the denominators are 0, the system has no solution or infinite solutions."
@@ -2734,10 +2842,12 @@
       "difficulty": "basic",
       "variables": {
         "a": { "min": -8, "max": 8, "exclude": [0] },
-        "b": { "min": 2, "max": 5 }
+        "b": { "min": 2, "max": 5 },
+        "x": { "formula": "b * b - a" }
+
       },
       "question": "Solve for \\( x \\): \\( \\sqrt{x {a|sign}} = {b} \\)",
-      "answer": "\\( x = {b * b - a} \\)"
+      "answer": "\\( x = {x} \\)"
     },
     {
       "id": "PC-2.1-B2",

@@ -1503,7 +1503,7 @@
         "b": { "min": 5, "max": 25 },
         "c": { "min": 10, "max": 30 }
       },
-      "question": "Find a counter example for each situation given. <br> (a) Two complementary angles are always \\( 45^\\circ \\). <br> (b) If the area of a rectangle is \\( {a}in^\\circ \\) then the sides are \\( {b}in \\) and \\( {c}in \\). <br> (c) If the measures of \\( \\angle A, \\angle B and \\angle C \\) sum to \\( 180^\\circ \\) then one of them must be obtuse.",
+      "question": "Find a counter example for each situation given. <br> (a) Two complementary angles are always \\( 45^\\circ \\). <br> (b) If the area of a rectangle is \\( {a} \\) square in. then the sides must be \\( {b} \\)in. and \\( {c} \\)in. <br> (c) If the measures of \\( \\angle A, \\angle B \\) and \\( \\angle C \\) sum to \\( 180^\\circ \\) then one of them must be obtuse.",
       "answer": "(a) counter example:\\( 30^\\circ \\) and \\( 60^\\circ \\) <br> (b) Sides of \\( 1in \\) and \\( {a}in \\) give area of \\( {a}in^2 \\). <br> (c) \\( 60^\\circ, 70^\\circ, 50^\\circ \\)"
     },
     {
@@ -1516,10 +1516,13 @@
         "i": { "min": -10, "max": 10, "exclude": [0,1,-1,"k"] },
         "a1": { "formula": "k*i" },
         "a2": { "formula": "k*(i+1)" },
-        "a3": { "formula": "k*(i+2)" }
+        "a3": { "formula": "k*(i+2)" },
+        "a4": { "formula": "k*(i+3)" },
+        "a5": { "formula": "k*(i+4)" },
+        "a6": { "formula": "k*(i+5)" }
       },
       "question": "Given the sequence \\( {a1}, {a2}, {a3}, ... \\) make a conjecture about the pattern and provide the next three values in the sequence.",
-      "answer": "Conjecture: The sequence increases by \\( {k} \\) each time. <br> Next three values: \\( {k*(i+3)}, {k*(i+4)}, {k*(i+5)} \\)"
+      "answer": "Conjecture: The sequence increases by \\( {k} \\) each time. <br> Next three values: \\( {a4}, {a5}, {a6} \\)"
     },
     {
       "id": "G-3.1-B1",
@@ -1531,10 +1534,13 @@
         "i": { "min": -5, "max": 5, "exclude": [0,1,-1,"k"] },
         "a1": { "formula": "k*i" },
         "a2": { "formula": "k*k*i" },
-        "a3": { "formula": "k*k*k*i" }
+        "a3": { "formula": "k*k*k*i" },
+        "a4": { "formula": "k*k*k*k*i" },
+        "a5": { "formula": "k*k*k*k*k*i" },
+        "a6": { "formula": "k*k*k*k*k*k*i" }
       },
       "question": "Given the sequence \\( {a1}, {a2}, {a3}, ... \\) make a conjecture about the pattern and provide the next three values in the sequence.",
-      "answer": "Conjecture: The sequence multiplies by \\( {k} \\) each time. <br> Next three values: \\( {k*k*k*k*i}, {k*k*k*k*k*i}, {k*k*k*k*k*k*i} \\)"
+      "answer": "Conjecture: The sequence multiplies by \\( {k} \\) each time. <br> Next three values: \\( {a4}, {a5}, {a6} \\)"
     }
   ],
   "Under Construction": [

@@ -32,15 +32,23 @@ function validateVariableValue(value, constraints, allVars) {
 }
 
 function generateVariableValue(key, constraints, allVars, maxAttempts = 50) {
+  // Handle textValue: pick a random string from the array
+  if (constraints.textValue && Array.isArray(constraints.textValue)) {
+    return constraints.textValue[Math.floor(Math.random() * constraints.textValue.length)];
+  }
+
   let attempts = 0;
   let value;
 
   do {
     if (constraints.values) {
+      // Pick from predefined values
       value = constraints.values[Math.floor(Math.random() * constraints.values.length)];
     } else if (typeof constraints.min === "number" && typeof constraints.max === "number") {
+      // Generate within range
       value = Math.floor(Math.random() * (constraints.max - constraints.min + 1)) + constraints.min;
     } else {
+      // Fallback
       value = constraints.default !== undefined ? constraints.default : 0;
     }
 
@@ -252,14 +260,22 @@ function generateQuestionVariables(questionTemplate) {
   const displayVars = {};
   const variableDefinitions = questionTemplate.variables || {};
 
-  
-  // Pass 1: Base variables
+  // Pass 1: Base variables (including textValue)
   for (const [key, constraints] of Object.entries(variableDefinitions)) {
     if (typeof constraints === 'number') {
       vars[key] = constraints;
       continue;
     }
-    if (!constraints || constraints.formula) continue;
+    if (!constraints) continue;
+    
+    // Handle textValue - pick randomly and skip formula processing
+    if (constraints.textValue && Array.isArray(constraints.textValue)) {
+      vars[key] = constraints.textValue[Math.floor(Math.random() * constraints.textValue.length)];
+      displayVars[key] = vars[key]; // Store as plain string for display
+      continue;
+    }
+    
+    if (constraints.formula) continue; // formula variables handled in Pass 2
     vars[key] = generateVariableValue(key, constraints, vars);
   }
 
@@ -275,8 +291,6 @@ function generateQuestionVariables(questionTemplate) {
         const numericVars = { ...vars };
         const rawResult = evaluateJSExpression(constraints.formula, numericVars);
         const value = typeof rawResult === 'number' ? rawResult : Number(rawResult);
-        const textValue = { ...displayVars };
-        textValue[key] = String(value);
 
         if (!Number.isNaN(value)) {
           vars[key] = value;
@@ -302,14 +316,20 @@ function generateQuestionVariables(questionTemplate) {
     console.error('Max iterations reached');
   }
 
-  // Build display map
+  // Build display map for remaining variables
   for (const [key, constraints] of Object.entries(variableDefinitions)) {
+    // Skip if already set (textValue or numeric)
+    if (displayVars[key] !== undefined) continue;
+    
     const numeric = vars[key];
     if (constraints && constraints.formula) {
+      // Format formula-derived numeric values
       displayVars[key] = formatNumberForDisplay(numeric, constraints.formula, vars);
     } else if (constraints && constraints.display === 'math') {
+      // Format non-formula numeric values if marked for math display
       displayVars[key] = formatNumberForDisplay(numeric);
     } else {
+      // Default: use string representation
       displayVars[key] = (numeric === undefined) ? '' : String(numeric);
     }
   }

@@ -320,22 +320,19 @@ for (const [key, constraints] of Object.entries(variableDefinitions)) {
   }
 
   // Build display map for remaining variables
-  for (const [key, constraints] of Object.entries(variableDefinitions)) {
-    // Skip if already set (textValue or numeric)
-    if (displayVars[key] !== undefined) continue;
-    
-    const numeric = vars[key];
-    if (constraints && constraints.formula) {
-      // Format formula-derived numeric values
-      displayVars[key] = formatNumberForDisplay(numeric, constraints.formula, vars);
-    } else if (constraints && constraints.display === 'math') {
-      // Format non-formula numeric values if marked for math display
-      displayVars[key] = formatNumberForDisplay(numeric);
-    } else {
-      // Default: use string representation
-      displayVars[key] = (numeric === undefined) ? '' : String(numeric);
-    }
+for (const [key, constraints] of Object.entries(variableDefinitions)) {
+  // Skip if already set (textValue variables set in Pass 1)
+  if (displayVars[key] !== undefined) continue;
+
+  const numeric = vars[key];
+  if (constraints && constraints.formula) {
+    displayVars[key] = formatNumberForDisplay(numeric, constraints.formula, vars);
+  } else if (constraints && constraints.display === 'math') {
+    displayVars[key] = formatNumberForDisplay(numeric);
+  } else {
+    displayVars[key] = (numeric === undefined) ? '' : String(numeric);
   }
+}
 
   Object.defineProperty(vars, '__display', {
     value: displayVars,

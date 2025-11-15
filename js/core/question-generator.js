@@ -260,24 +260,27 @@ function generateQuestionVariables(questionTemplate) {
   const displayVars = {};
   const variableDefinitions = questionTemplate.variables || {};
 
-  // Pass 1: Base variables (including textValue)
-  for (const [key, constraints] of Object.entries(variableDefinitions)) {
-    if (typeof constraints === 'number') {
-      vars[key] = constraints;
-      continue;
-    }
-    if (!constraints) continue;
-    
-    // Handle textValue - pick randomly and skip formula processing
-    if (constraints.textValue && Array.isArray(constraints.textValue)) {
-      vars[key] = constraints.textValue[Math.floor(Math.random() * constraints.textValue.length)];
-      displayVars[key] = vars[key]; // Store as plain string for display
-      continue;
-    }
-    
-    if (constraints.formula) continue; // formula variables handled in Pass 2
-    vars[key] = generateVariableValue(key, constraints, vars);
+  // Pass 1: Base variables (including textValue and direct numbers)
+for (const [key, constraints] of Object.entries(variableDefinitions)) {
+  if (typeof constraints === 'number') {
+    vars[key] = constraints;
+    continue;
   }
+  if (!constraints) continue;
+
+  // Handle textValue - pick randomly and store as string
+  if (constraints.textValue && Array.isArray(constraints.textValue)) {
+    vars[key] = constraints.textValue[Math.floor(Math.random() * constraints.textValue.length)];
+    displayVars[key] = vars[key]; // Store as plain string for display
+    continue;
+  }
+
+  // Skip formula variables (handled in Pass 2)
+  if (constraints.formula) continue;
+  
+  // Generate numeric variables
+  vars[key] = generateVariableValue(key, constraints, vars);
+}
 
   // Pass 2: Formula variables
   let formulaKeys = Object.keys(variableDefinitions).filter(k => variableDefinitions[k]?.formula);
